@@ -1,0 +1,80 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: #2b3647;
+    height: 100vh;
+    width: 20%;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 24px 0 16px 0px;
+}
+
+.sidebar-section:hover{
+    cursor: pointer;
+    background-color: #081931;
+}
+
+.sidebar-section-contents-end {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.sidebar-section-contents-start {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.sidebar-sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60%;
+}
+
+.policy-rights-section {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.policy-rights-section a {
+    text-decoration: none;
+    margin-top: 16px;
+    font-size: 14px;
+    color: lightgray;
+}
+
+.sidebar-img {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 20%;
+    justify-content: flex-end;
+}
+
+.sidebar-section a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.sidebar-section img {
+    margin-right: 8px;
+    height: 36px;
+}
+
+.activeSection{
+    background-color: #081931;
+}

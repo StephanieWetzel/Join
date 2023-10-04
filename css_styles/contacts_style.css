@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+}
+
+.content{
+    display: flex;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100vh;
+}
