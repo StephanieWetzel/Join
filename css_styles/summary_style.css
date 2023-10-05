@@ -1,0 +1,56 @@
+h1{
+    font-size: 61px;
+    padding-right: 24px;
+}
+
+h2{
+    font-weight: 400;
+    font-size: 27px;
+}
+
+.summaryMain{
+    padding: 0 64px;
+    background-color: #f6f7f8;
+    height: 100vh;
+}
+
+.summaryHead{
+    display: flex;
+    align-items: center;
+}
+
+.summaryHead h1{
+    border-right: 3px solid #29ABE2;
+    line-height: 59px;
+}
+
+.dFlex{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.dFlex h1{
+    margin: 0;
+}
+
+.toDo{
+    padding: 38px 19px 38px 19px;
+    background-color: white;
+    border-radius: 30px;
+    gap: 18px;
+}
+
+.flexDirection{
+    display: flex;
+    flex-direction: column;
+}
+
+.summaryHead h2{
+    margin-left: 24px;
+}
+
+.summaryWidth{
+    width: 560px;
+    height: 562px;
+}
