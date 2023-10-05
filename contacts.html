@@ -16,6 +16,20 @@
         <div class="sidebar" w3-include-html="assets/templates/sidebar.template.html"></div>
         <section class="main-content">
             <div class="head" w3-include-html="assets/templates/header.template.html"></div>
+            <div class="contactbook-section">
+                <div class="contactbook">
+                    <button onclick="addContact()">Add new contact<img src="assets/icons/person_add.svg"></button>
+                    <div w3-include-html="assets/templates/contactbook.template.html"></div>
+                </div>
+                <div id="contactBookInfo" class="contactbook-info">
+                    <div class="heading-row">
+                        <h1>Contacts</h1>
+                        <p class="ml24">Better with a team</p>
+                    </div>
+                    <div id="infoHead" class="info-head"></div>
+                    <div id="contactInformation" class="mt24"></div>
+                </div>
+            </div>
         </section>
     </section>
 
