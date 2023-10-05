@@ -1,0 +1,29 @@
+<div class="add-formular">
+    <div class="add-form-content">
+        <div class="add-heading">
+            <img src="assets/images/Join_white.svg">
+            <h1>Add contact</h1>
+            <p>Tasks are better with a team!</p>
+            <div class="add-heading-decoline"></div>
+        </div>
+        <div class="create-contact">
+            <div class="profile-pic">
+                <img src="assets/icons/empty-profile-pic.svg">
+            </div>
+            <div class="formular">
+                <div class="back-button">
+                    <button onclick="closeContactForm()">X</button>
+                </div>
+                <form onsubmit="createContact(); return false" class="form-box">
+                    <input id="fullName" required class="person-icon custom-input" type="text" placeholder="Name">
+                    <input id="mail" required class="mail-icon custom-input" type="email" placeholder="Email">
+                    <input id="phone" required class="phone-icon custom-input" type="tel" placeholder="Phone">
+                    <div class="add-cancel-buttons">
+                        <button class="cancel-button">Cancel <img src="assets/icons/iconoir_cancel.svg"></button>
+                        <button class="create-button">Create contact <img src="assets/icons/check.svg"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

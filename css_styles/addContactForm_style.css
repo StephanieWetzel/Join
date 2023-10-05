@@ -1,0 +1,172 @@
+.add-contact {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+}
+
+.add-formular {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.add-form-content{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 70%;
+}
+
+.add-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    background-color: #081931;
+    color: white;
+    width: 40%;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.add-heading img{
+    height: 70px;
+    width: 66px;
+}
+
+.add-heading h1{
+    font-size: 84px;
+    margin: 0;
+    margin-top: 8px;
+}
+
+.add-heading p{
+    font-size: 36px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.add-heading-decoline{
+    width: 20%;
+    height: 6px;
+    background-color: #29ABE2;
+}
+
+.create-contact{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
+}
+
+.profile-pic{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.formular{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+}
+
+.back-button{
+    margin-top: -70px;
+    margin-bottom: 76px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.back-button button{
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+}
+
+.back-button button:hover{
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.form-box{
+    display: flex;
+    flex-direction: column;
+    margin-top: 88px;
+}
+
+.custom-input{
+    margin: 16px;
+    border-radius: 16px;
+    height: 32px;
+    padding-inline: 16px;
+    width: 310px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.person-icon{
+    padding-right: 24px;
+    background: url("../icons/person.svg") no-repeat center;
+    background-size: 24px;
+    background-position-x: 294px;
+}
+
+.mail-icon{
+    padding-right: 24px;
+    background: url("../icons/mail.svg") no-repeat center;
+    background-size: 24px;
+    background-position-x: 294px;
+}
+
+.phone-icon{
+    padding-right: 24px;
+    background: url("../icons/call.svg") no-repeat center;
+    background-size: 24px;
+    background-position-x: 294px;
+}
+
+.add-cancel-buttons{
+    margin: 16px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 42px;
+}
+
+.cancel-button{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 16px;
+    margin-right: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.cancel-button img{
+    margin-left: 8px;
+    height: 20px;
+}
+
+.create-button{
+    display: flex;
+    align-items: center;
+    background-color: #081931;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.create-button img{
+    margin-left: 8px;
+    height: 20px;
+}

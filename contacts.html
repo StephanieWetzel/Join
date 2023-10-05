@@ -7,18 +7,23 @@
     <link rel="stylesheet" href="css_styles/sidebar_style.css">
     <link rel="stylesheet" href="css_styles/contacts_style.css">
     <link rel="stylesheet" href="css_styles/header_style.css">
+    <link rel="stylesheet" href="css_styles/addContactForm_style.css">
+    <script src="js/classes/contact.class.js"></script>
     <script src="js/contacts.js"></script>
     <title>Contacts</title>
 </head>
 
 <body onload="init()">
+    <section class="add-contact d-none">
+        <div w3-include-html="assets/templates/addContactForm.template.html"></div>
+    </section>
     <section class="content">
         <div class="sidebar" w3-include-html="assets/templates/sidebar.template.html"></div>
         <section class="main-content">
             <div class="head" w3-include-html="assets/templates/header.template.html"></div>
             <div class="contactbook-section">
                 <div class="contactbook">
-                    <button onclick="addContact()">Add new contact<img src="assets/icons/person_add.svg"></button>
+                    <button onclick="openContactForm()">Add new contact<img src="assets/icons/person_add.svg"></button>
                     <div w3-include-html="assets/templates/contactbook.template.html"></div>
                 </div>
                 <div id="contactBookInfo" class="contactbook-info">
