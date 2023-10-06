@@ -115,21 +115,21 @@
 
 .person-icon{
     padding-right: 24px;
-    background: url("../icons/person.svg") no-repeat center;
+    background: url("../assets/icons/person.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 294px;
 }
 
 .mail-icon{
     padding-right: 24px;
-    background: url("../icons/mail.svg") no-repeat center;
+    background: url("../assets/icons/mail.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 294px;
 }
 
 .phone-icon{
     padding-right: 24px;
-    background: url("../icons/call.svg") no-repeat center;
+    background: url("../assets/icons/call.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 294px;
 }

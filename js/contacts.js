@@ -6,7 +6,7 @@ let contacts =[
 ]
 /*-------------------*/
 
-
+let contactInfoOpened = false;
 
 
 async function init(){
@@ -45,7 +45,7 @@ function loadContacts(){
         let initials = getInitials(contact.firstName, contact.lastName);
         let co = document.getElementById(contact.firstName.charAt(0).toLowerCase());
         co.innerHTML += /*html*/`
-        <div class="contact" onclick="showContactInfo(${index})">
+        <div id="c${index}" class="contact" onclick="showContactInfo(${index})">
             <div class="contact-bubble small" style="background-color: ${contact.color}">${initials}</div>
             <div class="contact-name-mail">
                 <p class="f-size">${contact.firstName} ${contact.lastName} </p>
@@ -57,8 +57,11 @@ function loadContacts(){
 }
 
 function showContactInfo(index){
+    removeAllActiveStates();
     printContactHead(index);
     printContactInformation(index);
+    document.getElementById(`c${index}`).classList.add('contact-active');
+    contactInfoOpened = true;
 }
 
 function printContactHead(index) {
@@ -92,6 +95,13 @@ function printContactInformation(index) {
         <p class="blue-color">${contact.phone}</p>
     </div>
     `
+}
+
+function removeAllActiveStates(){
+    if (contactInfoOpened){
+        document.querySelector('.contact-active').classList.remove('contact-active');    
+    }
+    contactInfoOpened = false;
 }
 
 function deleteContact(index){
