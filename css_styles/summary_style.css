@@ -1,3 +1,7 @@
+body{
+    font-size: 16px;
+}
+
 h1{
     font-size: 61px;
     padding-right: 24px;
@@ -6,6 +10,16 @@ h1{
 h2{
     font-weight: 400;
     font-size: 27px;
+}
+
+hr{
+    height: 102.2px;
+    margin: 0;
+    border: 1px solid #D1D1D1;
+}
+
+p{
+    color: #2A3647;
 }
 
 .summaryMain{
@@ -27,18 +41,17 @@ h2{
 .dFlex{
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 50px;
 }
 
 .dFlex h1{
     margin: 0;
 }
 
-.toDo{
+.borderRadius{
     padding: 38px 19px 38px 19px;
     background-color: white;
     border-radius: 30px;
-    gap: 18px;
 }
 
 .flexDirection{
@@ -51,6 +64,46 @@ h2{
 }
 
 .summaryWidth{
+    display: flex;
+    align-items: center;
+    height: 230px;
     width: 560px;
-    height: 562px;
+}
+
+.summaryInfo{
+    margin-right: 36px;
+}
+
+.urgent{
+    height: 200px;
+}
+
+.date{
+    font-size: 21px;
+    font-weight: 700;
+    color: #2a3647;
+}
+
+.flexDirection h1{
+    font-size: 64px;
+}
+
+.taskInfo span{
+    font-size: 21px;
+    text-align: center;
+}
+
+.summaryTasks h1{
+    padding: 0;
+}
+
+.itemsCenter{
+    display: flex;
+    align-items: center;
+}
+
+.summaryTasks{
+    min-width: 560px;
+    max-width: 560px;
+    text-align: center;
 }
