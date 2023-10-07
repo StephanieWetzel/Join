@@ -101,28 +101,28 @@ p {
     text-align: center;
 }
 
-.firstList{
-   padding: 38px 50px 38px 58px;
+.firstList {
+    padding: 38px 50px 38px 58px;
 }
 
-.thirdList{
-   padding: 25px 58px 25px 58px;
+.thirdList {
+    padding: 25px 58px 25px 58px;
 }
 
-.flexDirection p{
+.flexDirection p {
     margin: 0;
 }
 
-.gap{
+.gap {
     display: flex;
     justify-content: space-around;
 }
 
-.maxWidth{
+.maxWidth {
     width: 168px;
 }
 
-.summaryInfo{
+.summaryInfo {
     height: 168px;
 }
 
