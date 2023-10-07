@@ -25,7 +25,7 @@ p {
 .summaryMain {
     padding: 0 64px;
     background-color: #f6f7f8;
-    height: 100vh;
+    height: 90%;
 }
 
 .summaryHead {
@@ -66,16 +66,10 @@ p {
 .summaryWidth {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 230px;
     width: 560px;
-}
-
-.summaryInfo {
-    margin-right: 36px;
-}
-
-.urgent {
-    height: 200px;
+    gap: 18px;
 }
 
 .date {
@@ -103,7 +97,31 @@ p {
 }
 
 .summaryTasks {
-    min-width: 560px;
     max-width: 560px;
     text-align: center;
+}
+
+.firstList{
+   padding: 38px 50px 38px 58px;
+}
+
+.thirdList{
+   padding: 25px 58px 25px 58px;
+}
+
+.flexDirection p{
+    margin: 0;
+}
+
+.gap{
+    display: flex;
+    justify-content: space-around;
+}
+
+.maxWidth{
+    width: 168px;
+}
+
+.summaryInfo{
+    height: 168px;
 }
