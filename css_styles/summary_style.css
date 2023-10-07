@@ -125,3 +125,7 @@ p {
 .summaryInfo{
     height: 168px;
 }
+
+.test{
+    display: flex;
+}
