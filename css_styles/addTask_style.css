@@ -1,0 +1,106 @@
+.formSection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.form {
+    display: flex;
+    height: 432px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: #2A3647;
+}
+
+input,
+select,
+textarea {
+    font-size: 20px;
+    font-family: 'Inter';
+    padding: 8px 16px;
+    border: solid 1px #DBDBDB;
+    border-radius: 8px;
+    width: 440px;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 104px;
+    height: 104px;
+    resize: vertical;
+}
+
+::placeholder {
+    color: #D1D1D1;
+}
+
+.separator {
+    width: 0.5px;
+    background-color: #D1D1D1;
+    margin: 0 40px;
+}
+
+.marginBo8 {
+    margin-bottom: 8px;
+}
+
+.required:after {
+    content: "*";
+    color: #FF8190;
+}
+
+.footerRequiredField {
+    font-size: 16px;
+    color: black;
+}
+
+.footerRequiredField:before {
+    font-size: 20px;
+    content: "*";
+    color: #FF8190;
+}
+
+.footerBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 80px;
+}
+
+.addTaskBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 14px;
+    border: solid 1px #2A3647;
+    border-radius: 12px;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.addTaskBtn span {
+    font-size: 20px;
+    font-family: 'Inter';
+}
+
+.addTaskBtn:hover {
+    box-shadow: 0px 5px 4px 0px #BCBDBE;
+}
+
+.clearBtn {
+    background-color: transparent;
+}
+
+.clearBtn:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
+}
+
+.createBtn {
+    background-color: #2A3647;
+}
+
+.createBtn span {
+    color: white;
+    font-weight: 600;
+}
