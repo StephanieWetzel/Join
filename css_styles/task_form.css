@@ -1,0 +1,64 @@
+.formSection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.form {
+    display: flex;
+}
+
+input,
+select,
+textarea {
+    font-size: 20px;
+    font-family: 'Inter';
+    padding: 8px 16px;
+    border: solid 1px #DBDBDB;
+    border-radius: 8px;
+    width: 360px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+textarea {
+    height: 104px;
+}
+
+::placeholder {
+    color: #D1D1D1;
+}
+
+.separator {
+    width: 0.5px;
+    height: 400px;
+    background-color: #D1D1D1;
+    margin: 0 40px;
+}
+
+.marginBo8 {
+    margin-bottom: 8px;
+}
+
+.required:after {
+    content: "*";
+    color: #FF8190;
+}
+
+.requiredField {
+    font-size: 16px;
+}
+
+.requiredField:before {
+    content: "*";
+    color: #FF8190;
+}
+
+.formFooter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.formFooterBtnContainer {
+    display: flex;
+}

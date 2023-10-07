@@ -23,13 +23,13 @@
 .sidebar-section-contents-end {
     display: flex;
     justify-content: flex-end;
-    width: 50%;
+    width: 46%;
 }
 
 .sidebar-section-contents-start {
     display: flex;
     justify-content: flex-start;
-    width: 50%;
+    width: 54%;
 }
 
 .sidebar-sections {
