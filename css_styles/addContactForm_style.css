@@ -14,14 +14,14 @@
     height: 100vh;
 }
 
-.add-form-content{
+.add-form-content {
     display: flex;
     flex-direction: row;
     width: 80%;
     height: 70%;
 }
 
-.add-heading{
+.add-heading {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,30 +33,30 @@
     border-bottom-left-radius: 16px;
 }
 
-.add-heading img{
+.add-heading img {
     height: 70px;
     width: 66px;
 }
 
-.add-heading h1{
+.add-heading h1 {
     font-size: 84px;
     margin: 0;
     margin-top: 8px;
 }
 
-.add-heading p{
+.add-heading p {
     font-size: 36px;
     margin-bottom: 8px;
     margin-top: 8px;
 }
 
-.add-heading-decoline{
+.add-heading-decoline {
     width: 20%;
     height: 6px;
     background-color: #29ABE2;
 }
 
-.create-contact{
+.create-contact {
     width: 60%;
     display: flex;
     flex-direction: row;
@@ -64,20 +64,20 @@
     padding: 24px;
 }
 
-.profile-pic{
+.profile-pic {
     display: flex;
     justify-content: center;
     width: 50%;
 }
 
-.formular{
+.formular {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 50%;
 }
 
-.back-button{
+.back-button {
     margin-top: -70px;
     margin-bottom: 76px;
     display: flex;
@@ -86,25 +86,25 @@
     width: 100%;
 }
 
-.back-button button{
+.back-button button {
     border: none;
     background-color: white;
     color: black;
     font-size: 20px;
 }
 
-.back-button button:hover{
+.back-button button:hover {
     cursor: pointer;
     color: rgba(0, 0, 0, 0.3);
 }
 
-.form-box{
+.form-box {
     display: flex;
     flex-direction: column;
     margin-top: 88px;
 }
 
-.custom-input{
+.custom-input {
     margin: 16px;
     border-radius: 16px;
     height: 32px;
@@ -113,35 +113,35 @@
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
-.person-icon{
+.person-icon {
     padding-right: 24px;
-    background: url("../assets/icons/person.svg") no-repeat center;
+    background: url("../assets/images/person.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 294px;
 }
 
-.mail-icon{
+.mail-icon {
     padding-right: 24px;
-    background: url("../assets/icons/mail.svg") no-repeat center;
+    background: url("../assets/images/mail.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 294px;
 }
 
-.phone-icon{
+.phone-icon {
     padding-right: 24px;
-    background: url("../assets/icons/call.svg") no-repeat center;
+    background: url("../assets/images/call.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 294px;
 }
 
-.add-cancel-buttons{
+.add-cancel-buttons {
     margin: 16px;
     display: flex;
     flex-direction: row;
     margin-top: 42px;
 }
 
-.cancel-button{
+.cancel-button {
     display: flex;
     align-items: center;
     background-color: white;
@@ -152,12 +152,12 @@
     border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
-.cancel-button img{
+.cancel-button img {
     margin-left: 8px;
     height: 20px;
 }
 
-.create-button{
+.create-button {
     display: flex;
     align-items: center;
     background-color: #081931;
@@ -166,7 +166,7 @@
     border-radius: 8px;
 }
 
-.create-button img{
+.create-button img {
     margin-left: 8px;
     height: 20px;
 }
