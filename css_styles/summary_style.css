@@ -1,108 +1,108 @@
-body{
+body {
     font-size: 16px;
 }
 
-h1{
+h1 {
     font-size: 61px;
     padding-right: 24px;
 }
 
-h2{
+h2 {
     font-weight: 400;
     font-size: 27px;
 }
 
-hr{
+hr {
     height: 102.2px;
     margin: 0;
     border: 1px solid #D1D1D1;
 }
 
-p{
+p {
     color: #2A3647;
 }
 
-.summaryMain{
+.summaryMain {
     padding: 0 64px;
     background-color: #f6f7f8;
     height: 100vh;
 }
 
-.summaryHead{
+.summaryHead {
     display: flex;
     align-items: center;
 }
 
-.summaryHead h1{
+.summaryHead h1 {
     border-right: 3px solid #29ABE2;
     line-height: 59px;
 }
 
-.dFlex{
+.dFlex {
     display: flex;
     align-items: center;
     gap: 50px;
 }
 
-.dFlex h1{
+.dFlex h1 {
     margin: 0;
 }
 
-.borderRadius{
+.borderRadius {
     padding: 38px 19px 38px 19px;
     background-color: white;
     border-radius: 30px;
 }
 
-.flexDirection{
+.flexDirection {
     display: flex;
     flex-direction: column;
 }
 
-.summaryHead h2{
+.summaryHead h2 {
     margin-left: 24px;
 }
 
-.summaryWidth{
+.summaryWidth {
     display: flex;
     align-items: center;
     height: 230px;
     width: 560px;
 }
 
-.summaryInfo{
+.summaryInfo {
     margin-right: 36px;
 }
 
-.urgent{
+.urgent {
     height: 200px;
 }
 
-.date{
+.date {
     font-size: 21px;
     font-weight: 700;
     color: #2a3647;
 }
 
-.flexDirection h1{
+.flexDirection h1 {
     font-size: 64px;
 }
 
-.taskInfo span{
+.taskInfo span {
     font-size: 21px;
     text-align: center;
 }
 
-.summaryTasks h1{
+.summaryTasks h1 {
     padding: 0;
 }
 
-.itemsCenter{
+.itemsCenter {
     display: flex;
     align-items: center;
 }
 
-.summaryTasks{
+.summaryTasks {
     min-width: 560px;
     max-width: 560px;
     text-align: center;

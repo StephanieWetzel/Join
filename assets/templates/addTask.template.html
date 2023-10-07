@@ -1,0 +1,74 @@
+<h1>Add Task</h1>
+
+<form class="form" onsubmit="addTask()">
+    <!-- left column -->
+    <div>
+        <div class="formSection">
+            <label class="marginBo8 required">Title</label>
+            <input required type="text" placeholder="Enter a title">
+        </div>
+
+        <div class="formSection">
+            <label class="marginBo8">Description</label>
+            <textarea cols="30" rows="10" placeholder="Enter a Description"></textarea>
+        </div>
+
+        <div class="formSection">
+            <label class="marginBo8">Assigned to</label>
+            <select required>
+                <option disabled selected>Select contacts to assign</option>
+            </select>
+        </div>
+    </div>
+    <!-- middle -->
+    <div class="separator"></div>
+    <!-- right column -->
+    <div>
+        <div class="formSection">
+            <label class="marginBo8 required">Due date</label>
+            <input required type="text" placeholder="dd/mm/yyyy" onfocus="(this.type='date')">
+        </div>
+
+        <div class="formSection">
+            <label class="marginBo8">Prio</label>
+            <div>
+                <div>
+                    <span>Urgent</span>
+                </div>
+                <div>
+                    <span>Medium</span>
+                </div>
+                <div>
+                    <span>Low</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="formSection">
+            <label class="marginBo8 required">Category</label>
+            <select required>
+                <option disabled selected>Select task category</option>
+                <option>Technical Task</option>
+                <option>User Story</option>
+            </select>
+        </div>
+
+        <div class="formSection">
+            <label class="marginBo8">Subtasks</label>
+            <input required type="text" placeholder="Add new subtask">
+        </div>
+    </div>
+</form>
+
+<div class="footerBtnContainer">
+    <button class="addTaskBtn clearBtn">
+        <span>Clear</span>
+        <img src="./assets/icons/iconoir_cancel.svg" alt="Kreuz">
+    </button>
+    <button class="addTaskBtn createBtn">
+        <span>Create Task</span>
+        <img src="./assets/icons/check.svg" alt="Haken">
+    </button>
+</div>
+
+<span class="footerRequiredField">This field is required</span>
