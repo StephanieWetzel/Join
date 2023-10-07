@@ -105,6 +105,7 @@ function removeAllActiveStates(){
 }
 
 function deleteContact(index){
+    removeAllActiveStates()
     contacts.splice(index, 1);
     infoHead.innerHTML = '';
     contactInformation.innerHTML = '';
