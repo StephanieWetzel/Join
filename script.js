@@ -1,6 +1,3 @@
-async function init(){
-    await includeHTML();
-}
 
 async function includeHTML(){
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -14,4 +11,17 @@ async function includeHTML(){
             element.innerHTML = 'Page not found';
         }
     }
+}
+
+function markActiveSection(activeSection) {
+    deactivateAllActiveSections();
+    let section = document.getElementById(activeSection);
+    section.classList.add('active-section');
+}
+
+function deactivateAllActiveSections() {
+    document.getElementById('summary').classList.remove('active-section');
+    document.getElementById('tasks').classList.remove('active-section');
+    document.getElementById('board').classList.remove('active-section');
+    document.getElementById('contactsSection').classList.remove('active-section');
 }

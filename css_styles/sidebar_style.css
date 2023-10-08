@@ -13,6 +13,7 @@
     align-items: center;
     width: 100%;
     padding: 24px 0 16px 0px;
+    text-decoration: none;
 }
 
 .sidebar-section:hover{
@@ -70,11 +71,19 @@
     font-size: 20px;
 }
 
+.sidebar-text{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
 .sidebar-section img {
     margin-right: 8px;
     height: 36px;
 }
 
-.activeSection{
+.active-section{
     background-color: #081931;
 }

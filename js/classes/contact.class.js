@@ -1,5 +1,4 @@
 class Contact{
-    
     firstName;
     lastName;
     phone;

@@ -1,33 +1,13 @@
-
-/* Test purposes only :D */
-let contacts =[
-    new Contact("Albrecht", "Fuchs", "01800666666", "trololol123@swag.ru"),
-    new Contact("Sebastian", "Wolff", "01800666666", "trololol123@swag.ru")
-]
-/*-------------------*/
-
+let contacts =[];
 let contactInfoOpened = false;
 
 
-async function init(){
+async function init(activeSection){
     await includeHTML();
+    await fetchContacts();
+    markActiveSection(activeSection)
     loadContacts();
 }
-
-async function includeHTML(){
-    let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i < includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute("w3-include-html");
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = 'Page not found';
-        }
-    }
-}
-
 
 function openContactForm(){
     document.querySelector(".content").classList.add("d-none");
@@ -97,6 +77,19 @@ function printContactInformation(index) {
     `
 }
 
+async function createContact(){
+    let firstLastName = splitString(fullName.value);
+    contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
+    await setItem('contacts', JSON.stringify(contacts));
+    resetForms();
+}
+
+function resetForms(){
+    fullName.value = '';
+    phone.value = '';
+    mail.value = '';
+}
+
 function removeAllActiveStates(){
     if (contactInfoOpened){
         document.querySelector('.contact-active').classList.remove('contact-active');    
@@ -104,15 +97,23 @@ function removeAllActiveStates(){
     contactInfoOpened = false;
 }
 
-function deleteContact(index){
+async function deleteContact(index){
     removeAllActiveStates()
     contacts.splice(index, 1);
     infoHead.innerHTML = '';
     contactInformation.innerHTML = '';
+    await setItem('contacts', JSON.stringify(contacts));
     init();
 }
 
 function getInitials(firstName, lastName){
     let initials = firstName.charAt(0) + lastName.charAt(0);
     return initials
+}
+
+function splitString(string){
+    let strings = [];
+    strings.push(string.substring(0, string.indexOf(' ')));
+    strings.push(string.substring(string.indexOf(' ') + 1));
+    return strings;
 }
