@@ -29,9 +29,15 @@ function openContactForm() {
     document.querySelector(".add-contact").classList.remove("d-none");
 }
 
-function closeContactForm() {
-    document.querySelector(".add-contact").classList.add("d-none");
-    document.querySelector(".content").classList.remove("d-none");
+function closeContactForm(editOrAdd) {
+    if (editOrAdd === 'add') {
+        document.querySelector(".content").classList.remove("d-none");
+        document.querySelector(".add-contact").classList.add("d-none");
+    } else if (editOrAdd === 'edit') {
+        document.querySelector(".content").classList.remove("d-none");
+        document.querySelector(".edit-contact").classList.add("d-none");
+    }
+    contactInfoOpened = false;
     init('contactsSection');
 }
 
@@ -66,7 +72,7 @@ function printContactHead(index) {
     <div class="contact-bubble large" style="background-color: ${contact.color}">${initials}</div>
     <div class="name-edit-delete">
         <h2>${contact.firstName} ${contact.lastName}</h2>
-        <div class="edit-delete">
+        <div class="edit-delete" onclick="openEditContact(${index})">
             <div class="edit">
                 <img src="assets/images/edit.svg">
                 <p>Edit</p>
@@ -77,6 +83,51 @@ function printContactHead(index) {
             </div>
         </div>
     </div>`
+}
+
+function openEditContact(index){
+    openEditContactTab();
+    getProfilePic(index);
+    changeValues(index);
+}
+
+function changeValues(index){
+    const contact = contacts[index]
+    document.getElementById('edit-index').value = index;
+    document.getElementById('editFullName').value = contact.firstName + ' ' + contact.lastName;
+    document.getElementById('editMail').value = contact.mail;
+    document.getElementById('editPhone').value = contact.phone;
+}
+
+function getProfilePic(index){
+    let profileP = document.getElementById('profilePic');
+    let initials = getInitials(contacts[index].firstName, contacts[index].lastName)
+    profileP.innerHTML = /*html */`
+    <div class="contact-bubble large" style="background-color: ${contacts[index].color}">${initials}</div>
+    `
+}
+
+function openEditContactTab() {
+    document.querySelector(".content").classList.add("d-none");
+    document.querySelector(".edit-contact").classList.remove("d-none");
+}
+
+async function editContact(){
+    let index = document.getElementById('edit-index').value;
+    let contact = contacts[index];
+    let fullName = document.getElementById('editFullName').value;
+    let mail = document.getElementById('editMail').value;
+    let tel = document.getElementById('editPhone').value;
+    let firstLastName = splitString(fullName);
+    overwriteContact(firstLastName, mail, tel, contact);
+}
+
+async function overwriteContact(firstLastName, mail, tel, contact){
+    contact.firstName = firstLastName[0];
+    contact.lastName = firstLastName[1];
+    contact.mail = mail;
+    contact.tel = tel;
+    await setItem('contacts', JSON.stringify(contacts));
 }
 
 function printContactInformation(index) {

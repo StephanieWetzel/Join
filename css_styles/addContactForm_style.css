@@ -7,6 +7,14 @@
     /*background-color: rgba(0, 0, 0, 0.4);*/
 }
 
+.edit-contact{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
 .add-formular {
     display: flex;
     justify-content: center;
