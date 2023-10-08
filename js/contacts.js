@@ -73,12 +73,12 @@ function printContactHead(index) {
         <h2>${contact.firstName} ${contact.lastName}</h2>
         <div class="edit-delete">
             <div class="edit">
-                <img src="assets/icons/edit.svg">
+                <img src="assets/images/edit.svg">
                 <p>Edit</p>
             </div>
             <div class="delete" onclick="deleteContact(${index})">
-                <img class="ml24" src="assets/icons/delete.svg">
-                <p >Delete</p>
+                <img class="ml24" src="assets/images/delete.svg">
+                <p>Delete</p>
             </div>
         </div>
     </div>`
