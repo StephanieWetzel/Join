@@ -8,7 +8,7 @@
     display: flex;
     height: 432px;
     color: #2A3647;
-    margin-bottom: 112px;
+    margin-bottom: 104px;
 }
 
 input,
@@ -94,6 +94,11 @@ textarea {
 .clearBtn:hover {
     color: #29ABE2;
     border-color: #29ABE2;
+    transition: 200ms;
+}
+
+.clearBtn:hover svg path {
+    stroke: #29ABE2;
     transition: 200ms;
 }
 
