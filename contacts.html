@@ -12,13 +12,18 @@
     <link rel="stylesheet" href="css_styles/addContactForm_style.css">
     <link rel="stylesheet" href="style.css">
     <script src="js/classes/contact.class.js"></script>
+    <script src="script.js"></script>
+    <script src="js/remoteStorage.js"></script>
     <script src="js/contacts.js"></script>
     <title>Contacts</title>
 </head>
 
-<body onload="init()">
+<body onload="init('contactsSection')">
     <section class="add-contact d-none">
         <div w3-include-html="assets/templates/addContactForm.template.html"></div>
+    </section>
+    <section class="edit-contact d-none">
+        <div w3-include-html="assets/templates/editContactForm.template.html"></div>
     </section>
     <section class="content">
         <div class="sidebar" w3-include-html="assets/templates/sidebar.template.html"></div>

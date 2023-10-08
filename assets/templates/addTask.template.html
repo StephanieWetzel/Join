@@ -15,7 +15,7 @@
 
         <div class="formSection">
             <label class="marginBo8">Assigned to</label>
-            <select required>
+            <select class="inputFieldBackgroundImagePosition" required>
                 <option disabled selected>Select contacts to assign</option>
             </select>
         </div>
@@ -26,27 +26,30 @@
     <div>
         <div class="formSection">
             <label class="marginBo8 required">Due date</label>
-            <input required type="text" placeholder="dd/mm/yyyy" onfocus="(this.type='date')">
+            <input class="dueDateInputField inputFieldBackgroundImagePosition" required placeholder="dd/mm/yyyy">
         </div>
 
         <div class="formSection">
-            <label class="marginBo8">Prio</label>
-            <div>
-                <div>
+            <label class="marginBo8 colorBlack">Prio</label>
+            <div class="prioCategoriesContainer">
+                <div class="prioCategory">
                     <span>Urgent</span>
+                    <img src="/assets/images/urgent_symbol.svg">
                 </div>
-                <div>
+                <div class="prioCategory">
                     <span>Medium</span>
+                    <img src="/assets/images/medium_symbol.svg">
                 </div>
-                <div>
+                <div class="prioCategory">
                     <span>Low</span>
+                    <img src="/assets/images/low_symbol.svg">
                 </div>
             </div>
         </div>
 
         <div class="formSection">
             <label class="marginBo8 required">Category</label>
-            <select required>
+            <select class="inputFieldBackgroundImagePosition" required>
                 <option disabled selected>Select task category</option>
                 <option>Technical Task</option>
                 <option>User Story</option>
@@ -55,13 +58,18 @@
 
         <div class="formSection">
             <label class="marginBo8">Subtasks</label>
-            <input required type="text" placeholder="Add new subtask">
+            <input class="subtasksInputField inputFieldBackgroundImagePosition" required type="text"
+                placeholder="Add new subtask">
         </div>
-
+        <!-- footer -->
         <div class="footerBtnContainer">
             <button class="addTaskBtn clearBtn">
                 <span>Clear</span>
-                <img src="./assets/images/iconoir_cancel.svg" alt="Kreuz">
+                <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6.24959 6.99984L11.4926 12.2428M1.00659 12.2428L6.24959 6.99984L1.00659 12.2428ZM11.4926 1.75684L6.24859 6.99984L11.4926 1.75684ZM6.24859 6.99984L1.00659 1.75684L6.24859 6.99984Z"
+                        stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
             </button>
             <button class="addTaskBtn createBtn">
                 <span>Create Task</span>
@@ -71,4 +79,4 @@
     </div>
 </form>
 
-<span class="footerRequiredField">This field is required</span>
+<span class="footerRequiredField colorBlack">This field is required</span>
