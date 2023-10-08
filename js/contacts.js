@@ -32,7 +32,7 @@ function openContactForm() {
 function closeContactForm() {
     document.querySelector(".add-contact").classList.add("d-none");
     document.querySelector(".content").classList.remove("d-none");
-    init();
+    init('contactsSection');
 }
 
 function loadContacts() {
@@ -118,7 +118,7 @@ async function deleteContact(index){
     infoHead.innerHTML = '';
     contactInformation.innerHTML = '';
     await setItem('contacts', JSON.stringify(contacts));
-    init();
+    init('contactsSection');
 }
 
 function getInitials(firstName, lastName) {
