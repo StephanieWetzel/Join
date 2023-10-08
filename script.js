@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-=======
-async function init() {
-    await includeHTML();
-}
->>>>>>> 199770eae1eee60c6575bc9ab3f7b40c733cbea7
+
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');

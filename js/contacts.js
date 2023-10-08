@@ -112,7 +112,7 @@ function removeAllActiveStates() {
     contactInfoOpened = false;
 }
 
-function deleteContact(index){
+async function deleteContact(index){
     removeAllActiveStates()
     contacts.splice(index, 1);
     infoHead.innerHTML = '';
