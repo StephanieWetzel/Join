@@ -7,9 +7,8 @@
 .form {
     display: flex;
     height: 432px;
-    /* overflow-y: auto;
-    overflow-x: hidden; */
     color: #2A3647;
+    margin-bottom: 112px;
 }
 
 input,
@@ -26,6 +25,7 @@ textarea {
 
 textarea {
     min-height: 104px;
+    max-height: 180px;
     height: 104px;
     resize: vertical;
 }
@@ -94,10 +94,17 @@ textarea {
 .clearBtn:hover {
     color: #29ABE2;
     border-color: #29ABE2;
+    transition: 200ms;
 }
 
 .createBtn {
     background-color: #2A3647;
+}
+
+.createBtn:hover {
+    background-color: #29ABE2;
+    border-color: #29ABE2;
+    transition: 200ms;
 }
 
 .createBtn span {
