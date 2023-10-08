@@ -1,6 +1,6 @@
 
 /* Test purposes only :D */
-let contacts =[
+let contacts = [
     new Contact("Albrecht", "Fuchs", "01800666666", "trololol123@swag.ru"),
     new Contact("Sebastian", "Wolff", "01800666666", "trololol123@swag.ru")
 ]
@@ -9,12 +9,12 @@ let contacts =[
 let contactInfoOpened = false;
 
 
-async function init(){
+async function init() {
     await includeHTML();
     loadContacts();
 }
 
-async function includeHTML(){
+async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
@@ -29,18 +29,18 @@ async function includeHTML(){
 }
 
 
-function openContactForm(){
+function openContactForm() {
     document.querySelector(".content").classList.add("d-none");
     document.querySelector(".add-contact").classList.remove("d-none");
 }
 
-function closeContactForm(){
+function closeContactForm() {
     document.querySelector(".add-contact").classList.add("d-none");
     document.querySelector(".content").classList.remove("d-none");
     init();
 }
 
-function loadContacts(){
+function loadContacts() {
     contacts.forEach((contact, index) => {
         let initials = getInitials(contact.firstName, contact.lastName);
         let co = document.getElementById(contact.firstName.charAt(0).toLowerCase());
@@ -56,7 +56,7 @@ function loadContacts(){
     })
 }
 
-function showContactInfo(index){
+function showContactInfo(index) {
     removeAllActiveStates();
     printContactHead(index);
     printContactInformation(index);
@@ -97,14 +97,14 @@ function printContactInformation(index) {
     `
 }
 
-function removeAllActiveStates(){
-    if (contactInfoOpened){
-        document.querySelector('.contact-active').classList.remove('contact-active');    
+function removeAllActiveStates() {
+    if (contactInfoOpened) {
+        document.querySelector('.contact-active').classList.remove('contact-active');
     }
     contactInfoOpened = false;
 }
 
-function deleteContact(index){
+function deleteContact(index) {
     removeAllActiveStates()
     contacts.splice(index, 1);
     infoHead.innerHTML = '';
@@ -112,7 +112,7 @@ function deleteContact(index){
     init();
 }
 
-function getInitials(firstName, lastName){
+function getInitials(firstName, lastName) {
     let initials = firstName.charAt(0) + lastName.charAt(0);
     return initials
 }
