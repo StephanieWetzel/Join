@@ -18,11 +18,13 @@ hr {
     border: 1px solid #D1D1D1;
 }
 
-p {
+/* p {
     color: #2A3647;
-}
+} */
 
 .summaryMain {
+    display: flex;
+    align-items: center;
     padding: 0 64px;
     background-color: #f6f7f8;
     height: 90%;
@@ -31,6 +33,8 @@ p {
 .summaryHead {
     display: flex;
     align-items: center;
+    padding: 0 64px;
+    background-color: #f6f7f8;
 }
 
 .summaryHead h1 {
@@ -72,10 +76,10 @@ p {
     gap: 18px;
 }
 
-.date {
+.date p:first-child {
     font-size: 21px;
     font-weight: 700;
-    color: #2a3647;
+    color: #2A3647;
 }
 
 .flexDirection h1 {
@@ -89,6 +93,8 @@ p {
 
 .summaryTasks h1 {
     padding: 0;
+    max-width: 560px;
+    text-align: center;
 }
 
 .itemsCenter {
@@ -124,8 +130,48 @@ p {
 
 .summaryInfo {
     height: 168px;
+    cursor: pointer;
 }
 
-.test{
+.greet {
     display: flex;
+    flex-direction: column;
+    padding-left: 64px;
+}
+
+.greet h1 {
+    color: #29ABE2;
+    font-size: 64px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.greet h2 {
+    color: #2A3647;
+    font-size: 47px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.urgent {
+    cursor: pointer;
+}
+
+.borderRadius:hover {
+    background-color: #2A3647;
+    color: white;
+    transform: scale(1.05);
+    transition: .100s;
+}
+
+.hover-image {
+    display: none;
+}
+
+.firstList:hover .hover-image {
+    display: block;
+}
+
+.firstList:hover .alternate-image {
+    display: none;
 }
