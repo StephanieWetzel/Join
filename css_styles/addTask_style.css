@@ -64,10 +64,6 @@ textarea:focus {
     margin: 0 40px;
 }
 
-.dueDateInputField {
-    background-image: url(../assets/images/calendar.svg);
-}
-
 .prioCategoriesContainer {
     display: flex;
     gap: 16px;
@@ -82,11 +78,9 @@ textarea:focus {
     border: solid 1px #EAEBEC;
     border-radius: 8px;
     gap: 8px;
-    width: 102px;
-}
-
-.prioCategory span {
+    width: 136px;
     color: black;
+    font-size: 20px;
 }
 
 .prioCategory:hover {
@@ -132,12 +126,9 @@ textarea:focus {
     border: solid 1px #2A3647;
     border-radius: 12px;
     gap: 8px;
-    cursor: pointer;
-}
-
-.addTaskBtn span {
     font-size: 20px;
     font-family: 'Inter';
+    cursor: pointer;
 }
 
 .addTaskBtn:hover {
@@ -166,17 +157,14 @@ textarea:focus {
 
 .createBtn {
     background-color: #2A3647;
+    color: white;
+    font-weight: 600;
 }
 
 .createBtn:hover {
-    background-color: #29ABE2;
+    background-color: #29ABE2 !important;
     border-color: #29ABE2;
     transition: 200ms;
-}
-
-.createBtn span {
-    color: white;
-    font-weight: 600;
 }
 
 .colorBlack {
@@ -186,4 +174,26 @@ textarea:focus {
 .inputFieldBackgroundImagePosition {
     background-repeat: no-repeat;
     background-position: right 16px center;
+}
+
+/* onclick */
+.urgent {
+    background-color: #FF3D00;
+    color: white;
+    box-shadow: none !important;
+    font-weight: bold;
+}
+
+.medium {
+    background-color: #FFA800;
+    color: white;
+    box-shadow: none !important;
+    font-weight: bold;
+}
+
+.low {
+    background-color: #7AE229;
+    color: white;
+    box-shadow: none !important;
+    font-weight: bold;
 }
