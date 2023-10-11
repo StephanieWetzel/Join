@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css_styles/login_style.css">
+    <link rel="stylesheet" href="css_styles/register_style.css">
     <link rel="icon" type="image/x-icon" href="./assets/images/join.svg">
     <link rel="stylesheet" href="fonts.css">
-    <title>Login</title>
+    <title>Register</title>
 </head>
+
 <body>
     <section class="login-content">
         <div class="header">
             <img src="assets/images/Join_Logo_Login.svg">
-            <div class="header-right">
-                <p>Not a Join user?</p>
-                <a href="registration.html" class="sign-up-btn">Sign up</a>
-            </div>
         </div>
         <div class="form">
-            <h1>Log in</h1>
+            <div class="form-head">
+                <a href="login_index.html"><img src="assets/images/arrow-left-line.svg"></a>
+                <h1>Sign up</h1>
+                <div style="width: 32px;"></div>
+            </div>
             <div class="decoline"></div>
             <form class="login-form" onsubmit="registeredUserLogin(); return false">
-                <input class="input-style email-styling" id="email" required type="email" placeholder="Email"> 
-                <input class="input-style pw-styling" id="password" required type="password" placeholder="Password"><br>
+                <input class="input-style person-styling" id="name" required type="name" placeholder="Name">
+                <input class="input-style email-styling" id="email" required type="email" placeholder="Email">
+                <input class="input-style pw-styling" id="password" required type="password" placeholder="Password">
+                <input class="input-style pw-styling" id="cPassword" required type="password" placeholder="Confirm Password">
                 <div class="checkbox">
                     <input type="checkbox" name="remember-me" id="rememberMe">
-                    <p>Remember me</p>
+                    <p>I accept the <a href="#">Privacy Policy</a></p>
                 </div>
                 <div class="btns">
-                    <button class="login-btn">Log in</button>
-                    <button class="guest-login-btn">Guest Log in</button>
+                    <button class="sign-up">Sign up</button>
                 </div>
             </form>
         </div>
@@ -40,4 +43,5 @@
         </div>
     </section>
 </body>
+
 </html>
