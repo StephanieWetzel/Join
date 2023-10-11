@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css_styles/login_style.css">
+    <link rel="icon" type="image/x-icon" href="./assets/images/join.svg">
+    <link rel="stylesheet" href="fonts.css">
+    <title>Login</title>
+</head>
+<body>
+    <section class="login-content">
+        <div class="header">
+            <img src="assets/images/Join_Logo_Login.svg">
+            <div class="header-right">
+                <p>Not a Join user?</p>
+                <div class="sign-up-btn">Sign up</div>
+            </div>
+        </div>
+        <div class="form">
+            <h1>Log in</h1>
+            <div class="decoline"></div>
+            <form class="login-form" onsubmit="registeredUserLogin(); return false">
+                <input class="input-style email-styling" id="email" required type="email" placeholder="Email"> 
+                <input class="input-style pw-styling" id="password" required type="password" placeholder="Password"><br>
+                <div class="checkbox">
+                    <input type="checkbox" name="remember-me" id="rememberMe">
+                    <p>Remember me</p>
+                </div>
+                <div class="btns">
+                    <button class="login-btn">Log in</button>
+                    <button class="guest-login-btn">Guest Log in</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
