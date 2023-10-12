@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    font-family: 'Inter';
+}
+
+input{
+    width: 312px;
+    border-radius: 10px;
+    padding: 8px 16px;
+}
+
+button{
+    background-color: #2A3647;
+}
+
+.board{
+    padding: 0 64px;
+}
+
+.headerBoard{
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerFlex{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 32px;
+}
