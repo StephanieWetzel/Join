@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/join.svg">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="./css_styles/sidebar_style.css">
+    <link rel="stylesheet" href="./css_styles/header_style.css">
+    <link rel="stylesheet" href="./css_styles/summary_style.css">
+    <link rel="stylesheet" href="./css_styles/contacts_style.css">
+    <link rel="stylesheet" href="./css_styles/addTask_style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="js/classes/contact.class.js"></script>
+    <script src="js/remoteStorage.js"></script>
+    <script src="js/contacts.js"></script>
+    <script src="js/add_task.js"></script>
+</head>
+<body onload="init('board')">
+    <section class="content">
+        <div class="sidebar" w3-include-html="assets/templates/sidebar.template.html"></div>
+        <section class="main-content">
+            <div class="head" w3-include-html="assets/templates/header.template.html"></div>
+</body>
+</html>
