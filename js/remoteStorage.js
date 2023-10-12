@@ -32,6 +32,16 @@ async function fetchUsers(){
         console.error('Loading error:', e);
     }
 }
+
+
+
+
+
+
+
+
+
+
 /*Handle with care xD*/
 async function deleteAllUsers(){
     let users = [];
