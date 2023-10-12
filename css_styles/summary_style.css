@@ -27,19 +27,21 @@ a {
     color: #2A3647;
 } */
 
+.summary{
+    height: 90%;
+    background-color: #f6f7f8;
+}
+
 .summaryMain {
     display: flex;
     align-items: center;
     padding: 0 64px;
-    background-color: #f6f7f8;
-    height: 90%;
 }
 
 .summaryHead {
     display: flex;
     align-items: center;
     padding: 0 64px;
-    background-color: #f6f7f8;
 }
 
 .summaryHead h1 {
