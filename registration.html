@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="css_styles/register_style.css">
     <link rel="icon" type="image/x-icon" href="./assets/images/join.svg">
     <link rel="stylesheet" href="fonts.css">
+    <script src="js/classes/contact.class.js"></script>
+    <script src="js/classes/user.class.js"></script>
+    <script src="js/remoteStorage.js"></script>
+    <script src="js/userRegistration.js"></script>
     <title>Register</title>
 </head>
 
-<body>
+<body onload="init()">
     <section class="login-content">
         <div class="header">
             <img src="assets/images/Join_Logo_Login.svg">
@@ -23,13 +27,13 @@
                 <div style="width: 32px;"></div>
             </div>
             <div class="decoline"></div>
-            <form class="login-form" onsubmit="registeredUserLogin(); return false">
-                <input class="input-style person-styling" id="name" required type="name" placeholder="Name">
-                <input class="input-style email-styling" id="email" required type="email" placeholder="Email">
-                <input class="input-style pw-styling" id="password" required type="password" placeholder="Password">
-                <input class="input-style pw-styling" id="cPassword" required type="password" placeholder="Confirm Password">
+            <form class="login-form" onsubmit="registration(); return false">
+                <input class="input-style person-styling" onchange="checkFullName()" id="fullName" required type="name" placeholder="Name">
+                <input class="input-style email-styling" onchange="checkEmail()" id="email" required type="email" placeholder="Email">
+                <input class="input-style pw-styling" id="password" onchange="checkPasswords()" required type="password" placeholder="Password">
+                <input class="input-style pw-styling" id="cPassword" onchange="checkPasswords()" required type="password" placeholder="Confirm Password">
                 <div class="checkbox">
-                    <input type="checkbox" name="remember-me" id="rememberMe">
+                    <input required type="checkbox" name="remember-me" id="rememberMe">
                     <p>I accept the <a href="#">Privacy Policy</a></p>
                 </div>
                 <div class="btns">
