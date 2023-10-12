@@ -18,6 +18,11 @@ hr {
     border: 1px solid #D1D1D1;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 /* p {
     color: #2A3647;
 } */
