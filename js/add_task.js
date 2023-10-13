@@ -4,26 +4,13 @@ let mediumBtn;
 let mediumSymbol;
 let lowBtn;
 let lowSymbol;
+let subtasks = [];
 
 
 async function init(activeSection) {
     await includeHTML();
     markActiveSection(activeSection);
 }
-
-
-// let option = "";
-
-// function assignTaskToContact() {
-//     for (let i = 0; i < contacts.length; i++) {
-//         console.log(contacts[i]);
-//         option +=
-//             `<option value="' + contacts[i] + '">' + contacts[i] + </option>`
-//     }
-//     document.getElementById('contactSelection').innerHTML = option;
-// }
-
-
 
 
 // PRIO BUTTONS
@@ -144,4 +131,18 @@ function addLowClassAndDisableOtherButtons() {
     lowSymbol.src = '/assets/images/low_symbol_white.png';
     urgentBtn.disabled = true;
     mediumBtn.disabled = true;
+}
+
+
+// SUBTASKS
+function addSubtask() {
+    let subtaskContainer = document.getElementById('subtaskContainer');
+    let subtaskInput = document.getElementById('subtaskInput').value;
+
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        subtaskContainer.innerHTML += `
+        <li>${subtaskInput}</li>
+        `;
+    }
 }

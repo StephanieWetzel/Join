@@ -1,15 +1,16 @@
-let contacts =[];
+let contacts = [];
 let contactInfoOpened = false;
 
 
-async function init(activeSection){
+async function init(activeSection) {
     await includeHTML();
     await fetchContacts();
-    markActiveSection(activeSection)
+    markActiveSection(activeSection);
     loadContacts();
 }
 
-async function includeHTML(){
+
+async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
         const element = includeElements[i];
@@ -29,6 +30,7 @@ function openContactForm() {
     document.querySelector(".add-contact").classList.remove("d-none");
 }
 
+
 function closeContactForm(editOrAdd) {
     if (editOrAdd === 'add') {
         document.querySelector(".content").classList.remove("d-none");
@@ -40,6 +42,7 @@ function closeContactForm(editOrAdd) {
     contactInfoOpened = false;
     init('contactsSection');
 }
+
 
 function loadContacts() {
     contacts.forEach((contact, index) => {
@@ -57,6 +60,19 @@ function loadContacts() {
     })
 }
 
+
+// Steffi
+function assignTaskToContact() {
+    let contactSelection = document.getElementById('contactSelection');
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        contactSelection.innerHTML += `
+        <option>${contact}</option>
+        `;
+    }
+}
+
+
 function showContactInfo(index) {
     removeAllActiveStates();
     printContactHead(index);
@@ -65,9 +81,10 @@ function showContactInfo(index) {
     contactInfoOpened = true;
 }
 
+
 function printContactHead(index) {
     let contact = contacts[index];
-    let initials = getInitials(contact.firstName, contact.lastName)
+    let initials = getInitials(contact.firstName, contact.lastName);
     infoHead.innerHTML = /*html*/`
     <div class="contact-bubble large" style="background-color: ${contact.color}">${initials}</div>
     <div class="name-edit-delete">
@@ -85,13 +102,15 @@ function printContactHead(index) {
     </div>`
 }
 
-function openEditContact(index){
+
+function openEditContact(index) {
     openEditContactTab();
     getProfilePic(index);
     changeValues(index);
 }
 
-function changeValues(index){
+
+function changeValues(index) {
     const contact = contacts[index]
     document.getElementById('edit-index').value = index;
     document.getElementById('editFullName').value = contact.firstName + ' ' + contact.lastName;
@@ -99,20 +118,23 @@ function changeValues(index){
     document.getElementById('editPhone').value = contact.phone;
 }
 
-function getProfilePic(index){
+
+function getProfilePic(index) {
     let profileP = document.getElementById('profilePic');
-    let initials = getInitials(contacts[index].firstName, contacts[index].lastName)
+    let initials = getInitials(contacts[index].firstName, contacts[index].lastName);
     profileP.innerHTML = /*html */`
     <div class="contact-bubble large" style="background-color: ${contacts[index].color}">${initials}</div>
     `
 }
+
 
 function openEditContactTab() {
     document.querySelector(".content").classList.add("d-none");
     document.querySelector(".edit-contact").classList.remove("d-none");
 }
 
-async function editContact(){
+
+async function editContact() {
     let index = document.getElementById('edit-index').value;
     let contact = contacts[index];
     let fullName = document.getElementById('editFullName').value;
@@ -122,13 +144,15 @@ async function editContact(){
     overwriteContact(firstLastName, mail, tel, contact);
 }
 
-async function overwriteContact(firstLastName, mail, tel, contact){
+
+async function overwriteContact(firstLastName, mail, tel, contact) {
     contact.firstName = firstLastName[0];
     contact.lastName = firstLastName[1];
     contact.mail = mail;
     contact.tel = tel;
     await setItem('contacts', JSON.stringify(contacts));
 }
+
 
 function printContactInformation(index) {
     let contact = contacts[index];
@@ -143,18 +167,21 @@ function printContactInformation(index) {
     `
 }
 
-async function createContact(){
+
+async function createContact() {
     let firstLastName = splitString(fullName.value);
     contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
     await setItem('contacts', JSON.stringify(contacts));
     resetForms();
 }
 
-function resetForms(){
+
+function resetForms() {
     fullName.value = '';
     phone.value = '';
     mail.value = '';
 }
+
 
 function removeAllActiveStates() {
     if (contactInfoOpened) {
@@ -163,7 +190,8 @@ function removeAllActiveStates() {
     contactInfoOpened = false;
 }
 
-async function deleteContact(index){
+
+async function deleteContact(index) {
     removeAllActiveStates()
     contacts.splice(index, 1);
     infoHead.innerHTML = '';
@@ -172,12 +200,14 @@ async function deleteContact(index){
     init('contactsSection');
 }
 
+
 function getInitials(firstName, lastName) {
     let initials = firstName.charAt(0) + lastName.charAt(0);
     return initials
 }
 
-function splitString(string){
+
+function splitString(string) {
     let strings = [];
     strings.push(string.substring(0, string.indexOf(' ')));
     strings.push(string.substring(string.indexOf(' ') + 1));
