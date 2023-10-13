@@ -38,15 +38,6 @@ async function fetchUsers() {
 }
 
 
-async function fetchUsers() {
-    try {
-        users = JSON.parse(await getItem('users'));
-    } catch (e) {
-        console.error('Loading error:', e);
-    }
-}
-
-
 /*Handle with care xD*/
 async function deleteAllUsers() {
     let users = [];
