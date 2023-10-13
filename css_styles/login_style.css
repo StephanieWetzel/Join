@@ -1,8 +1,8 @@
-body{
+body {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.login-content{
+.login-content {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -10,7 +10,7 @@ body{
     align-items: center;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     margin: 36px 16px 8px 16px;
@@ -20,18 +20,18 @@ body{
     align-items: flex-start;
 }
 
-.header-right{
+.header-right {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.header-right p{
+.header-right p {
     font-size: 16px;
 }
 
-.sign-up-btn{
+.sign-up-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,11 +48,11 @@ body{
     text-decoration: none;
 }
 
-.header img{
+.header img {
     height: 100px;
 }
 
-.form{
+.form {
     border-radius: 24px;
     display: flex;
     flex-direction: column;
@@ -64,27 +64,27 @@ body{
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
 }
 
-.decoline{
+.decoline {
     width: 128px;
     height: 2px;
-    background-color: #29ABE2 ;
+    background-color: #29ABE2;
 }
 
-.form h1{
+.form h1 {
     font-size: 54px;
     margin: 0;
     padding-bottom: 8px;
     color: #000000;
 }
 
-.login-form{
+.login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.input-style{
+.input-style {
     margin-top: 32px;
     border-radius: 16px;
     width: 380px;
@@ -94,33 +94,33 @@ body{
     border: 2px solid rgba(0, 0, 0, 0.07);
 }
 
-.input-style::placeholder{
+.input-style::placeholder {
     color: rgba(0, 0, 0, 0.4);
     font-family: 'Inter';
     font-size: 16px;
     font-weight: 300;
 }
 
-.checkbox{
+.checkbox {
     display: flex;
     width: 80%;
     flex-direction: row;
     justify-content: flex-start;
 }
 
-.checkbox p{
+.checkbox p {
     margin-top: 14px;
     margin-left: 12px;
 }
 
-.btns{
+.btns {
     display: flex;
     margin-top: 36px;
     justify-content: space-between;
     width: 316px;
 }
 
-.login-btn{
+.login-btn {
     width: 96px;
     height: 48px;
     border-radius: 6px;
@@ -132,7 +132,7 @@ body{
     font-family: 'Inter';
 }
 
-.guest-login-btn{
+.guest-login-btn {
     width: 160px;
     height: 48px;
     font-weight: bold;
@@ -144,13 +144,13 @@ body{
     font-family: 'Inter';
 }
 
-.login-btn:hover{
+.login-btn:hover {
     cursor: pointer;
     background-color: #29ABE2;
     box-shadow: 0 8px 10px -5px #333;
 }
 
-.guest-login-btn:hover{
+.guest-login-btn:hover {
     cursor: pointer;
     color: #29ABE2;
     border: 2px solid;
@@ -158,25 +158,25 @@ body{
     box-shadow: 0 8px 10px -5px #333;
 }
 
-.sign-up-btn:hover{
+.sign-up-btn:hover {
     background-color: #29ABE2;
     border: none;
     box-shadow: 0 8px 10px -5px #333;
 }
 
-.email-styling{
+.email-styling {
     background: url("../assets/images/mail.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 348px;
 }
 
-.pw-styling{
+.pw-styling {
     background: url("../assets/images/lock.svg") no-repeat center;
     background-size: 24px;
     background-position-x: 348px;
 }
 
-.footer{
+.footer {
     width: 100%;
     height: 15%;
     display: flex;
@@ -185,7 +185,7 @@ body{
     margin-bottom: 24px;
 }
 
-.footer a{
+.footer a {
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
@@ -193,7 +193,45 @@ body{
     margin: 24px 24px 0px 24px;
 }
 
-.footer a:hover{
+.footer a:hover {
     font-size: 18px;
     color: #29ABE2;
+}
+
+
+
+/*Animation*/
+
+.popup-text {
+    width: 230px;
+    padding: 16px 0 16px 0;
+    color: white;
+    background-color: #081931;
+    text-align: center;
+    border-radius: 12px;
+    padding-top: 16px;
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 50%;
+    margin-left: -115px;
+    user-select: none;
+}
+
+.invis {
+    visibility: hidden;
+}
+
+.popup-text .show {
+    visibility: visible;
+    animation: example 2s ease-in-out;
+}
+
+@keyframes example {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

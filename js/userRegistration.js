@@ -43,6 +43,7 @@ async function registration(){
     await setItem('users', JSON.stringify(users));
     await setItem('contacts', JSON.stringify(contacts));
     clearInputs();
+    window.location.href = 'login_index.html?msg=Registration succes!';
 }
 
 function clearInputs(){

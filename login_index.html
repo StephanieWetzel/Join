@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,16 @@
     <link rel="stylesheet" href="css_styles/login_style.css">
     <link rel="icon" type="image/x-icon" href="./assets/images/join.svg">
     <link rel="stylesheet" href="fonts.css">
+    <script src="js/classes/user.class.js"></script>
+    <script src="js/remoteStorage.js"></script>
+    <script src="js/userLogin.js"></script>
     <title>Login</title>
 </head>
-<body>
+
+<body onload="init()">
     <section class="login-content">
+        <span id="invalid" class="popup-text invis">User not found</span>
+        <span id="valid" class="popup-text invis">Login succesful</span>
         <div class="header">
             <img src="assets/images/Join_Logo_Login.svg">
             <div class="header-right">
@@ -21,8 +28,8 @@
         <div class="form">
             <h1>Log in</h1>
             <div class="decoline"></div>
-            <form class="login-form" onsubmit="registeredUserLogin(); return false">
-                <input class="input-style email-styling" id="email" required type="email" placeholder="Email"> 
+            <form class="login-form" onsubmit="login(); return false">
+                <input class="input-style email-styling" id="email" required type="email" placeholder="Email">
                 <input class="input-style pw-styling" id="password" required type="password" placeholder="Password"><br>
                 <div class="checkbox">
                     <input type="checkbox" name="remember-me" id="rememberMe">
@@ -40,4 +47,5 @@
         </div>
     </section>
 </body>
+
 </html>
