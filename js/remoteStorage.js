@@ -29,6 +29,14 @@ async function fetchContacts() {
     }
 }
 
+async function fetchUsers() {
+    try {
+        users = JSON.parse(await getItem('users'));
+    } catch (e) {
+        console.error('Loading error:', e);
+    }
+}
+
 
 async function fetchUsers() {
     try {
