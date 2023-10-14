@@ -19,9 +19,12 @@
 </head>
 
 <body onload="init('contactsSection')">
+
+    <!--experimentell-->
     <section class="add-contact d-none">
         <div w3-include-html="assets/templates/addContactForm.template.html"></div>
     </section>
+    <!--experimentell-->
     <section class="edit-contact d-none">
         <div w3-include-html="assets/templates/editContactForm.template.html"></div>
     </section>
@@ -35,7 +38,7 @@
                         <button onclick="openContactForm()">Add new contact<img
                                 src="assets/images/person_add.svg"></button>
                     </div>
-                    <div w3-include-html="assets/templates/contactbook.template.html"></div>
+                    <div class="contactbook-alignment" w3-include-html="assets/templates/contactbook.template.html"></div>
                 </div>
                 <div id="contactBookInfo" class="contactbook-info">
                     <div class="heading-row">

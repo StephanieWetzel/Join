@@ -10,19 +10,27 @@ async function init(activeSection) {
 }
 
 function openContactForm() {
-    document.querySelector(".content").classList.add("d-none");
+    removeAllActiveStates();
+    clearContactInfo();
     document.querySelector(".add-contact").classList.remove("d-none");
+    document.querySelector(".add-form-content").classList.add("formular-animation");
+    document.querySelector(".sticky-btn").classList.add("d-none");
 }
 
+function clearContactInfo(){
+    infoHead.innerHTML = '';
+    contactInformation.innerHTML = '';
+}
 
 function closeContactForm(editOrAdd) {
     if (editOrAdd === 'add') {
-        document.querySelector(".content").classList.remove("d-none");
         document.querySelector(".add-contact").classList.add("d-none");
+        document.querySelector(".add-form-content").classList.remove('formular-animation');
     } else if (editOrAdd === 'edit') {
-        document.querySelector(".content").classList.remove("d-none");
         document.querySelector(".edit-contact").classList.add("d-none");
+        document.getElementById('editFormContent').classList.remove('formular-animation');
     }
+    document.querySelector(".sticky-btn").classList.remove("d-none");
     contactInfoOpened = false;
     init('contactsSection');
 }
@@ -49,7 +57,6 @@ function loadContacts() {
 
 
 function showContactInfo(index) {
-    //document.querySelector('animate-contact-information').classList.remove('animate-contact-information')
     document.getElementById('infoContent').classList.add('animate-contact-information');
     removeAllActiveStates();
     printContactHead(index);
@@ -109,8 +116,11 @@ function getProfilePic(index) {
 
 
 function openEditContactTab() {
-    document.querySelector(".content").classList.add("d-none");
+    removeAllActiveStates();
+    clearContactInfo();
     document.querySelector(".edit-contact").classList.remove("d-none");
+    document.getElementById('editFormContent').classList.add("formular-animation");
+    document.querySelector(".sticky-btn").classList.add("d-none");
 }
 
 

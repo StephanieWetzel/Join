@@ -27,10 +27,12 @@
     scroll-behavior: smooth;
     overflow-y: scroll;
     overflow-x: hidden;
+    box-shadow: 8px 0px 10px -7px rgba(0, 0, 0, 0.2);
 }
 
 .contactbook::-webkit-scrollbar{
-    width: 10px;
+    width: 20px;
+    
 }
 
 .contactbook::-webkit-scrollbar-track{
@@ -40,6 +42,7 @@
 .contactbook::-webkit-scrollbar-thumb{
     background-color: #c4c6c7;
     border-radius: 20px;
+    border: 6px solid #f6f7f8;
 }
 
 .sticky-btn{
@@ -48,9 +51,15 @@
     top: 0;
     background-color: #f6f7f8;
     z-index: 20;
-    width: 85%;
-    padding: 24px;
-    justify-content: center;
+    width: 90%;
+    padding: 16px;
+}
+
+.contactbook-alignment{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
 }
 
 .sticky-btn button{
@@ -67,10 +76,15 @@
     font-size: 16px;
 }
 
-.contactbook button:hover{
+.sticky-btn button:hover{
     cursor: pointer;
-    background-color: #23364f;
+    background-color: #29ABE2;
+    color: white;
+    border: none;
+    box-shadow: 0px 8px 10px -4px rgba(0, 0, 0, 0.4);
 }
+
+
 
 .contactbook img{
     height: 28px;
@@ -101,9 +115,8 @@
     width: 70%;
     display: flex;
     flex-direction: column;
-    padding-left: 32px;
-    background-color: rgba(0, 0, 0, 0.01);
-    /*z-index: -100;*/
+    padding-left: 48px;
+    background-color: rgba(0, 0, 0, 0.02);
 }
 
 .heading-row{
@@ -168,6 +181,10 @@
     background-color: #081931;
 }
 
+.contact-active:hover{
+    background-color: #081931;
+}
+
 .contact-bubble{
     border: 1px solid;
     border-radius: 50%;
@@ -228,6 +245,11 @@
 
 .edit:hover{
     cursor: pointer;
+    color: #29ABE2;
+}
+
+.edit img:hover{
+    filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
 
 .delete:hover{

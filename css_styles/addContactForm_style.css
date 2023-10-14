@@ -4,7 +4,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    /*background-color: rgba(0, 0, 0, 0.4);*/
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .edit-contact{
@@ -13,20 +13,39 @@
     right: 0;
     left: 0;
     bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .add-formular {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; 
+}
+
+/*animation-part*/
+
+.formular-animation{
+    animation: swipeIn 0.2s linear;
+}
+
+@keyframes swipeIn{
+    from{
+        right: -50%;
+    }
+    to{
+        right: 0;
+    }
 }
 
 .add-form-content {
     display: flex;
     flex-direction: row;
-    width: 80%;
-    height: 70%;
+    width: 70%;
+    height: 60%;
+    position: relative;
+    top: 0;
+    right: 0%;
 }
 
 .add-heading {
@@ -36,7 +55,7 @@
     padding: 24px;
     background-color: #081931;
     color: white;
-    width: 40%;
+    width: 30%;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
 }
@@ -47,13 +66,13 @@
 }
 
 .add-heading h1 {
-    font-size: 84px;
+    font-size: 72px;
     margin: 0;
     margin-top: 8px;
 }
 
 .add-heading p {
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 8px;
     margin-top: 8px;
 }
@@ -65,29 +84,32 @@
 }
 
 .create-contact {
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 24px;
+    background-color: white;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
 .profile-pic {
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 40%;
 }
 
 .formular {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 60%;
 }
 
 .back-button {
-    margin-top: -70px;
-    margin-bottom: 76px;
+    margin-top: 24px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -99,6 +121,7 @@
     background-color: white;
     color: black;
     font-size: 20px;
+    width: 100px;
 }
 
 .back-button button:hover {
@@ -109,7 +132,7 @@
 .form-box {
     display: flex;
     flex-direction: column;
-    margin-top: 88px;
+    margin-top: 48px;
 }
 
 .custom-input {
@@ -158,6 +181,7 @@
     font-size: 16px;
     margin-right: 24px;
     border: 1px solid rgba(0, 0, 0, 0.4);
+    font-family: 'Inter';
 }
 
 .cancel-button img {
@@ -172,6 +196,7 @@
     color: white;
     font-size: 16px;
     border-radius: 8px;
+    font-family: 'Inter';
 }
 
 .create-button img {
