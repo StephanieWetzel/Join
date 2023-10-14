@@ -45,16 +45,7 @@ function loadContacts() {
 }
 
 
-// Steffi
-function assignTaskToContact() {
-    let contactSelection = document.getElementById('contactSelection');
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
-        contactSelection.innerHTML += `
-        <option>${contact}</option>
-        `;
-    }
-}
+
 
 
 function showContactInfo(index) {
