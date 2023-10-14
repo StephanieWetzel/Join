@@ -89,8 +89,8 @@ function printContactHead(index) {
     <div class="contact-bubble large" style="background-color: ${contact.color}">${initials}</div>
     <div class="name-edit-delete">
         <h2>${contact.firstName} ${contact.lastName}</h2>
-        <div class="edit-delete" onclick="openEditContact(${index})">
-            <div class="edit">
+        <div class="edit-delete" >
+            <div class="edit" onclick="openEditContact(${index})">
                 <img src="assets/images/edit.svg">
                 <p>Edit</p>
             </div>
@@ -149,7 +149,7 @@ async function overwriteContact(firstLastName, mail, tel, contact) {
     contact.firstName = firstLastName[0];
     contact.lastName = firstLastName[1];
     contact.mail = mail;
-    contact.tel = tel;
+    contact.phone = tel;
     await setItem('contacts', JSON.stringify(contacts));
 }
 
