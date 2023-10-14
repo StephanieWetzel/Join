@@ -49,11 +49,16 @@ function loadContacts() {
 
 
 function showContactInfo(index) {
+    //document.querySelector('animate-contact-information').classList.remove('animate-contact-information')
+    document.getElementById('infoContent').classList.add('animate-contact-information');
     removeAllActiveStates();
     printContactHead(index);
     printContactInformation(index);
     document.getElementById(`c${index}`).classList.add('contact-active');
     contactInfoOpened = true;
+    setTimeout(() => {
+        document.getElementById('infoContent').classList.remove('animate-contact-information');
+    }, 500)
 }
 
 
