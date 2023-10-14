@@ -8,14 +8,17 @@ function login(){
     let user = users.find(user => user.mail == email.value);
     let pw = users.find(user => user.password == password.value)
     if (user && pw) {
-        console.log('Succes');
+        let popup = document.getElementById('valid');
+        popup.classList.add('show');
+        setTimeout(() => {
+            window.location.href = 'summary.html?msg=Login_successfull';
+        }, 4200);
     }else{
         let popup = document.getElementById('invalid');
-        popup.classList.remove('invis');
         popup.classList.add('show');
-       /* setTimeout(() => {
+        setTimeout(() => {
             location.reload()
-        }, 4000);*/
+        }, 4200);
     }
 }
 

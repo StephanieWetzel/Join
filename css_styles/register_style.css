@@ -202,3 +202,66 @@ body{
     font-size: 18px;
     color: #29ABE2;
 }
+
+/*Animation*/
+
+.d-none{
+    display: none;
+}
+
+.popup-blend{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+.popup-text {
+    width: 260px;
+    padding: 16px 0 16px 0;
+    color: white;
+    background-color: #081931;
+    text-align: center;
+    border-radius: 12px;
+    padding-top: 16px;
+    position: absolute;
+    z-index: 1;
+    bottom: 50%;
+    left: 50%;
+    margin-left: -130px;
+    user-select: none;
+    opacity: 1;
+}
+
+.animate-popup-text{
+
+    animation: regisuccess 1s linear;
+}
+
+.animate-popup-blend{
+    animation: animate-popup-blend 1s linear;
+}
+
+
+@keyframes regisuccess{
+    from{
+        opacity: 0;
+        bottom: 10%
+    }
+    to{
+        opacity: 1;
+        bottom: 50%;
+    }
+}
+
+@keyframes animate-popup-blend{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

@@ -202,6 +202,10 @@ body {
 
 /*Animation*/
 
+.popup-message{
+    position: relative;
+}
+
 .popup-text {
     width: 230px;
     padding: 16px 0 16px 0;
@@ -212,26 +216,45 @@ body {
     padding-top: 16px;
     position: absolute;
     z-index: 1;
-    top: 10%;
+    top: 5%;
     left: 50%;
     margin-left: -115px;
     user-select: none;
+    opacity: 0;
 }
 
-.invis {
-    visibility: hidden;
-}
-
-.popup-text .show {
+.show {
     visibility: visible;
-    animation: example 2s ease-in-out;
+    animation: example2 4s ease-in;
 }
 
-@keyframes example {
-    from {
+@keyframes example2{
+    0%{
         opacity: 0;
+        top: 5%;
     }
-    to {
+    25%{
         opacity: 1;
+        top: 15%;
+    }
+    50%{
+        opacity: 1;
+        top: 15%;
+    }
+    60%{
+        opacity: 1;
+        top: 15%;
+    }
+    80%{
+        opacity: 1;
+        top: 15%;
+    }
+    90%{
+        opacity: 1;
+        top: 15%;
+    }
+    100%{
+        opacity: 0;
+        top: 5%;
     }
 }
