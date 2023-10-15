@@ -26,3 +26,18 @@ function deactivateAllActiveSections() {
     document.getElementById('board').classList.remove('active-section');
     document.getElementById('contactsSection').classList.remove('active-section');
 }
+
+function loadLocalStorageLoggedInUser(loadedContentKey){
+    if (localStorage.getItem(loadedContentKey)) {
+        let loadedContentAsString = localStorage.getItem(loadedContentKey);
+        logInUser = JSON.parse(loadedContentAsString);
+    }
+}
+
+function setHeaderInitials(){
+    let userInitialsCont = document.getElementById('loggedUserInitials');
+    let initials = logInUser.firstName.charAt(0) + logInUser.lastName.charAt(0);
+    userInitialsCont.innerHTML = /*html*/`
+    <div class="icon-styling">${initials}</div>
+    `
+}

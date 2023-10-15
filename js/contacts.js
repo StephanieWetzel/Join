@@ -1,12 +1,14 @@
 let contacts = [];
 let contactInfoOpened = false;
-
+let logInUser;
 
 async function init(activeSection) {
+    loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchContacts();
     markActiveSection(activeSection);
     loadContacts();
+    setHeaderInitials();
 }
 
 function openContactForm() {

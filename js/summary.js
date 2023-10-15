@@ -1,7 +1,11 @@
+let logInUser;
+
 async function init(activeSection){
+    loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     markActiveSection(activeSection);
     greet();
+    setHeaderInitials();
 }
 
 
@@ -22,6 +26,6 @@ function greet() {
 
     content.innerHTML = `
         <h2>${greetingMessage}</h2>
-        <h1>Sofia Müller</h1>
+        <h1>${logInUser.firstName} ${logInUser.lastName}</h1>
     `;
 }
