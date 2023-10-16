@@ -8,7 +8,7 @@ async function init(activeSection) {
     await fetchContacts();
     markActiveSection(activeSection);
     loadContacts();
-    setHeaderInitials();
+    setHeaderInitials(logInUser);
 }
 
 function openContactForm() {
