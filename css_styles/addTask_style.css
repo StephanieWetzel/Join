@@ -101,6 +101,7 @@ textarea:focus {
 .ulContainer {
     display: flex;
     justify-content: space-between;
+    text-align: center;
     box-sizing: border-box;
     border-radius: 8px;
     font-size: 16px;
