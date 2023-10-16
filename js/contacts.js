@@ -53,9 +53,6 @@ function loadContacts() {
 }
 
 
-
-
-
 function showContactInfo(index) {
     document.getElementById('infoContent').classList.add('animate-contact-information');
     removeAllActiveStates();

@@ -13,7 +13,8 @@ async function init(activeSection) {
     markActiveSection(activeSection);
 }
 
-// Steffi
+
+// ASSIGNED TO
 function assignTaskToContact() {
     let contactSelection = document.getElementById('contactSelection');
     for (let i = 0; i < contacts.length; i++) {
@@ -23,6 +24,7 @@ function assignTaskToContact() {
         `;
     }
 }
+
 
 // PRIO BUTTONS
 function handlePriorities(priority) {
@@ -148,12 +150,41 @@ function addLowClassAndDisableOtherButtons() {
 // SUBTASKS
 function addSubtask() {
     let subtaskContainer = document.getElementById('subtaskContainer');
-    let subtaskInput = document.getElementById('subtaskInput').value;
+    let subtaskInput = document.getElementById('subtaskInput');
 
-    for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i];
-        subtaskContainer.innerHTML += `
-        <li>${subtaskInput}</li>
-        `;
+    if (subtaskInput.value.length != '') {
+        subtasks.push(subtaskInput.value);
+        subtaskContainer.innerHTML = '';
+        for (let i = 0; i < subtasks.length; i++) {
+            const subtask = subtasks[i];
+            subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask);
+            subtaskInput.value = '';
+        }
     }
+}
+
+
+function subtaskEditContainerTemplate(subtask) {
+    return `
+    <ul class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
+        <li class="subtaskListElements">${subtask}</li>
+        <div class="subtaskEditContainer dNone">
+            <img class="subtaskImage" src="/assets/images/edit.svg" alt="Stift">
+            <div class="subtaskSeparator"></div>
+            <img class="subtaskImage" src="/assets/images/delete.svg" alt="Mülleimer">
+        </div>
+    </ul>
+    `;
+}
+
+
+function mouseOverSubtaskEditContainer(element) {
+    const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
+    subtaskEditContainer.classList.remove('dNone');
+}
+
+
+function mouseOutSubtaskEditContainer(element) {
+    const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
+    subtaskEditContainer.classList.add('dNone');
 }
