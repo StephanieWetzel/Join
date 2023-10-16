@@ -29,6 +29,7 @@ async function fetchContacts() {
     }
 }
 
+
 async function fetchUsers() {
     try {
         users = JSON.parse(await getItem('users'));
@@ -43,3 +44,5 @@ async function deleteAllUsers() {
     let users = [];
     await setItem('users', JSON.stringify(users));
 }
+
+

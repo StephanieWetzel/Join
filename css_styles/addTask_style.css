@@ -1,14 +1,25 @@
+.dNone {
+    display: none !important;
+}
+
+.separator {
+    width: 0.5px;
+    background-color: #D1D1D1;
+    margin: 0 40px;
+}
+
 .formSection {
     display: flex;
     flex-direction: column;
     margin-bottom: 32px;
+    position: relative;
 }
 
 .form {
     display: flex;
     height: 432px;
     color: #2A3647;
-    margin-bottom: 104px;
+    margin-bottom: 88px;
 }
 
 input,
@@ -37,17 +48,16 @@ input:focus {
     border-color: #29ABE2;
 }
 
+select {
+    appearance: none;
+}
+
 select:hover {
     border-color: #A8A8A8;
 }
 
 select:focus {
     border-color: #29ABE2;
-}
-
-select {
-    appearance: none;
-    background-image: url(../assets/images/arrow_down.svg);
 }
 
 textarea:focus {
@@ -58,12 +68,70 @@ textarea:focus {
     color: #D1D1D1;
 }
 
-.separator {
-    width: 0.5px;
-    background-color: #D1D1D1;
-    margin: 0 40px;
+/* Input Symbols */
+.inputSymbol {
+    position: absolute;
+    cursor: pointer;
+    overflow: visible;
+    border-radius: 50%;
 }
 
+.arrowDownSymbol {
+    top: 43px;
+    right: 12px;
+    padding: 8px;
+}
+
+.arrowDownSymbol:hover {
+    background-color: #EAEBEC;
+}
+
+/* SUBTASKS */
+.subtasksAddSymbol {
+    right: 12px;
+    top: 42px;
+    padding: 4px;
+}
+
+.subtasksAddSymbol:hover {
+    background-color: #EAEBEC;
+}
+
+/* added subtasks */
+.ulContainer {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 0 12px 4px 16px;
+}
+
+.ulContainer:hover {
+    cursor: pointer;
+    background-color: #EAEBEC;
+}
+
+.subtaskListElements {
+    margin-left: 16px;
+    margin-top: 4px;
+}
+
+.subtaskEditContainer {
+    display: flex;
+}
+
+.subtaskEditContainer img {
+    width: 20px;
+}
+
+.subtaskSeparator {
+    width: 0.5px;
+    background-color: #D1D1D1;
+    margin: 0 4px 0 4px;
+}
+
+/* prios */
 .prioCategoriesContainer {
     display: flex;
     gap: 16px;
@@ -86,10 +154,6 @@ textarea:focus {
 .prioCategory:hover {
     box-shadow: 0px 5px 4px 0px #BCBDBE;
     cursor: pointer;
-}
-
-.subtasksInputField {
-    background-image: url(../assets/images/add_symbol.svg);
 }
 
 .marginBo8 {
@@ -169,11 +233,6 @@ textarea:focus {
 
 .colorBlack {
     color: black;
-}
-
-.inputFieldBackgroundImagePosition {
-    background-repeat: no-repeat;
-    background-position: right 16px center;
 }
 
 /* onclick */

@@ -1,13 +1,18 @@
 let contacts = [];
 let contactInfoOpened = false;
+let logInUser;
 
 
 async function init(activeSection) {
+    loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchContacts();
     markActiveSection(activeSection);
     loadContacts();
+    setHeaderInitials();
+    setHeaderInitials(logInUser);
 }
+
 
 function openContactForm() {
     removeAllActiveStates();
@@ -17,10 +22,12 @@ function openContactForm() {
     document.querySelector(".sticky-btn").classList.add("d-none");
 }
 
-function clearContactInfo(){
+
+function clearContactInfo() {
     infoHead.innerHTML = '';
     contactInformation.innerHTML = '';
 }
+
 
 function closeContactForm(editOrAdd) {
     if (editOrAdd === 'add') {
@@ -75,11 +82,11 @@ function printContactHead(index) {
         <h2>${contact.firstName} ${contact.lastName}</h2>
         <div class="edit-delete" >
             <div class="edit" onclick="openEditContact(${index})">
-                <img src="assets/images/edit.svg">
+                <img class="edit-image" src="assets/images/edit.svg">
                 <p>Edit</p>
             </div>
             <div class="delete" onclick="deleteContact(${index})">
-                <img class="ml24" src="assets/images/delete.svg">
+                <img class="ml24 delete-image" src="assets/images/delete.svg">
                 <p>Delete</p>
             </div>
         </div>
