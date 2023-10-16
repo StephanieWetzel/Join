@@ -1,11 +1,9 @@
 let contacts = [];
 let contactInfoOpened = false;
 let logInUser;
-let logInUser;
 
 
 async function init(activeSection) {
-    loadLocalStorageLoggedInUser('loggedInUser');
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchContacts();
