@@ -25,6 +25,7 @@ function deactivateAllActiveSections() {
     document.getElementById('tasks').classList.remove('active-section');
     document.getElementById('board').classList.remove('active-section');
     document.getElementById('contactsSection').classList.remove('active-section');
+    document.getElementById('policy').classList.remove('active-section')
 }
 
 function loadLocalStorageLoggedInUser(loadedContentKey){
