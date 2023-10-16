@@ -28,3 +28,70 @@ button{
     align-items: center;
     gap: 32px;
 }
+
+.headerFlex input, button{
+    height: 48px;
+}
+
+ .input-container {
+    display: inline-block;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    color: lightgrey;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.border-left {
+    position: absolute;
+    top: 8px;
+    right: 64px;
+    height: 31px;
+    width: 1px;
+    background: #d1d1d1;
+    pointer-events: none;
+}
+
+.input-wrapper:hover .input-icon {
+    background-color: lightgrey;
+    border-radius: 9999px;
+}
+
+.status{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #42526E;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.standardImg {
+    display: block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.hoverImg {
+    display: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.standardImg:hover + .hoverImg {
+    display: block; 
+}
+
+.standardImg:hover {
+    display: none; 
+}

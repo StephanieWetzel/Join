@@ -18,6 +18,7 @@
     <script src="js/remoteStorage.js"></script>
     <script src="js/contacts.js"></script>
     <script src="js/add_task.js"></script>
+    <script src="js/board.js"></script>
 </head>
 
 <body onload="init('board')">
@@ -29,11 +30,30 @@
                 <div class="headerBoard">
                     <h1>Board</h1>
                     <div class="headerFlex">
-                        <input placeholder="Find Task" type="text">
-                        <a href="#">test</a>
+                        <div class="input-container">
+                            <div class="input-wrapper">
+                                <input id="searchInput" placeholder="Find Task" type="text">
+                                <div class="border-left"></div>
+                                <img class="input-icon" id="searchImg" src="./assets/images/search.svg" alt="">
+                            </div>
+                        </div>
+                        <button class="addTaskBtn createBtn">Add task <img src="./assets/images/add_task_plus.svg"
+                                alt=""></button>
                     </div>
                 </div>
-            </section>
+                <div class="status">
+                    <p class="status-text">To do</p>
+                    <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
+                    <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="">
+                    <p class="status-text">In progress</p>
+                    <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
+                    <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="">
+                    <p class="status-text">Await feedback</p>
+                    <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
+                    <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="">
+                    <p class="status-text">Done</p>
+                </div>
+    </section>
 </body>
 
 </html>

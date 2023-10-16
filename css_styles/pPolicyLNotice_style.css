@@ -1,0 +1,93 @@
+
+.content{
+    display: flex;
+}
+
+.main-content{
+    width: 80%;
+    height: 100vh;
+}
+
+.policy{
+    display: flex;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.policy-content{
+    display: flex;
+    flex-direction: column;
+    padding: 0 64px;
+    scroll-behavior: smooth;
+    height: 90%;
+    overflow-y: scroll;
+}
+
+.heading-agb{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 17%;
+    right: 4%;
+}
+
+.back-btn:hover {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 61px;
+    padding-right: 24px;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 27px;
+}
+
+.m0{
+    margin: 0;
+}
+
+.policy-content::-webkit-scrollbar{
+    width: 20px;
+    
+}
+
+.policy-content::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.policy-content::-webkit-scrollbar-thumb{
+    background-color: #c4c6c7;
+    border-radius: 20px;
+    border: 6px solid #f6f7f8;
+}
+
+.h2-imprint{
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.h3-headlines{
+    font-size: 32px;
+    font-weight: 500;
+    margin: 48px 0 0 0
+}
+
+b{
+    color: #29ABE2;
+}

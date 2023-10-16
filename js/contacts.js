@@ -1,15 +1,16 @@
 let contacts = [];
 let contactInfoOpened = false;
 let logInUser;
+let logInUser;
 
 
 async function init(activeSection) {
+    loadLocalStorageLoggedInUser('loggedInUser');
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchContacts();
     markActiveSection(activeSection);
     loadContacts();
-    setHeaderInitials();
     setHeaderInitials(logInUser);
 }
 
@@ -82,11 +83,11 @@ function printContactHead(index) {
         <h2>${contact.firstName} ${contact.lastName}</h2>
         <div class="edit-delete" >
             <div class="edit" onclick="openEditContact(${index})">
-                <img class="edit-image" src="assets/images/edit.svg">
+                <img class="edit-image" class="edit-image" src="assets/images/edit.svg">
                 <p>Edit</p>
             </div>
             <div class="delete" onclick="deleteContact(${index})">
-                <img class="ml24 delete-image" src="assets/images/delete.svg">
+                <img class="ml24 delete-image delete-image" src="assets/images/delete.svg">
                 <p>Delete</p>
             </div>
         </div>
