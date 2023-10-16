@@ -80,11 +80,11 @@ function printContactHead(index) {
         <h2>${contact.firstName} ${contact.lastName}</h2>
         <div class="edit-delete" >
             <div class="edit" onclick="openEditContact(${index})">
-                <img src="assets/images/edit.svg">
+                <img class="edit-image" src="assets/images/edit.svg">
                 <p>Edit</p>
             </div>
             <div class="delete" onclick="deleteContact(${index})">
-                <img class="ml24" src="assets/images/delete.svg">
+                <img class="ml24 delete-image" src="assets/images/delete.svg">
                 <p>Delete</p>
             </div>
         </div>

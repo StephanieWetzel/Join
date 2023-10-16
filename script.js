@@ -41,3 +41,15 @@ function setHeaderInitials(){
     <div class="icon-styling">${initials}</div>
     `
 }
+
+function toggleOptions(){
+    let options = document.getElementById('optionsPopup');
+    options.classList.toggle('invis');
+}
+
+function logOut(){
+    let loginUser = '';
+    let logInUserAsJSON = JSON.stringify(loginUser);
+    localStorage.setItem('loggedInUser', logInUserAsJSON);
+    window.location.href = 'login_index.html?msg=Logout_successfull'
+}

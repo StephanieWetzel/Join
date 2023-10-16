@@ -246,14 +246,23 @@
 .edit:hover{
     cursor: pointer;
     color: #29ABE2;
+    font-size: 21px;
 }
 
-.edit img:hover{
+.edit:hover .edit-image{
     filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
+    height: 22px;
 }
 
 .delete:hover{
     cursor: pointer;
+    color: #29ABE2;
+    font-size: 21px;
+}
+
+.delete:hover .delete-image{
+    filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
+    height: 22px;
 }
 
 .delete{
@@ -298,3 +307,4 @@
 .mt24{
     margin-top: 24px;
 }
+
