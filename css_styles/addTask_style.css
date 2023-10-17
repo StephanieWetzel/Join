@@ -105,17 +105,17 @@ textarea:focus {
     box-sizing: border-box;
     border-radius: 8px;
     font-size: 16px;
-    padding: 0 12px 4px 16px;
+    padding: 4px 12px 4px 16px;
 }
 
 .ulContainer:hover {
     cursor: pointer;
     background-color: #EAEBEC;
+    transition: 200ms;
 }
 
 .subtaskListElements {
     margin-left: 16px;
-    margin-top: 4px;
 }
 
 .subtaskEditContainer {

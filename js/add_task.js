@@ -150,9 +150,11 @@ function addLowClassAndDisableOtherButtons() {
 
 
 // SUBTASKS
+let subtaskInput;
+
 function addSubtask() {
     let subtaskContainer = document.getElementById('subtaskContainer');
-    let subtaskInput = document.getElementById('subtaskInput');
+    subtaskInput = document.getElementById('subtaskInput');
 
     if (subtaskInput.value.length != '') {
         subtasks.push(subtaskInput.value);
@@ -173,11 +175,11 @@ function renderSubtask() {
 
 
 function subtaskEditContainerTemplate(subtask, i) {
-    return `
-    <ul class="ulContainer" id="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
-        <li class="subtaskListElements">${subtask}</li>
-        <div class="subtaskEditContainer dNone">
-            <img src="/assets/images/edit.svg" alt="Stift">
+    return /*html*/`
+    <ul id="ulContainer" class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
+        <li id="subtaskListElement" class="subtaskListElements">${subtask}</li>
+        <div id="subtaskEditContainer" class="subtaskEditContainer dNone">
+            <img id="editImg" onclick="editSubtask()" src="/assets/images/edit.svg" alt="Stift">
             <div class="subtaskSeparator"></div>
             <img onclick="deleteSubtask(${i})" src="/assets/images/delete.svg" alt="Mülleimer">
         </div>
@@ -204,4 +206,21 @@ function deleteSubtask(i) {
         subtaskContainer.innerHTML = '';
         renderSubtask();
     }
+}
+
+
+function editSubtask() {
+    let subtaskListElement = document.getElementById('subtaskListElement');
+    subtaskListElement.contentEditable = true;
+    subtaskListElement.focus();
+
+    document.getElementById('editImg').src = "/assets/images/check_black.png";
+    document.getElementById('addSubtaskSymbol').classList.add('dNone');
+    document.getElementById('ulContainer').style.backgroundColor = '#EAEBEC';
+
+    // document.getElementById('subtaskEditContainer').removeEventListener('mouseover', mouseOverSubtaskEditContainer);
+    // document.getElementById('subtaskEditContainer').removeEventListener('mouseout', mouseOutSubtaskEditContainer);
+    // document.getElementById('subtaskEditContainer').classList.remove('dNone');
+
+    subtaskInput.disabled = true;
 }
