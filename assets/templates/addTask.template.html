@@ -15,9 +15,10 @@
 
         <div class="formSection">
             <label class="marginBo8">Assigned to</label>
-            <select id="contactSelection" class="inputFieldBackgroundImagePosition">
+            <select id="contactSelection">
                 <option disabled selected>Select contacts to assign</option>
             </select>
+            <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
         </div>
     </div>
     <!-- middle -->
@@ -50,19 +51,22 @@
 
         <div class="formSection">
             <label class="marginBo8 required">Category</label>
-            <select class="inputFieldBackgroundImagePosition" required>
+            <select required>
                 <option disabled selected>Select task category</option>
                 <option>Technical Task</option>
                 <option>User Story</option>
             </select>
+            <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
         </div>
 
         <div class="formSection">
             <label class="marginBo8">Subtasks</label>
-            <input id="subtaskInput" class="subtasksInputField inputFieldBackgroundImagePosition" type="text"
-                placeholder="Add new subtask">
+            <input id="subtaskInput" type="text" placeholder="Add new subtask">
+            <img onclick="addSubtask()" class="subtasksAddSymbol inputSymbol" src="/assets/images/add_symbol.svg"
+                alt="Plus">
             <div id="subtaskContainer"></div>
         </div>
+
         <!-- footer -->
         <div class="footerBtnContainer">
             <button class="addTaskBtn clearBtn">

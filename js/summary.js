@@ -1,11 +1,11 @@
 let logInUser;
 
-async function init(activeSection){
+async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     markActiveSection(activeSection);
     greet();
-    setHeaderInitials();
+    setHeaderInitials(logInUser);
 }
 
 

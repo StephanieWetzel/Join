@@ -2,14 +2,16 @@ let contacts = [];
 let contactInfoOpened = false;
 let logInUser;
 
+
 async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchContacts();
     markActiveSection(activeSection);
     loadContacts();
-    setHeaderInitials();
+    setHeaderInitials(logInUser);
 }
+
 
 function openContactForm() {
     removeAllActiveStates();
@@ -19,10 +21,12 @@ function openContactForm() {
     document.querySelector(".sticky-btn").classList.add("d-none");
 }
 
-function clearContactInfo(){
+
+function clearContactInfo() {
     infoHead.innerHTML = '';
     contactInformation.innerHTML = '';
 }
+
 
 function closeContactForm(editOrAdd) {
     if (editOrAdd === 'add') {
@@ -55,9 +59,6 @@ function loadContacts() {
 }
 
 
-
-
-
 function showContactInfo(index) {
     document.getElementById('infoContent').classList.add('animate-contact-information');
     removeAllActiveStates();
@@ -80,11 +81,11 @@ function printContactHead(index) {
         <h2>${contact.firstName} ${contact.lastName}</h2>
         <div class="edit-delete" >
             <div class="edit" onclick="openEditContact(${index})">
-                <img class="edit-image" src="assets/images/edit.svg">
+                <img class="edit-image" class="edit-image" src="assets/images/edit.svg">
                 <p>Edit</p>
             </div>
             <div class="delete" onclick="deleteContact(${index})">
-                <img class="ml24 delete-image" src="assets/images/delete.svg">
+                <img class="ml24 delete-image delete-image" src="assets/images/delete.svg">
                 <p>Delete</p>
             </div>
         </div>
@@ -127,6 +128,8 @@ function openEditContactTab() {
 
 
 async function editContact() {
+    document.getElementById('editPopup').classList.remove('info-popup-animation')
+    document.getElementById('editPopup').classList.add('info-popup-animation')
     let index = document.getElementById('edit-index').value;
     let contact = contacts[index];
     let fullName = document.getElementById('editFullName').value;
@@ -161,6 +164,8 @@ function printContactInformation(index) {
 
 
 async function createContact() {
+    document.querySelector(".info-popup").classList.remove('info-popup-animation');
+    document.querySelector(".info-popup").classList.add('info-popup-animation');
     let firstLastName = splitString(fullName.value);
     contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
     await setItem('contacts', JSON.stringify(contacts));

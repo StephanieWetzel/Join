@@ -5,24 +5,28 @@ let mediumSymbol;
 let lowBtn;
 let lowSymbol;
 let subtasks = [];
-let contacts = [];
+// let contacts = [];
 
 async function init(activeSection) {
+    loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
-    await fetchContacts();
+    // await fetchContacts();
     markActiveSection(activeSection);
+    setHeaderInitials(logInUser);
 }
 
-// Steffi
-function assignTaskToContact() {
-    let contactSelection = document.getElementById('contactSelection');
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
-        contactSelection.innerHTML += `
-        <option>${contact}</option>
-        `;
-    }
-}
+
+// ASSIGNED TO
+// function assignTaskToContact() {
+//     let contactSelection = document.getElementById('contactSelection');
+//     for (let i = 0; i < contacts.length; i++) {
+//         let contact = contacts[i];
+//         contactSelection.innerHTML += `
+//         <option>${contact}</option>
+//         `;
+//     }
+// }
+
 
 // PRIO BUTTONS
 function handlePriorities(priority) {
@@ -148,12 +152,56 @@ function addLowClassAndDisableOtherButtons() {
 // SUBTASKS
 function addSubtask() {
     let subtaskContainer = document.getElementById('subtaskContainer');
-    let subtaskInput = document.getElementById('subtaskInput').value;
+    let subtaskInput = document.getElementById('subtaskInput');
 
+    if (subtaskInput.value.length != '') {
+        subtasks.push(subtaskInput.value);
+        subtaskContainer.innerHTML = '';
+
+        renderSubtask();
+    }
+}
+
+
+function renderSubtask() {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
-        subtaskContainer.innerHTML += `
-        <li>${subtaskInput}</li>
-        `;
+        subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
+        subtaskInput.value = '';
+    }
+}
+
+
+function subtaskEditContainerTemplate(subtask, i) {
+    return `
+    <ul class="ulContainer" id="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
+        <li class="subtaskListElements">${subtask}</li>
+        <div class="subtaskEditContainer dNone">
+            <img src="/assets/images/edit.svg" alt="Stift">
+            <div class="subtaskSeparator"></div>
+            <img onclick="deleteSubtask(${i})" src="/assets/images/delete.svg" alt="Mülleimer">
+        </div>
+    </ul>
+    `;
+}
+
+
+function mouseOverSubtaskEditContainer(element) {
+    const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
+    subtaskEditContainer.classList.remove('dNone');
+}
+
+
+function mouseOutSubtaskEditContainer(element) {
+    const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
+    subtaskEditContainer.classList.add('dNone');
+}
+
+
+function deleteSubtask(i) {
+    if (i > -1) {
+        subtasks.splice(i, 1);
+        subtaskContainer.innerHTML = '';
+        renderSubtask();
     }
 }

@@ -11,7 +11,8 @@
             </div>
             <div class="formular">
                 <div class="back-button">
-                    <button onclick="closeContactForm('edit')">X</button>
+                    <span id="editPopup" class="info-popup">Contact edited</span>
+                    <button onclick="closeContactForm('edit')"><img src="assets/images/close.svg"></button>
                 </div>
                 <form onsubmit="editContact(); return false" class="form-box">
                     <input id="editFullName" required class="person-icon custom-input" type="text">

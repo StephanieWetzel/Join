@@ -53,6 +53,17 @@
     margin-top: 16px;
     font-size: 14px;
     color: lightgray;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 48px;
+    align-items: center;
+}
+
+.policy-rights-section a:hover{
+    cursor: pointer;
+    color: #29ABE2;
+    font-size: 16px;
 }
 
 .sidebar-img {
@@ -86,4 +97,9 @@
 
 .active-section{
     background-color: #081931;
+}
+
+.invis{
+    opacity: 0;
+    user-select: none;
 }
