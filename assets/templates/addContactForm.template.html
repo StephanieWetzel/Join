@@ -12,7 +12,8 @@
             </div>
             <div class="formular">
                 <div class="back-button">
-                    <button onclick="closeContactForm('add')">X</button>
+                    <span class="info-popup">Contact successfully created</span>
+                    <button onclick="closeContactForm('add')"><img src="assets/images/close.svg" alt=""></button>
                 </div>
                 <form onsubmit="createContact(); return false" class="form-box">
                     <input id="fullName" required class="person-icon custom-input" type="text" placeholder="Name">

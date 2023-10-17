@@ -98,3 +98,8 @@
 .active-section{
     background-color: #081931;
 }
+
+.invis{
+    opacity: 0;
+    user-select: none;
+}

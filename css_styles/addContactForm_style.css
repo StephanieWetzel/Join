@@ -107,26 +107,57 @@
     width: 60%;
 }
 
+.info-popup{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 300px;
+    font-size: 18px;
+    margin-left: -150px;
+    color: white;
+    background-color: #081931;
+    border-radius: 12px;
+    opacity: 0;
+}
+
+.info-popup-animation{
+    animation: success 2.8s linear;
+}
+
+@keyframes success{
+    0%{opacity: 0;}
+    25%{opacity: 0.5;}
+    50%{opacity: 1;}
+    75%{opacity: 1;}
+    100%{opacity: 0;}
+}
+
 .back-button {
     margin-top: 24px;
     margin-bottom: 16px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 100%;
+}
+
+.back-button img{
+    height: 30px;
+    width: 30px;
 }
 
 .back-button button {
     border: none;
     background-color: white;
-    color: black;
-    font-size: 20px;
     width: 100px;
 }
 
-.back-button button:hover {
+.back-button img:hover{
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
 }
 
 .form-box {

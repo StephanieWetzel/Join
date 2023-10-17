@@ -128,6 +128,8 @@ function openEditContactTab() {
 
 
 async function editContact() {
+    document.getElementById('editPopup').classList.remove('info-popup-animation')
+    document.getElementById('editPopup').classList.add('info-popup-animation')
     let index = document.getElementById('edit-index').value;
     let contact = contacts[index];
     let fullName = document.getElementById('editFullName').value;
@@ -162,6 +164,8 @@ function printContactInformation(index) {
 
 
 async function createContact() {
+    document.querySelector(".info-popup").classList.remove('info-popup-animation');
+    document.querySelector(".info-popup").classList.add('info-popup-animation');
     let firstLastName = splitString(fullName.value);
     contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
     await setItem('contacts', JSON.stringify(contacts));
