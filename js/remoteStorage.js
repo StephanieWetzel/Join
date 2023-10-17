@@ -45,4 +45,9 @@ async function deleteAllUsers() {
     await setItem('users', JSON.stringify(users));
 }
 
+async function deleteAllContacts(){
+    let contacts = [];
+    await setItem('contacts', JSON.stringify(contacts));
+}
+
 
