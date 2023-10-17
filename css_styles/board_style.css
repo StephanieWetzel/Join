@@ -1,6 +1,7 @@
 body{
     margin: 0;
     font-family: 'Inter';
+    background-color: #f6f7f8;
 }
 
 input{
@@ -60,7 +61,7 @@ button{
     pointer-events: none;
 }
 
-.input-wrapper:hover .input-icon {
+.input-icon:hover {
     background-color: lightgrey;
     border-radius: 9999px;
 }
@@ -68,7 +69,6 @@ button{
 .status{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     color: #42526E;
     font-weight: 700;
     font-size: 20px;
@@ -94,4 +94,21 @@ button{
 
 .standardImg:hover {
     display: none; 
+}
+
+.d-flex{
+    display: flex;
+    flex-direction: column;
+    width: 252px;
+}
+
+.test{
+    display: flex;
+    flex-direction: column;
+}
+
+.test2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
