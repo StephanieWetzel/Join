@@ -166,20 +166,20 @@ function addSubtask() {
 function renderSubtask() {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
-        subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask);
+        subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
         subtaskInput.value = '';
     }
 }
 
 
-function subtaskEditContainerTemplate(subtask) {
+function subtaskEditContainerTemplate(subtask, i) {
     return `
     <ul class="ulContainer" id="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
         <li class="subtaskListElements">${subtask}</li>
         <div class="subtaskEditContainer dNone">
             <img src="/assets/images/edit.svg" alt="Stift">
             <div class="subtaskSeparator"></div>
-            <img onclick="deleteSubtask()" src="/assets/images/delete.svg" alt="Mülleimer">
+            <img onclick="deleteSubtask(${i})" src="/assets/images/delete.svg" alt="Mülleimer">
         </div>
     </ul>
     `;
@@ -198,6 +198,10 @@ function mouseOutSubtaskEditContainer(element) {
 }
 
 
-function deleteSubtask() {
-    document.getElementById('ulContainer').remove();
+function deleteSubtask(i) {
+    if (i > -1) {
+        subtasks.splice(i, 1);
+        subtaskContainer.innerHTML = '';
+        renderSubtask();
+    }
 }
