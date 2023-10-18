@@ -30,7 +30,11 @@
             <div class="decoline"></div>
             <form class="login-form" onsubmit="login(); return false">
                 <input class="input-style email-styling" id="email" required type="email" placeholder="Email">
-                <input class="input-style pw-styling" id="password" required type="password" placeholder="Password"><br>
+                <div class="fish-eye-div">
+                    <input onkeydown="toggleFishEye()" class="input-style pw-styling" id="password" required type="password"
+                        placeholder="Password">
+                        <button onclick="togglePasswordVisibility('password')" id="fishBtn" class="fish-eye-btn"><img id="fishBtnImg" src="assets/images/lock.svg"></button>
+                </div><br>
                 <div class="checkbox">
                     <input type="checkbox" name="remember-me" id="rememberMe">
                     <p>Remember me</p>

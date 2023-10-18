@@ -31,10 +31,24 @@
             </div>
             <div class="decoline"></div>
             <form class="login-form" onsubmit="registration(); return false">
-                <input class="input-style person-styling" onchange="checkFullName()" id="fullName" required type="name" placeholder="Name">
-                <input class="input-style email-styling" onchange="checkEmail()" id="email" required type="email" placeholder="Email">
-                <input class="input-style pw-styling" id="password" onchange="checkPasswords()" required type="password" placeholder="Password">
-                <input class="input-style pw-styling" id="cPassword" onchange="checkPasswords()" required type="password" placeholder="Confirm Password">
+                <input class="input-style person-styling" onchange="checkFullName()" id="fullName" required type="name"
+                    placeholder="Name">
+                <input class="input-style email-styling" onchange="checkEmail()" id="email" required type="email"
+                    placeholder="Email">
+                <div class="fish-eye-div">
+                    <input class="input-style pw-styling" id="password"
+                        onkeydown="toggleFishEye('fishBtn', 'fishBtnImg'); checkPasswords()" required type="password"
+                        placeholder="Password">
+                    <button onclick="togglePasswordVisibility('password', 'fishBtnImg')" id="fishBtn"
+                        class="fish-eye-btn"><img id="fishBtnImg" src="assets/images/lock.svg"></button>
+                </div>
+                <div class="fish-eye-div">
+                    <input class="input-style pw-styling" id="cPassword"
+                        onkeydown="toggleFishEye('cFishBtn', 'cFishBtnImg');checkPasswords()" required type="password"
+                        placeholder="Confirm Password">
+                    <button onclick="togglePasswordVisibility('cPassword', 'cFishBtnImg')" id="cFishBtn"
+                        class="fish-eye-btn"><img id="cFishBtnImg" src="assets/images/lock.svg"></button>
+                </div>
                 <div class="checkbox">
                     <input required type="checkbox" name="remember-me" id="rememberMe">
                     <p>I accept the <a href="plainPolicy.html">Privacy Policy</a></p>
@@ -44,7 +58,7 @@
                 </div>
             </form>
         </div>
-        
+
         <div class="footer">
             <a href="plainPolicy.html">Privacy Policy</a>
             <a href="plainLNotice.html">Legal notice</a>

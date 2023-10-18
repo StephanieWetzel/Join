@@ -70,3 +70,27 @@ function splitString(string) {
     strings.push(string.substring(string.indexOf(' ') + 1));
     return strings;
 }
+
+function toggleFishEye(BtnID, ImgID){
+    let pwInput = document.getElementById("password");
+    let fishBtn = document.getElementById(BtnID);
+    let fishBtnImg = document.getElementById(ImgID);
+    let count = pwInput.value;
+    if (count.length >= 1) {
+        pwInput.style.background = "none";
+        fishBtnImg.src = "/assets/images/fish_Eye_closed2.svg"
+        fishBtn.style.margin = "32px 0 0 -71px"
+    }
+}
+
+function togglePasswordVisibility(id, btnId){
+    let pwInput = document.getElementById(id);
+    let btnImg = document.getElementById(btnId);
+    if (pwInput.type === "password") {
+        pwInput.type = "text";
+        btnImg.src = "/assets/images/fish_Eye_open.svg";
+    }else{
+        btnImg.src = "/assets/images/fish_Eye_closed2.svg";
+        pwInput.type = "password";
+    }
+}

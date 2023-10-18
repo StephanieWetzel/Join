@@ -35,4 +35,29 @@ function saveLoggedInUser(){
     localStorage.setItem('loggedInUser', loggedInUserAsJSON);
 }
 
-//loggedInUser
+function toggleFishEye(){
+    let pwInput = document.getElementById("password");
+    let fishBtn = document.getElementById('fishBtn');
+    let fishBtnImg = document.getElementById("fishBtnImg");
+    let count = pwInput.value;
+    if (count.length >= 1) {
+        pwInput.style.background = "none";
+        fishBtnImg.src = "/assets/images/fish_Eye_closed2.svg"
+        fishBtn.style.margin = "32px 0 0 -71px"
+    }else {
+        fishBtnImg.src ="assets/images/lock.svg"
+    }
+}
+
+function togglePasswordVisibility(id){
+    let fishBtnImg = document.getElementById("fishBtnImg");
+    let pwInput = document.getElementById(id);
+    if (pwInput.type === "password") {
+        pwInput.type = "text";
+        fishBtnImg.src ="assets/images/fish_Eye_open.svg"
+    }else{
+        pwInput.type = "password";
+        fishBtnImg.src ="assets/images/fish_Eye_closed2.svg"
+
+    }
+}
