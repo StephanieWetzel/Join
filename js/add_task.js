@@ -202,6 +202,7 @@ function mouseOutSubtaskEditContainer(element) {
 
 function deleteSubtask(i) {
     if (i > -1) {
+        closeEditing();
         subtasks.splice(i, 1);
         subtaskContainer.innerHTML = '';
         renderSubtask();
@@ -214,13 +215,28 @@ function editSubtask() {
     subtaskListElement.contentEditable = true;
     subtaskListElement.focus();
 
-    document.getElementById('editImg').src = "/assets/images/check_black.png";
+    let confirmEditSymbol = document.getElementById('editImg');
+    confirmEditSymbol.src = "/assets/images/check_black.png";
+    confirmEditSymbol.onclick = function () {
+        closeEditing();
+    };
+
     document.getElementById('addSubtaskSymbol').classList.add('dNone');
     document.getElementById('ulContainer').style.backgroundColor = '#EAEBEC';
 
-    // document.getElementById('subtaskEditContainer').removeEventListener('mouseover', mouseOverSubtaskEditContainer);
-    // document.getElementById('subtaskEditContainer').removeEventListener('mouseout', mouseOutSubtaskEditContainer);
-    // document.getElementById('subtaskEditContainer').classList.remove('dNone');
+    document.getElementById('subtaskEditContainer').removeEventListener('mouseover', mouseOverSubtaskEditContainer);
+    document.getElementById('subtaskEditContainer').removeEventListener('mouseout', mouseOutSubtaskEditContainer);
+    document.getElementById('subtaskEditContainer').classList.remove('dNone');
 
     subtaskInput.disabled = true;
+}
+
+
+function closeEditing() {
+    subtaskInput.disabled = false;
+    subtaskListElement.contentEditable = false;
+    document.getElementById('editImg').src = "/assets/images/edit.svg";
+    document.getElementById('addSubtaskSymbol').classList.remove('dNone');
+    document.getElementById('ulContainer').style.backgroundColor = '';
+    document.getElementById('editImg').onclick = editSubtask;
 }
