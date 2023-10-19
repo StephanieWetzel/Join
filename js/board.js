@@ -18,16 +18,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
     searchImg.addEventListener('click', toggleInputContent);
 });
-
-
-// const statusImages = document.querySelectorAll('.status-img');
-
-// statusImages.forEach(img => {
-//     img.addEventListener('click', () => {
-//         if (img.src.endsWith('plus_button.svg')) {
-//             img.src = './assets/images/plus_button_blue.svg'; // Ändern Sie den Bildquellenpfad
-//         } else {
-//             img.src = './assets/images/plus_button.svg'; // Ändern Sie den Bildquellenpfad
-//         }
-//     });
-// });
