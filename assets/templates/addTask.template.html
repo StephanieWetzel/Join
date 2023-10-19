@@ -1,73 +1,78 @@
 <h1>Add Task</h1>
 
 <form class="form" onsubmit="addTask()">
-    <!-- left column -->
-    <div>
-        <div class="formSection">
-            <label class="marginBo8 required">Title</label>
-            <input required type="text" placeholder="Enter a title">
-        </div>
+    <div class="formColumnsContainer">
+        <!-- left column -->
+        <div>
+            <div class="formSection">
+                <label class="marginBo8 required">Title</label>
+                <input required type="text" placeholder="Enter a title">
+            </div>
 
-        <div class="formSection">
-            <label class="marginBo8">Description</label>
-            <textarea cols="30" rows="10" placeholder="Enter a Description"></textarea>
-        </div>
+            <div class="formSection">
+                <label class="marginBo8">Description</label>
+                <textarea cols="30" rows="10" placeholder="Enter a Description"></textarea>
+            </div>
 
-        <div class="formSection">
-            <label class="marginBo8">Assigned to</label>
-            <select id="contactSelection">
-                <option disabled selected>Select contacts to assign</option>
-            </select>
-            <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
-        </div>
-    </div>
-    <!-- middle -->
-    <div class="separator"></div>
-    <!-- right column -->
-    <div>
-        <div class="formSection">
-            <label class="marginBo8 required">Due date</label>
-            <input class="dueDateInputField" type="text" placeholder="tt.mm.jjjj" onfocus="(this.type = 'date')"
-                onblur="(this.type = 'text')" required>
-        </div>
-
-        <div class="formSection">
-            <label class="marginBo8 colorBlack">Prio</label>
-            <div class="prioCategoriesContainer">
-                <button class="prioCategory" id="urgent" onclick="handlePriorities('urgent')">
-                    Urgent
-                    <img src="/assets/images/urgent_symbol.svg" id="urgentSymbol">
-                </button>
-                <button class="prioCategory" id="medium" onclick="handlePriorities('medium')">
-                    Medium
-                    <img src="/assets/images/medium_symbol.svg" id="mediumSymbol">
-                </button>
-                <button class="prioCategory" id="low" onclick="handlePriorities('low')">
-                    Low
-                    <img src="/assets/images/low_symbol.svg" id="lowSymbol">
-                </button>
+            <div class="formSection">
+                <label class="marginBo8">Assigned to</label>
+                <select id="contactSelection">
+                    <option disabled selected>Select contacts to assign</option>
+                </select>
+                <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
             </div>
         </div>
+        <!-- middle -->
+        <div class="separator"></div>
+        <!-- right column -->
+        <div>
+            <div class="formSection">
+                <label class="marginBo8 required">Due date</label>
+                <input class="dueDateInputField" type="text" placeholder="tt.mm.jjjj" onfocus="(this.type = 'date')"
+                    onblur="(this.type = 'text')" required>
+            </div>
 
-        <div class="formSection">
-            <label class="marginBo8 required">Category</label>
-            <select required>
-                <option disabled selected>Select task category</option>
-                <option>Technical Task</option>
-                <option>User Story</option>
-            </select>
-            <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
+            <div class="formSection">
+                <label class="marginBo8 colorBlack">Prio</label>
+                <div class="prioCategoriesContainer">
+                    <button class="prioCategory" id="urgent" onclick="handlePriorities('urgent')">
+                        Urgent
+                        <img src="/assets/images/urgent_symbol.svg" id="urgentSymbol">
+                    </button>
+                    <button class="prioCategory" id="medium" onclick="handlePriorities('medium')">
+                        Medium
+                        <img src="/assets/images/medium_symbol.svg" id="mediumSymbol">
+                    </button>
+                    <button class="prioCategory" id="low" onclick="handlePriorities('low')">
+                        Low
+                        <img src="/assets/images/low_symbol.svg" id="lowSymbol">
+                    </button>
+                </div>
+            </div>
+
+            <div class="formSection">
+                <label class="marginBo8 required">Category</label>
+                <select required>
+                    <option disabled selected>Select task category</option>
+                    <option>Technical Task</option>
+                    <option>User Story</option>
+                </select>
+                <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
+            </div>
+
+            <div class="formSection">
+                <label class="marginBo8">Subtasks</label>
+                <input id="subtaskInput" type="text" placeholder="Add new subtask">
+                <img id="addSubtaskSymbol" onclick="addSubtask()" class="subtasksAddSymbol inputSymbol"
+                    src="/assets/images/add_symbol.svg" alt="Plus">
+                <div id="subtaskContainer" class="subtaskContainer"></div>
+            </div>
         </div>
+    </div>
+    <!-- footer -->
+    <div class="footerContainer">
+        <span class="footerRequiredField colorBlack">This field is required</span>
 
-        <div class="formSection">
-            <label class="marginBo8">Subtasks</label>
-            <input id="subtaskInput" type="text" placeholder="Add new subtask">
-            <img id="addSubtaskSymbol" onclick="addSubtask()" class="subtasksAddSymbol inputSymbol"
-                src="/assets/images/add_symbol.svg" alt="Plus">
-            <div id="subtaskContainer"></div>
-        </div>
-
-        <!-- footer -->
         <div class="footerBtnContainer">
             <button class="addTaskBtn clearBtn">
                 Clear
@@ -77,12 +82,11 @@
                         stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
+
             <button id="createTaskBtn" class="addTaskBtn createBtn">
                 Create Task
-                <img src="./assets/images/check.svg" alt="Haken">
+                <img src="./assets/images/check.svg" alt="weißer Haken">
             </button>
         </div>
     </div>
 </form>
-
-<span class="footerRequiredField colorBlack">This field is required</span>

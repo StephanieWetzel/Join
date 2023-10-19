@@ -4,6 +4,7 @@
 
 .separator {
     width: 0.5px;
+    height: 416px;
     background-color: #D1D1D1;
     margin: 0 40px;
 }
@@ -16,10 +17,14 @@
 }
 
 .form {
-    display: flex;
+    /* display: flex; */
     height: 432px;
     color: #2A3647;
     margin-bottom: 88px;
+}
+
+.formColumnsContainer {
+    display: flex;
 }
 
 input,
@@ -87,6 +92,16 @@ textarea:focus {
 }
 
 /* SUBTASKS */
+.subtaskContainer {
+    display: block;
+    position: absolute;
+    width: 440px;
+    height: 144px;
+    z-index: 100;
+    top: 80px;
+    overflow: auto;
+}
+
 .subtasksAddSymbol {
     right: 12px;
     top: 42px;
@@ -176,11 +191,15 @@ textarea:focus {
     color: #FF8190;
 }
 
+.footerContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+}
+
 .footerBtnContainer {
     display: flex;
-    justify-content: flex-end;
     gap: 16px;
-    margin-top: 80px;
 }
 
 .addTaskBtn {
