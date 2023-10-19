@@ -151,6 +151,8 @@ function addLowClassAndDisableOtherButtons() {
 
 // SUBTASKS
 let subtaskInput;
+let isEditing = false;
+
 
 function addSubtask() {
     let subtaskContainer = document.getElementById('subtaskContainer');
@@ -176,10 +178,10 @@ function renderSubtask() {
 
 function subtaskEditContainerTemplate(subtask, i) {
     return /*html*/`
-    <ul id="ulContainer" class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
-        <li id="subtaskListElement" class="subtaskListElements">${subtask}</li>
+    <ul id="ulContainer${i}" class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
+        <li id="subtaskListElement${i}" class="subtaskListElements">${subtask}</li>
         <div id="subtaskEditContainer" class="subtaskEditContainer dNone">
-            <img id="editImg" onclick="editSubtask()" src="/assets/images/edit.svg" alt="Stift">
+            <img id="editImg${i}" onclick="editSubtask(${i})" src="/assets/images/edit.svg" alt="Stift">
             <div class="subtaskSeparator"></div>
             <img onclick="deleteSubtask(${i})" src="/assets/images/delete.svg" alt="Mülleimer">
         </div>
@@ -189,20 +191,23 @@ function subtaskEditContainerTemplate(subtask, i) {
 
 
 function mouseOverSubtaskEditContainer(element) {
-    const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
-    subtaskEditContainer.classList.remove('dNone');
+    if (!isEditing) {
+        const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
+        subtaskEditContainer.classList.remove('dNone');
+    }
 }
 
 
 function mouseOutSubtaskEditContainer(element) {
-    const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
-    subtaskEditContainer.classList.add('dNone');
+    if (!isEditing) {
+        const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
+        subtaskEditContainer.classList.add('dNone');
+    }
 }
 
 
 function deleteSubtask(i) {
-    if (i > -1) {
-        closeEditing();
+    if (i > -1) { // if at least one subtask exists in array
         subtasks.splice(i, 1);
         subtaskContainer.innerHTML = '';
         renderSubtask();
@@ -210,33 +215,40 @@ function deleteSubtask(i) {
 }
 
 
-function editSubtask() {
-    let subtaskListElement = document.getElementById('subtaskListElement');
-    subtaskListElement.contentEditable = true;
-    subtaskListElement.focus();
+function editSubtask(i) {
+    if (!isEditing) {
+        isEditing = true;
 
-    let confirmEditSymbol = document.getElementById('editImg');
-    confirmEditSymbol.src = "/assets/images/check_black.png";
-    confirmEditSymbol.onclick = function () {
-        closeEditing();
-    };
+        let ulContainer = document.getElementById(`ulContainer${i}`);
+        ulContainer.style.backgroundColor = '#EAEBEC';
 
-    document.getElementById('addSubtaskSymbol').classList.add('dNone');
-    document.getElementById('ulContainer').style.backgroundColor = '#EAEBEC';
+        let addSubtaskSymbol = document.getElementById(`addSubtaskSymbol`);
+        addSubtaskSymbol.classList.add('dNone');
 
-    document.getElementById('subtaskEditContainer').removeEventListener('mouseover', mouseOverSubtaskEditContainer);
-    document.getElementById('subtaskEditContainer').removeEventListener('mouseout', mouseOutSubtaskEditContainer);
-    document.getElementById('subtaskEditContainer').classList.remove('dNone');
+        let subtaskListElement = document.getElementById(`subtaskListElement${i}`);
+        subtaskListElement.contentEditable = true;
+        subtaskListElement.focus();
 
-    subtaskInput.disabled = true;
+        let confirmEditSymbol = document.getElementById(`editImg${i}`);
+        confirmEditSymbol.src = "/assets/images/check_black.png";
+        confirmEditSymbol.onclick = function () {
+            closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i);
+        };
+
+        subtaskInput.disabled = true;
+    }
 }
 
 
-function closeEditing() {
+function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i) {
+    isEditing = false;
     subtaskInput.disabled = false;
     subtaskListElement.contentEditable = false;
-    document.getElementById('editImg').src = "/assets/images/edit.svg";
-    document.getElementById('addSubtaskSymbol').classList.remove('dNone');
-    document.getElementById('ulContainer').style.backgroundColor = '';
-    document.getElementById('editImg').onclick = editSubtask;
+    confirmEditSymbol.src = "/assets/images/edit.svg";
+    addSubtaskSymbol.classList.remove('dNone');
+    ulContainer.style.backgroundColor = '';
+
+    confirmEditSymbol.onclick = function () {
+        editSubtask(i);
+    };
 }
