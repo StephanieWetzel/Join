@@ -38,7 +38,7 @@
                                 <img class="input-icon" id="searchImg" src="./assets/images/search.svg" alt="">
                             </div>
                         </div>
-                        <button class="addTaskBtn createBtn">Add task <img src="./assets/images/add_task_plus.svg"
+                        <button onclick="openModal()" class="addTaskBtn createBtn">Add task <img src="./assets/images/add_task_plus.svg"
                                 alt=""></button>
                     </div>
                 </div>
@@ -47,9 +47,9 @@
                         <div class="test2">
                             <p class="status-text">To do</p>
                             <div>
-                                <div>
+                                <div class="popup-container">
                                     <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
-                                    <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="">
+                                    <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="" onclick="openModal()">
                                 </div>
                             </div>
                         </div>
@@ -62,9 +62,9 @@
                     <div class="d-flex">
                         <div class="test2">
                             <p class="status-text">In progress</p>
-                            <div>
+                            <div class="popup-container">
                                 <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
-                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="">
+                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="" onclick="openModal()">
                             </div>
                         </div>
                         <div class="status-board">
@@ -85,9 +85,9 @@
                     <div class="d-flex">
                         <div class="test2">
                             <p class="status-text">Await feedback</p>
-                            <div>
+                            <div class="popup-container">
                                 <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
-                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="">
+                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="" onclick="openModal()">
                             </div>
                         </div>
                         <div class="status-board">
@@ -133,6 +133,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal" id="myModal">
+                    <div class="modal-content">
+                        <p>test</p>
+                        <p>test</p>
+                        <p>test</p>
+                        <p>test</p>
+                        <p>test</p>
+                        <p>test</p>
+                        <p>test</p>
+                        <p>test</p>
+                        <button onclick="closeModal()" id="closeModal">Close</button>
+                    </div>
+                </div>                
             </section>
 </body>
 

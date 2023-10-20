@@ -1,6 +1,15 @@
 
 
 
+async function init(board) {
+    loadLocalStorageLoggedInUser('loggedInUser');
+    await includeHTML();
+    await fetchContacts();
+    loadContacts();
+    setHeaderInitials(logInUser);
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
     const searchImg = document.getElementById('searchImg');
@@ -18,3 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     searchImg.addEventListener('click', toggleInputContent);
 });
+
+
+function openModal() {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "block";
+}
+
+
+function closeModal() {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
