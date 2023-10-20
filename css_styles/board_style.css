@@ -118,7 +118,7 @@ button{
     font-size: 16px;
 }
 
-.bg-color{
+.user-story{
     width: 256px; 
     background-color: #0038FF;
     color: white;
@@ -136,6 +136,7 @@ button{
     flex-direction: column;
     gap: 8px;
     font-size: 16px;
+    margin-bottom: 16px;
 }
 
 .status-board span{
@@ -172,4 +173,14 @@ button{
 
 .flex-box p{
     font-size: 12px;
+}
+
+.technical-task{
+    width: 256px; 
+    background-color: #1FD7C1;
+    color: white;
+    padding: 4px 16px 4px 16px;
+    border-radius: 8px;
+    margin: 0;
+    width: max-content;
 }
