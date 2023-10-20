@@ -20,7 +20,7 @@ function checkPasswords() {
 function checkFullName() {
     let user = users.find(user => user.firstName + ' ' + user.lastName == fullName.value);
     if (user) {
-        fullName.setCustomValidity("Username allready taken!");
+        fullName.setCustomValidity("Username already taken!");
     } else {
         fullName.setCustomValidity('');
     }
