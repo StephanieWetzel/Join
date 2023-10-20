@@ -1,11 +1,10 @@
 
 
 
-async function init(board) {
+async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
-    await fetchContacts();
-    loadContacts();
+    markActiveSection(activeSection);
     setHeaderInitials(logInUser);
 }
 
@@ -31,8 +30,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function openModal() {
     const modal = document.getElementById("myModal");
+    const modalContent = document.querySelector(".modal-content");
+
+    // Hier wird der Inhalt des Templates in das Modal geladen
+    fetch("assets/templates/addTask.template.html")
+        .then((response) => response.text())
+        .then((data) => {
+            modalContent.innerHTML = data;
+        });
     modal.style.display = "block";
 }
+
 
 
 function closeModal() {
