@@ -45,7 +45,7 @@ function closeContactForm(editOrAdd) {
 function loadContacts() {
     contacts.forEach((contact, index) => {
         let initials = getInitials(contact.firstName, contact.lastName);
-        let co = document.getElementById(contact.firstName.charAt(0).toLowerCase());
+        let co = checkIfFirstNameOrLastName(contact);
         co.innerHTML += /*html*/`
         <div id="c${index}" class="contact" onclick="showContactInfo(${index})">
             <div class="contact-bubble small" style="background-color: ${contact.color}">${initials}</div>
@@ -56,6 +56,14 @@ function loadContacts() {
         </div>
         `
     })
+}
+
+function checkIfFirstNameOrLastName(contact){
+    if (contact.firstName != '') {
+        return document.getElementById(contact.firstName.charAt(0).toLowerCase());
+    }else{
+        return document.getElementById(contact.lastName.charAt(0).toLowerCase());
+    }
 }
 
 
