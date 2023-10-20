@@ -17,15 +17,22 @@ function greet() {
     let greetingMessage = '';
 
     if (currentHour >= 5 && currentHour < 12) {
-        greetingMessage = 'Good morning,';
+        greetingMessage = 'Good morning';
     } else if (currentHour >= 12 && currentHour < 18) {
-        greetingMessage = 'Good Afternoon,';
+        greetingMessage = 'Good Afternoon';
     } else {
-        greetingMessage = 'Good Evening,';
+        greetingMessage = 'Good Evening';
     }
+    setUserNameAndMessage(content, greetingMessage);
+}
 
-    content.innerHTML = `
-        <h2>${greetingMessage}</h2>
-        <h1>${logInUser.firstName} ${logInUser.lastName}</h1>
-    `;
+function setUserNameAndMessage(content, greetingMessage){
+    if (logInUser) {
+        content.innerHTML = `
+        <h2>${greetingMessage},</h2>
+        <h1>${logInUser.firstName} ${logInUser.lastName}</h1>`
+    }else{
+        content.innerHTML = `
+        <h2>${greetingMessage}</h2>`
+    }
 }
