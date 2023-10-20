@@ -10,7 +10,6 @@ async function init() {
 function checkPasswords() {
     let pw = document.getElementById('password');
     let cPw = document.getElementById('cPassword');
-
     if (pw.value !== cPw.value) {
         cPw.setCustomValidity("Passwords don't match")
     } else {
