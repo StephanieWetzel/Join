@@ -1,10 +1,10 @@
 let users = [];
 let loginUser;
-async function init(){
+async function init() {
     await fetchUsers();
 }
 
-function login(){
+function login() {
     debugger
     let user = users.find(user => user.mail == email.value);
     let pw = users.find(user => user.password == password.value)
@@ -16,7 +16,7 @@ function login(){
         setTimeout(() => {
             window.location.href = 'summary.html?msg=Login_successfull';
         }, 4200);
-    }else{
+    } else {
         let popup = document.getElementById('invalid');
         popup.classList.add('show');
         setTimeout(() => {
@@ -25,17 +25,21 @@ function login(){
     }
 }
 
-function resetValues(){
+function guestLogin() {
+    window.location.href = 'summary.html?msg=Login_Guest';
+}
+
+function resetValues() {
     email.value = '';
     password.value = '';
 }
 
-function saveLoggedInUser(){
+function saveLoggedInUser() {
     let loggedInUserAsJSON = JSON.stringify(loginUser);
     localStorage.setItem('loggedInUser', loggedInUserAsJSON);
 }
 
-function toggleFishEye(){
+function toggleFishEye() {
     let pwInput = document.getElementById("password");
     let fishBtn = document.getElementById('fishBtn');
     let fishBtnImg = document.getElementById("fishBtnImg");
@@ -44,20 +48,20 @@ function toggleFishEye(){
         pwInput.style.background = "none";
         fishBtnImg.src = "/assets/images/fish_Eye_closed2.svg"
         fishBtn.style.margin = "32px 0 0 -71px"
-    }else {
-        fishBtnImg.src ="assets/images/lock.svg"
+    } else {
+        fishBtnImg.src = "assets/images/lock.svg"
     }
 }
 
-function togglePasswordVisibility(id){
+function togglePasswordVisibility(id) {
     let fishBtnImg = document.getElementById("fishBtnImg");
     let pwInput = document.getElementById(id);
     if (pwInput.type === "password") {
         pwInput.type = "text";
-        fishBtnImg.src ="assets/images/fish_Eye_open.svg"
-    }else{
+        fishBtnImg.src = "assets/images/fish_Eye_open.svg"
+    } else {
         pwInput.type = "password";
-        fishBtnImg.src ="assets/images/fish_Eye_closed2.svg"
+        fishBtnImg.src = "assets/images/fish_Eye_closed2.svg"
 
     }
 }

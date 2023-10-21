@@ -5,6 +5,12 @@ async function init(activeSection){
     setRightHeaderInvis()
 }
 
+async function initHelp(){
+    loadLocalStorageLoggedInUser('loggedInUser');
+    await includeHTML();
+    setHeaderInitials(logInUser);
+}
+
 async function initPlain(){
     await includeHTML();
     setRightHeaderInvis();
