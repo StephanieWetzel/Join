@@ -49,6 +49,7 @@ body {
 }
 
 .header img {
+    position: relative;
     height: 100px;
 }
 
@@ -201,7 +202,7 @@ body {
 
 /*Animation*/
 
-.popup-message{
+.popup-message {
     position: relative;
 }
 
@@ -227,32 +228,38 @@ body {
     animation: example2 4s ease-in;
 }
 
-@keyframes example2{
-    0%{
+@keyframes example2 {
+    0% {
         opacity: 0;
         top: 5%;
     }
-    25%{
+
+    25% {
         opacity: 1;
         top: 15%;
     }
-    50%{
+
+    50% {
         opacity: 1;
         top: 15%;
     }
-    60%{
+
+    60% {
         opacity: 1;
         top: 15%;
     }
-    80%{
+
+    80% {
         opacity: 1;
         top: 15%;
     }
-    90%{
+
+    90% {
         opacity: 1;
         top: 15%;
     }
-    100%{
+
+    100% {
         opacity: 0;
         top: 5%;
     }
@@ -280,4 +287,69 @@ body {
 
 .fish-eye-btn:hover {
     cursor: pointer;
+}
+
+
+
+/* Join-Logo Animation */
+
+.join-logo-animation {
+    z-index: 999;
+    animation: joinLogo 1s linear;
+}
+
+/*@keyframes joinLogo {
+    from {
+        height: 270px;
+        top: 250%;
+        left: 45%;
+    }
+    to {
+        height: 100px;
+        top: 0;
+        left: 0;
+    }
+}*/
+
+@keyframes joinLogo{
+    0%{
+        height: 270px;
+        top: 250%;
+        left: 45%; 
+    }
+    50%{
+        height: 270px;
+        top: 250%;
+        left: 45%;
+    }
+    100%{
+        height: 100px;
+        top: 0%;
+        left: 0%;
+    }
+}
+
+/* From Invis to visible Animation */
+
+.invis-visible-animation{
+    z-index: 999;
+    animation: invisVis 1s 500ms forwards;
+}
+
+.o0{
+    opacity: 0;
+}
+
+@keyframes invisVis{
+    0%{opacity: 0;};
+    10%{opacity: 0;};
+    20%{opacity: 0;};
+    30%{opacity: 0;};
+    50%{opacity: 0;};
+    60%{opacity: 0;};
+    70%{opacity: 0;};
+    80%{opacity: 0;};
+    90%{opacity: 0;};
+    95%{opacity: 0.1;}
+    100%{opacity: 1;};
 }
