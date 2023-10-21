@@ -14,13 +14,42 @@
                 <textarea cols="30" rows="10" placeholder="Enter a Description"></textarea>
             </div>
 
+
+
+
+
             <div class="formSection">
-                <label class="marginBo8">Assigned to</label>
-                <select id="contactSelection">
+                <span class="marginBo8">Assigned to</span>
+                <!-- contacts closed -->
+                <div>
+                    <input type="text" placeholder="Select contacts to assign">
+                    <div>
+                        <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
+                    </div>
+                </div>
+
+                <!-- contacts opened -->
+                <div class="">
+                    <div id="contactSelection">
+
+                    </div>
+                    <div class="sticky-btn">
+                        <button onclick="openContactForm()">Add new contact<img
+                                src="assets/images/person_add.svg"></button>
+                    </div>
+                </div>
+                <!-- <select id="contactSelection">
                     <option disabled selected>Select contacts to assign</option>
-                </select>
-                <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
+                </select> -->
+
             </div>
+
+
+
+
+
+
+
         </div>
         <!-- middle -->
         <div class="separator"></div>
@@ -28,7 +57,7 @@
         <div>
             <div class="formSection">
                 <label class="marginBo8 required">Due date</label>
-                <input class="dueDateInputField" type="text" placeholder="tt.mm.jjjj" onfocus="(this.type = 'date')"
+                <input class="dueDateInputField" type="date" value="tt.mm.jjjj" onfocus="(this.type = 'date')"
                     onblur="(this.type = 'text')" required>
             </div>
 
@@ -53,7 +82,7 @@
             <div class="formSection">
                 <label class="marginBo8 required">Category</label>
                 <select required>
-                    <option disabled selected>Select task category</option>
+                    <option disabled selected value="">Select task category</option>
                     <option>Technical Task</option>
                     <option>User Story</option>
                 </select>

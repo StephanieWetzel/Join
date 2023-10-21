@@ -33,24 +33,26 @@
 }
 
 .user-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
     border-radius: 50%;
-    padding: 4px;
+    padding: 8px;
     height: 32px;
     width: 32px;
     margin-right: 24px;
     color: #29ABE2;
 }
 
-.user-icon:hover{
+.user-icon:hover {
     background-color: rgba(0, 0, 0, 0.08);
     cursor: pointer;
 }
 
 .icon-styling {
-    margin: 7px 0 0 0;
     font-size: 18px;
-    text-align: center;
+    font-weight: bold;
 }
 
 .user-help {
@@ -58,7 +60,7 @@
 }
 
 .user-help img {
-    height: 26px;
+    height: 32px;
 }
 
 .user-help img:hover {
@@ -78,11 +80,11 @@
     margin-left: -10px;
 }
 
-.invis{
+.invis {
     visibility: hidden;
 }
 
-.options-popup{
+.options-popup {
     position: relative;
     font-size: 14px;
     width: 120px;
@@ -94,12 +96,12 @@
     padding: 6px;
 }
 
-.options-popup p{
+.options-popup p {
     padding: 6px;
     margin: 8px 0;
 }
 
-.options-popup p:hover{
+.options-popup p:hover {
     cursor: pointer;
     background-color: #29ABE2;
     border-radius: 8px;

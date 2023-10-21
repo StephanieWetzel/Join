@@ -1,40 +1,35 @@
-body{
-    margin: 0;
-    font-family: 'Inter';
-    background-color: #f6f7f8;
-}
-
-input{
+input {
     width: 312px;
     border-radius: 10px;
     padding: 8px 16px;
 }
 
-button{
+button {
     background-color: #2A3647;
 }
 
-.board{
+.board {
     padding: 0 64px;
 }
 
-.headerBoard{
+.headerBoard {
     display: flex;
     justify-content: space-between;
 }
 
-.headerFlex{
+.headerFlex {
     display: flex;
     justify-content: end;
     align-items: center;
     gap: 32px;
 }
 
-.headerFlex input, button{
+.headerFlex input,
+button {
     height: 48px;
 }
 
- .input-container {
+.input-container {
     display: inline-block;
 }
 
@@ -66,7 +61,7 @@ button{
     border-radius: 9999px;
 }
 
-.status{
+.status {
     display: flex;
     justify-content: space-between;
 }
@@ -85,21 +80,21 @@ button{
     cursor: pointer;
 }
 
-.standardImg:hover + .hoverImg {
-    display: block; 
+.standardImg:hover+.hoverImg {
+    display: block;
 }
 
 .standardImg:hover {
-    display: none; 
+    display: none;
 }
 
-.d-flex{
+.d-flex {
     display: flex;
     flex-direction: column;
     width: 252px;
 }
 
-.test2{
+.test2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -108,7 +103,7 @@ button{
     font-size: 20px;
 }
 
-.no-to-do{
+.no-to-do {
     color: #a8a8a8;
     border: 1px dotted #a8a8a8;
     background-color: #e7e7e7;
@@ -118,8 +113,8 @@ button{
     font-size: 16px;
 }
 
-.user-story{
-    width: 256px; 
+.user-story {
+    width: 256px;
     background-color: #0038FF;
     color: white;
     padding: 4px 16px 4px 16px;
@@ -128,7 +123,7 @@ button{
     width: max-content;
 }
 
-.status-board{
+.status-board {
     display: flex;
     background-color: #ffff;
     border-radius: 24px;
@@ -139,13 +134,13 @@ button{
     margin-bottom: 16px;
 }
 
-.status-board span{
+.status-board span {
     color: #a8a8a8;
     font-weight: 400;
 }
 
 .progress {
-    border-radius: 4px; 
+    border-radius: 4px;
     background-color: #F4F4F4;
     display: flex;
     justify-content: space-between;
@@ -155,28 +150,28 @@ button{
 .progress-bar {
     width: 50%;
     border-radius: 8px;
-    height: 8px; 
-    background-color: #007bff; 
+    height: 8px;
+    background-color: #007bff;
 }
 
-.priority{
+.priority {
     display: flex;
     justify-content: end;
 }
 
-.flex-box{
+.flex-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 220px;
 }
 
-.flex-box p{
+.flex-box p {
     font-size: 12px;
 }
 
-.technical-task{
-    width: 256px; 
+.technical-task {
+    width: 256px;
     background-color: #1FD7C1;
     color: white;
     padding: 4px 16px 4px 16px;
@@ -198,7 +193,8 @@ button{
 
 .modal-content {
     background-color: #fff;
-    width: 60%; /* Breite des Modals anpassen */
+    width: 60%;
+    /* Breite des Modals anpassen */
     margin: 10% auto;
     padding: 20px;
     border-radius: 5px;

@@ -2,7 +2,7 @@
     margin: 0;
 }*/
 
-.content{
+.content {
     display: flex;
 }
 
@@ -11,7 +11,7 @@
     height: 100vh;
 }
 
-.contactbook-section{
+.contactbook-section {
     height: 90%;
     display: flex;
     flex-direction: row;
@@ -19,7 +19,7 @@
     /*z-index: -100;*/
 }
 
-.contactbook{
+.contactbook {
     width: 30%;
     padding: 0 32px 32px 32px;
     display: flex;
@@ -30,22 +30,22 @@
     box-shadow: 8px 0px 10px -7px rgba(0, 0, 0, 0.2);
 }
 
-.contactbook::-webkit-scrollbar{
+.contactbook::-webkit-scrollbar {
     width: 20px;
-    
+
 }
 
-.contactbook::-webkit-scrollbar-track{
+.contactbook::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-.contactbook::-webkit-scrollbar-thumb{
+.contactbook::-webkit-scrollbar-thumb {
     background-color: #c4c6c7;
     border-radius: 20px;
     border: 6px solid #f6f7f8;
 }
 
-.sticky-btn{
+.sticky-btn {
     display: flex;
     position: sticky;
     top: 0;
@@ -55,14 +55,14 @@
     padding: 16px;
 }
 
-.contactbook-alignment{
+.contactbook-alignment {
     width: 90%;
     display: flex;
     flex-direction: column;
     padding: 16px;
 }
 
-.sticky-btn button{
+.sticky-btn button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -76,7 +76,7 @@
     font-size: 16px;
 }
 
-.sticky-btn button:hover{
+.sticky-btn button:hover {
     cursor: pointer;
     background-color: #29ABE2;
     color: white;
@@ -86,20 +86,20 @@
 
 
 
-.contactbook img{
+.contactbook img {
     height: 28px;
     margin-left: 16px;
 }
 
-.loaded-contacts{
+.loaded-contacts {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
-    
+
 }
 
-.category{
+.category {
     height: 56px;
     display: flex;
     width: 100%;
@@ -107,11 +107,11 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.category p{
+.category p {
     padding-left: 16px;
 }
 
-.contactbook-info{
+.contactbook-info {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -119,48 +119,49 @@
     background-color: rgba(0, 0, 0, 0.02);
 }
 
-.heading-row{
+.heading-row {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-top: 54px;
 }
 
-.heading-row h1{
+.heading-row h1 {
     padding-right: 24px;
     border-right: 3px solid #29ABE2;
     font-size: 48px;
 }
 
-.heading-row p{
+.heading-row p {
     font-size: 24px;
 }
 
-.info-head{
+.info-head {
     display: flex;
     flex-direction: row;
 }
 
-.info-content{
+.info-content {
     position: relative;
     right: 0;
     width: 500px;
 }
 
-.animate-contact-information{
+.animate-contact-information {
     animation: contactInformation 0.2s linear;
 }
 
-@keyframes contactInformation{
-    from{
+@keyframes contactInformation {
+    from {
         right: -44%;
     }
-    to{
+
+    to {
         right: 0;
     }
 }
 
-.contact{
+.contact {
     display: flex;
     flex-direction: row;
     padding: 16px;
@@ -170,22 +171,22 @@
     align-items: center;
 }
 
-.contact:hover{
+.contact:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.04);
-   
+
 }
 
-.contact-active{
+.contact-active {
     color: white;
     background-color: #081931;
 }
 
-.contact-active:hover{
+.contact-active:hover {
     background-color: #081931;
 }
 
-.contact-bubble{
+.contact-bubble {
     border: 1px solid;
     border-radius: 50%;
     display: flex;
@@ -196,14 +197,14 @@
 
 /* profile bubble largness*/
 
-.small{
+.small {
     height: 32px;
     width: 32px;
-    font-size: 11px; 
+    font-size: 11px;
     margin-left: 8px;
 }
 
-.large{
+.large {
     height: 112px;
     width: 112px;
     font-size: 50px;
@@ -211,71 +212,71 @@
     margin-right: 48px;
 }
 
-.contact-name-mail{
+.contact-name-mail {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
 
-.contact-name-mail p{
+.contact-name-mail p {
     margin: 0 0 0 16px;
 }
 
-.name-edit-delete{
+.name-edit-delete {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.name-edit-delete h2{
+.name-edit-delete h2 {
     font-size: 32px;
     margin: 0
 }
 
-.edit-delete{
+.edit-delete {
     display: flex;
     flex-direction: row;
 }
 
-.edit{
+.edit {
     display: flex;
     flex-direction: row;
 }
 
-.edit:hover{
+.edit:hover {
     cursor: pointer;
     color: #29ABE2;
     font-size: 21px;
 }
 
-.edit:hover .edit-image{
+.edit:hover .edit-image {
     filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
     height: 22px;
 }
 
-.delete:hover{
+.delete:hover {
     cursor: pointer;
     color: #29ABE2;
     font-size: 21px;
 }
 
-.delete:hover .delete-image{
+.delete:hover .delete-image {
     filter: invert(65%) sepia(27%) saturate(3883%) hue-rotate(165deg) brightness(94%) contrast(88%);
     height: 22px;
 }
 
-.delete{
+.delete {
     display: flex;
     flex-direction: row;
 }
 
-.edit-delete img{
+.edit-delete img {
     height: 19px;
     padding-top: 2px;
 }
 
-.edit-delete p{
+.edit-delete p {
     margin: 0;
     margin-left: 4px;
 }
@@ -283,28 +284,27 @@
 
 /*Hilfsklassen*/
 
-.d-none{
+.d-none {
     display: none;
 }
 
-.ml24{
+.ml24 {
     margin-left: 24px;
 }
 
-.f-size{
+.f-size {
     font-size: 16px;
 }
 
-.blue-color{
+.blue-color {
     font-size: 14px;
     color: #29ABE2;
 }
 
-.bold{
+.bold {
     font-weight: 900;
 }
 
-.mt24{
+.mt24 {
     margin-top: 24px;
 }
-

@@ -5,27 +5,31 @@ let mediumSymbol;
 let lowBtn;
 let lowSymbol;
 let subtasks = [];
-// let contacts = [];
 
-async function init(activeSection) {
+
+async function initAddTask(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
-    // await fetchContacts();
+    await fetchContacts();
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
+    assignContact();
 }
 
 
 // ASSIGNED TO
-// function assignTaskToContact() {
-//     let contactSelection = document.getElementById('contactSelection');
-//     for (let i = 0; i < contacts.length; i++) {
-//         let contact = contacts[i];
-//         contactSelection.innerHTML += `
-//         <option>${contact}</option>
-//         `;
-//     }
-// }
+function assignContact() {
+    let contactSelection = document.getElementById('contactSelection');
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        console.log(contact)
+        contactSelection.innerHTML += `
+        <div>
+        <option>${contact}</option>
+        </div>
+        `;
+    }
+}
 
 
 // PRIO BUTTONS
