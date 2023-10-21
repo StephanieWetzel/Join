@@ -1,20 +1,19 @@
-
-.content{
+.content {
     display: flex;
 }
 
-.main-content{
+.main-content {
     width: 80%;
     height: 100vh;
 }
 
-.policy{
+.policy {
     display: flex;
     height: 90%;
     background-color: rgba(0, 0, 0, 0.02);
 }
 
-.policy-content{
+.policy-content {
     display: flex;
     flex-direction: column;
     padding: 0 64px;
@@ -23,7 +22,7 @@
     overflow-y: scroll;
 }
 
-.heading-agb{
+.heading-agb {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -31,7 +30,7 @@
     align-items: center;
 }
 
-.back-btn{
+.back-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,37 +57,37 @@ h2 {
     font-size: 27px;
 }
 
-.m0{
+.m0 {
     margin: 0;
 }
 
-.policy-content::-webkit-scrollbar{
+.policy-content::-webkit-scrollbar {
     width: 20px;
-    
+
 }
 
-.policy-content::-webkit-scrollbar-track{
+.policy-content::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-.policy-content::-webkit-scrollbar-thumb{
+.policy-content::-webkit-scrollbar-thumb {
     background-color: #c4c6c7;
     border-radius: 20px;
     border: 6px solid #f6f7f8;
 }
 
-.h2-imprint{
+.h2-imprint {
     font-size: 48px;
     font-weight: 500;
 }
 
-.h3-headlines{
+.h3-headlines {
     font-size: 32px;
     font-weight: 500;
     margin: 48px 0 0 0
 }
 
-b{
+b {
     color: #29ABE2;
 }
 

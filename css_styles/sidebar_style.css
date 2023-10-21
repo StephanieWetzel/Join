@@ -16,7 +16,7 @@
     text-decoration: none;
 }
 
-.sidebar-section:hover{
+.sidebar-section:hover {
     cursor: pointer;
     background-color: #081931;
 }
@@ -60,7 +60,7 @@
     align-items: center;
 }
 
-.policy-rights-section a:hover{
+.policy-rights-section a:hover {
     cursor: pointer;
     color: #29ABE2;
     font-size: 16px;
@@ -82,7 +82,7 @@
     font-size: 20px;
 }
 
-.sidebar-text{
+.sidebar-text {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -95,11 +95,11 @@
     height: 36px;
 }
 
-.active-section{
+.active-section {
     background-color: #081931;
 }
 
-.invis{
+.invis {
     opacity: 0;
     user-select: none;
 }
