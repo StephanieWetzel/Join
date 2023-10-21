@@ -332,7 +332,7 @@ body {
 /* From Invis to visible Animation */
 
 .invis-visible-animation{
-    z-index: 999;
+   
     animation: invisVis 1s 500ms forwards;
 }
 

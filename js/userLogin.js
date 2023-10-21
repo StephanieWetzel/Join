@@ -5,7 +5,6 @@ async function init() {
 }
 
 function login() {
-    debugger
     let user = users.find(user => user.mail == email.value);
     let pw = users.find(user => user.password == password.value)
     if (user && pw) {
