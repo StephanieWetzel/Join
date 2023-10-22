@@ -21,13 +21,15 @@
                 <span class="marginBo8">Assigned to</span>
                 <!-- contacts closed -->
                 <div>
-                    <input onclick="toggleContacts()" type="text" placeholder="Select contacts to assign">
+                    <input id="assignContactsInputfield" class="assignContactsInputfield" onclick="toggleContacts()"
+                        type="text" value="Select contacts to assign">
                     <div>
                         <img onclick="toggleContacts()" class="arrowSymbol inputSymbol" id="arrowDownSymbol"
                             src="/assets/images/arrow_down.svg" alt="Pfeil runter">
                         <img onclick="toggleContacts()" class="arrowSymbol inputSymbol dNone" id="arrowUpSymbol"
                             src="/assets/images/arrow_up.png" alt="Pfeil hoch">
                     </div>
+                    <div id="assignedContacts"></div>
                 </div>
                 <!-- contacts opened -->
                 <div id="contactSelectionContainer" class="contactSelectionContainer dNone">

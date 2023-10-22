@@ -5,6 +5,7 @@ let mediumSymbol;
 let lowBtn;
 let lowSymbol;
 let subtasks = [];
+let selectedContacts = [];
 
 
 async function initAddTask(activeSection) {
@@ -14,6 +15,7 @@ async function initAddTask(activeSection) {
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
     assignContact();
+    showAssignedContacts();
 }
 
 
@@ -24,28 +26,76 @@ function assignContact() {
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
         initials = getInitials(contact.firstName, contact.lastName); // contact.js
-        contactSelection.innerHTML += /*html*/`
+        contactSelection.innerHTML += contactTemplate(contact, i);
+    }
+}
+
+
+function contactTemplate(contact, i) {
+    return `
         <div class="contactAddTask checkboxContainer">
             <div class="contactInfoContainer">
                 <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">${initials}</div>
                 <option>${contact.firstName} ${contact.lastName}</option>
             </div>
-            <input class="checkbox" type="checkbox" value="">
+            <input id="checkbox${i}" class="checkbox" type="checkbox" value="">
         </div>
-        `;
-    }
+    `;
 }
 
 
 function toggleContacts() {
+    toggleMainContainer();
+    toggleArrowSymbols();
+    toggleInputValue();
+}
+
+
+function toggleMainContainer() {
     let contactSelectionContainer = document.getElementById('contactSelectionContainer');
     contactSelectionContainer.classList.toggle('dNone');
+}
 
+
+function toggleArrowSymbols() {
     let arrowDownSymbol = document.getElementById('arrowDownSymbol');
     arrowDownSymbol.classList.toggle('dNone');
+
     let arrowUpSymbol = document.getElementById('arrowUpSymbol');
     arrowUpSymbol.classList.toggle('dNone');
+}
 
+
+function toggleInputValue() {
+    let assignContactsInputfield = document.getElementById('assignContactsInputfield');
+    if (assignContactsInputfield.value) {
+        assignContactsInputfield.value = '';
+    }
+    else {
+        assignContactsInputfield.value = 'Select contacts to assign';
+    }
+}
+
+
+function showAssignedContacts() {
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        initials = getInitials(contact.firstName, contact.lastName); // contact.js
+        let checkbox = document.getElementById(`checkbox${i}`);
+        if (checkbox.checked) {
+            selectedContacts.push(initials);
+            console.log(initials);
+        }
+    }
+
+    let assignedContacts = document.getElementById('assignedContacts');
+    assignedContacts.innerHTML = '';
+    for (let i = 0; i < selectedContacts.length; i++) {
+        const selectedContact = selectedContacts[i];
+        assignedContacts.innerHTML += `
+        ${selectedContact}
+        `;
+    }
 }
 
 
