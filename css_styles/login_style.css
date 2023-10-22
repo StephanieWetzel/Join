@@ -353,3 +353,150 @@ body {
     95%{opacity: 0.1;}
     100%{opacity: 1;};
 }
+
+.mobile-sign-up{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+}
+
+/*Responsive Design*/
+@media(max-width:1080px) {
+    .email-styling {
+        background-position-x: 273px;
+    }
+
+    .input-style {
+        width: 300px;
+    }
+
+    .login-btn {
+        width: 80px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .guest-login-btn {
+        width: 130px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media(max-width:850px) {
+    .form {
+        width: 60%;
+    }
+
+}
+
+@media(max-width:650px) {
+    .form {
+        width: 90%;
+        margin-top: 80px;
+    }
+    .join-logo-animation{
+        animation: joinLogoMobile650 1s linear;
+    }
+}
+
+@media(min-width:451px){
+    .mobile-sign-up{
+        display: none;
+    }
+}
+
+@media(max-width:450px) {
+    /*.email-styling {
+        background-position-x: 190px;
+    }*/
+
+    .header-right{
+        display: none;
+    }
+
+    /*.input-style {
+        width: 200px;
+    }
+
+    .fish-eye-div {
+        justify-content: center;
+    }
+
+    .fish-eye-btn {
+        margin-left: -39px;
+    }*/
+
+    .btns {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 260px;
+        margin-top: 16px;
+    }
+    .login-btn {
+        width: 160px;
+        height: 40px;
+        font-size: 16px;
+        margin-bottom: 24px;
+    }
+
+    .guest-login-btn {
+        width: 160px;
+        height: 40px;
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+    .mobile-sign-up p{
+        font-size: 16px;
+    }
+    .sign-up-btn{
+        font-size: 16px;
+        width: 100px;
+        height: 42px;
+    }
+    .join-logo-animation{
+        animation: joinLogoMobile450 1s linear;
+    }
+}
+
+/*Animation Mobile*/
+
+@keyframes joinLogoMobile650 {
+    0% {
+        height: 190px;
+        top: 250%;
+        left: 40%;
+    }
+
+    50% {
+        height: 190px;
+        top: 250%;
+        left: 40%;
+    }
+
+    100% {
+        height: 100px;
+        top: 0%;
+        left: 0%;
+    }
+}
+@keyframes joinLogoMobile450 {
+    0% {
+        height: 190px;
+        top: 250%;
+        left: 30%;
+    }
+
+    50% {
+        height: 190px;
+        top: 250%;
+        left: 30%;
+    }
+
+    100% {
+        height: 100px;
+        top: 0%;
+        left: 0%;
+    }
+}
