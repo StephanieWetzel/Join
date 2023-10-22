@@ -81,18 +81,18 @@ textarea:focus {
     border-radius: 50%;
 }
 
-.arrowDownSymbol {
+.arrowSymbol {
     top: 43px;
     right: 12px;
     padding: 8px;
 }
 
-.arrowDownSymbol:hover {
+.arrowSymbol:hover {
     background-color: #EAEBEC;
 }
 
 /* ASSIGNED TO */
-.contactSelection {
+.contactSelectionContainer {
     background-color: white;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;

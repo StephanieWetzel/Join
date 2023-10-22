@@ -37,6 +37,18 @@ function assignContact() {
 }
 
 
+function openContactsToAssign() {
+    let contactSelectionContainer = document.getElementById('contactSelectionContainer');
+    contactSelectionContainer.classList.toggle('dNone');
+
+    let arrowDownSymbol = document.getElementById('arrowDownSymbol');
+    arrowDownSymbol.classList.toggle('dNone');
+    let arrowUpSymbol = document.getElementById('arrowUpSymbol');
+    arrowUpSymbol.classList.toggle('dNone');
+
+}
+
+
 // PRIO BUTTONS
 function handlePriorities(priority) {
     getPrioElements();

@@ -17,39 +17,27 @@
                 <textarea cols="30" rows="10" placeholder="Enter a Description"></textarea>
             </div>
 
-
-
-
-
             <div class="formSection">
                 <span class="marginBo8">Assigned to</span>
                 <!-- contacts closed -->
                 <div>
-                    <input type="text" placeholder="Select contacts to assign">
+                    <input onclick="openContactsToAssign()" type="text" placeholder="Select contacts to assign">
                     <div>
-                        <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
+                        <img onclick="openContactsToAssign()" class="arrowSymbol inputSymbol" id="arrowDownSymbol"
+                            src="/assets/images/arrow_down.svg" alt="Pfeil runter">
+                        <img onclick="openContactsToAssign()" class="arrowSymbol inputSymbol dNone" id="arrowUpSymbol"
+                            src="/assets/images/arrow_up.png" alt="Pfeil hoch">
                     </div>
                 </div>
-
                 <!-- contacts opened -->
-                <div class="contactSelection">
+                <div id="contactSelectionContainer" class="contactSelectionContainer dNone">
                     <div id="contactSelection"></div>
                     <div class="addContactBtnContainer boardBtn">
                         <button class="addContactBtn" onclick="openContactForm()">Add new contact<img
                                 src="assets/images/person_add.svg"></button>
                     </div>
                 </div>
-                <!-- <select id="contactSelection">
-                    <option disabled selected>Select contacts to assign</option>
-                </select> -->
-
             </div>
-
-
-
-
-
-
 
         </div>
         <!-- middle -->
@@ -87,7 +75,7 @@
                     <option>Technical Task</option>
                     <option>User Story</option>
                 </select>
-                <img class="arrowDownSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
+                <img class="arrowSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
             </div>
 
             <div class="formSection">
