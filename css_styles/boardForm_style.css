@@ -1,0 +1,47 @@
+.formBoard{
+    padding: 16px;
+    margin-bottom: 40px;
+}
+
+.boardH1{
+    padding: 16px;
+}
+
+input{
+    width: 100%;
+}
+
+.boardBtn{
+    display: none;
+}
+
+.footerBoard{
+    margin: 0;
+}
+
+.boardCloseBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#closeModal {
+    color: #2A3647;
+    background-color: white;
+    border: none;
+    border-radius: 56px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#closeModal:hover {
+    background-color: rgba(211, 211, 211, 0.551);
+}
+
+.boardCloseBtn button{
+    height: 32px;
+    width: 32px;
+}

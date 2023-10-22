@@ -1,6 +1,9 @@
-<h1>Add Task</h1>
+<div class="boardCloseBtn">
+    <h1 class="boardH1">Add Task</h1>
+    <button onclick="closeModal()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
+</div>
 
-<form class="form" onsubmit="addTask()">
+<form class="form formBoard" onsubmit="addTask()">
     <div class="formColumnsContainer">
         <!-- left column -->
         <div>
@@ -31,7 +34,7 @@
                 <!-- contacts opened -->
                 <div class="contactSelection">
                     <div id="contactSelection"></div>
-                    <div class="addContactBtnContainer">
+                    <div class="addContactBtnContainer boardBtn">
                         <button class="addContactBtn" onclick="openContactForm()">Add new contact<img
                                 src="assets/images/person_add.svg"></button>
                     </div>
@@ -97,7 +100,7 @@
         </div>
     </div>
     <!-- footer -->
-    <div class="footerContainer">
+    <div class="footerContainer footerBoard">
         <span class="footerRequiredField colorBlack">This field is required</span>
 
         <div class="footerBtnContainer">
