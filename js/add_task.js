@@ -37,7 +37,7 @@ function assignContact() {
 }
 
 
-function openContactsToAssign() {
+function toggleContacts() {
     let contactSelectionContainer = document.getElementById('contactSelectionContainer');
     contactSelectionContainer.classList.toggle('dNone');
 
