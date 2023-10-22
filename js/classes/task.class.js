@@ -1,4 +1,4 @@
-class Task {
+class task {
     title;
     description;
     assignedContacts;
@@ -16,17 +16,13 @@ class Task {
         this.category = category;
         this.subtasks = subtasks;
     }
-
-
-
-
 }
 
-/*
-function loadContacts() {
-    let contactSelection = document.getElementById('contacts')
-    contacts.forEach(contact => {
-        const newOption = new Option(contact.firstName, contact.firstName);
-        contactSelection.add(newOption, undefined);
-    });
-}*/
+
+// function loadAddTaskContacts() {
+//     let contactSelection = document.getElementById('contactSelection')
+//     contacts.forEach(contact => {
+//         const newOption = new Option(contact.firstName, contact.firstName);
+//         contactSelection.add(newOption, undefined);
+//     });
+// }

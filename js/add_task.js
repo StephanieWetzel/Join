@@ -20,12 +20,17 @@ async function initAddTask(activeSection) {
 // ASSIGNED TO
 function assignContact() {
     let contactSelection = document.getElementById('contactSelection');
+    contactSelection.innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
         let contact = contacts[i];
-        console.log(contact)
-        contactSelection.innerHTML += `
-        <div>
-        <option>${contact}</option>
+        initials = getInitials(contact.firstName, contact.lastName); // contact.js
+        contactSelection.innerHTML += /*html*/`
+        <div class="contactAddTask checkboxContainer">
+            <div class="contactInfoContainer">
+                <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">${initials}</div>
+                <option>${contact.firstName} ${contact.lastName}</option>
+            </div>
+            <input class="checkbox" type="checkbox" value="">
         </div>
         `;
     }
