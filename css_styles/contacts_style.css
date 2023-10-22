@@ -308,3 +308,142 @@
 .mt24 {
     margin-top: 24px;
 }
+
+
+/*Responsive Design*/
+
+@media(max-width: 1500px) {
+    .small {
+        margin-left: 0px;
+    }
+
+    .category p {
+        font-size: 16px;
+    }
+
+    .f-size {
+        font-size: 14px;
+    }
+
+    .blue-color {
+        font-size: 11px;
+    }
+
+    .contactbook {
+        padding: 0 0 16px 0;
+    }
+
+    .contactbook img {
+        height: 25px;
+    }
+
+    .sticky-btn button {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 1280px) {
+    .heading-row h1 {
+        font-size: 40px;
+    }
+
+    .heading-row p {
+        font-size: 18px;
+    }
+
+    .large {
+        height: 80px;
+        width: 80px;
+        font-size: 38px;
+    }
+
+    .name-edit-delete h2 {
+        font-size: 26px;
+    }
+
+    .edit-delete p {
+        font-size: 16px;
+    }
+
+    .edit-delete img {
+        height: 17px;
+    }
+
+    /*Sidebar*/
+    .sidebar-text {
+        font-size: 16px;
+    }
+
+    .sidebar-section img {
+        height: 30px;
+    }
+
+    .policy-rights-section a {
+        font-size: 12px;
+    }
+
+    .sidebar-img img {
+        height: 90px;
+    }
+
+    .contactbook-alignment {
+        padding: 4px;
+    }
+}
+
+@media(max-width: 1024px) {
+    .content{
+        flex-direction: column-reverse;
+    }
+    .sidebar {
+        flex-direction: row;
+        justify-content: center;
+        height: 10%;
+        width: auto;
+        margin-top: -50px;
+    }
+
+    .sidebar-img {
+        display: none;
+    }
+
+    .sidebar-sections {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 10%;
+        width: 100%;
+    }
+
+    .sidebar-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }
+    .sidebar-section-contents-end {
+        display: flex;
+        justify-content: flex-end;
+        width: auto;
+    }
+    .sidebar-section-contents-start{
+        display: flex;
+        justify-content: flex-start;
+        width: auto;
+    }
+    .policy-rights-section{
+        display: none;
+    }
+    .main-content{
+        width: 100%;
+    }
+    .contactbook-section{
+        height: 85%;
+    }
+    .contactbook-info{
+        width: 65%;
+    }
+}
