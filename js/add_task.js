@@ -4,8 +4,8 @@ let mediumBtn;
 let mediumSymbol;
 let lowBtn;
 let lowSymbol;
+let contact;
 let subtasks = [];
-let selectedContacts = [];
 
 
 async function initAddTask(activeSection) {
@@ -15,7 +15,6 @@ async function initAddTask(activeSection) {
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
     assignContact();
-    showAssignedContacts();
 }
 
 
@@ -24,7 +23,7 @@ function assignContact() {
     let contactSelection = document.getElementById('contactSelection');
     contactSelection.innerHTML = '';
     for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
+        contact = contacts[i];
         initials = getInitials(contact.firstName, contact.lastName); // contact.js
         contactSelection.innerHTML += contactTemplate(contact, i);
     }
@@ -38,7 +37,7 @@ function contactTemplate(contact, i) {
                 <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">${initials}</div>
                 <option>${contact.firstName} ${contact.lastName}</option>
             </div>
-            <input id="checkbox${i}" class="checkbox" type="checkbox" value="">
+            <input onclick="showAssignedContacts()" id="checkbox${i}" class="checkbox" type="checkbox" value="">
         </div>
     `;
 }
@@ -78,31 +77,29 @@ function toggleInputValue() {
 
 
 function showAssignedContacts() {
-    for (let i = 0; i < contacts.length; i++) {
-        let contact = contacts[i];
-        initials = getInitials(contact.firstName, contact.lastName); // contact.js
-        let checkbox = document.getElementById(`checkbox${i}`);
-        if (checkbox.checked) {
-            selectedContacts.push(initials);
-            console.log(initials);
-        }
-    }
-
     let assignedContacts = document.getElementById('assignedContacts');
     assignedContacts.innerHTML = '';
-    for (let i = 0; i < selectedContacts.length; i++) {
-        const selectedContact = selectedContacts[i];
-        assignedContacts.innerHTML += `
-        ${selectedContact}
-        `;
+    for (let i = 0; i < contacts.length; i++) {
+        contact = contacts[i];
+        initials = getInitials(contact.firstName, contact.lastName);
+        let checkbox = document.getElementById(`checkbox${i}`);
+        if (checkbox.checked) {
+            assignedContacts.innerHTML += assignedContactsTemplate();
+        }
     }
+}
+
+
+function assignedContactsTemplate() {
+    return `
+        <div class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contact.color}">${initials}</div>
+    `;
 }
 
 
 // PRIO BUTTONS
 function handlePriorities(priority) {
     getPrioElements();
-
     handleUrgent(priority, urgentBtn, mediumBtn, lowBtn, urgentSymbol);
     handleMedium(priority, mediumBtn, urgentBtn, lowBtn, mediumSymbol);
     handleLow(priority, lowBtn, mediumBtn, urgentBtn, lowSymbol);
@@ -229,16 +226,21 @@ function addSubtask() {
     let subtaskContainer = document.getElementById('subtaskContainer');
     subtaskInput = document.getElementById('subtaskInput');
 
-    if (subtaskInput.value.length != '') {
+    if (subtaskInputFieldHasContent()) {
         subtasks.push(subtaskInput.value);
         subtaskContainer.innerHTML = '';
 
-        renderSubtask();
+        renderSubtasks();
     }
 }
 
 
-function renderSubtask() {
+function subtaskInputFieldHasContent() {
+    return subtaskInput.value.length != '';
+}
+
+
+function renderSubtasks() {
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
@@ -248,7 +250,7 @@ function renderSubtask() {
 
 
 function subtaskEditContainerTemplate(subtask, i) {
-    return /*html*/`
+    return `
     <ul id="ulContainer${i}" class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
         <li id="subtaskListElement${i}" class="subtaskListElements">${subtask}</li>
         <div id="subtaskEditContainer" class="subtaskEditContainer dNone">
@@ -278,11 +280,21 @@ function mouseOutSubtaskEditContainer(element) {
 
 
 function deleteSubtask(i) {
-    if (i > -1) { // if at least one subtask exists in array
-        subtasks.splice(i, 1);
-        subtaskContainer.innerHTML = '';
-        renderSubtask();
+    if (atLeastOneSubtaskExists(i)) { // if at least one subtask exists in array
+        removeSubtask(i);
+        renderSubtasks();
     }
+}
+
+
+function atLeastOneSubtaskExists(i) {
+    return i > -1;
+}
+
+
+function removeSubtask(i) {
+    subtasks.splice(i, 1);
+    subtaskContainer.innerHTML = '';
 }
 
 

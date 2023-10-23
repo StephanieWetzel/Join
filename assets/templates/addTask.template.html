@@ -3,7 +3,7 @@
     <button onclick="closeModal()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
 </div>
 
-<form class="form formBoard" onsubmit="addTask()">
+<form class="form formBoard" onsubmit="addTask()" return false>
     <div class="formColumnsContainer">
         <!-- left column -->
         <div>
@@ -29,7 +29,7 @@
                         <img onclick="toggleContacts()" class="arrowSymbol inputSymbol dNone" id="arrowUpSymbol"
                             src="/assets/images/arrow_up.png" alt="Pfeil hoch">
                     </div>
-                    <div id="assignedContacts"></div>
+                    <div id="assignedContacts" class="assignedContacts"></div>
                 </div>
                 <!-- contacts opened -->
                 <div id="contactSelectionContainer" class="contactSelectionContainer dNone">

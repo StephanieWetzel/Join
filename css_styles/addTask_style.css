@@ -93,6 +93,7 @@ textarea:focus {
 
 /* ASSIGNED TO */
 .contactSelectionContainer {
+    position: relative;
     background-color: white;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -163,6 +164,16 @@ textarea:focus {
 
 .assignContactsInputfield::placeholder {
     color: black;
+}
+
+/* selected contacts */
+.assignedContacts {
+    display: flex;
+    position: absolute;
+}
+
+.selectedContactBubble {
+    margin: 4px 8px 0 0;
 }
 
 /* SUBTASKS */
@@ -351,6 +362,6 @@ textarea:focus {
     font-weight: bold;
 }
 
-.boardCloseBtn button{
+.boardCloseBtn button {
     display: none;
 }
