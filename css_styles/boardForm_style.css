@@ -45,3 +45,13 @@ input{
     height: 32px;
     width: 32px;
 }
+
+@keyframes myModal {
+    from {
+        left: 100%;
+    }
+
+    to {
+        right: 50%;
+    }
+}

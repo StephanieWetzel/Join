@@ -32,7 +32,6 @@ function openModal() {
     const modal = document.getElementById("myModal");
     const modalContent = document.querySelector(".modal-content");
 
-    // Hier wird der Inhalt des Templates in das Modal geladen
     fetch("assets/templates/addTask.template.html")
         .then((response) => response.text())
         .then((data) => {
@@ -45,5 +44,12 @@ function openModal() {
 
 function closeModal() {
     const modal = document.getElementById("myModal");
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
     modal.style.display = "none";
 }

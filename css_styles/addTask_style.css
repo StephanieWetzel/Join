@@ -350,3 +350,7 @@ textarea:focus {
     box-shadow: none !important;
     font-weight: bold;
 }
+
+.boardCloseBtn button{
+    display: none;
+}
