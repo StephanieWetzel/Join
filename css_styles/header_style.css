@@ -106,3 +106,13 @@
     background-color: #29ABE2;
     border-radius: 8px;
 }
+
+.kanban-title{
+    display: flex;
+    align-items: center;
+}
+
+.mobile-logo{
+    height: 50px;
+    opacity: 0;
+}

@@ -122,3 +122,82 @@ b {
 .mb32{
     margin-bottom: 32px;
 }
+
+
+/*Responsice Design*/
+
+@media(max-width: 900px){
+    .head-section-2{
+     width: 10% !important;
+    }
+    .head-section-1{
+     width: 90% !important;
+    }
+ }
+ 
+ @media(max-width: 850px){
+     p {
+         font-size: 18px;
+     }
+     h1{
+         font-size: 54px;
+     }
+     .h2-imprint{
+         font-size: 44px;
+     }
+     .h3-headlines{
+         font-size: 30px;
+     }
+ }
+ 
+ @media(max-width:650px){
+     .head-section-1 p{
+         display: none;
+     }
+     .head-section-1{
+         margin-left: 24px !important;
+     }
+     .mobile-logo{
+         opacity: 1 !important;
+     }
+     p {
+         font-size: 16px;
+     }
+     h1{
+         font-size: 48px;
+     }
+     .h2-imprint{
+         font-size: 40px;
+     }
+     .h3-headlines{
+         font-size: 24px;
+     }
+     .sidebar{
+         display: none !important;
+     }
+     .main-content{
+         width: 100%;
+     }
+     .policy-content{
+         height: 100%;
+         padding: 0 16px;
+     }
+     .index-link{
+         font-size: 16px;
+     }
+     ul{
+         font-size: 16px;
+     }
+ }
+ 
+ @media(max-width:450px){
+     h1{
+         font-size: 40px;
+     }
+     .h2-imprint{
+         font-size: 32px;
+     }
+     .h3-headlines{
+         font-size: 18px;
+     } 
+ }
