@@ -67,9 +67,31 @@ function checkIfFirstNameOrLastName(contact){
 }
 
 
+function showContactBookMobile(){
+    document.getElementById('contactBookInfo').classList.add('mobile-sight');
+    document.getElementById('contactBook').classList.remove('mobile-sight');
+} 
+
 function showContactInfo(index) {
-    document.getElementById('infoContent').classList.add('animate-contact-information');
     removeAllActiveStates();
+    debugger
+    const querie = window.matchMedia("(max-width: 850px)");
+    if (querie.matches === true) {
+        showInfoMobile(index);
+        document.getElementById('contactBookInfo').classList.remove('mobile-sight');
+        document.getElementById('contactBook').classList.add('mobile-sight');
+    }else{
+        showInfoDesktop(index);
+    }
+}
+
+function showInfoMobile(index){
+    printContactHead(index);
+    printContactInformation(index);
+}
+
+function showInfoDesktop(index){
+    document.getElementById('infoContent').classList.add('animate-contact-information');
     printContactHead(index);
     printContactInformation(index);
     document.getElementById(`c${index}`).classList.add('contact-active');
