@@ -1,7 +1,10 @@
 <div class="add-formular">
     <div class="add-form-content">
         <div class="add-heading">
-            <img src="assets/images/Join_white.svg">
+            <img class="add-heading-img" src="assets/images/Join_white.svg">
+            <div class="back-button-mobile">
+                <button onclick="closeContactForm('add')"><img src="assets/images/close_mobile.svg"></button>
+            </div>
             <h1>Add contact</h1>
             <p>Tasks are better with a team!</p>
             <div class="add-heading-decoline"></div>
@@ -13,7 +16,7 @@
             <div class="formular">
                 <div class="back-button">
                     <span class="info-popup">Contact successfully created</span>
-                    <button onclick="closeContactForm('add')"><img src="assets/images/close.svg" alt=""></button>
+                    <button onclick="closeContactForm('add')"><img src="assets/images/close.svg"></button>
                 </div>
                 <form onsubmit="createContact(); return false" class="form-box">
                     <input id="fullName" required class="person-icon custom-input" type="text" placeholder="Name">

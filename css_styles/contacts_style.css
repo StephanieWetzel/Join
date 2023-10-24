@@ -471,6 +471,42 @@
     background-color: rgba(0, 0, 0, 0.07);
 }
 
+.mobile-add-contact{
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    background-color: #081931;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.mobile-add-contact img{
+    height: 36px;
+    margin: 0;
+}
+
+.back-button-mobile{
+    display: none;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: -40px;
+    margin-top: 100px;
+}
+
+.back-button-mobile button{
+    border: 2px;
+    z-index: 1;
+    background-color: #081931;
+}
+.back-button-mobile img{
+    height: 30px;
+    width: 30px;
+}
+
 @media(max-width: 850px){
     .contactbook{
         width: 100%;
@@ -519,4 +555,66 @@
     .mobile-back-btn{
         display: flex;
     }
+    .mobile-add-contact{
+        display: flex;
+    }
+    /*Add Contact Template*/
+    .add-form-content{
+        flex-direction: column !important;
+        align-items: center;
+        margin-top: -200px;
+        height: 300px;
+    }
+    .add-heading{
+        border-bottom-left-radius: 0px !important;
+        border-top-right-radius: 16px;
+        width: 70% !important;
+        height: 300px !important;
+        padding-bottom: 64px !important;
+    }
+    .add-heading-img{
+        display: none;
+    }
+    .add-heading h1{
+        font-size: 40px !important;
+        margin-top: 0px !important;
+    }
+    .add-heading p{
+        font-size: 18px !important;
+    }
+    .add-heading-decoline{
+        width: 25%;
+        margin-bottom: 24px;
+    }
+    .create-contact{
+        flex-direction: column !important;
+        border-top-right-radius: 0px !important;
+        border-bottom-left-radius: 16px;
+        padding-top: 0px !important;
+    }
+    .form-box{
+        align-items: center;
+    }
+    .profile-pic{
+        margin-top: -67px;
+    }
+    .back-button{
+        display: none !important;
+    }
+    .cancel-button{
+        display: none;
+    }
+    .create-button{
+        width: 190px;
+        height: 48px;
+        justify-content: center;
+        font-size: 19px !important;
+    }
+    .create-button img{
+        height: 28px !important;
+    }
+    .back-button-mobile{
+        display: flex !important;
+    }
 }
+
