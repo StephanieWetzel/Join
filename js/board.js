@@ -6,6 +6,8 @@ async function init(activeSection) {
     await includeHTML();
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
+    closeTask();
+    closeModal();
 }
 
 
@@ -47,6 +49,25 @@ function closeModal() {
 
     window.onclick = function (event) {
         if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    modal.style.display = "none";
+}
+
+
+function openTask() {
+    let modal = document.getElementById("customModal");
+    modal.style.display = 'block';
+}
+
+
+function closeTask() {
+    const modal = document.getElementById("customModal");
+
+    modal.onclick = function (event) {
+        if (event.target === modal) {
             modal.style.display = "none";
         }
     }

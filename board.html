@@ -41,8 +41,8 @@
                                 <img class="input-icon" id="searchImg" src="./assets/images/search.svg" alt="">
                             </div>
                         </div>
-                        <button onclick="openModal()" class="addTaskBtn createBtn">Add task <img src="./assets/images/add_task_plus.svg"
-                                alt=""></button>
+                        <button onclick="openModal()" class="addTaskBtn createBtn">Add task <img
+                                src="./assets/images/add_task_plus.svg" alt=""></button>
                     </div>
                 </div>
                 <div class="status">
@@ -52,7 +52,8 @@
                             <div>
                                 <div class="popup-container">
                                     <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
-                                    <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="" onclick="openModal()">
+                                    <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt=""
+                                        onclick="openModal()">
                                 </div>
                             </div>
                         </div>
@@ -67,21 +68,29 @@
                             <p class="status-text">In progress</p>
                             <div class="popup-container">
                                 <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
-                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="" onclick="openModal()">
+                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt=""
+                                    onclick="openModal()">
                             </div>
                         </div>
-                        <div class="status-board">
-                            <p class="user-story">User Story</p>
-                            <p><b>Kochwelt Page & Recipe Recommender</b></p>
-                            <span>Build start page with recipe recommendation</span>
-                            <div class="flex-box">
-                                <div class="progress">
-                                    <div class="progress-bar" id="progressBar" role="progressbar"></div>
+                        <div onclick="openTask()">
+                            <div class="status-board">
+                                <p class="user-story">User Story</p>
+                                <p><b>Kochwelt Page & Recipe Recommender</b></p>
+                                <span>Build start page with recipe recommendation</span>
+                                <div class="flex-box">
+                                    <div class="progress">
+                                        <div class="progress-bar" id="progressBar" role="progressbar"></div>
+                                    </div>
+                                    <p>1/2 Subtasks</p>
                                 </div>
-                                <p>1/2 Subtasks</p>
-                            </div>
-                            <div class="priority">
-                                <img src="./assets/images/medium_symbol.svg" alt="">
+                                <div class="priority">
+                                    <div class="priority-text">
+                                        <p class="FH">FH</p>
+                                        <p class="SW1">SW</p>
+                                        <p class="SW2">SW</p>
+                                    </div>
+                                    <img src="./assets/images/medium_symbol.svg" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,7 +99,8 @@
                             <p class="status-text">Await feedback</p>
                             <div class="popup-container">
                                 <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
-                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt="" onclick="openModal()">
+                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt=""
+                                    onclick="openModal()">
                             </div>
                         </div>
                         <div class="status-board">
@@ -101,6 +111,11 @@
 
                             </div>
                             <div class="priority">
+                                <div class="priority-text">
+                                    <p class="FH">FH</p>
+                                    <p class="SW1">SW</p>
+                                    <p class="SW2">SW</p>
+                                </div>
                                 <img src="./assets/images/low_symbol.svg" alt="">
                             </div>
                         </div>
@@ -112,6 +127,11 @@
 
                             </div>
                             <div class="priority">
+                                <div class="priority-text">
+                                    <p class="FH">FH</p>
+                                    <p class="SW1">SW</p>
+                                    <p class="SW2">SW</p>
+                                </div>
                                 <img src="./assets/images/medium_symbol.svg" alt="">
                             </div>
                         </div>
@@ -120,18 +140,25 @@
                         <div class="test2">
                             <p class="status-text">Done</p>
                         </div>
-                        <div class="status-board">
-                            <p class="technical-task">Technical Task</p>
-                            <p><b>CSS Architecture Planning</b></p>
-                            <span>Define CSS naming conventions and structure...</span>
-                            <div class="flex-box">
-                                <div class="progress">
-                                    <div class="progress-bar" id="progressBar" role="progressbar"></div>
+                        <div onclick="openTask()">
+                            <div class="status-board">
+                                <p class="technical-task">Technical Task</p>
+                                <p><b>CSS Architecture Planning</b></p>
+                                <span>Define CSS naming conventions and structure...</span>
+                                <div class="flex-box">
+                                    <div class="progress">
+                                        <div class="progress-bar" id="progressBar" role="progressbar"></div>
+                                    </div>
+                                    <p>2/2 Subtasks</p>
                                 </div>
-                                <p>2/2 Subtasks</p>
-                            </div>
-                            <div class="priority">
-                                <img src="./assets/images/urgent_symbol.svg" alt="">
+                                <div class="priority">
+                                    <div class="priority-text">
+                                        <p class="FH">FH</p>
+                                        <p class="SW1">SW</p>
+                                        <p class="SW2">SW</p>
+                                    </div>
+                                    <img src="./assets/images/urgent_symbol.svg" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,10 +166,15 @@
                 <div class="modal" id="myModal">
                     <div class="modal-content">
                         <div class="add-task-board" w3-include-html="assets/templates/addTask.template.html">
-
                         </div>
                     </div>
-                </div>                
+                </div>
+                <div id="customModal" class="task">
+                    <div class="open-task">
+                        <button onclick="closeTask()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
+                    </div>
+                </div>
+
             </section>
 </body>
 
