@@ -1,6 +1,7 @@
 let contacts = [];
 let contactInfoOpened = false;
 let logInUser;
+let isEditMobilePopupOpen = false;
 
 
 async function init(activeSection) {
@@ -74,7 +75,6 @@ function showContactBookMobile(){
 
 function showContactInfo(index) {
     removeAllActiveStates();
-    debugger
     const querie = window.matchMedia("(max-width: 850px)");
     if (querie.matches === true) {
         showInfoMobile(index);
@@ -105,13 +105,18 @@ function showInfoDesktop(index){
 function printContactHead(index) {
     let contact = contacts[index];
     let initials = getInitials(contact.firstName, contact.lastName);
+    printContHeadBigScreen(contact, initials, index);
+    printContEditDeleteMobile(index);
+}
+
+function printContHeadBigScreen(contact, initials, index){
     infoHead.innerHTML = /*html*/`
     <div class="contact-bubble large" style="background-color: ${contact.color}">${initials}</div>
     <div class="name-edit-delete">
         <h2>${contact.firstName} ${contact.lastName}</h2>
         <div class="edit-delete" >
             <div class="edit" onclick="openEditContact(${index})">
-                <img class="edit-image" class="edit-image" src="assets/images/edit.svg">
+                <img class="edit-image" src="assets/images/edit.svg">
                 <p>Edit</p>
             </div>
             <div class="delete" onclick="deleteContact(${index})">
@@ -122,6 +127,42 @@ function printContactHead(index) {
     </div>`
 }
 
+
+function printContEditDeleteMobile(index){
+    let editDeleteMobileDiv = document.getElementById('editDeleteMobile');
+    editDeleteMobileDiv.innerHTML = /*html*/`
+    <div class="edit-mobile" onclick="openEditContact(${index})">
+        <img class="edit-image-mobile" src="assets/images/edit.svg">
+        <p>Edit</p>
+    </div>
+    <div class="delete-mobile" onclick="deleteContact(${index})">
+        <img class="delete-image-mobile" src="assets/images/delete.svg">
+        <p>Delete</p>
+    </div>
+    `
+}
+
+function openEditMobilePopup(event){
+    document.getElementById('editDeleteMobile').classList.remove('invis');
+    isEditMobilePopupOpen = true;
+    event.stopPropagation(); // Verhindert, dass das Klickereignis auf das Dokument weitergeleitet wird
+}
+
+function closeMobilePopup(){
+    if (isEditMobilePopupOpen) {
+        document.getElementById('editDeleteMobile').classList.add('invis');
+        isEditMobilePopupOpen = false;
+    }
+}
+
+document.addEventListener('click', function(event) {
+    if (isEditMobilePopupOpen) {
+        const popup = document.getElementById('editDeleteMobile');
+        if (!popup.contains(event.target)) {
+            closeMobilePopup();
+        }
+    }
+});
 
 function openEditContact(index) {
     openEditContactTab();
@@ -143,7 +184,7 @@ function getProfilePic(index) {
     let profileP = document.getElementById('profilePic');
     let initials = getInitials(contacts[index].firstName, contacts[index].lastName);
     profileP.innerHTML = /*html */`
-    <div class="contact-bubble large" style="background-color: ${contacts[index].color}">${initials}</div>
+    <div class="contact-bubble large-edit" style="background-color: ${contacts[index].color}">${initials}</div>
     `
 }
 

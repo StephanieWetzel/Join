@@ -206,7 +206,13 @@
     height: 112px;
     width: 112px;
     font-size: 50px;
-    background-color: red;
+    margin-right: 48px;
+}
+
+.large-edit{
+    height: 112px;
+    width: 112px;
+    font-size: 50px;
     margin-right: 48px;
 }
 
@@ -233,6 +239,16 @@
 }
 
 .edit-delete {
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-mobile{
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-mobile{
     display: flex;
     flex-direction: row;
 }
@@ -473,8 +489,8 @@
 
 .mobile-add-contact{
     position: fixed;
-    bottom: 10%;
-    right: 10%;
+    bottom: 8%;
+    right: 3%;
     background-color: #081931;
     height: 60px;
     width: 60px;
@@ -558,6 +574,9 @@
     .mobile-add-contact{
         display: flex;
     }
+    .blue-color{
+        font-size: 14px;
+    }
     /*Add Contact Template*/
     .add-form-content{
         flex-direction: column !important;
@@ -616,5 +635,32 @@
     .back-button-mobile{
         display: flex !important;
     }
+    /*End Add Contact Template*/
+    /*Edit Contact Template*/
+    .profile-pic{
+        width: 50%;
+    }
+    .large-edit{
+        width: 124px;
+        height: 124px;
+        margin-right: 0px;
+    }
+    /*End Edit Contact Template*/
 }
 
+
+/*Edit-Delete Popup for Mobile*/
+.edit-delete-mobile-popup{
+    position: relative;
+    top: 25%;
+    left: 80%;
+    font-size: 14px;
+    width: 100px;
+    color: black;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: white;
+    padding: 6px;
+    z-index: 10;
+}

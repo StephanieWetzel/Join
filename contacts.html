@@ -46,8 +46,8 @@
                         <img src="assets/images/person_add.svg">
                     </div>
                 </div>
-                <div id="contactBookInfo" onclick="showContactBookMobile()" class="contactbook-info mobile-sight">
-                    <div class="mobile-back-btn">
+                <div id="contactBookInfo" class="contactbook-info mobile-sight">
+                    <div onclick="showContactBookMobile()" class="mobile-back-btn">
                         <img src="assets/images/arrow-left-line.svg">
                     </div>
                     <div class="heading-row">
@@ -58,6 +58,11 @@
                     <div id="infoContent" class="info-content">
                         <div id="infoHead" class="info-head"></div>
                         <div id="contactInformation" class="mt24"></div>
+                    </div>
+                    <div class="mobile-add-contact" onclick="openEditMobilePopup(event)">
+                        <img src="assets/images/more_vert.svg">
+                    </div>
+                    <div id="editDeleteMobile" class="edit-delete-mobile-popup invis">
                     </div>
                 </div>
             </div>
