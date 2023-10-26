@@ -383,6 +383,12 @@ textarea:focus {
     display: none;
 }
 
+/* BOARD */
+.newTask {
+    height: 200px;
+    background-color: white;
+}
+
 /* media queries */
 @media(max-width: 600px) {
     .addTaskOverflowHidden {

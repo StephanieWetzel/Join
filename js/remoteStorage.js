@@ -39,13 +39,22 @@ async function fetchUsers() {
 }
 
 
+async function fetchTasks() {
+    try {
+        tasks = JSON.parse(await getItem('tasks'));
+    } catch (e) {
+        console.error('Loading error:', e);
+    }
+}
+
+
 /*Handle with care xD*/
 async function deleteAllUsers() {
     let users = [];
     await setItem('users', JSON.stringify(users));
 }
 
-async function deleteAllContacts(){
+async function deleteAllContacts() {
     let contacts = [];
     await setItem('contacts', JSON.stringify(contacts));
 }

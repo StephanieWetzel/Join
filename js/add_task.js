@@ -17,6 +17,7 @@ async function initAddTask(activeSection) {
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
     assignContact();
+    await fetchTasks();
 }
 
 
@@ -352,42 +353,66 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
 }
 
 
-function addTaskToBoard() {
+// ADD TO BOARD
+async function addTaskToBoard() {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let dueDate = document.getElementById('dueDate');
-
-    // let assignedContacts = contactBubbles.map(contact => ({
-    //     initials: contact.initials,
-    //     color: contact.color
-    // }));
+    let formattedDueDate = formatDueDate(dueDate.value);
+    // let prioImg = 
 
     let task = ({
         title: title.value,
         description: description.value,
         assignedContacts: contactBubbles,
-        date: dueDate.value,
+        date: formattedDueDate,
         // prio:
-        //     category:
+        // category:
         // subtasks:
     })
     tasks.push(task);
     console.log(tasks);
 
+    await setItem('tasks', JSON.stringify(tasks));
+
     renderTask(task);
 }
 
 
+function formatDueDate(dateString) {
+    return new Date(dateString).toLocaleDateString('en-GB'); // british format -> dd/mm/yyyy
+}
+
+
 function renderTask(task) {
-    let testContainer = document.getElementById('testContainer');
-    testContainer.innerHTML = `
-        <span>${task.title}</span>
-        <div>
+
+    let newTask = document.getElementById('newTask');
+    newTask.innerHTML = `
+    <div class="status-board">
+        <!-- <p class="user-story">User Story</p> -->
+        <p><b>${task.title}</b></p>
+
+        <span>${task.description}</span>
+
+        <div class="flex-box">
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" role="progressbar"></div>
+            </div>
+            <p>1/2 Subtasks</p>
+        </div>
+
+        <div class="priority">
+            <div class="priority-text">
             ${task.assignedContacts.map(contact => `
                 <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">
                     ${contact.initials}
                 </div>
             `).join('')}
+            </div>
         </div>
+
+        <span>${task.date}</span>
     `;
+
+
 }
