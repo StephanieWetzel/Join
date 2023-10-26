@@ -6,6 +6,8 @@ let lowBtn;
 let lowSymbol;
 let contact;
 let subtasks = [];
+let tasks = [];
+let contactBubbles = [];
 
 
 async function initAddTask(activeSection) {
@@ -79,11 +81,16 @@ function toggleInputValue() {
 function showAssignedContacts() {
     let assignedContacts = document.getElementById('assignedContacts');
     assignedContacts.innerHTML = '';
+    contactBubbles = []; // makes sure bubbles aren´t multiplied
     for (let i = 0; i < contacts.length; i++) {
         contact = contacts[i];
         initials = getInitials(contact.firstName, contact.lastName);
         let checkbox = document.getElementById(`checkbox${i}`);
         if (checkbox.checked) {
+            contactBubbles.push({
+                initials: initials,
+                color: contact.color
+            })
             assignedContacts.innerHTML += assignedContactsTemplate();
         }
     }
@@ -92,8 +99,16 @@ function showAssignedContacts() {
 
 function assignedContactsTemplate() {
     return `
-        <div class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contact.color}">${initials}</div>
+        <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contact.color}">${initials}</div>
     `;
+}
+
+
+// CATEGORIES
+function toggleCategoryField() {
+    toggleArrowSymbols();
+    let categorySelection = document.getElementById('categorySelection');
+    categorySelection.click();
 }
 
 
@@ -334,4 +349,45 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
     confirmEditSymbol.onclick = function () {
         editSubtask(i);
     };
+}
+
+
+function addTaskToBoard() {
+    let title = document.getElementById('title');
+    let description = document.getElementById('description');
+    let dueDate = document.getElementById('dueDate');
+
+    // let assignedContacts = contactBubbles.map(contact => ({
+    //     initials: contact.initials,
+    //     color: contact.color
+    // }));
+
+    let task = ({
+        title: title.value,
+        description: description.value,
+        assignedContacts: contactBubbles,
+        date: dueDate.value,
+        // prio:
+        //     category:
+        // subtasks:
+    })
+    tasks.push(task);
+    console.log(tasks);
+
+    renderTask(task);
+}
+
+
+function renderTask(task) {
+    let testContainer = document.getElementById('testContainer');
+    testContainer.innerHTML = `
+        <span>${task.title}</span>
+        <div>
+            ${task.assignedContacts.map(contact => `
+                <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">
+                    ${contact.initials}
+                </div>
+            `).join('')}
+        </div>
+    `;
 }

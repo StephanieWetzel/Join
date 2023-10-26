@@ -1,3 +1,10 @@
+.addTaskMain {
+    display: flex;
+    align-items: center;
+    padding: 0 64px;
+    background-color: #f6f7f8;
+}
+
 .dNone {
     display: none !important;
 }
@@ -18,7 +25,8 @@
 
 .form {
     /* display: flex; */
-    height: 432px;
+    /* height: 432px; */
+    height: 90%;
     color: #2A3647;
     margin-bottom: 88px;
 }
@@ -274,6 +282,8 @@ textarea:focus {
 }
 
 .footerRequiredField {
+    display: flex;
+    align-items: flex-end;
     font-size: 16px;
 }
 
@@ -286,7 +296,7 @@ textarea:focus {
 .footerContainer {
     display: flex;
     justify-content: space-between;
-    margin-top: 200px;
+    margin-top: 136px;
 }
 
 .footerBtnContainer {
@@ -371,4 +381,51 @@ textarea:focus {
 
 .boardCloseBtn button {
     display: none;
+}
+
+/* media queries */
+@media(max-width: 600px) {
+    .addTaskOverflowHidden {
+        overflow: hidden;
+    }
+
+    .addTaskMediaQueryPadding {
+        padding: 0 16px;
+    }
+
+    .addTaskMediaQueryWidth {
+        width: 100%;
+    }
+
+    .addTaskMediaQueryH1 {
+        position: fixed;
+        font-size: 48px;
+    }
+
+    .formColumnsContainer {
+        flex-direction: column;
+        padding: 0 16px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .form {
+        position: absolute;
+        top: 228px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .clearBtn {
+        display: none;
+    }
 }

@@ -1,6 +1,3 @@
-
-
-
 async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();

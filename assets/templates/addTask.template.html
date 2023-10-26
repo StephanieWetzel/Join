@@ -1,5 +1,5 @@
 <div class="boardCloseBtn">
-    <h1 class="boardH1">Add Task</h1>
+    <h1 class="boardH1 addTaskMediaQueryH1">Add Task</h1>
     <button onclick="closeModal()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
 </div>
 
@@ -9,12 +9,12 @@
         <div>
             <div class="formSection">
                 <label class="marginBo8 required">Title</label>
-                <input required type="text" placeholder="Enter a title">
+                <input id="title" required type="text" placeholder="Enter a title">
             </div>
 
             <div class="formSection">
                 <label class="marginBo8">Description</label>
-                <textarea cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                <textarea id="description" cols="30" rows="10" placeholder="Enter a Description"></textarea>
             </div>
 
             <div class="formSection">
@@ -48,8 +48,8 @@
         <div>
             <div class="formSection">
                 <label class="marginBo8 required">Due date</label>
-                <input class="dueDateInputField" type="date" value="tt.mm.jjjj" onfocus="(this.type = 'date')"
-                    onblur="(this.type = 'text')" required>
+                <input id="dueDate" class="dueDateInputField" type="text" placeholder="tt.mm.jjjj"
+                    onfocus="(this.type = 'date')" required>
             </div>
 
             <div class="formSection">
@@ -72,12 +72,13 @@
 
             <div class="formSection">
                 <label class="marginBo8 required">Category</label>
-                <select required>
+                <select id="categorySelection" required>
                     <option disabled selected value="">Select task category</option>
                     <option>Technical Task</option>
                     <option>User Story</option>
                 </select>
-                <img class="arrowSymbol inputSymbol" src="/assets/images/arrow_down.svg" alt="Pfeil unten">
+                <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" src="/assets/images/arrow_down.svg"
+                    alt="Pfeil unten">
             </div>
 
             <div class="formSection">
@@ -103,10 +104,11 @@
                 </svg>
             </button>
 
-            <button id="createTaskBtn" class="addTaskBtn createBtn">
+            <button onclick="addTaskToBoard()" id="createTaskBtn" class="addTaskBtn createBtn">
                 Create Task
                 <img src="./assets/images/check.svg" alt="weißer Haken">
             </button>
         </div>
     </div>
+    <div id="testContainer"></div>
 </form>
