@@ -128,6 +128,7 @@ button {
     gap: 8px;
     font-size: 16px;
     margin-bottom: 16px;
+    cursor: pointer;
 }
 
 .status-board span {
@@ -179,29 +180,30 @@ button {
 .modal {
     display: none;
     position: fixed;
-    top: 50%; /* Zentrierung vertikal */
-    /* right: 50%; */
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Zentrierung relativ zum Modal selbst */
+    transform: translate(-50%, -50%);
     z-index: 9999;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 40px;
     width: 100%;
     height: 100%;
-    padding-top: 40px;
     animation: myModal 0.2s linear;
     overflow: hidden;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: auto; /* Zentrierung des Modals horizontal und vertikal */
-    padding: 20px;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1116px;
     border-radius: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 1116px;
+    padding: 48px 40px 48px 40px;
 }
 
-.modal-content h1{
+.modal-content h1 {
     margin: 0;
 }
 
@@ -209,7 +211,117 @@ button {
     font-size: 16px;
 }
 
-.add-task-board{
+.add-task-board {
     margin: 0 auto;
 }
 
+.priority {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.priority-items {
+    display: flex;
+    align-items: center;
+}
+
+.priority img {
+    margin-left: auto;
+}
+
+.priority-text {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 100px;
+}
+
+.priority-text p {
+    margin: 0;
+    outline-style: solid;
+}
+
+.FH {
+    border-radius: 45px;
+    font-size: 12px;
+    padding: 8px;
+    background-color: #8CAB98;
+    color: white;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.SW1 {
+    border-radius: 45px;
+    font-size: 12px;
+    padding: 8px;
+    background-color: #2A2239;
+    color: white;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.SW2 {
+    border-radius: 45px;
+    font-size: 12px;
+    padding: 8px;
+    background-color: #8C2526;
+    color: white;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.task {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 40px;
+    width: 100%;
+    height: 100%;
+    animation: myModal 0.2s linear;
+    overflow: hidden;
+}
+
+.open-task {
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 525px;
+    border-radius: 30px;
+    padding: 48px 40px 48px 40px;
+    display: flex;
+    gap: 24px;
+}
+
+#closeModal {
+    color: #2A3647;
+    background-color: white;
+    border: none;
+    border-radius: 56px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#closeModal:hover {
+    background-color: rgba(211, 211, 211, 0.551);
+}
+
+.open-task button{
+    height: 32px;
+    width: 32px;
+}
