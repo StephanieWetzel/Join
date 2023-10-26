@@ -1,4 +1,5 @@
 let urgentBtn;
+let prio;
 let urgentSymbol;
 let mediumBtn;
 let mediumSymbol;
@@ -14,10 +15,10 @@ async function initAddTask(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchContacts();
+    await fetchTasks();
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
     assignContact();
-    await fetchTasks();
 }
 
 
@@ -107,6 +108,7 @@ function assignedContactsTemplate() {
 
 // CATEGORIES
 function toggleCategoryField() {
+    
     toggleArrowSymbols();
     let categorySelection = document.getElementById('categorySelection');
     categorySelection.click();
@@ -141,6 +143,7 @@ function handleUrgent(priority) {
             removeUrgentClassAndEnableOtherButtons();
         } else {
             addUrgentClassAndDisableOtherButtons();
+            prio = priority;
         }
     }
 }
@@ -174,6 +177,7 @@ function handleMedium(priority) {
             removeMediumClassAndEnableOtherButtons();
         } else {
             addMediumClassAndDisableOtherButtons();
+            prio = priority;
         }
     }
 }
@@ -207,6 +211,7 @@ function handleLow(priority) {
             removeLowClassAndEnableOtherButtons();
         } else {
             addLowClassAndDisableOtherButtons();
+            prio = priority;
         }
     }
 }
@@ -355,13 +360,16 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
 
 // ADD TO BOARD
 async function addTaskToBoard() {
-    let title = document.getElementById('title');
+    debugger
+    /*let title = document.getElementById('title');
     let description = document.getElementById('description');
-    let dueDate = document.getElementById('dueDate');
+    let dueDate = document.getElementById('dueDate');*/
     let formattedDueDate = formatDueDate(dueDate.value);
+    // NEU ***
+    let selectedCategory = document.getElementById('categorySelection');
     // let prioImg = 
 
-    let task = ({
+    /*let task = ({
         title: title.value,
         description: description.value,
         assignedContacts: contactBubbles,
@@ -369,13 +377,16 @@ async function addTaskToBoard() {
         // prio:
         // category:
         // subtasks:
-    })
-    tasks.push(task);
-    console.log(tasks);
+    })*/
 
+    // NEU ***
+    tasks.push(new Task(title.value, description.value, contactBubbles, formattedDueDate, prio, selectedCategory.value, subtasks))
+
+    //tasks.push(task);
+    console.log(tasks);
     await setItem('tasks', JSON.stringify(tasks));
 
-    renderTask(task);
+    //renderTask(task);
 }
 
 

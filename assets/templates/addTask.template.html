@@ -3,7 +3,7 @@
     <button onclick="closeModal()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
 </div>
 
-<form class="form formBoard" onsubmit="addTask()" return false>
+<form class="form formBoard" onsubmit="addTaskToBoard()" return false>
     <div class="formColumnsContainer">
         <!-- left column -->
         <div>
@@ -74,8 +74,8 @@
                 <label class="marginBo8 required">Category</label>
                 <select id="categorySelection" required>
                     <option disabled selected value="">Select task category</option>
-                    <option>Technical Task</option>
-                    <option>User Story</option>
+                    <option value="technicalTask">Technical Task</option>
+                    <option value="userStory">User Story</option>
                 </select>
                 <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" src="/assets/images/arrow_down.svg"
                     alt="Pfeil unten">
@@ -104,7 +104,7 @@
                 </svg>
             </button>
 
-            <button onclick="addTaskToBoard()" id="createTaskBtn" class="addTaskBtn createBtn">
+            <button id="createTaskBtn" class="addTaskBtn createBtn">
                 Create Task
                 <img src="./assets/images/check.svg" alt="weißer Haken">
             </button>
