@@ -250,6 +250,7 @@ textarea:focus {
 /* prios */
 .prioCategoriesContainer {
     display: flex;
+    justify-content: space-around;
     gap: 16px;
 }
 
@@ -414,15 +415,16 @@ textarea:focus {
     background-color: white;
 }
 
-/* media queries */
+
+/*Responsive Design*/
 @media(max-width: 600px) {
     .addTaskOverflowHidden {
         overflow: hidden;
     }
 
-    .addTaskMediaQueryPadding {
-        padding: 0 16px;
-    }
+    /* .addTaskMediaQueryPadding {
+        padding: 0 16px 0 0;
+    } */
 
     .addTaskMediaQueryWidth {
         width: 100%;
@@ -431,6 +433,11 @@ textarea:focus {
     .addTaskMediaQueryH1 {
         position: fixed;
         font-size: 48px;
+        left: 16px;
+    }
+
+    .addTaskMain {
+        padding: 0;
     }
 
     .formColumnsContainer {
@@ -442,6 +449,7 @@ textarea:focus {
     select,
     textarea {
         width: 100%;
+        font-size: 16px;
     }
 
     .separator {
@@ -454,6 +462,29 @@ textarea:focus {
         width: 100%;
         overflow-y: auto;
         overflow-x: hidden;
+        font-size: 16px;
+    }
+
+    .prioCategoriesContainer {
+        gap: 8px;
+    }
+
+    .prioCategoriesContainer img {
+        width: 18px;
+    }
+
+    .prioCategory {
+        padding: 8px 16px;
+        width: 85px;
+        font-size: 15px;
+    }
+
+    .arrowSymbol {
+        top: 36px;
+    }
+
+    .subtasksAddSymbol {
+        top: 36px;
     }
 
     .clearBtn {

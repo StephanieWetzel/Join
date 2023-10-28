@@ -4,6 +4,8 @@
     background-color: #2b3647;
     height: 100vh;
     width: 20%;
+    position: relative;
+    z-index: 999;
 }
 
 .sidebar-section {
