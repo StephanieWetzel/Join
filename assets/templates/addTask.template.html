@@ -75,9 +75,8 @@
                 <input onclick="toggleCategoryField()" id="categoryInputField" type="text"
                     placeholder="Select task category">
                 <div id="categorySelection" class="categorySelection dNone" required>
-                    <!-- <span disabled selected value="">Select task category</span> -->
-                    <span value="technicalTask">Technical Task</span>
-                    <span value="userStory">User Story</span>
+                    <span onclick="assignCategory(this)" value="Technical Task">Technical Task</span>
+                    <span onclick="assignCategory(this)" value="User Story">User Story</span>
                 </div>
                 <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" id="categoryArrowDown"
                     src="/assets/images/arrow_down.svg" alt="Pfeil runter">

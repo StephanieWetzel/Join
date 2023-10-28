@@ -106,19 +106,6 @@ function assignedContactsTemplate() {
 }
 
 
-// CATEGORIES
-function toggleCategoryField() {
-    let categoryArrowDown = document.getElementById('categoryArrowDown');
-    categoryArrowDown.classList.toggle('dNone');
-
-    let categoryArrowUp = document.getElementById('categoryArrowUp');
-    categoryArrowUp.classList.toggle('dNone');
-
-    let categorySelection = document.getElementById('categorySelection');
-    categorySelection.classList.toggle('dNone');
-}
-
-
 // PRIO BUTTONS
 function handlePriorities(priority) {
     getPrioElements();
@@ -239,6 +226,26 @@ function addLowClassAndDisableOtherButtons() {
     lowSymbol.src = '/assets/images/low_symbol_white.png';
     urgentBtn.disabled = true;
     mediumBtn.disabled = true;
+}
+
+
+// CATEGORIES
+function toggleCategoryField() {
+    let categoryArrowDown = document.getElementById('categoryArrowDown');
+    categoryArrowDown.classList.toggle('dNone');
+
+    let categoryArrowUp = document.getElementById('categoryArrowUp');
+    categoryArrowUp.classList.toggle('dNone');
+
+    let categorySelection = document.getElementById('categorySelection');
+    categorySelection.classList.toggle('dNone');
+}
+
+
+function assignCategory(selectedCategory) {
+    let categoryInputField = document.getElementById('categoryInputField');
+    categoryInputField.value = selectedCategory.getAttribute('value');
+    toggleCategoryField(); // closes categories
 }
 
 
