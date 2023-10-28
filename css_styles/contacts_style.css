@@ -577,65 +577,7 @@
     .blue-color{
         font-size: 14px;
     }
-    /*Add Contact Template*/
-    .add-form-content{
-        flex-direction: column !important;
-        align-items: center;
-        margin-top: -200px;
-        height: 300px;
-    }
-    .add-heading{
-        border-bottom-left-radius: 0px !important;
-        border-top-right-radius: 16px;
-        width: 70% !important;
-        height: 300px !important;
-        padding-bottom: 64px !important;
-    }
-    .add-heading-img{
-        display: none;
-    }
-    .add-heading h1{
-        font-size: 40px !important;
-        margin-top: 0px !important;
-    }
-    .add-heading p{
-        font-size: 18px !important;
-    }
-    .add-heading-decoline{
-        width: 25%;
-        margin-bottom: 24px;
-    }
-    .create-contact{
-        flex-direction: column !important;
-        border-top-right-radius: 0px !important;
-        border-bottom-left-radius: 16px;
-        padding-top: 0px !important;
-    }
-    .form-box{
-        align-items: center;
-    }
-    .profile-pic{
-        margin-top: -67px;
-    }
-    .back-button{
-        display: none !important;
-    }
-    .cancel-button{
-        display: none;
-    }
-    .create-button{
-        width: 190px;
-        height: 48px;
-        justify-content: center;
-        font-size: 19px !important;
-    }
-    .create-button img{
-        height: 28px !important;
-    }
-    .back-button-mobile{
-        display: flex !important;
-    }
-    /*End Add Contact Template*/
+    
     /*Edit Contact Template*/
     .profile-pic{
         width: 50%;
@@ -644,16 +586,15 @@
         width: 124px;
         height: 124px;
         margin-right: 0px;
+        margin-bottom: 6px;
     }
     /*End Edit Contact Template*/
 }
-
-
 /*Edit-Delete Popup for Mobile*/
 .edit-delete-mobile-popup{
-    position: relative;
-    top: 25%;
-    left: 80%;
+    position: fixed;
+    bottom: 5.5%;
+    right: 1%;
     font-size: 14px;
     width: 100px;
     color: black;
@@ -663,4 +604,19 @@
     background-color: white;
     padding: 6px;
     z-index: 10;
+}
+
+.edit-delete-m-anim-open{
+    animation: editDeleteMobileAnimationOpen 0.3s linear;
+}
+.edit-delete-m-anim-close{
+    animation: editDeleteMobileAnimationClose 0.3s linear;
+}
+@keyframes editDeleteMobileAnimationOpen{
+    from{right: -10%;}
+    to{right: 1%;}
+}
+@keyframes editDeleteMobileAnimationClose{
+    from{right: 1%;}
+    to{right: -10%;}
 }

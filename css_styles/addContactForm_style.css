@@ -38,6 +38,11 @@
     }
 }
 
+@keyframes swipeInMobile{
+    from{top: 50%;}
+    to{top: 7%;}
+}
+
 .add-form-content {
     display: flex;
     flex-direction: row;
@@ -233,4 +238,70 @@
 .create-button img {
     margin-left: 8px;
     height: 20px;
+}
+
+
+@media(max-width:850px){
+    /*Add Contact Template*/
+    .add-form-content{
+        flex-direction: column ;
+        align-items: center;
+        margin-top: -200px;
+        top: 7% ;
+    }
+    .add-heading{
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 16px;
+        width: 70% ;
+        height: 300px ;
+        padding-bottom: 64px ;
+    }
+    .add-heading-img{
+        display: none;
+    }
+    .add-heading h1{
+        font-size: 40px ;
+        margin-top: 0px ;
+    }
+    .add-heading p{
+        font-size: 18px ;
+    }
+    .add-heading-decoline{
+        width: 25%;
+        margin-bottom: 24px;
+    }
+    .create-contact{
+        flex-direction: column ;
+        border-top-right-radius: 0px ;
+        border-bottom-left-radius: 16px;
+        padding-top: 0px ;
+    }
+    .form-box{
+        align-items: center;
+    }
+    .profile-pic{
+        margin-top: -67px;
+    }
+    .back-button{
+        display: none ;
+    }
+    .cancel-button{
+        display: none;
+    }
+    .create-button{
+        width: 190px;
+        height: 48px;
+        justify-content: center;
+        font-size: 19px ;
+    }
+    .create-button img{
+        height: 28px ;
+    }
+    .back-button-mobile{
+        display: flex ;
+    }
+    .formular-animation{
+        animation: swipeInMobile 0.2s linear;
+    }
+    /*End Add Contact Template*/
 }

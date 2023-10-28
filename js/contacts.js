@@ -144,13 +144,19 @@ function printContEditDeleteMobile(index){
 
 function openEditMobilePopup(event){
     document.getElementById('editDeleteMobile').classList.remove('invis');
+    document.getElementById('editDeleteMobile').classList.add('edit-delete-m-anim-open')
     isEditMobilePopupOpen = true;
-    event.stopPropagation(); // Verhindert, dass das Klickereignis auf das Dokument weitergeleitet wird
+    event.stopPropagation();
 }
 
 function closeMobilePopup(){
     if (isEditMobilePopupOpen) {
-        document.getElementById('editDeleteMobile').classList.add('invis');
+        document.getElementById('editDeleteMobile').classList.remove('edit-delete-m-anim-open')
+        document.getElementById('editDeleteMobile').classList.add('edit-delete-m-anim-close')
+        setTimeout(() =>{
+            document.getElementById('editDeleteMobile').classList.remove('edit-delete-m-anim-close')
+            document.getElementById('editDeleteMobile').classList.add('invis');
+        }, 280)
         isEditMobilePopupOpen = false;
     }
 }
