@@ -281,6 +281,31 @@ textarea:focus {
     color: #FF8190;
 }
 
+/* CATEGORY */
+.categorySelection {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: black;
+}
+
+.categorySelection span {
+    padding: 8px 16px;
+}
+
+.categorySelection span:hover {
+    cursor: pointer;
+    background-color: #EAEBEC;
+    border-radius: 8px;
+}
+
+#categoryInputField::placeholder {
+    color: black;
+}
+
+/* FOOTER */
 .footerRequiredField {
     display: flex;
     align-items: flex-end;

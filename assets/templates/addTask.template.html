@@ -71,14 +71,18 @@
             </div>
 
             <div class="formSection">
-                <label class="marginBo8 required">Category</label>
-                <select id="categorySelection" required>
-                    <option disabled selected value="">Select task category</option>
-                    <option value="technicalTask">Technical Task</option>
-                    <option value="userStory">User Story</option>
-                </select>
-                <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" src="/assets/images/arrow_down.svg"
-                    alt="Pfeil unten">
+                <span class="marginBo8 required">Category</span>
+                <input onclick="toggleCategoryField()" id="categoryInputField" type="text"
+                    placeholder="Select task category">
+                <div id="categorySelection" class="categorySelection dNone" required>
+                    <!-- <span disabled selected value="">Select task category</span> -->
+                    <span value="technicalTask">Technical Task</span>
+                    <span value="userStory">User Story</span>
+                </div>
+                <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" id="categoryArrowDown"
+                    src="/assets/images/arrow_down.svg" alt="Pfeil runter">
+                <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol dNone" id="categoryArrowUp"
+                    src="/assets/images/arrow_up.png" alt="Pfeil hoch">
             </div>
 
             <div class="formSection">

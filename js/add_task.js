@@ -108,10 +108,14 @@ function assignedContactsTemplate() {
 
 // CATEGORIES
 function toggleCategoryField() {
-    
-    toggleArrowSymbols();
+    let categoryArrowDown = document.getElementById('categoryArrowDown');
+    categoryArrowDown.classList.toggle('dNone');
+
+    let categoryArrowUp = document.getElementById('categoryArrowUp');
+    categoryArrowUp.classList.toggle('dNone');
+
     let categorySelection = document.getElementById('categorySelection');
-    categorySelection.click();
+    categorySelection.classList.toggle('dNone');
 }
 
 
