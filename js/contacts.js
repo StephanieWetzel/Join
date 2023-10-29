@@ -174,6 +174,7 @@ function openEditContact(index) {
     openEditContactTab();
     getProfilePic(index);
     changeValues(index);
+    closeMobilePopup();
 }
 
 
@@ -205,8 +206,8 @@ function openEditContactTab() {
 
 
 async function editContact() {
-    document.getElementById('editPopup').classList.remove('info-popup-animation')
-    document.getElementById('editPopup').classList.add('info-popup-animation')
+    //document.getElementById('editPopup').classList.remove('info-popup-animation')
+    //document.getElementById('editPopup').classList.add('info-popup-animation')
     let index = document.getElementById('edit-index').value;
     let contact = contacts[index];
     let fullName = document.getElementById('editFullName').value;
@@ -214,6 +215,10 @@ async function editContact() {
     let tel = document.getElementById('editPhone').value;
     let firstLastName = splitString(fullName);
     overwriteContact(firstLastName, mail, tel, contact);
+    document.querySelector(".edit-contact").classList.add("d-none");
+    document.getElementById('editFormContent').classList.remove('formular-animation');
+    document.querySelector(".sticky-btn").classList.remove("d-none");
+    showContactInfo(index);
 }
 
 
@@ -247,8 +252,21 @@ async function createContact() {
     contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
     await setItem('contacts', JSON.stringify(contacts));
     resetForms();
+    closeAddC();
+    await init('contactsSection');
+    showNewContact();
 }
 
+function showNewContact(){
+    const addedContact = contacts.length - 1 ;
+    showContactInfo(addedContact);
+}
+
+function closeAddC(){
+    document.querySelector(".add-contact").classList.add("d-none");
+    document.querySelector(".add-form-content").classList.remove('formular-animation');
+    document.querySelector(".sticky-btn").classList.remove("d-none");
+}
 
 function resetForms() {
     fullName.value = '';
