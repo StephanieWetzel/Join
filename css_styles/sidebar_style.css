@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     background-color: #2b3647;
-    min-height: 100vh;
-    height: auto;
+    height: 100vh;
     width: 20%;
     position: relative;
     z-index: 199;
@@ -105,76 +104,4 @@
 .invis {
     opacity: 0;
     user-select: none;
-}
-
-
-@media(max-width: 1024px) {
-    .sidebar {
-        flex-direction: row;
-        justify-content: center;
-        width: auto;
-        /* margin-top: -50px; */
-        /* height: auto; */
-        min-height: 0%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-
-    .sidebar-img {
-        display: none;
-    }
-
-    .sidebar-sections {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 10%;
-        width: 100%;
-    }
-
-    .sidebar-section {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-    }
-
-    .sidebar-section-contents-end {
-        display: flex;
-        justify-content: flex-end;
-        width: auto;
-    }
-
-    .sidebar-section-contents-start {
-        display: flex;
-        justify-content: flex-start;
-        width: auto;
-    }
-}
-
-@media(max-width: 1280px) {
-    .sidebar-text {
-        font-size: 16px;
-    }
-
-    .sidebar-section img {
-        height: 30px;
-    }
-
-    .policy-rights-section a {
-        font-size: 12px;
-    }
-
-    .sidebar-img img {
-        height: 90px;
-    }
-
-    .contactbook-alignment {
-        padding: 4px;
-    }
 }
