@@ -16,6 +16,7 @@ async function init(activeSection) {
     setHeaderInitials(logInUser);
     closeTask();
     closeModal();
+    renderTasks();
 }
 
 
@@ -84,38 +85,53 @@ function closeTask() {
 }
 
 
-// function updateSummaryCounts() {
-//     // Hier sollten Sie den code einfügen, um die cardCounts-Datenstruktur zu aktualisieren
-//     // Zählen Sie die Karten in verschiedenen Abschnitten des Boards und aktualisieren Sie cardCounts
-//     cardCounts.todo = countTodoCards(); // Beispiel: Funktion, um die Anzahl der To-do-Karten zu zählen
-//     cardCounts.done = countDoneCards(); // Beispiel: Funktion, um die Anzahl der Done-Karten zu zählen
-//     cardCounts.urgent = countUrgentCards(); // Beispiel: Funktion, um die Anzahl der Urgent-Karten zu zählen
-//     // usw.
+function renderTasks() {
+    const customModal = document.getElementById('customModal'); 
 
-//     // Rufen Sie die greet-Funktion aus der summary.js-Datei auf, um die Zusammenfassung zu aktualisieren
-//     greet();
-// }
+    customModal.innerHTML = ''; 
+    
+        const taskHTML = `
+        <div class="open-task">
+            <div>
+                <button onclick="closeTask()" id="closeModal"><img src="/assets/images/close.svg"
+                        alt=""></button>
+                <div class="status-board status-board-open">
+                    <p class="technical-task">Technical Task</p>
+                    <p class="headline"><b>CSS Architecture Planning</b></p>
+                    <span class="taskInformation">Define CSS naming conventions and structure</span>
+                    <span style="color: #42526E;">Due Date: <span class="m-left1">02/09/2023</span></span>
+                    <span style="color: #42526E;">Priority: <span class="m-left2">Urgent<img class="board-img"
+                                src="./assets/images/urgent_symbol.svg" alt=""></span></span>
+                    <span style="color: #42526E;">Assigned To:</span>
+                    <div class="assignedFrom">
+                        <p class="FH">FH</p><span>Fuad Hussen</span>
+                    </div>
+                    <div class="assignedFrom">
+                        <p class="SW1">SW</p><span>Stephanie Wetzel</span>
+                    </div>
+                    <div class="assignedFrom">
+                        <p class="SW2">SW</p><span>Sebastian Wolff</span>
+                    </div>
+                    <span style="color: #42526E;">Subtasks</span>
+                    <div>
+                        <span><img src="./assets/images/chop.svg" alt=""></span>
+                        <span><img src="./assets/images/Rectangle.svg" alt=""></span>
+                        <span>Implement Recipe Recommendation</span>
+                    </div>
+                    <div class="openBoard-options">
+                        <img src="./assets/images/delete.svg" alt="">
+                        <span>Delete</span>
+                        <img src="./assets/images/edit.svg" alt="">
+                        <span>Edit</span>
+                    </div>
+                </div>
+            </div>
+        `;
 
-// // Diese Funktion zählt die Anzahl der To-do-Karten im Board (Beispiel)
-// function countTodoCards() {
-//     // Hier sollte der Code stehen, um die Anzahl der To-do-Karten im Board zu zählen
-//     // Zum Beispiel, durch Iteration über die Karten und Überprüfung ihres Status
-//     // Geben Sie die Anzahl der To-do-Karten zurück
-//     return 1; // Beispiel: 1 To-do-Karte
-// }
+        customModal.innerHTML += taskHTML;
+    }
 
-// // Diese Funktion zählt die Anzahl der Done-Karten im Board (Beispiel)
-// function countDoneCards() {
-//     // Hier sollte der Code stehen, um die Anzahl der Done-Karten im Board zu zählen
-//     // Zum Beispiel, durch Iteration über die Karten und Überprüfung ihres Status
-//     // Geben Sie die Anzahl der Done-Karten zurück
-//     return 1; // Beispiel: 1 Done-Karte
-// }
 
-// // Diese Funktion zählt die Anzahl der Urgent-Karten im Board (Beispiel)
-// function countUrgentCards() {
-//     // Hier sollte der Code stehen, um die Anzahl der Urgent-Karten im Board zu zählen
-//     // Zum Beispiel, durch Iteration über die Karten und Überprüfung ihres Status
-//     // Geben Sie die Anzahl der Urgent-Karten zurück
-//     return 1; // Beispiel: 1 Urgent-Karte
-// }
+window.onload = function () {
+    renderTasks();
+}

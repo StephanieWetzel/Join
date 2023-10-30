@@ -131,7 +131,7 @@ button {
     cursor: pointer;
 }
 
-.status-board span {
+.short-info {
     color: #a8a8a8;
     font-weight: 400;
 }
@@ -251,6 +251,7 @@ button {
     height: 15px;
     display: flex;
     justify-content: center;
+    margin: 0;
 }
 
 .SW1 {
@@ -263,6 +264,7 @@ button {
     height: 15px;
     display: flex;
     justify-content: center;
+    margin: 0;
 }
 
 .SW2 {
@@ -275,6 +277,7 @@ button {
     height: 15px;
     display: flex;
     justify-content: center;
+    margin: 0;
 }
 
 .task {
@@ -349,4 +352,36 @@ button {
 .board-img{
     width: 17px;
     height: 12px;
+    padding-left: 10px;
+}
+
+.assignedFrom{
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    gap: 16px;
+    color: black;
+}
+
+.status-board-open{
+    gap: 24px;
+}
+
+.openBoard-options{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.openBoard-options span{
+    padding-left: 8px;
+}
+
+.openBoard-options span:first-of-type{
+    border-right: 1px solid #D1D1D1;
+    padding-right: 8px;
+}
+
+.openBoard-options img{
+    padding-left: 8px;
 }
