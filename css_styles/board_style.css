@@ -298,7 +298,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 525px;
+    max-width: 525px;
     border-radius: 30px;
     padding: 48px 40px 48px 40px;
     display: flex;
@@ -312,9 +312,9 @@ button {
     border-radius: 56px;
     cursor: pointer;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    top: 64px;
+    right: 24px;
 }
 
 #closeModal:hover {
@@ -324,4 +324,29 @@ button {
 .open-task button {
     height: 32px;
     width: 32px;
+}
+
+.headline{
+    font-size: 61px;
+    margin: 12px 0;
+}
+
+.taskInformation{
+    font-size: 20px;
+    color: black!important;
+}
+
+.m-left1{
+    margin-left: 16px;
+    color: black!important;
+}
+
+.m-left2{
+    margin-left: 32px;
+    color: black!important;
+}
+
+.board-img{
+    width: 17px;
+    height: 12px;
 }
