@@ -371,7 +371,6 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
 
 // ADD TO BOARD
 async function addTaskToBoard() {
-    debugger
     /*let title = document.getElementById('title');
     let description = document.getElementById('description');
     let dueDate = document.getElementById('dueDate');*/
@@ -392,11 +391,9 @@ async function addTaskToBoard() {
 
     // NEU ***
     tasks.push(new Task(title.value, description.value, contactBubbles, formattedDueDate, prio, selectedCategory.value, subtasks))
-
+    await setItem('tasks', JSON.stringify(tasks));
     //tasks.push(task);
     console.log(tasks);
-    await setItem('tasks', JSON.stringify(tasks));
-
     //renderTask(task);
 }
 

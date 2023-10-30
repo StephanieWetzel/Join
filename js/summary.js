@@ -1,4 +1,5 @@
 let logInUser;
+let tasks = [];
 
 async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
@@ -6,6 +7,7 @@ async function init(activeSection) {
     markActiveSection(activeSection);
     greet();
     setHeaderInitials(logInUser);
+    await fetchTasks();
 }
 
 
@@ -35,4 +37,25 @@ function setUserNameAndMessage(content, greetingMessage){
         content.innerHTML = `
         <h2>${greetingMessage}</h2>`
     }
+}
+
+function displayUrgentTasksCounter(){
+    let uCount = 0;
+    tasks.forEach(task => {
+        if (task.priority === 'urgent') {
+            uCount++;}}
+        );
+    return uCount
+}
+
+function getUpcomingDeadline(){
+    let urgentDates = [];
+    tasks.forEach(task => {
+        if (task.priority === 'urgent') {
+            urgentDates.push(task.date)
+        }
+    });
+    console.log(urgentDates)
+    urgentDates.sort()
+    console.log(urgentDates)
 }
