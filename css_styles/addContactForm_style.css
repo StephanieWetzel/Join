@@ -306,3 +306,56 @@
     }
     /*End Add Contact Template*/
 }
+
+@media(max-width:600px){
+    .add-form-content{
+        width: 100%;
+    }
+    .custom-input{
+        width: 230px;
+    }
+    .person-icon{
+        background-position-x: 230px;
+    }
+    .mail-icon{
+        background-position-x: 230px;
+    }
+    .phone-icon{
+        background-position-x: 230px;
+    }
+    .add-heading h1{
+        font-size: 30px;
+    }
+    .add-heading p{
+        font-size: 15px
+    }
+    .back-button-mobile{
+        margin-top: 8px;
+        margin-bottom: 40px;
+    }
+    .profile-pic{
+        width: auto;
+    }
+    .profile-pic img{
+        height: 120px;
+        width: 120px;
+    }
+    .large-edit{
+        width: 120px;
+        height: 120px;
+    }
+    .form-box{
+        margin-top: 0;
+    }
+    .add-form-content{
+        z-index: 1000;
+    }
+}
+
+@media(max-height: 670px){
+    .add-form-content{
+        margin-top: 0;
+        top: unset;
+        justify-content: center;
+    }
+}

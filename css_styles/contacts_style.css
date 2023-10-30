@@ -546,6 +546,7 @@
     }
     .head-section-1{
         align-items: center;
+        margin-left: 24px !important;
     }
     .contactbook-info{
         width: 100%;
@@ -619,4 +620,46 @@
 @keyframes editDeleteMobileAnimationClose{
     from{right: 1%;}
     to{right: -10%;}
+}
+
+@media(max-width:600px){
+    .contactbook{
+        padding: 0 0 0 0;
+    }
+    .contact{
+        padding: 16px 0 16px 6px;
+        width: 100%;
+    }
+    .small{
+        height: 38px;
+        width: 38px;
+        font-size: 14px;
+    }
+    .contact-name-mail{
+        margin-left: 32px;
+    }
+    .info-content{
+        width: auto;
+    }
+    .contactbook-info{
+        padding-left: 16px;
+    }
+    .head-section-2 a{
+        opacity: 0;
+    }
+    .options-popup{
+        z-index: 100;
+    }
+}
+
+@media(max-height: 670px){
+    .heading-row{
+        margin-top: 0px;
+    }
+   .mobile-back-btn{
+    top: 8%;
+   }
+   .edit-delete-mobile-popup{
+    bottom: 7.5%;
+   }
 }
