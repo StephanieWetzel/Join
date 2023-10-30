@@ -44,6 +44,7 @@ textarea {
     border: solid 1px #DBDBDB;
     border-radius: 8px;
     width: 440px;
+    min-width: 100%;
     box-sizing: border-box;
     outline: none;
     cursor: pointer;
@@ -417,14 +418,34 @@ textarea:focus {
 
 
 /*Responsive Design*/
-@media(max-width: 600px) {
+@media(max-width: 1330px) {
+    .addTaskMain {
+        justify-content: center;
+    }
+
+    .formColumnsContainer {
+        flex-direction: column;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 624px
+    }
+}
+
+@media(max-width: 700px) {
     .addTaskOverflowHidden {
         overflow: hidden;
     }
 
     /* .addTaskMediaQueryPadding {
-        padding: 0 16px 0 0;
-    } */
+            padding: 0 16px 0 0;
+        } */
 
     .addTaskMediaQueryWidth {
         width: 100%;
@@ -449,11 +470,7 @@ textarea:focus {
     select,
     textarea {
         width: 100%;
-        font-size: 16px;
-    }
-
-    .separator {
-        display: none;
+        /* font-size: 18px; */
     }
 
     .form {
@@ -462,6 +479,26 @@ textarea:focus {
         width: 100%;
         overflow-y: auto;
         overflow-x: hidden;
+        /* font-size: 18px; */
+    }
+}
+
+@media(max-width: 500px) {
+
+    input,
+    select,
+    textarea {
+        /* width: 100%; */
+        font-size: 16px;
+    }
+
+
+    .form {
+        /* position: absolute;
+        top: 228px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden; */
         font-size: 16px;
     }
 
