@@ -8,7 +8,7 @@
 
 .main-content {
     width: 80%;
-    height: 100vh;
+    height: 100%;
 }
 
 .contactbook-section {
@@ -383,7 +383,7 @@
     }
 
     /*Sidebar*/
-    .sidebar-text {
+    /* .sidebar-text {
         font-size: 16px;
     }
 
@@ -401,7 +401,7 @@
 
     .contactbook-alignment {
         padding: 4px;
-    }
+    } */
 }
 
 @media(max-width: 1024px) {
@@ -409,7 +409,7 @@
         flex-direction: column-reverse;
     }
 
-    .sidebar {
+    /* .sidebar {
         flex-direction: row;
         justify-content: center;
         height: 10%;
@@ -449,7 +449,7 @@
         display: flex;
         justify-content: flex-start;
         width: auto;
-    }
+    } */
 
     .policy-rights-section {
         display: none;
