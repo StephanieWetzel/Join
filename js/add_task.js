@@ -371,30 +371,11 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
 
 // ADD TO BOARD
 async function addTaskToBoard() {
-    /*let title = document.getElementById('title');
-    let description = document.getElementById('description');
-    let dueDate = document.getElementById('dueDate');*/
     let formattedDueDate = formatDueDate(dueDate.value);
-    // NEU ***
     let selectedCategory = document.getElementById('categorySelection');
-    // let prioImg = 
-
-    /*let task = ({
-        title: title.value,
-        description: description.value,
-        assignedContacts: contactBubbles,
-        date: formattedDueDate,
-        // prio:
-        // category:
-        // subtasks:
-    })*/
-
-    // NEU ***
     tasks.push(new Task(title.value, description.value, contactBubbles, formattedDueDate, prio, selectedCategory.value, subtasks))
     await setItem('tasks', JSON.stringify(tasks));
-    //tasks.push(task);
     console.log(tasks);
-    //renderTask(task);
 }
 
 

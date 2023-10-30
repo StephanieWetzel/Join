@@ -56,6 +56,10 @@ function getUpcomingDeadline(){
         }
     });
     console.log(urgentDates)
-    urgentDates.sort()
+    urgentDates.sort(function(a,b){
+        let dateA = new Date(a);
+        let dateB = new Date(b);
+        return dateA - dateB;
+    })
     console.log(urgentDates)
 }
