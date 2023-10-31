@@ -416,14 +416,6 @@ body {
 
 /*Responsive Design*/
 @media(max-width:1080px) {
-    .email-styling {
-        background-position-x: 273px;
-    }
-
-    .input-style {
-        width: 300px;
-    }
-
     .login-btn {
         width: 80px;
         height: 40px;
@@ -441,17 +433,81 @@ body {
     }
 }
 
-@media(max-width:850px) {
+/* Steffi */
+@media(min-height:1300px) and (min-width:900px) {
+    .email-styling {
+        background-position-x: 476px;
+    }
+
+    .input-style {
+        width: 400px;
+    }
+
+    .fish-eye-btn {
+        margin-left: -50px;
+    }
+
+    .fish-eye-div {
+        /* width: auto; */
+    }
+
+    .btns {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .btns button {
+        width: 200px;
+        height: 48px;
+    }
+
+    .form {
+        height: 60%;
+        width: 70%;
+        gap: 56px;
+    }
+
+    .checkbox {
+        width: 100%;
+    }
+}
+
+@media(min-height:600px) and (max-height:800px) {
+    .form h1 {
+        margin-top: 16px;
+    }
+
+    .btns {
+        margin-bottom: 8px;
+    }
+
+    .mobile-sign-up {
+        margin-top: 16px;
+    }
+}
+
+@media(min-width:1000px) and (min-height:600px) {
+    .btns {
+        margin: 16px 0 32px 0;
+        gap: 16px;
+    }
+
+    .btns button {
+        width: 200px;
+    }
+}
+
+@media(max-width:1100px) {
     .form {
         width: 60%;
     }
-
 }
 
-@media(max-width:650px) {
+@media(max-width:800px) {
     .form {
         width: 90%;
-        margin-top: 80px;
+        /* margin-top: 80px; */
     }
 
     .join-logo-animation {
@@ -465,10 +521,11 @@ body {
     }
 }
 
-@media(max-width:450px) {
+@media(max-width:500px) {
     .header-right {
         display: none;
     }
+
     .btns {
         flex-direction: column;
         justify-content: center;
@@ -516,7 +573,26 @@ body {
     .checkbox p {
         font-size: 16px;
     }
+
+    .email-styling {
+        background-position-x: 208px;
+    }
+
+    .input-style {
+        width: 232px;
+    }
+
+    .fish-eye-btn {
+        margin-left: -50px;
+    }
 }
+
+
+
+
+
+
+
 
 /*Animation Mobile*/
 
@@ -560,20 +636,24 @@ body {
     }
 }
 
-@media(max-height:670px){
-   .header{
-    margin: 8px;
-   }
-   .header img{
-    height: 64px;
-   }
-   .form{
-    margin-top: 24px;
-   }
-   .form h1{
-    font-size: 32px;
-   }
-   .decoline{
-    width: 60px;
-   }
+@media(max-height:670px) {
+    .header {
+        margin: 8px;
+    }
+
+    .header img {
+        height: 64px;
+    }
+
+    .form {
+        margin-top: 24px;
+    }
+
+    .form h1 {
+        font-size: 32px;
+    }
+
+    .decoline {
+        width: 60px;
+    }
 }
