@@ -1,5 +1,10 @@
 let logInUser;
 let tasks = [];
+let months = [
+    'January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+  ];
 
 async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
@@ -8,6 +13,8 @@ async function init(activeSection) {
     greet();
     setHeaderInitials(logInUser);
     await fetchTasks();
+    displayUrgentTasks();
+    displayTasksInBoard();
 }
 
 
@@ -39,7 +46,7 @@ function setUserNameAndMessage(content, greetingMessage){
     }
 }
 
-function displayUrgentTasksCounter(){
+function getUrgentTasksCounter(){
     let uCount = 0;
     tasks.forEach(task => {
         if (task.priority === 'urgent') {
@@ -55,11 +62,42 @@ function getUpcomingDeadline(){
             urgentDates.push(task.date)
         }
     });
-    console.log(urgentDates)
-    urgentDates.sort(function(a,b){
-        let dateA = new Date(a);
-        let dateB = new Date(b);
-        return dateA - dateB;
-    })
-    console.log(urgentDates)
+    urgentDates.sort()
+    console.log(urgentDates[0])
+    return urgentDates[0];
+}
+
+function getUrgentMonth(str){
+    let lastTwoDigits = str.slice(-2);
+    return months[lastTwoDigits - 1];
+}
+
+function getUrgentMonthDay(str){
+    let splits = str.split('-'); //splits the incoming string at any '-' index , takes the so splitted single strings into array
+    return splits[1]
+}
+
+function getUrgentYear(str){
+    let year = str.slice(0, 4);
+    return year
+}
+
+function displayUrgentTasks(){
+    let uTasks = getUrgentTasksCounter();
+    let uDate = getUpcomingDeadline();
+    urgentCounter.innerHTML = /*html*/`
+    <h1>${uTasks}</h1>
+    <span>Urgent</span>`
+    deadlineDate.innerHTML = /*html */`
+    <p>${getUrgentMonth(uDate)} ${getUrgentMonthDay(uDate)}, ${getUrgentYear(uDate)}</p>
+    <p>Upcoming Deadline</p>
+    `
+}
+
+function displayTasksInBoard(){
+    let tasksInBoard = tasks.length;
+    tInBoard.innerHTML = /*html*/`
+    <h1>${tasksInBoard}</h1>
+    <span>Tasks in Board</span>
+    `
 }
