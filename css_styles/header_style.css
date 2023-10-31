@@ -14,7 +14,7 @@
         0px 7px rgba(0, 0, 0, 0.005);
     /* in order for border to show */
     position: relative;
-    z-index: 999;
+    z-index: 99;
 }
 
 .head-section-1 {

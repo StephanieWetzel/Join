@@ -436,6 +436,17 @@ textarea:focus {
     textarea {
         width: 624px
     }
+
+    .subtaskContainer {
+        position: initial;
+        width: 100%;
+        height: auto;
+    }
+
+    .footerContainer {
+        margin-top: 24px;
+        padding: 0 16px 16px 16px;
+    }
 }
 
 @media(max-width: 700px) {
@@ -481,6 +492,14 @@ textarea:focus {
         overflow-x: hidden;
         /* font-size: 18px; */
     }
+
+    .footerContainer {
+        margin-bottom: 200px;
+    }
+
+    .footerRequiredField {
+        font-size: 14px;
+    }
 }
 
 @media(max-width: 500px) {
@@ -491,7 +510,6 @@ textarea:focus {
         /* width: 100%; */
         font-size: 16px;
     }
-
 
     .form {
         /* position: absolute;
@@ -524,7 +542,17 @@ textarea:focus {
         top: 36px;
     }
 
+    .addTaskBtn {
+        font-size: 16px;
+        padding: 4px;
+        gap: 4px;
+    }
+
     .clearBtn {
         display: none;
+    }
+
+    .footerRequiredField {
+        font-size: 12px;
     }
 }
