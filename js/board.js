@@ -7,8 +7,6 @@ async function init(activeSection) {
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
     await fetchTasks();
-    initAddTask(activeSection);
-    addTaskToBoard();
     closeTask();
     openModal();
     closeModal();
