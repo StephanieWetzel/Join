@@ -54,7 +54,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 34px;
 }
 
 .dFlex h1 {
@@ -65,6 +65,7 @@ a {
     padding: 38px 19px 38px 19px;
     background-color: white;
     border-radius: 30px;
+    border: solid 1.5px #DBDBDB;
 }
 
 .flexDirection {
@@ -114,8 +115,8 @@ a {
 .summaryTasks {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    /* max-width: 560px; */
+    gap: 16px;
+    max-width: 560px;
     text-align: center;
 }
 
@@ -149,7 +150,7 @@ a {
     display: flex;
     flex-direction: column;
     padding-left: 64px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 .greet h1 {
@@ -195,7 +196,7 @@ a {
 
 /* responsive design */
 
-@media(min-width:1024px) and (max-width:1160px) {
+@media(min-width:1024px) and (max-width:1221px) {
     .greet {
         padding-left: 24px;
     }
@@ -290,11 +291,11 @@ a {
     }
 }
 
-@media(min-width:850px) {
+/* @media(min-width:850px) {
     .firstList {
         width: 288px;
     }
-}
+} */
 
 @media(min-width:700px) and (max-width:850px) {
     .firstList {
