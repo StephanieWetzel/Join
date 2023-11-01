@@ -239,6 +239,13 @@
     margin-right: 24px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Inter';
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
+    transition: 200ms;
 }
 
 .cancel-button img {
@@ -251,9 +258,19 @@
     align-items: center;
     background-color: #081931;
     color: white;
+    font-weight: 600;
     font-size: 16px;
     border-radius: 8px;
     font-family: 'Inter';
+    cursor: pointer;
+}
+
+.create-button:hover {
+    background-color: #29ABE2;
+    color: white;
+    border: none;
+    box-shadow: 0px 8px 10px -4px rgba(0, 0, 0, 0.4);
+    transition: 200ms;
 }
 
 .create-button img {
@@ -261,6 +278,39 @@
     height: 20px;
 }
 
+@media(min-width:850px) {
+    .profile-pic {
+        display: none;
+    }
+
+    .add-form-content {
+        height: 50%;
+    }
+
+    .add-heading h1 {
+        font-size: 40px;
+    }
+
+    .add-heading p {
+        font-size: 24px;
+    }
+
+    .add-heading img {
+        height: 80px;
+    }
+
+    .form-box {
+        margin-top: 0;
+    }
+
+    .back-button {
+        margin-top: 0;
+    }
+
+    .back-button img {
+        margin-left: 200px;
+    }
+}
 
 @media(max-width:850px) {
 
@@ -268,7 +318,7 @@
     .add-form-content {
         flex-direction: column;
         align-items: center;
-        margin-top: -200px;
+        margin-top: -248px;
         top: 7%;
     }
 

@@ -452,8 +452,12 @@
         width: 100%;
     }
 
+    .contactbook {
+        margin-bottom: 16px;
+    }
+
     .contactbook-section {
-        height: 85%;
+        height: 88%;
     }
 
     .contactbook-info {
@@ -526,7 +530,7 @@
 @media(max-width: 850px) {
     .contactbook {
         width: 100%;
-        padding: 0 120px 16px 120px;
+        /* padding: 0 120px 16px 120px; */
     }
 
     .sticky-btn {
@@ -670,7 +674,7 @@
     }
 
     .contact-name-mail {
-        margin-left: 32px;
+        margin-left: 24px;
     }
 
     .info-content {
