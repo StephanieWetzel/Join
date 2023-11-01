@@ -368,6 +368,10 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
     };
 }
 
+//Clear Task
+function clearTaskForm(){
+    initAddTask('tasks');
+}
 
 // ADD TO BOARD
 async function addTaskToBoard() {
@@ -375,7 +379,7 @@ async function addTaskToBoard() {
     let selectedCategory = document.getElementById('categorySelection');
     tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, selectedCategory.value, subtasks))
     await setItem('tasks', JSON.stringify(tasks));
-    initAddTask();
+    initAddTask('tasks');
 }
 
 function formatDueDate(dateString) {
