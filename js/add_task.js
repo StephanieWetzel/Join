@@ -371,7 +371,7 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
 
 // ADD TO BOARD
 async function addTaskToBoard() {
-    //let formattedDueDate = formatDueDate(dueDate.value);
+    // let formattedDueDate = formatDueDate(dueDate.value);
     let selectedCategory = document.getElementById('categorySelection');
     tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, selectedCategory.value, subtasks))
     await setItem('tasks', JSON.stringify(tasks));
@@ -413,6 +413,5 @@ function renderTask(task) {
 
         <span>${task.date}</span>
     `;
-
 
 }

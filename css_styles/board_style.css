@@ -177,6 +177,10 @@ button {
     width: max-content;
 }
 
+#myModal{
+    display: none;
+}
+
 .modal {
     display: none;
     position: fixed;
