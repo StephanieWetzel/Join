@@ -63,3 +63,7 @@ function logOut() {
     localStorage.setItem('loggedInUser', logInUserAsJSON);
     window.location.href = 'login_index.html?msg=Logout_successfull'
 }
+
+function goToHTML(hmtlSection){
+    window.location.href = hmtlSection;
+}

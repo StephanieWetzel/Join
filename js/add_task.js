@@ -375,9 +375,8 @@ async function addTaskToBoard() {
     let selectedCategory = document.getElementById('categorySelection');
     tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, selectedCategory.value, subtasks))
     await setItem('tasks', JSON.stringify(tasks));
-    console.log(tasks);
+    initAddTask();
 }
-
 
 function formatDueDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-GB'); // british format -> dd/mm/yyyy
