@@ -15,6 +15,7 @@
     /* in order for border to show */
     position: relative;
     z-index: 99;
+    background-color: white;
 }
 
 .head-section-1 {

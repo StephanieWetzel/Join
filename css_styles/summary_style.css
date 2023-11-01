@@ -191,10 +191,6 @@ a {
     display: none;
 }
 
-.head {
-    background-color: white;
-}
-
 /* responsive design */
 
 @media(max-width: 600px) {
