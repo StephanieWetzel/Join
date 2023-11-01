@@ -52,6 +52,7 @@ a {
 
 .dFlex {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 50px;
 }
@@ -194,7 +195,7 @@ a {
 
 /* responsive design */
 
-@media(min-width:1025px) and (max-width:1160px) {
+@media(min-width:1024px) and (max-width:1160px) {
     .greet {
         padding-left: 24px;
     }
@@ -210,13 +211,17 @@ a {
     .greet h2 {
         font-size: 45px;
     }
+
+    .summaryTasks {
+        gap: 16px;
+    }
 }
 
-@media(max-width:1050px) {
+/* @media(max-width:1050px) {
     .greet h2 {
         font-size: 42px;
     }
-}
+} */
 
 @media(max-width:1024px) {
     .greet h2 {
@@ -224,7 +229,7 @@ a {
     }
 
     .summaryMain {
-        padding: 0 16px;
+        padding: 0 24px;
     }
 
     .summaryHead {
@@ -255,7 +260,7 @@ a {
     }
 
     .summaryTasks {
-        gap: 16px;
+        gap: 8px;
         width: 100%;
         /* min-width: 100vw; */
     }
@@ -272,10 +277,26 @@ a {
         display: block;
     }
 
+    /* .borderRadius {
+        padding: 32px 40px
+    } */
 
+    .head-section-1 {
+        margin-left: 0
+    }
+
+    .dFlex {
+        width: 100%;
+    }
 }
 
-@media(min-width:700px) {
+@media(min-width:850px) {
+    .firstList {
+        width: 288px;
+    }
+}
+
+@media(min-width:700px) and (max-width:850px) {
     .firstList {
         width: 216px;
     }
@@ -302,6 +323,7 @@ a {
 
     .summaryHead {
         padding: 0;
+        margin-bottom: 0 !important;
     }
 
     .summaryTasks {
@@ -381,11 +403,11 @@ a {
     }
 }
 
-@media(min-width:451px) and (max-width:500px) {
+/* @media(min-width:450px) and (max-width:500px) {
     .firstList {
         width: 168px;
     }
-}
+} */
 
 @media(min-width:350px) and (max-width:450px) {
     .firstList {
