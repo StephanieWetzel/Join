@@ -62,7 +62,7 @@ function closeTask() {
 function renderTasks() {
     const newTask = document.getElementById('newTask');
     newTask.innerHTML = '';
-
+    debugger
     tasks.forEach(task => {
         const taskHTML = `
             <div class="status-board">

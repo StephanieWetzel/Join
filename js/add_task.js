@@ -9,7 +9,7 @@ let contact;
 let subtasks = [];
 let tasks = [];
 let contactBubbles = [];
-
+let userCategoryselect;
 
 async function initAddTask(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
@@ -246,6 +246,7 @@ function assignCategory(selectedCategory) {
     let categoryInputField = document.getElementById('categoryInputField');
     categoryInputField.value = selectedCategory.getAttribute('value');
     toggleCategoryField(); // closes categories
+    userCategoryselect = categoryInputField.value;
 }
 
 
@@ -376,8 +377,7 @@ function clearTaskForm(){
 // ADD TO BOARD
 async function addTaskToBoard() {
     // let formattedDueDate = formatDueDate(dueDate.value);
-    let selectedCategory = document.getElementById('categorySelection');
-    tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, selectedCategory.value, subtasks))
+    tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks))
     await setItem('tasks', JSON.stringify(tasks));
     initAddTask('tasks');
 }
