@@ -81,7 +81,7 @@ a {
     align-items: center;
     justify-content: space-between;
     /* height: 230px; */
-    width: 560px;
+    /* width: 560px; */
     gap: 18px;
 }
 
@@ -101,7 +101,7 @@ a {
 
 .summaryTasks h1 {
     padding: 0;
-    max-width: 560px;
+    /* max-width: 560px; */
     text-align: center;
 }
 
@@ -113,8 +113,8 @@ a {
 .summaryTasks {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    max-width: 560px;
+    gap: 8px;
+    /* max-width: 560px; */
     text-align: center;
 }
 
@@ -122,9 +122,9 @@ a {
     padding: 38px 50px 38px 58px;
 }
 
-.thirdList {
+/* .thirdList {
     padding: 25px 58px 25px 58px;
-}
+} */
 
 .flexDirection p {
     margin: 0;
@@ -148,6 +148,7 @@ a {
     display: flex;
     flex-direction: column;
     padding-left: 64px;
+    margin-bottom: 32px;
 }
 
 .greet h1 {
@@ -193,28 +194,47 @@ a {
 
 /* responsive design */
 
-@media(max-width: 600px) {
-    .content {
-        min-height: 100vh;
-        height: 100%;
-    }
-
-    .summary {
-        padding: 16px;
-        height: 85%;
+@media(max-width:1160px) {
+    .greet {
+        padding-left: 24px;
     }
 
     .summaryMain {
-        padding: 0;
+        padding-left: 32px;
     }
 
-    .summaryMain h1 {
-        font-size: 40px;
+    .summaryHead {
+        padding-left: 32px;
+    }
+
+    .greet h2 {
+        font-size: 45px;
+    }
+}
+
+@media(max-width:1050px) {
+    .greet h2 {
+        font-size: 42px;
+    }
+}
+
+@media(max-width:1024px) {
+    .greet h2 {
+        font-size: 47px;
+    }
+
+    .summaryMain {
+        width: 100%;
+    }
+
+    .summaryHead {
+        /* padding-left: 64px; */
+        margin-top: -24px;
     }
 
     .summaryHead {
         flex-direction: column;
-        padding: 0;
+        padding-left: 32px;
         align-items: start;
         margin-bottom: 16px;
     }
@@ -235,13 +255,67 @@ a {
     }
 
     .summaryTasks {
-        max-width: none;
-        width: 100%;
+        gap: 16px;
+        /* max-width: none; */
     }
 
+    .greet {
+        display: none;
+    }
+
+    .decoline {
+        margin-top: 24px;
+    }
+
+    .display-none {
+        display: block;
+    }
+
+
+}
+
+@media(max-width:600px) {
+    /* .content {
+        min-height: 100vh;
+        height: 100%;
+    } */
+
+    .summary {
+        padding: 16px;
+        height: 85%;
+    }
+
+    .summaryMain {
+        padding: 0;
+    }
+
+    .summaryMain h1 {
+        font-size: 40px;
+    }
+
+    .summaryHead {
+        padding: 0;
+    }
+
+    /* 
+    .summaryHead h1 {
+        border-right: none;
+        font-size: 56px;
+        margin-block-end: 0;
+        margin-bottom: 8px;
+    } */
+
+    /* .summaryHead h2 {
+        font-size: 22px;
+        margin-left: 0;
+        margin-bottom: 0;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    } */
+
     .summaryWidth {
-        width: auto;
-        gap: 14px;
+        /* width: auto; */
+        /* gap: 14px; */
         /* height: 200px; */
     }
 
@@ -251,10 +325,6 @@ a {
 
     .decoline {
         margin-top: 16px;
-    }
-
-    .display-none {
-        display: block;
     }
 
     .dFlex {
@@ -274,10 +344,6 @@ a {
         /* margin-top: 0; */
     }
 
-    .greet {
-        display: none;
-    }
-
     .borderRadius {
         display: flex;
         justify-content: center;
@@ -287,22 +353,30 @@ a {
     .firstList {
         display: flex;
         justify-content: center;
-        width: 160px;
+        width: 200px;
         height: 64px;
+        /* min-width: 100%; */
     }
 
-    .thirdList {
+    /* .thirdList {
         display: flex;
         justify-content: center;
-    }
-
-    /* .maxWidth {
-        width: 136px;
     } */
+
+    .maxWidth {
+        width: 128px;
+    }
+}
+
+@media(min-width:451px) and (max-width:500px) {
+    .firstList {
+        width: 168px;
+    }
 }
 
 @media(min-width:350px) and (max-width:450px) {
     .firstList {
+        /* min-width: 100%; */
         width: 120px;
     }
 
@@ -313,7 +387,8 @@ a {
 
 @media(max-width:350px) {
     .firstList {
-        width: 96px;
+        /* min-width: 100%; */
+        width: 104px;
     }
 
     .maxWidth {
