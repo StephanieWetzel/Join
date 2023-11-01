@@ -201,13 +201,13 @@ a {
         padding-left: 24px;
     }
 
-    .summaryMain {
+    /* .summaryMain {
         padding-left: 32px;
     }
 
     .summaryHead {
         padding-left: 32px;
-    }
+    } */
 
     .greet h2 {
         font-size: 45px;
@@ -297,11 +297,11 @@ a {
     }
 } */
 
-@media(min-width:700px) and (max-width:850px) {
+/* @media(min-width:700px) and (max-width:850px) {
     .firstList {
         width: 216px;
     }
-}
+} */
 
 @media(max-width:600px) {
     /* .content {
@@ -324,7 +324,7 @@ a {
 
     .summaryHead {
         padding: 0;
-        margin-bottom: 0 !important;
+        /* margin-bottom: 0 !important; */
     }
 
     .summaryTasks {
@@ -410,7 +410,7 @@ a {
     }
 } */
 
-@media(min-width:350px) and (max-width:450px) {
+@media(min-width:350px) and (max-width:500px) {
     .firstList {
         /* min-width: 100%; */
         width: 120px;
