@@ -350,10 +350,23 @@ body {
     .header img {
         height: 80px;
     }
+
 }
 
 @media(max-width:450px) {
     .form {
         width: 93%;
+    }
+}
+
+@media(max-height:670px){
+    .header img{
+        height: 64px;
+    }
+    .input-style{
+        margin-top: 6px;
+    }
+    .fish-eye-btn{
+        margin-top: 6px;
     }
 }

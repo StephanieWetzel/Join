@@ -83,7 +83,6 @@ function getUrgentYear(str){
 }
 
 function displayUrgentTasks(){
-    debugger
     let uTasks = getUrgentTasksCounter();
     let uDate = getUpcomingDeadline();
     urgentCounter.innerHTML = /*html*/`
