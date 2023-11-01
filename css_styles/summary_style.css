@@ -223,9 +223,9 @@ a {
         font-size: 47px;
     }
 
-    .summaryMain {
+    /* .summaryMain {
         width: 100%;
-    }
+    } */
 
     .summaryHead {
         /* padding-left: 64px; */
@@ -256,7 +256,6 @@ a {
 
     .summaryTasks {
         gap: 16px;
-        /* max-width: none; */
     }
 
     .greet {
