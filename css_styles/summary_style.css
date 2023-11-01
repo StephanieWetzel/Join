@@ -191,20 +191,21 @@ a {
     display: none;
 }
 
+.head {
+    background-color: white;
+}
+
 /* responsive design */
 
-@media(max-width: 500px) {
+@media(max-width: 600px) {
     .content {
         min-height: 100vh;
         height: 100%;
     }
 
-    .head {
-        background-color: white;
-    }
-
     .summary {
         padding: 16px;
+        height: 85%;
     }
 
     .summaryMain {
@@ -243,7 +244,6 @@ a {
     }
 
     .summaryWidth {
-        justify-content: center;
         width: auto;
         gap: 14px;
         /* height: 200px; */
@@ -251,10 +251,6 @@ a {
 
     .summaryWidth span {
         font-size: 14px;
-    }
-
-    .summaryInfo {
-        /* height: auto; */
     }
 
     .decoline {
@@ -274,8 +270,12 @@ a {
     }
 
     .sidebar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         height: auto;
-        margin-top: 0;
+        /* margin-top: 0; */
     }
 
     .greet {
@@ -291,13 +291,33 @@ a {
     .firstList {
         display: flex;
         justify-content: center;
-        width: 96px;
+        width: 160px;
         height: 64px;
     }
 
     .thirdList {
         display: flex;
         justify-content: center;
+    }
+
+    /* .maxWidth {
+        width: 136px;
+    } */
+}
+
+@media(min-width:350px) and (max-width:450px) {
+    .firstList {
+        width: 120px;
+    }
+
+    .maxWidth {
+        width: 96px;
+    }
+}
+
+@media(max-width:350px) {
+    .firstList {
+        width: 96px;
     }
 
     .maxWidth {
