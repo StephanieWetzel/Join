@@ -67,14 +67,14 @@ function getUpcomingDeadline(){
     return urgentDates[0];
 }
 
-function getUrgentMonth(str){
+function getUrgentMonthDay(str){
     let lastTwoDigits = str.slice(-2);
-    return months[lastTwoDigits - 1];
+    return lastTwoDigits;
 }
 
-function getUrgentMonthDay(str){
+function getUrgentMonth(str){
     let splits = str.split('-'); //splits the incoming string at any '-' index , takes the so splitted single strings into array
-    return splits[1]
+    return months[splits[1] - 1]
 }
 
 function getUrgentYear(str){
@@ -83,6 +83,7 @@ function getUrgentYear(str){
 }
 
 function displayUrgentTasks(){
+    debugger
     let uTasks = getUrgentTasksCounter();
     let uDate = getUpcomingDeadline();
     urgentCounter.innerHTML = /*html*/`

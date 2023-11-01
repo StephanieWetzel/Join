@@ -1,7 +1,10 @@
 let users = [];
 let loginUser;
+let rememberedUser = 0;
 async function init() {
     await fetchUsers();
+    loadRememberState();
+    checkIfRemembered();
 }
 
 function login() {
@@ -10,6 +13,7 @@ function login() {
     if (user && pw) {
         loginUser = user;
         saveLoggedInUser();
+        setRememberMe();
         let popup = document.getElementById('valid');
         popup.classList.add('show');
         setTimeout(() => {
@@ -21,6 +25,36 @@ function login() {
         setTimeout(() => {
             location.reload()
         }, 4200);
+    }
+}
+
+function checkIfRemembered(){
+    if (rememberedUser) {
+        email.value = rememberedUser[0]['mail'];
+        password.value = rememberedUser[0]['password'];
+    }
+}
+
+function setRememberMe() {
+    let rememberMe = document.getElementById('rememberMe');
+    if (rememberMe.checked) {
+        rememberedUser = [{
+            mail: email.value,
+            password: password.value
+        }];
+        saveRememberState();
+    }
+}
+
+function saveRememberState() {
+    let rememberAsJSON = JSON.stringify(rememberedUser);
+    localStorage.setItem('rememberedUser', rememberAsJSON)
+}
+
+function loadRememberState() {
+    if (localStorage.getItem('rememberedUser')) {
+        let rememberAsString = localStorage.getItem('rememberedUser');
+        rememberedUser = JSON.parse(rememberAsString);
     }
 }
 
