@@ -59,11 +59,11 @@
                             </div>
                         </div>
                         <div class="test">
-                            <div class="no-to-do">
+                            <div id="noTodo" class="no-to-do">
                                 <p>No Task To do</p>
                             </div>
                         </div>
-                        <div id="newTask" class="newTask"></div>
+                        <div draggable="true" id="todo" class="newTask" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
                     </div>
                     <div class="d-flex">
                         <div class="test2">
@@ -74,27 +74,12 @@
                                     onclick="openModal()">
                             </div>
                         </div>
-                        <div id="inProgress" onclick="openTask()">
-                            <div class="status-board">
-                                <p class="user-story">User Story</p>
-                                <p><b>Kochwelt Page & Recipe Recommender</b></p>
-                                <span class="short-info">Build start page with recipe recommendation</span>
-                                <div class="flex-box">
-                                    <div class="progress">
-                                        <div class="progress-bar" id="progressBar" role="progressbar"></div>
-                                    </div>
-                                    <p>1/2 Subtasks</p>
-                                </div>
-                                <div class="priority">
-                                    <div class="priority-text">
-                                        <p class="FH">FH</p>
-                                        <p class="SW1">SW</p>
-                                        <p class="SW2">SW</p>
-                                    </div>
-                                    <img src="./assets/images/medium_symbol.svg" alt="">
-                                </div>
+                        <div class="test">
+                            <div id="noProgress" class="no-to-do">
+                                <p>No Task To do</p>
                             </div>
                         </div>
+                        <div draggable="true" id="inProgress" class="newTask" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
                     </div>
                     <div class="d-flex">
                         <div class="test2">
@@ -105,64 +90,28 @@
                                     onclick="openModal()">
                             </div>
                         </div>
-                        <div class="status-board status-board-open">
-                            <p class="technical-task">Technical Task</p>
-                            <p><b>HTML Base Template Creation</b></p>
-                            <span class="short-info">Create reusable HTML base templates</span>
-                            <div class="flex-box">
-
-                            </div>
-                            <div class="priority">
-                                <div class="priority-text">
-                                    <p class="FH">FH</p>
-                                    <p class="SW1">SW</p>
-                                    <p class="SW2">SW</p>
-                                </div>
-                                <img src="./assets/images/low_symbol.svg" alt="">
+                        <div class="test">
+                            <div id="noFeedback" class="no-to-do">
+                                <p>No Task To do</p>
                             </div>
                         </div>
-                        <div class="status-board status-board-open">
-                            <p class="user-story">User Story</p>
-                            <p><b>Kochwelt Page & Recipe Recommender</b></p>
-                            <span class="short-info">Build start page with recipe recommendation</span>
-                            <div class="flex-box">
-
-                            </div>
-                            <div class="priority">
-                                <div class="priority-text">
-                                    <p class="FH">FH</p>
-                                    <p class="SW1">SW</p>
-                                    <p class="SW2">SW</p>
-                                </div>
-                                <img src="./assets/images/medium_symbol.svg" alt="">
-                            </div>
-                        </div>
+                        <div draggable="true" id="awaitFeedback" class="newTask" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)"></div>
                     </div>
                     <div class="d-flex">
                         <div class="test2">
                             <p class="status-text">Done</p>
-                        </div>
-                        <div onclick="openTask()">
-                            <div class="status-board status-board-open">
-                                <p class="technical-task">Technical Task</p>
-                                <p><b>CSS Architecture Planning</b></p>
-                                <span class="short-info">Define CSS naming conventions and structure...</span>
-                                <div class="flex-box">
-                                    <div class="progress">
-                                        <div class="progress-bar" id="progressBar" role="progressbar"></div>
-                                    </div>
-                                    <p>2/2 Subtasks</p>
-                                </div>
-                                <div class="priority">
-                                    <div class="priority-text">
-                                        <p class="FH">FH</p>
-                                        <p class="SW1">SW</p>
-                                        <p class="SW2">SW</p>
-                                    </div>
-                                    <img src="./assets/images/urgent_symbol.svg" alt="">
-                                </div>
+                            <div class="popup-container">
+                                <img class="standardImg" src="./assets/images/plus_button.svg" alt="">
+                                <img class="hoverImg" src="./assets/images/plus_button_blue.svg" alt=""
+                                    onclick="openModal()">
                             </div>
                         </div>
+                        <div class="test">
+                            <div id="noDone" class="no-to-do">
+                                <p>No Task To do</p>
+                            </div>
+                        </div>
+                        <div draggable="true" id="done" class="newTask" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
                     </div>
                 </div>
                 <div class="modal" id="myModal">
