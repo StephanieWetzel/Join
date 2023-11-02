@@ -66,10 +66,14 @@ function classifyTask(){
 function filterTasks(state, noTaskID){
     filteredTasks = tasks.filter(t => t.state == state);
     document.getElementById(state).innerHTML = '';
-    filteredTasks.forEach((fTask, index) => {
-        document.getElementById(state).innerHTML += renderTaskCard(fTask);
-    });
-    document.getElementById(noTaskID).style.display = "none";
+    if (filteredTasks.length > 0) {
+        document.getElementById(noTaskID).style.display = "none";
+        filteredTasks.forEach((fTask, index) => {
+            document.getElementById(state).innerHTML += renderTaskCard(fTask);
+        }); 
+    }else{
+        document.getElementById(noTaskID).style.display = "flex";
+    }
     return filteredTasks
 }
 
