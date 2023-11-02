@@ -3,7 +3,8 @@ let inProgress;
 let awaitFeedback;
 let done;
 let currentDraggedElement;
-async function init(activeSection) {
+
+async function initBoard(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     markActiveSection(activeSection);
@@ -34,13 +35,19 @@ function closeModal() {
     }
 
     modal.style.display = "none";
-    init('board');
+    initBoard('board');
 }
 
 
-function openTask() {
+function openTask(taskUIndex) {
     let modal = document.getElementById("customModal");
     modal.style.display = 'block';
+    tasks.forEach(task => {
+        if (task.uniqueIndex == taskUIndex) {
+            renderBigTask(task)
+        }
+    });
+    
 }
 
 
@@ -87,7 +94,7 @@ function setCategoryStyle(category){
 
 function renderTaskCard(task) {
     return /*html*/`
-        <div draggable="true" ondragstart="startDragging(${task.uniqueIndex})" class="status-board">
+        <div draggable="true" onclick="openTask(${task.uniqueIndex})" ondragstart="startDragging(${task.uniqueIndex})" class="status-board">
             <p class="${setCategoryStyle(task.category)}">${task.category}</p>
             <p><b>${task.title}</b></p>
             <span class="short-info">${task.description}</span>
@@ -104,12 +111,55 @@ function renderTaskCard(task) {
                         ${contact.initials}
                     </div>
                 `).join('') : ''}
-            </div>
+                </div>
                 <img src="./assets/images/${task.priority}_symbol.svg">
             </div>
         </div>
         `
 }
+
+function renderBigTask(task) {
+    debugger
+    let openedTask = document.getElementById('customModal');
+    openedTask.innerHTML =/*html*/`
+    <div class="open-task">
+            <div>
+                <button onclick="closeTask()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
+                <div class="status-board status-board-open">
+                    <p class="${setCategoryStyle(task.category)}">${task.category}</p>
+                    <p class="headline"><b>${task.title}</b></p>
+                    <span class="taskInformation">${task.description}</span>
+                    <span style="color: #42526E;">Due Date: <span class="m-left1">${formatDueDate(task.date)}</span></span>
+                    <span style="color: #42526E;">Priority: <span class="m-left2">${task.priority}<img class="board-img" src="./assets/images/urgent_symbol.svg" alt=""></span></span>
+                    <span style="color: #42526E;">Assigned To:</span>
+                    <div>
+                    ${task.assignedContacts ? task.assignedContacts.map(contact => /*html*/`
+                    <div class="assignedFrom">
+                        <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">
+                        ${contact.initials}
+                        </div><span>${contact.firstName} ${contact.lastName}</span>
+                    </div>
+                    `).join('') : ''}
+                    </div>
+                    <span style="color: #42526E;">Subtasks</span>
+                    <div>
+                        <span><img src="./assets/images/chop.svg" alt=""></span>
+                        <span><img src="./assets/images/Rectangle.svg" alt=""></span>
+                        <span>Implement Recipe Recommendation</span>
+                    </div>
+                    <div class="openBoard-options">
+                        <img src="./assets/images/delete.svg" alt="">
+                        <span>Delete</span>
+                        <img src="./assets/images/edit.svg" alt="">
+                        <span>Edit</span>
+                    </div>
+                </div>
+            </div>
+        </div>`
+
+}
+
+
 
 //Drag n' Drop
 
@@ -128,5 +178,5 @@ async function moveTo(state){
         }
     });
     await setItem('tasks', JSON.stringify(tasks));
-    init('board');
+    initBoard('board');
 }

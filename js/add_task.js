@@ -91,7 +91,9 @@ function showAssignedContacts() {
         if (checkbox.checked) {
             contactBubbles.push({
                 initials: initials,
-                color: contact.color
+                color: contact.color,
+                firstName: contact.firstName,
+                lastName: contact.lastName
             })
             assignedContacts.innerHTML += assignedContactsTemplate();
         }
@@ -384,37 +386,4 @@ async function addTaskToBoard() {
 
 function formatDueDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-GB'); // british format -> dd/mm/yyyy
-}
-
-
-function renderTask(task) {
-
-    let newTask = document.getElementById('newTask');
-    newTask.innerHTML = `
-    <div class="status-board">
-        <!-- <p class="user-story">User Story</p> -->
-        <p><b>${task.title}</b></p>
-
-        <span>${task.description}</span>
-
-        <div class="flex-box">
-            <div class="progress">
-                <div class="progress-bar" id="progressBar" role="progressbar"></div>
-            </div>
-            <p>1/2 Subtasks</p>
-        </div>
-
-        <div class="priority">
-            <div class="priority-text">
-            ${task.assignedContacts.map(contact => `
-                <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">
-                    ${contact.initials}
-                </div>
-            `).join('')}
-            </div>
-        </div>
-
-        <span>${task.date}</span>
-    `;
-
 }
