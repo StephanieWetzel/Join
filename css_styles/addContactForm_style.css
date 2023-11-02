@@ -127,7 +127,7 @@
     height: 60px;
     width: 300px;
     font-size: 18px;
-    margin-left: -150px;
+    /* margin-left: -150px; */
     color: white;
     background-color: #081931;
     border-radius: 12px;
@@ -189,7 +189,7 @@
 .form-box {
     display: flex;
     flex-direction: column;
-    margin-top: 48px;
+    /* margin-top: 48px; */
 }
 
 .custom-input {
@@ -245,12 +245,18 @@
 .cancel-button:hover {
     color: #29ABE2;
     border-color: #29ABE2;
+    box-shadow: 0px 5px 4px 0px #BCBDBE;
     transition: 200ms;
 }
 
-.cancel-button img {
+.cancel-button svg {
     margin-left: 8px;
-    height: 20px;
+    height: 12px;
+}
+
+.cancel-button:hover svg path {
+    stroke: #29ABE2;
+    transition: 200ms;
 }
 
 .create-button {
@@ -269,7 +275,7 @@
     background-color: #29ABE2;
     color: white;
     border: none;
-    box-shadow: 0px 8px 10px -4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 5px 4px 0px #BCBDBE;
     transition: 200ms;
 }
 
@@ -278,9 +284,48 @@
     height: 20px;
 }
 
-@media(min-width:850px) {
+@media(min-width:1024px) and (max-width:1400px) {
+    .add-heading h1 {
+        font-size: 60px;
+    }
+
     .profile-pic {
-        display: none;
+        width: 26%;
+    }
+
+    .formular {
+        width: auto;
+    }
+
+    .add-form-content {
+        height: 50%;
+    }
+
+    .back-button {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .person-icon {
+        padding-right: 0;
+    }
+
+    .mail-icon {
+        padding-right: 0;
+    }
+
+    .phone-icon {
+        padding-right: 0;
+    }
+}
+
+@media(min-width:850px) and (max-width:1024px) {
+    .create-contact {
+        flex-direction: column;
+    }
+
+    .formular {
+        margin-right: 112px;
     }
 
     .add-form-content {
@@ -299,12 +344,16 @@
         height: 80px;
     }
 
+    .add-cancel-buttons {
+        margin-top: 16px;
+    }
+
     .form-box {
         margin-top: 0;
     }
 
     .back-button {
-        margin-top: 0;
+        margin: 0;
     }
 
     .back-button img {
@@ -320,6 +369,7 @@
         align-items: center;
         margin-top: -248px;
         top: 7%;
+        width: 80%;
     }
 
     .add-heading {
@@ -384,6 +434,8 @@
 
     .back-button-mobile {
         display: flex;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     .formular-animation {
@@ -399,19 +451,19 @@
     }
 
     .custom-input {
-        width: 230px;
+        width: 320px;
     }
 
     .person-icon {
-        background-position-x: 230px;
+        background-position-x: 324px;
     }
 
     .mail-icon {
-        background-position-x: 230px;
+        background-position-x: 324px;
     }
 
     .phone-icon {
-        background-position-x: 230px;
+        background-position-x: 324px;
     }
 
     .add-heading h1 {
@@ -450,10 +502,90 @@
     }
 }
 
+@media(max-width:500px) {
+    .custom-input {
+        width: 216px;
+    }
+
+    .person-icon {
+        background-position-x: 224px;
+    }
+
+    .mail-icon {
+        background-position-x: 224px;
+    }
+
+    .phone-icon {
+        background-position-x: 224px;
+    }
+}
+
 @media(max-height: 670px) {
     .add-form-content {
         margin-top: 0;
         top: unset;
         justify-content: center;
+    }
+}
+
+/* responsive design - mobile */
+@media(min-height:1300px) {
+    .add-form-content {
+        height: 40%;
+    }
+}
+
+@media(min-width:1000px) and (max-height:800px) {
+    .add-form-content {
+        height: 70%
+    }
+
+    .formular {
+        margin-right: 0;
+        margin-top: -56px;
+    }
+
+    .profile-pic img {
+        width: 104px;
+    }
+
+    .back-button img {
+        margin-left: 40px;
+    }
+}
+
+@media(min-height:700px) {
+    .add-heading {
+        padding-bottom: 48px;
+    }
+}
+
+@media(min-width:280px) and (max-width:360px) {
+    .add-heading {
+        padding-bottom: 42px;
+    }
+
+    .custom-input {
+        width: 176px;
+    }
+
+    .person-icon {
+        background-position-x: 184px;
+    }
+
+    .mail-icon {
+        background-position-x: 184px;
+    }
+
+    .phone-icon {
+        background-position-x: 184px;
+    }
+
+    .add-cancel-buttons {
+        margin-top: 24px;
+    }
+
+    .back-button-mobile {
+        margin-bottom: 24px;
     }
 }

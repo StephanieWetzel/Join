@@ -500,6 +500,7 @@
     display: none;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .mobile-add-contact img {
@@ -525,6 +526,7 @@
 .back-button-mobile img {
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 
 @media(max-width: 850px) {
@@ -705,5 +707,32 @@
 
     .edit-delete-mobile-popup {
         bottom: 7.5%;
+    }
+}
+
+
+@media(max-width:300px) {
+    .mobile-add-contact {
+        margin-bottom: 8px;
+    }
+
+    /* .sidebar-section {
+        width: 40px;
+    } */
+
+    /* .sidebar-sections {
+        align-items: normal;
+    } */
+
+    .sidebar {
+        margin-top: -30px;
+    }
+
+    .sidebar-text {
+        font-size: 14px;
+    }
+
+    .sidebar-section img {
+        height: 17px;
     }
 }
