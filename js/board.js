@@ -119,7 +119,6 @@ function renderTaskCard(task) {
 }
 
 function renderBigTask(task) {
-    debugger
     let openedTask = document.getElementById('customModal');
     openedTask.innerHTML =/*html*/`
     <div class="open-task">
@@ -130,7 +129,7 @@ function renderBigTask(task) {
                     <p class="headline"><b>${task.title}</b></p>
                     <span class="taskInformation">${task.description}</span>
                     <span style="color: #42526E;">Due Date: <span class="m-left1">${formatDueDate(task.date)}</span></span>
-                    <span style="color: #42526E;">Priority: <span class="m-left2">${task.priority}<img class="board-img" src="./assets/images/urgent_symbol.svg" alt=""></span></span>
+                    <span style="color: #42526E;">Priority: <span class="m-left2">${task.priority}<img class="board-img" src="./assets/images/${task.priority}_symbol.svg" alt=""></span></span>
                     <span style="color: #42526E;">Assigned To:</span>
                     <div>
                     ${task.assignedContacts ? task.assignedContacts.map(contact => /*html*/`
