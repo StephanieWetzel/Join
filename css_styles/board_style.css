@@ -177,7 +177,7 @@ button {
     width: max-content;
 }
 
-#myModal{
+#myModal {
     display: none;
 }
 
@@ -333,33 +333,33 @@ button {
     width: 32px;
 }
 
-.headline{
+.headline {
     font-size: 61px;
     margin: 12px 0;
 }
 
-.taskInformation{
+.taskInformation {
     font-size: 20px;
-    color: black!important;
+    color: black !important;
 }
 
-.m-left1{
+.m-left1 {
     margin-left: 16px;
-    color: black!important;
+    color: black !important;
 }
 
-.m-left2{
+.m-left2 {
     margin-left: 32px;
-    color: black!important;
+    color: black !important;
 }
 
-.board-img{
+.board-img {
     width: 17px;
     height: 12px;
     padding-left: 10px;
 }
 
-.assignedFrom{
+.assignedFrom {
     display: flex;
     font-size: 19px;
     align-items: center;
@@ -367,25 +367,47 @@ button {
     color: black;
 }
 
-.status-board-open{
+.status-board-open {
     gap: 24px;
 }
 
-.openBoard-options{
+.openBoard-options {
     display: flex;
     align-items: center;
     justify-content: end;
 }
 
-.openBoard-options span{
+.openBoard-options span {
     padding-left: 8px;
 }
 
-.openBoard-options span:first-of-type{
+.openBoard-options span:first-of-type {
     border-right: 1px solid #D1D1D1;
     padding-right: 8px;
 }
 
-.openBoard-options img{
+.openBoard-options img {
     padding-left: 8px;
+}
+
+@media(min-width:320px) and (max-width:600px) {
+    .status {
+        flex-direction: column;
+        gap: 56px;
+    }
+
+    h1 {
+        font-size: 48px;
+        margin-block-end: 0;
+        padding-bottom: 32px;
+    }
+
+    .board {
+        padding: 0 24px;
+    }
+
+    .sidebar {
+        position: fixed;
+        height: auto;
+    }
 }
