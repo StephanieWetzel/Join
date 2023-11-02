@@ -413,7 +413,7 @@ textarea:focus {
 /* BOARD */
 .newTask {
     height: 200px;
-    background-color: white;
+    border-top-right-radius: 8px;
 }
 
 
