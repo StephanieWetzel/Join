@@ -24,7 +24,6 @@
 }
 
 /*animation-part*/
-
 .formular-animation {
     animation: swipeIn 0.2s linear;
 }
@@ -328,10 +327,6 @@
         margin-right: 112px;
     }
 
-    .add-form-content {
-        height: 50%;
-    }
-
     .add-heading h1 {
         font-size: 40px;
     }
@@ -535,7 +530,7 @@
     }
 }
 
-@media(min-width:1000px) and (max-height:800px) {
+@media(min-width:1000px) and (max-height:700px) {
     .add-form-content {
         height: 70%
     }

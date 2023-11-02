@@ -11,7 +11,7 @@
         </div>
         <div class="create-contact">
             <div id="profilePic" class="profile-pic">
-                
+
             </div>
             <div class="formular">
                 <div class="back-button">
@@ -21,7 +21,7 @@
                 <form onsubmit="editContact(); return false" class="form-box">
                     <input id="editFullName" required class="person-icon custom-input" type="text">
                     <input id="editMail" required class="mail-icon custom-input" type="email">
-                    <input id="editPhone" required class="phone-icon custom-input" type="tel">
+                    <input id="editPhone" required class="phone-icon custom-input" type="tel" pattern="[0-9]+">
                     <input type="hidden" id="edit-index" name="edit-index">
                     <div class="add-cancel-buttons">
                         <button class="cancel-button">Cancel<img src="assets/images/iconoir_cancel.svg"></button>
