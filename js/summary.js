@@ -15,6 +15,7 @@ async function init(activeSection) {
     await fetchTasks();
     displayUrgentTasks();
     displayTasksInBoard();
+    displayTasksStates();
 }
 
 
@@ -100,4 +101,25 @@ function displayTasksInBoard(){
     <h1>${tasksInBoard}</h1>
     <span>Tasks in Board</span>
     `
+}
+
+function displayTasksStates(){
+    displayNumberOfState('numberOfTodos', 'todo', 'card-count', 'To-do');
+    displayNumberOfState('numberOfDone', 'done', null, 'Done');
+    displayNumberOfState('numberOfProgress', 'inProgress', null, 'Tasks in Progress');
+    displayNumberOfState('numberOfFeedback', 'awaitFeedback', null, 'Awaiting Feedback')
+}
+
+function displayNumberOfState(id, stateName, className, name){
+    let cont = document.getElementById(id);
+    cont.innerHTML = /*html*/`
+    <h1 class="${className}">${getNumberOfStateTasks(stateName)}</h1>
+    <span>${name}</span>
+    `
+}
+
+function getNumberOfStateTasks(stat){
+    let filteredTasks = tasks.filter(t => t.state == stat);
+    filteredTasks = filteredTasks.length;
+    return filteredTasks
 }
