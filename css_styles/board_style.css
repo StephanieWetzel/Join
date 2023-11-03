@@ -129,7 +129,7 @@ button {
     font-size: 16px;
     margin-bottom: 16px;
     cursor: pointer;
-    /* border: solid 1.5px #DBDBDB; */
+    border: solid 1.5px #DBDBDB;
 }
 
 .short-info {
@@ -391,15 +391,40 @@ button {
     padding-left: 8px;
 }
 
-.small{
+.small {
     margin-left: -8px;
     border-style: double;
+}
+
+.sidebar {
+    position: fixed;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.marginTop-688 {
+    margin: auto;
+}
+
+.dNoneResponsive {
+    display: block;
+}
+
+@media(max-width:1024px) {
+    .sidebar {
+        bottom: 0;
+        left: 0;
+        min-height: auto;
+        height: auto;
+        width: 100%;
+    }
 }
 
 @media(min-width:320px) and (max-width:600px) {
     .status {
         flex-direction: column;
-        gap: 56px;
+        gap: 48rem;
+        align-items: center;
     }
 
     h1 {
@@ -410,10 +435,30 @@ button {
 
     .board {
         padding: 0 24px;
+        padding: 0 24px 144px 24px;
     }
 
-    .sidebar {
-        position: fixed;
-        height: auto;
+    .headerBoard {
+        flex-direction: column;
+    }
+
+    .headerFlex {
+        flex-direction: column-reverse;
+    }
+
+    .marginTop-688 {
+        margin-top: -688px;
+    }
+
+    .test2 {
+        font-size: 32px;
+    }
+
+    .createBtn span {
+        display: none;
+    }
+
+    .dNoneResponsive {
+        display: none;
     }
 }

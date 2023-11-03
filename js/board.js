@@ -72,7 +72,7 @@ function classifyTask() {
 }
 
 function filterTasks(state, noTaskID) {
-    debugger
+    // debugger
     filteredTasks = tasks.filter(t => t.state == state);
     document.getElementById(state).innerHTML = '';
     if (filteredTasks.length > 0) {

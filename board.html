@@ -42,10 +42,19 @@
                                 <img class="input-icon" id="searchImg" src="./assets/images/search.svg" alt="">
                             </div>
                         </div>
-                        <button onclick="openModal()" class="addTaskBtn createBtn">Add task <img
-                                src="./assets/images/add_task_plus.svg" alt=""></button>
+                        <button onclick="openModal()" class="addTaskBtn createBtn">
+                            <p class="dNoneResponsive">Add task</p>
+                            <img src="./assets/images/add_task_plus.svg" alt="">
+                        </button>
                     </div>
                 </div>
+                <!-- responsive search bar -->
+                <!-- <div class="input-wrapper">
+                    <input id="searchInput" placeholder="Find Task" type="text">
+                    <div class="border-left"></div>
+                    <img class="input-icon" id="searchImg" src="./assets/images/search.svg" alt="">
+                </div> -->
+
                 <div class="status">
                     <div class="d-flex">
                         <div class="test2">
@@ -63,7 +72,8 @@
                                 <p>No Task To do</p>
                             </div>
                         </div>
-                        <div draggable="true" id="todo" class="newTask" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
+                        <div draggable="true" id="todo" class="newTask" ondrop="moveTo('todo')"
+                            ondragover="allowDrop(event)"></div>
                     </div>
                     <div class="d-flex">
                         <div class="test2">
@@ -79,9 +89,10 @@
                                 <p>No Task To do</p>
                             </div>
                         </div>
-                        <div draggable="true" id="inProgress" class="newTask" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)"></div>
+                        <div draggable="true" id="inProgress" class="newTask" ondrop="moveTo('inProgress')"
+                            ondragover="allowDrop(event)"></div>
                     </div>
-                    <div class="d-flex">
+                    <div class="d-flex marginTop-688">
                         <div class="test2">
                             <p class="status-text">Await feedback</p>
                             <div class="popup-container">
@@ -95,9 +106,10 @@
                                 <p>No Task To do</p>
                             </div>
                         </div>
-                        <div draggable="true" id="awaitFeedback" class="newTask" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)"></div>
+                        <div draggable="true" id="awaitFeedback" class="newTask" ondrop="moveTo('awaitFeedback')"
+                            ondragover="allowDrop(event)"></div>
                     </div>
-                    <div class="d-flex">
+                    <div class="d-flex marginTop-688">
                         <div class="test2">
                             <p class="status-text">Done</p>
                             <div class="popup-container">
@@ -111,7 +123,8 @@
                                 <p>No Task To do</p>
                             </div>
                         </div>
-                        <div draggable="true" id="done" class="newTask" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
+                        <div draggable="true" id="done" class="newTask" ondrop="moveTo('done')"
+                            ondragover="allowDrop(event)"></div>
                     </div>
                 </div>
                 <div class="modal" id="myModal">
