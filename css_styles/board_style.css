@@ -146,10 +146,25 @@ button {
 }
 
 .progress-bar {
-    width: 50%;
+    width: auto;
     border-radius: 8px;
     height: 8px;
     background-color: #007bff;
+}
+
+.list-style{
+    list-style: none;
+    display: flex;
+}
+
+.initial-image {
+    display: none;
+    padding-right: 16px;
+}
+
+.changed-image {
+    display: block; 
+    padding-right: 16px;
 }
 
 .priority {
