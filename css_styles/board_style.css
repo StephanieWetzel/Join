@@ -152,7 +152,7 @@ button {
     background-color: #007bff;
 }
 
-.list-style{
+.list-style {
     list-style: none;
     display: flex;
 }
@@ -163,7 +163,7 @@ button {
 }
 
 .changed-image {
-    display: block; 
+    display: block;
     padding-right: 16px;
 }
 
@@ -443,7 +443,7 @@ button {
     }
 
     h1 {
-        font-size: 48px;
+        font-size: 52px;
         margin-block-end: 0;
         padding-bottom: 32px;
     }
@@ -459,6 +459,7 @@ button {
 
     .headerFlex {
         flex-direction: column-reverse;
+        margin-top: -85px;
     }
 
     .marginTop-688 {
@@ -475,5 +476,9 @@ button {
 
     .dNoneResponsive {
         display: none;
+    }
+
+    .addTaskBtn {
+        margin-left: 212px;
     }
 }
