@@ -3,6 +3,7 @@ let inProgress;
 let awaitFeedback;
 let done;
 let currentDraggedElement;
+let subtaskStatus = {};
 
 async function initBoard(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
@@ -72,7 +73,6 @@ function classifyTask() {
 }
 
 function filterTasks(state, noTaskID) {
-    debugger
     filteredTasks = tasks.filter(t => t.state == state);
     document.getElementById(state).innerHTML = '';
     if (filteredTasks.length > 0) {
@@ -102,7 +102,7 @@ function renderTaskCard(task) {
             <span class="short-info">${task.description}</span>
             <div class="flex-box">
                 <div class="progress">
-                    <div class="progress-bar" id="progressBar" role="progressbar"></div>
+                    <div class="progress-bar" data-task-index="${task.uniqueIndex}" id="progressBar${task.uniqueIndex}" role="progressbar"></div>
                 </div>
                 <p>${task.subtasks.length} Subtasks</p>
             </div>
@@ -138,15 +138,23 @@ function renderBigTask(task) {
                     <div class="assignedFrom">
                         <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">
                         ${contact.initials}
-                        </div><span>${contact.firstName} ${contact.lastName}</span>
+                        </div>
+                        <span>${contact.firstName} ${contact.lastName}</span>
                     </div>
-                    `).join('') : ''}
-                    </div>
+                    `).join('') : ''} 
+               </div>
                     <span style="color: #42526E;">Subtasks</span>
-                    <div>
-                        <span><img src="./assets/images/chop.svg" alt=""></span>
-                        <span><img src="./assets/images/Rectangle.svg" alt=""></span>
-                        <span>Implement Recipe Recommendation</span>
+                    <span>
+                        <ul id="subtaskIndex${task.uniqueIndex}">
+                            ${task.subtasks.map(subtask => `
+                                <li class="list-style">
+                                <img class="chop-image initial-image" src="./assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+                                <img class="rectangle-image changed-image" src="./assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+                                ${subtask}
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </span>
                     </div>
                     <div class="openBoard-options">
                         <img src="./assets/images/delete.svg" alt="">
@@ -158,6 +166,44 @@ function renderBigTask(task) {
             </div>
         </div>`
 
+}
+
+
+
+
+//Progress Bar
+
+function toggleSubtaskImage(index, taskIndex) {
+    const chopImg = document.querySelectorAll('.chop-image')[index];
+    const rectangleImg = document.querySelectorAll('.rectangle-image')[index];
+    const progressBar1 = document.getElementById(`progressBar${taskIndex}`);
+    const subtaskList = document.querySelector(`#subtaskIndex${taskIndex}`);
+
+    if (!subtaskStatus[taskIndex]) {
+        subtaskStatus[taskIndex] = [];
+    }
+
+    subtaskStatus[taskIndex][index] = !subtaskStatus[taskIndex][index];
+
+    if (subtaskStatus[taskIndex][index]) {
+        chopImg.classList.remove('initial-image');
+        chopImg.classList.add('changed-image');
+        rectangleImg.classList.remove('changed-image');
+        rectangleImg.classList.add('initial-image');
+    } else {
+        chopImg.classList.remove('changed-image');
+        chopImg.classList.add('initial-image');
+        rectangleImg.classList.remove('initial-image');
+        rectangleImg.classList.add('changed-image');
+    }
+
+    const totalSubtasks = subtaskList.querySelectorAll('li').length;
+    const completedSubtasks = subtaskStatus[taskIndex].filter(status => status).length;
+    const percent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+
+    if (progressBar1) {
+        progressBar1.style.width = `${percent}%`;
+    }
 }
 
 
