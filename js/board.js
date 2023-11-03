@@ -11,6 +11,7 @@ async function initBoard(activeSection) {
     setHeaderInitials(logInUser);
     await fetchTasks();
     classifyTask();
+    filterTasksByTitle();
 }
 
 
@@ -47,7 +48,7 @@ function openTask(taskUIndex) {
             renderBigTask(task)
         }
     });
-    
+
 }
 
 
@@ -63,31 +64,32 @@ function closeTask() {
     modal.style.display = "none";
 }
 
-function classifyTask(){
+function classifyTask() {
     todos = filterTasks('todo', 'noTodo');
     inProgress = filterTasks('inProgress', 'noProgress');
     awaitFeedback = filterTasks('awaitFeedback', 'noFeedback');
     done = filterTasks('done', 'noDone');
 }
 
-function filterTasks(state, noTaskID){
+function filterTasks(state, noTaskID) {
+    debugger
     filteredTasks = tasks.filter(t => t.state == state);
     document.getElementById(state).innerHTML = '';
     if (filteredTasks.length > 0) {
         document.getElementById(noTaskID).style.display = "none";
         filteredTasks.forEach((fTask, index) => {
             document.getElementById(state).innerHTML += renderTaskCard(fTask);
-        }); 
-    }else{
+        });
+    } else {
         document.getElementById(noTaskID).style.display = "flex";
     }
     return filteredTasks
 }
 
-function setCategoryStyle(category){
+function setCategoryStyle(category) {
     if (category == "User Story") {
         return "user-story"
-    }else if (category == "Technical Task") {
+    } else if (category == "Technical Task") {
         return "technical-task"
     }
 }
@@ -96,7 +98,7 @@ function renderTaskCard(task) {
     return /*html*/`
         <div draggable="true" onclick="openTask(${task.uniqueIndex})" ondragstart="startDragging(${task.uniqueIndex})" class="status-board">
             <p class="${setCategoryStyle(task.category)}">${task.category}</p>
-            <p><b>${task.title}</b></p>
+            <p class="task-title"><b>${task.title}</b></p>
             <span class="short-info">${task.description}</span>
             <div class="flex-box">
                 <div class="progress">
@@ -160,17 +162,52 @@ function renderBigTask(task) {
 
 
 
+//Filter Function
+
+function filterTasksByTitle() {
+    const input = document.getElementById('searchInput');
+    const searchTerm = input.value.trim().toLowerCase();
+    const taskContainers = document.querySelectorAll('.newTask');
+    const noFeedback = document.getElementById('noFeedback')
+
+    taskContainers.forEach((taskContainer) => {
+        const titleElement = taskContainer.querySelector('.task-title');
+        if (titleElement) {
+            const title = titleElement.textContent.toLowerCase();
+
+            if (title.includes(searchTerm)) {
+                taskContainer.style.display = 'block';
+            } else {
+                taskContainer.style.display = 'none';
+                noFeedback.style.display = 'none';
+            }
+        }
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('keyup', () => {
+        filterTasksByTitle();
+    });
+});
+
+
+
+
 //Drag n' Drop
 
-function allowDrop(event){
+function allowDrop(event) {
     event.preventDefault();
 }
 
-function startDragging(id){
+function startDragging(id) {
     currentDraggedElement = id;
 }
 
-async function moveTo(state){
+async function moveTo(state) {
     tasks.forEach(task => {
         if (task.uniqueIndex == currentDraggedElement) {
             task.state = state;
