@@ -488,6 +488,10 @@ button {
     height: auto;
 }
 
+.noAvailableTask{
+    height: 400px;
+}
+
 .dBlock {
     display: flex !important;
 }

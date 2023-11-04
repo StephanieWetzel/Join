@@ -1,7 +1,3 @@
-let todos;
-let inProgress;
-let awaitFeedback;
-let done;
 let currentDraggedElement;
 let subtaskStatus = {};
 
@@ -67,10 +63,10 @@ function closeTask() {
 
 
 function classifyTask() {
-    todos = filterTasks('todo', 'noTodo');
-    inProgress = filterTasks('inProgress', 'noProgress');
-    awaitFeedback = filterTasks('awaitFeedback', 'noFeedback');
-    done = filterTasks('done', 'noDone');
+    filterTasks('todo', 'noTodo');
+    filterTasks('inProgress', 'noProgress');
+    filterTasks('awaitFeedback', 'noFeedback');
+    filterTasks('done', 'noDone');
 }
 
 
@@ -81,9 +77,11 @@ function filterTasks(state, noTaskID) {
         document.getElementById(noTaskID).style.display = "none";
         filteredTasks.forEach((fTask, index) => {
             document.getElementById(state).innerHTML += renderTaskCard(fTask);
+            document.getElementById(state).classList.remove('noAvailableTask');
         });
     } else {
         document.getElementById(noTaskID).style.display = "flex";
+        document.getElementById(state).classList.add('noAvailableTask');
     }
     return filteredTasks
 }
