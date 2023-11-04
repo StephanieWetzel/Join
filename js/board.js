@@ -18,11 +18,14 @@ async function initBoard(activeSection) {
 
 function openModal() {
     const modal = document.getElementById("myModal");
+    if ((window.innerWidth > 600)) {
+        fetch("assets/templates/addTask.template.html")
+            .then((response) => response.text())
+        modal.style.display = "block";
+    } else {
+        window.location.href = 'http://gruppe-726.developerakademie.net/addTask.html';
+    }
 
-
-    fetch("assets/templates/addTask.template.html")
-        .then((response) => response.text())
-    modal.style.display = "block";
 }
 
 
@@ -73,7 +76,7 @@ function classifyTask() {
 }
 
 function filterTasks(state, noTaskID) {
-    debugger
+    // debugger
     filteredTasks = tasks.filter(t => t.state == state);
     document.getElementById(state).innerHTML = '';
     if (filteredTasks.length > 0) {
