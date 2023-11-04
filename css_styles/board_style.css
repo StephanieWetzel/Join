@@ -468,7 +468,7 @@ button {
     width: 20%;
 }
 
-.marginTopToDo {
+/* .marginTopToDo {
     margin-top: auto;
 }
 
@@ -482,10 +482,10 @@ button {
 
 .marginTopDone {
     margin-top: auto;
-}
+} */
 
 .newTask {
-    height: 100vh;
+    height: auto;
 }
 
 .dBlock {
@@ -529,7 +529,7 @@ button {
         font-size: 32px;
     }
 
-    .marginTopToDo {
+    /* .marginTopToDo {
         margin-top: 44px;
     }
 
@@ -543,7 +543,7 @@ button {
 
     .marginTopDone {
         margin-top: -210px;
-    }
+    } */
 
     .input-container {
         width: 100%;
@@ -582,13 +582,13 @@ button {
         margin-top: 16px;
     }
 
-    .marginTopInProgress {
+    /* .marginTopInProgress {
         margin-top: 44px;
     }
 
     .marginTopDone {
         margin-top: -510px;
-    }
+    } */
 }
 
 @media(min-width:320px) and (max-width:600px) {
