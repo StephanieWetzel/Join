@@ -438,7 +438,7 @@ button {
 @media(min-width:320px) and (max-width:600px) {
     .status {
         flex-direction: column;
-        gap: 48rem;
+        /* gap: 48rem; */
         align-items: center;
     }
 
@@ -462,9 +462,9 @@ button {
         margin-top: -85px;
     }
 
-    .marginTop-688 {
+    /* .marginTop-688 {
         margin-top: -688px;
-    }
+    } */
 
     .test2 {
         font-size: 32px;
