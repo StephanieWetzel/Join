@@ -200,13 +200,23 @@ function printContEditDeleteMobile(index){
     `
 }
 
+/**
+ * This function opens the popup for mobile-devices with animation and stops the 'click' eventlistener to close it right away 
+ * 
+ * @param {event} event - Klick-event for stopping propagation-methode
+ */
 function openEditMobilePopup(event){
+    debugger
     document.getElementById('editDeleteMobile').classList.remove('invis');
     document.getElementById('editDeleteMobile').classList.add('edit-delete-m-anim-open')
     isEditMobilePopupOpen = true;
     event.stopPropagation();
 }
 
+/**
+ * This function closes the mobile-popup with an animation and a minor delay, if the popup is open
+ * 
+ */
 function closeMobilePopup(){
     if (isEditMobilePopupOpen) {
         document.getElementById('editDeleteMobile').classList.remove('edit-delete-m-anim-open')
@@ -219,6 +229,10 @@ function closeMobilePopup(){
     }
 }
 
+/**
+ * Event listener for closing popup if user is tapping anywhere on the screen except the popup itself
+ * 
+ */
 document.addEventListener('click', function(event) {
     if (isEditMobilePopupOpen) {
         const popup = document.getElementById('editDeleteMobile');
@@ -228,6 +242,11 @@ document.addEventListener('click', function(event) {
     }
 });
 
+/**
+ * This function opens the contact-form for editing a contact for mobile-devices
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function openEditContact(index) {
     openEditContactTab();
     getProfilePic(index);
@@ -235,7 +254,11 @@ function openEditContact(index) {
     closeMobilePopup();
 }
 
-
+/**
+ * This function changes the values of the empty inputfields with the values of the contact to be changed 
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function changeValues(index) {
     const contact = contacts[index]
     document.getElementById('edit-index').value = index;
@@ -244,7 +267,11 @@ function changeValues(index) {
     document.getElementById('editPhone').value = contact.phone;
 }
 
-
+/**
+ * This function displays the profile bubble with the initials and the color of the contact
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function getProfilePic(index) {
     let profileP = document.getElementById('profilePic');
     let initials = getInitials(contacts[index].firstName, contacts[index].lastName);
@@ -253,7 +280,10 @@ function getProfilePic(index) {
     `
 }
 
-
+/**
+ * This function opens the contact-form for editing a contact
+ * 
+ */
 function openEditContactTab() {
     removeAllActiveStates();
     clearContactInfo();
@@ -262,10 +292,11 @@ function openEditContactTab() {
     document.querySelector(".sticky-btn").classList.add("d-none");
 }
 
-
+/**
+ * This function saves the edited contact-values and shows them
+ * 
+ */
 async function editContact() {
-    //document.getElementById('editPopup').classList.remove('info-popup-animation')
-    //document.getElementById('editPopup').classList.add('info-popup-animation')
     let index = document.getElementById('edit-index').value;
     let contact = contacts[index];
     let fullName = document.getElementById('editFullName').value;
@@ -279,7 +310,14 @@ async function editContact() {
     showContactInfo(index);
 }
 
-
+/**
+ * This function takes the edited contact-values, overwrites the existing values and saves them on the server
+ * 
+ * @param {array} firstLastName - Array of the first and last name from contact
+ * @param {string} mail - the email-address
+ * @param {number} tel - the phonenumber
+ * @param {object} contact - The handed over object as class-object
+ */
 async function overwriteContact(firstLastName, mail, tel, contact) {
     contact.firstName = firstLastName[0];
     contact.lastName = firstLastName[1];
@@ -288,7 +326,11 @@ async function overwriteContact(firstLastName, mail, tel, contact) {
     await setItem('contacts', JSON.stringify(contacts));
 }
 
-
+/**
+ * This function displays the information tab - the email and phonenumber - ,of the contact-information part, of current contact
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function printContactInformation(index) {
     let contact = contacts[index];
     contactInformation.innerHTML = /*html*/`
@@ -302,7 +344,10 @@ function printContactInformation(index) {
     `
 }
 
-
+/**
+ * This function creates a new contact , saves them on the server and shows them after creating
+ * 
+ */
 async function createContact() {
     document.querySelector(".info-popup").classList.remove('info-popup-animation');
     document.querySelector(".info-popup").classList.add('info-popup-animation');
@@ -315,24 +360,39 @@ async function createContact() {
     showNewContact();
 }
 
+/**
+ * This functtion shows the new created contact
+ * 
+ */
 function showNewContact(){
     const addedContact = contacts.length - 1 ;
     showContactInfo(addedContact);
 }
 
+/**
+ * This function closes the contact-form for adding a contact
+ * 
+ */
 function closeAddC(){
     document.querySelector(".add-contact").classList.add("d-none");
     document.querySelector(".add-form-content").classList.remove('formular-animation');
     document.querySelector(".sticky-btn").classList.remove("d-none");
 }
 
+/**
+ * This function resets the inputfields for the contact-form
+ * 
+ */
 function resetForms() {
     fullName.value = '';
     phone.value = '';
     mail.value = '';
 }
 
-
+/**
+ * This function removes all active states at contact book, only if a contact is currently opened
+ * 
+ */
 function removeAllActiveStates() {
     if (contactInfoOpened) {
         document.querySelector('.contact-active').classList.remove('contact-active');
@@ -340,7 +400,11 @@ function removeAllActiveStates() {
     contactInfoOpened = false;
 }
 
-
+/**
+ * This function deletes the current opened contact
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 async function deleteContact(index) {
     removeAllActiveStates()
     contacts.splice(index, 1);
@@ -350,13 +414,24 @@ async function deleteContact(index) {
     init('contactsSection');
 }
 
-
+/**
+ * This function is getting respectively the first letter from the first and last name.
+ * 
+ * @param {string} firstName - The first name of the contact.
+ * @param {string} lastName - The last name of the contact.
+ * @returns {string} - The first letter from the first name and the first letter from the last name.
+ */
 function getInitials(firstName, lastName) {
     let initials = firstName.charAt(0) + lastName.charAt(0);
     return initials
 }
 
-
+/**
+ * This function splits a string into two parts based on the first space character
+ * 
+ * @param {string} string - The input string to be split
+ * @returns {array} - An array containing two strings after splitting
+ */
 function splitString(string) {
     let strings = [];
     strings.push(string.substring(0, string.indexOf(' ')));
