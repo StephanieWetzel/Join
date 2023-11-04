@@ -8,12 +8,13 @@ let subtaskStatus = {};
 async function initBoard(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
+    await fetchTasks();
+    await fetchContacts();
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
-    await fetchTasks();
     classifyTask();
     filterTasksByTitle();
-    toggleContacts();
+    assignContact()
 }
 
 
