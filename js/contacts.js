@@ -6,7 +6,7 @@ let isEditMobilePopupOpen = false;
 /**
  * Function is calling at entering the Contacts-section, it sets the initials for the user who has logged in, includes html-templates, load contact data from server and displaying contacts with loaded data from server
  * 
- * @param {string} activeSection - Is the name of the current entered section
+ * @param {string} activeSection - The ID of the section that should be marked as active.
  */
 async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');

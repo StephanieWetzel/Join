@@ -61,7 +61,12 @@ function closeTask() {
     modal.style.display = "none";
 }
 
-
+/**
+ * Classifies tasks into different categories and filters them accordingly.
+ * Tasks are categorized based on their current state and filtered into their categories
+ * like 'todo', 'inProgress', 'awaitFeedback', and 'done'.
+ * 
+ */
 function classifyTask() {
     filterTasks('todo', 'noTodo');
     filterTasks('inProgress', 'noProgress');
@@ -69,13 +74,19 @@ function classifyTask() {
     filterTasks('done', 'noDone');
 }
 
-
+/**
+ * This function filters the available tasks by its state (todo, in progress, await feedback etc) and displays them at its section. If there is no Task for an section , no task todo will be shown
+ * 
+ * @param {string} state - The parameter which to sort, also for the ID of its div-element
+ * @param {string} noTaskID - ID for the no task todo div element
+ * @returns 
+ */
 function filterTasks(state, noTaskID) {
     filteredTasks = tasks.filter(t => t.state == state);
     document.getElementById(state).innerHTML = '';
     if (filteredTasks.length > 0) {
         document.getElementById(noTaskID).style.display = "none";
-        filteredTasks.forEach((fTask, index) => {
+        filteredTasks.forEach((fTask) => {
             document.getElementById(state).innerHTML += renderTaskCard(fTask);
             document.getElementById(state).classList.remove('noAvailableTask');
         });
@@ -86,7 +97,12 @@ function filterTasks(state, noTaskID) {
     return filteredTasks
 }
 
-
+/**
+ * This function sets the class for the respective category
+ * 
+ * @param {string} category - Hand over class name
+ * @returns 
+ */
 function setCategoryStyle(category) {
     if (category == "User Story") {
         return "user-story"
@@ -95,7 +111,12 @@ function setCategoryStyle(category) {
     }
 }
 
-
+/**
+ * This function displays the small card for a task
+ * 
+ * @param {object} task - Represantative for the Task -class object
+ * @returns 
+ */
 function renderTaskCard(task) {
     return /*html*/`
         <div draggable="true" onclick="openTask(${task.uniqueIndex})" ondragstart="startDragging(${task.uniqueIndex})" class="status-board">
@@ -122,7 +143,11 @@ function renderTaskCard(task) {
         `
 }
 
-
+/**
+ * This function displays the task with more information for the user.
+ * 
+ * @param {object} task - Represantative for the Task -class object
+ */
 function renderBigTask(task) {
     let openedTask = document.getElementById('customModal');
     openedTask.innerHTML =/*html*/`
@@ -248,16 +273,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //Drag n' Drop
 
+/**
+ * Allows a drop event by preventing its default behavior, making an element droppable.
+ *
+ * @param {Event} event - The drop event object.
+ */
 function allowDrop(event) {
     event.preventDefault();
 }
 
-
+/**
+ * Initiates the dragging operation by setting the currently dragged element.
+ *
+ * @param {string} id - The identifier of the element to be dragged.
+ */
 function startDragging(id) {
     currentDraggedElement = id;
 }
 
-
+/**
+ * Moves a task to a new state and updates the task list in local storage.
+ * 
+ * @param {string} state - The new state to which the task should be moved.
+ */
 async function moveTo(state) {
     tasks.forEach(task => {
         if (task.uniqueIndex == currentDraggedElement) {
