@@ -22,7 +22,10 @@ class Contact{
         this.mail = mail;
         this.getRNDColor();
     }
-
+    
+    /**
+     * Generates a random RGB color and assigns it to the 'color' property of the calling object.
+     */
     getRNDColor(){
         const red = Math.floor(Math.random()*256);
         const green = Math.floor(Math.random()*256);

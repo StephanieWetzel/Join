@@ -2,11 +2,17 @@
 let users = [];
 let contacts = [];
 
+/**
+ * Initializes the application by fetching user and contact data.
+ */
 async function init() {
     await fetchUsers();
     await fetchContacts();
 }
 
+/**
+ * Checks if the entered password and confirm password match and sets custom validation message.
+ */
 function checkPasswords() {
     let pw = document.getElementById('password');
     let cPw = document.getElementById('cPassword');
@@ -17,6 +23,9 @@ function checkPasswords() {
     }
 }
 
+/**
+ * Checks if the entered full name is already taken by a user and sets a custom validation message.
+ */
 function checkFullName() {
     let user = users.find(user => user.firstName + ' ' + user.lastName == fullName.value);
     if (user) {
@@ -26,6 +35,9 @@ function checkFullName() {
     }
 }
 
+/**
+ * Checks if the entered email is already taken by a user and sets a custom validation message.
+ */
 function checkEmail() {
     let user = users.find(user => user.mail == email.value);
     if (user) {
@@ -35,6 +47,10 @@ function checkEmail() {
     }
 }
 
+/**
+ * Handles user registration by creating a new user and contact, storing them in local storage,
+ * and triggering an animation for the registration success popup.
+ */
 async function registration() {
     let firstLastName = splitString(fullName.value);
     users.push(new User(firstLastName[0], firstLastName[1], email.value, password.value));
@@ -44,6 +60,10 @@ async function registration() {
     animatePopup();
 }
 
+/**
+ * Animates a registration success popup by applying CSS animations, clearing input fields,
+ * and redirecting to the login page after a delay.
+ */
 function animatePopup() {
     let blend = document.getElementById('popupBlend');
     let popTxt = document.getElementById('popupText');
@@ -56,6 +76,9 @@ function animatePopup() {
     }, 3200)
 }
 
+/**
+ * Clears the form-validation inputfields
+ */
 function clearInputs() {
     fullName.value = '';
     email.value = '';
@@ -63,6 +86,12 @@ function clearInputs() {
     cPassword.value = '';
 }
 
+/**
+ * Splits a string into an array of substrings based on the first occurrence of a space character (' ').
+ *
+ * @param {string} string - The string to be split.
+ * @returns {string[]} An array containing the substrings obtained by splitting the input string. 
+ */
 function splitString(string) {
     let strings = [];
     strings.push(string.substring(0, string.indexOf(' ')));
@@ -70,6 +99,12 @@ function splitString(string) {
     return strings;
 }
 
+/**
+ * Toggles the visibility of the password using a "fish eye" effect, changing button and image styles.
+ *
+ * @param {string} BtnID - The ID of the button element associated with the fish eye effect.
+ * @param {string} ImgID - The ID of the image element associated with the fish eye effect.
+ */
 function toggleFishEye(BtnID, ImgID){
     let pwInput = document.getElementById("password");
     let fishBtn = document.getElementById(BtnID);
@@ -86,6 +121,12 @@ function toggleFishEye(BtnID, ImgID){
     }
 }
 
+/**
+ * Toggles the visibility of a password input field and updates the associated button's image.
+ *
+ * @param {string} id - The ID of the password input element to toggle.
+ * @param {string} btnId - The ID of the button element with the image to update.
+ */
 function togglePasswordVisibility(id, btnId){
     let pwInput = document.getElementById(id);
     let btnImg = document.getElementById(btnId);
