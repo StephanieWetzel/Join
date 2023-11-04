@@ -468,8 +468,8 @@ button {
     width: 20%;
 }
 
-.dNoneResponsive {
-    display: block;
+.marginTopToDo {
+    margin-top: auto;
 }
 
 .marginTopInProgress {
@@ -500,19 +500,11 @@ button {
         height: auto;
         width: 100%;
     }
-}
 
-@media(min-width:320px) and (max-width:600px) {
     .status {
         flex-direction: column;
         /* gap: 48rem; */
         align-items: center;
-    }
-
-    h1 {
-        font-size: 52px;
-        margin-block-end: 0;
-        padding-bottom: 32px;
     }
 
     .board {
@@ -525,31 +517,72 @@ button {
     }
 
     .headerFlex {
-        flex-direction: column-reverse;
-        margin-top: -85px;
-    }
-
-    .marginTopInProgress {
-        margin-top: -448px;
-    }
-
-    .marginTopAwaitFeedback {
-        margin-top: -488px;
-    }
-
-    .marginTopDone {
-        margin-top: -166px;
+        flex-direction: row;
+        margin-top: -64px;
     }
 
     .test2 {
         font-size: 32px;
     }
 
-    .createBtn span {
-        display: none;
+    .marginTopToDo {
+        margin-top: 44px;
     }
 
-    .dNoneResponsive {
+    .marginTopInProgress {
+        margin-top: -500px;
+    }
+
+    .marginTopAwaitFeedback {
+        margin-top: -530px;
+    }
+
+    .marginTopDone {
+        margin-top: -210px;
+    }
+
+    .input-container {
+        width: 100%;
+    }
+}
+
+@media(min-width:750px) {
+    .headerBoard {
+        flex-direction: row;
+    }
+
+    .headerFlex {
+        margin-top: 0;
+    }
+}
+
+@media(min-width:500px) {
+    .d-flex {
+        width: 456px;
+    }
+
+    .status-board {
+        font-size: 18px;
+    }
+}
+
+@media(min-width:320px) and (max-width:500px) {
+    h1 {
+        font-size: 52px;
+        margin-block-end: 0;
+        padding-bottom: 32px;
+    }
+
+    .headerBoard {
+        flex-direction: column;
+    }
+
+    .headerFlex {
+        flex-direction: column-reverse;
+        margin-top: -85px;
+    }
+
+    .createBtn span {
         display: none;
     }
 
