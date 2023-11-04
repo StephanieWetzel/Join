@@ -143,7 +143,7 @@ button {
     font-size: 16px;
     margin-bottom: 16px;
     cursor: pointer;
-    /* border: solid 1.5px #DBDBDB; */
+    border: solid 1.5px #DBDBDB;
 }
 
 .short-info {
@@ -473,15 +473,15 @@ button {
 }
 
 .marginTopInProgress {
-    margin-top: -448px;
+    margin-top: auto;
 }
 
 .marginTopAwaitFeedback {
-    margin-top: -488px;
+    margin-top: auto;
 }
 
 .marginTopDone {
-    margin-top: -166px;
+    margin-top: auto;
 }
 
 .newTask {
@@ -505,7 +505,7 @@ button {
 @media(min-width:320px) and (max-width:600px) {
     .status {
         flex-direction: column;
-        gap: 48rem;
+        /* gap: 48rem; */
         align-items: center;
     }
 
@@ -529,9 +529,17 @@ button {
         margin-top: -85px;
     }
 
-    /* .marginTop-688 {
-        margin-top: -688px;
-    } */
+    .marginTopInProgress {
+        margin-top: -448px;
+    }
+
+    .marginTopAwaitFeedback {
+        margin-top: -488px;
+    }
+
+    .marginTopDone {
+        margin-top: -166px;
+    }
 
     .test2 {
         font-size: 32px;
