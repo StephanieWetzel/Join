@@ -1,3 +1,7 @@
+/**
+ *  Represents a task with various properties.
+ * 
+ */
 class Task {
     title;
     description;
@@ -8,7 +12,17 @@ class Task {
     subtasks;
     state;
     uniqueIndex;
-
+    /**
+     * Constructor for the Task class.
+     * 
+     * @param {string} title - The title of the task. 
+     * @param {string} description - The description of the task.
+     * @param {Array} assignedContacts - An array of contacts assigned to the task.
+     * @param {Date} date - The date of thee task.
+     * @param {string} priority - The priority of the task.
+     * @param {string} category - The category of the task.
+     * @param {Array} subtasks - An array of subtasks associated with the task.
+     */
     constructor(title, description, assignedContacts, date, priority, category, subtasks) {
         this.title = title;
         this.description = description;

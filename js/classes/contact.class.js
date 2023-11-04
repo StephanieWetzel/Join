@@ -1,10 +1,20 @@
+/**
+ * Represents a contact with various properties.
+ */
 class Contact{
     firstName;
     lastName;
     phone;
     mail;
     color;
-
+    /**
+     * Constructor for the contact class.
+     * 
+     * @param {string} firstName - The first name of the contact. 
+     * @param {string} lastName - The last name of the contact.
+     * @param {number} phone - The phone number of the contact.
+     * @param {string} mail - The Email address of the contact
+     */
     constructor(firstName, lastName, phone, mail){
         this.firstName = firstName;
         this.lastName = lastName;
