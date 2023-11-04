@@ -1,8 +1,9 @@
 .addTaskMain {
     display: flex;
     align-items: center;
-    padding: 0 64px;
+    /* padding: 0 64px; */
     background-color: #f6f7f8;
+    padding-left: 25%;
 }
 
 .dNone {
@@ -410,6 +411,22 @@ textarea:focus {
     display: none;
 }
 
+.sidebar {
+    position: fixed;
+    min-height: 100vh;
+    height: 100%;
+    width: 20%;
+}
+
+.main-content {
+    min-width: 100%;
+    width: 100%;
+}
+
+.kanban-title {
+    padding-left: 40%;
+}
+
 /* BOARD */
 .newTask {
     height: 200px;
@@ -446,6 +463,20 @@ textarea:focus {
     .footerContainer {
         margin-top: 24px;
         padding: 0 16px 16px 16px;
+    }
+}
+
+@media(max-width:1024px) {
+    .sidebar {
+        bottom: 0;
+        left: 0;
+        min-height: auto;
+        height: auto;
+        width: 100%;
+    }
+
+    .addTaskMain {
+        padding-left: 0% !important;
     }
 }
 

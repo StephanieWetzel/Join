@@ -492,6 +492,10 @@ button {
     display: flex !important;
 }
 
+.dynamicDisplayFlex {
+    display: block;
+}
+
 @media(max-width:1024px) {
     .sidebar {
         bottom: 0;
@@ -546,6 +550,13 @@ button {
     }
 }
 
+@media(min-width:850px) and (max-width:1024px) {
+    .d-flex {
+        width: 392px;
+    }
+}
+
+
 @media(min-width:750px) {
     .headerBoard {
         flex-direction: row;
@@ -554,19 +565,33 @@ button {
     .headerFlex {
         margin-top: 0;
     }
+
+    .status {
+        margin-top: -88px;
+    }
 }
 
-@media(min-width:500px) {
-    .d-flex {
-        width: 456px;
-    }
-
+@media(min-width:600px) {
     .status-board {
         font-size: 18px;
     }
+
+    .dynamicDisplayFlex {
+        display: flex !important;
+        gap: 32px;
+        margin-top: 16px;
+    }
+
+    .marginTopInProgress {
+        margin-top: 44px;
+    }
+
+    .marginTopDone {
+        margin-top: -510px;
+    }
 }
 
-@media(min-width:320px) and (max-width:500px) {
+@media(min-width:320px) and (max-width:600px) {
     h1 {
         font-size: 52px;
         margin-block-end: 0;
