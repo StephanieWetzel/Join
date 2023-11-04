@@ -417,12 +417,24 @@ button {
     height: 100%;
 }
 
-.marginTop-688 {
+/* .marginTop-688 {
     margin: auto;
-}
+} */
 
 .dNoneResponsive {
     display: block;
+}
+
+.marginTopInProgress {
+    margin-top: -448px;
+}
+
+.marginTopAwaitFeedback {
+    margin-top: -488px;
+}
+
+.marginTopDone {
+    margin-top: -166px;
 }
 
 @media(max-width:1024px) {
@@ -462,9 +474,9 @@ button {
         margin-top: -85px;
     }
 
-    .marginTop-688 {
+    /* .marginTop-688 {
         margin-top: -688px;
-    }
+    } */
 
     .test2 {
         font-size: 32px;
