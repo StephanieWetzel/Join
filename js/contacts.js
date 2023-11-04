@@ -3,7 +3,11 @@ let contactInfoOpened = false;
 let logInUser;
 let isEditMobilePopupOpen = false;
 
-
+/**
+ * Function is calling at entering the Contacts-section, it sets the initials for the user who has logged in, includes html-templates, load contact data from server and displaying contacts with loaded data from server
+ * 
+ * @param {string} activeSection - Is the name of the current entered section
+ */
 async function init(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
@@ -13,7 +17,10 @@ async function init(activeSection) {
     setHeaderInitials(logInUser);
 }
 
-
+/**
+ * Function for open the contact-form where User can add a acontact.
+ * 
+ */
 function openContactForm() {
     removeAllActiveStates();
     clearContactInfo();
@@ -22,13 +29,20 @@ function openContactForm() {
     document.querySelector(".sticky-btn").classList.add("d-none");
 }
 
-
+/**
+ * Function clears the displayed contactinformation
+ * 
+ */
 function clearContactInfo() {
     infoHead.innerHTML = '';
     contactInformation.innerHTML = '';
 }
 
-
+/**
+ * Function closes the opened contact-form
+ * 
+ * @param {string} editOrAdd - The name of the opened contact-form -> there are two of them , for editing an existing contact or add a new contact
+ */
 function closeContactForm(editOrAdd) {
     if (editOrAdd === 'add') {
         document.querySelector(".add-contact").classList.add("d-none");
@@ -42,7 +56,10 @@ function closeContactForm(editOrAdd) {
     init('contactsSection');
 }
 
-
+/**
+ * Function for displaying contacts
+ * 
+ */
 function loadContacts() {
     contacts.forEach((contact, index) => {
         let initials = getInitials(contact.firstName, contact.lastName);
@@ -59,6 +76,12 @@ function loadContacts() {
     })
 }
 
+/**
+ * This function checks, if a user enters the full name ->first name + last name, or only the first or last name
+ * 
+ * @param {object} contact - The handed over object as class-object
+ * @returns 
+ */
 function checkIfFirstNameOrLastName(contact){
     if (contact.firstName != '') {
         return document.getElementById(contact.firstName.charAt(0).toLowerCase());
@@ -67,12 +90,20 @@ function checkIfFirstNameOrLastName(contact){
     }
 }
 
-
+/**
+ * This function handles the view of the contacts for smaller devices
+ * 
+ */
 function showContactBookMobile(){
     document.getElementById('contactBookInfo').classList.add('mobile-sight');
     document.getElementById('contactBook').classList.remove('mobile-sight');
 } 
 
+/**
+ * This function displays the information of a clicked contact, it checks the screen-width too and adjust the displayed information
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function showContactInfo(index) {
     removeAllActiveStates();
     const querie = window.matchMedia("(max-width: 850px)");
@@ -85,11 +116,23 @@ function showContactInfo(index) {
     }
 }
 
+/**
+ * This function displays the contactinformation for smaller devices
+ * 
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function showInfoMobile(index){
     printContactHead(index);
     printContactInformation(index);
 }
 
+/**
+ * This function displays the contactinformation for big screens i.e. desktop PC's and notebooks. It adds animation + an active state for the current displayed contactinformation at the contactbook 
+ *  
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function showInfoDesktop(index){
     document.getElementById('infoContent').classList.add('animate-contact-information');
     printContactHead(index);
@@ -101,7 +144,11 @@ function showInfoDesktop(index){
     }, 500)
 }
 
-
+/**
+ * This function displays the contact-head-information, gets the initials from the to be shown contact and prints the delete edit-button for devices wwith smaller screen-width
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function printContactHead(index) {
     let contact = contacts[index];
     let initials = getInitials(contact.firstName, contact.lastName);
@@ -109,6 +156,13 @@ function printContactHead(index) {
     printContEditDeleteMobile(index);
 }
 
+/**
+ * This function displayys the contact-head-information for desktop PC's or notebooks
+ * 
+ * @param {object} contact - The handed over object as class-object
+ * @param {string} initials - Initials from users first and last name
+ * @param {number} index - The index of the displayed Contact
+ */
 function printContHeadBigScreen(contact, initials, index){
     infoHead.innerHTML = /*html*/`
     <div class="contact-bubble large" style="background-color: ${contact.color}">${initials}</div>
@@ -127,7 +181,11 @@ function printContHeadBigScreen(contact, initials, index){
     </div>`
 }
 
-
+/**
+ * This function displays the edit and delete buttons for devices with smaller screen-width i.e. mobile-devices
+ * 
+ * @param {number} index - The index of the displayed Contact
+ */
 function printContEditDeleteMobile(index){
     let editDeleteMobileDiv = document.getElementById('editDeleteMobile');
     editDeleteMobileDiv.innerHTML = /*html*/`
