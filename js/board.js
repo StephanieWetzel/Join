@@ -13,20 +13,18 @@ async function initBoard(activeSection) {
     await fetchTasks();
     classifyTask();
     filterTasksByTitle();
+    toggleContacts();
 }
 
 
 function openModal() {
     const modal = document.getElementById("myModal");
-    if ((window.innerWidth > 600)) {
-        fetch("assets/templates/addTask.template.html")
-            .then((response) => response.text())
-        modal.style.display = "block";
-    } else {
-        window.location.href = 'http://gruppe-726.developerakademie.net/addTask.html';
-    }
-}
 
+
+    fetch("assets/templates/addTask.template.html")
+        .then((response) => response.text())
+    modal.style.display = "block";
+}
 
 
 function closeModal() {
@@ -51,7 +49,6 @@ function openTask(taskUIndex) {
             renderBigTask(task)
         }
     });
-
 }
 
 
@@ -67,6 +64,7 @@ function closeTask() {
     modal.style.display = "none";
 }
 
+
 function classifyTask() {
     todos = filterTasks('todo', 'noTodo');
     inProgress = filterTasks('inProgress', 'noProgress');
@@ -74,8 +72,8 @@ function classifyTask() {
     done = filterTasks('done', 'noDone');
 }
 
+
 function filterTasks(state, noTaskID) {
-    debugger
     filteredTasks = tasks.filter(t => t.state == state);
     document.getElementById(state).innerHTML = '';
     if (filteredTasks.length > 0) {
@@ -89,6 +87,7 @@ function filterTasks(state, noTaskID) {
     return filteredTasks
 }
 
+
 function setCategoryStyle(category) {
     if (category == "User Story") {
         return "user-story"
@@ -96,6 +95,7 @@ function setCategoryStyle(category) {
         return "technical-task"
     }
 }
+
 
 function renderTaskCard(task) {
     return /*html*/`
@@ -123,11 +123,12 @@ function renderTaskCard(task) {
         `
 }
 
+
 function renderBigTask(task) {
     let openedTask = document.getElementById('customModal');
     openedTask.innerHTML =/*html*/`
     <div class="open-task">
-            <div>
+            <div class="card-content">
                 <button onclick="closeTask()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
                 <div class="status-board status-board-open">
                     <p class="${setCategoryStyle(task.category)}">${task.category}</p>
@@ -168,7 +169,6 @@ function renderBigTask(task) {
                 </div>
             </div>
         </div>`
-
 }
 
 
@@ -208,6 +208,7 @@ function toggleSubtaskImage(index, taskIndex) {
         progressBar1.style.width = `${percent}%`;
     }
 }
+
 
 
 
@@ -252,9 +253,11 @@ function allowDrop(event) {
     event.preventDefault();
 }
 
+
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
 
 async function moveTo(state) {
     tasks.forEach(task => {
