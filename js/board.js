@@ -10,7 +10,8 @@ async function initBoard(activeSection) {
     setHeaderInitials(logInUser);
     classifyTask();
     filterTasksByTitle();
-    assignContact()
+    assignContact();
+    openEditTaskPopup()
 }
 
 
@@ -24,8 +25,6 @@ function openModal() {
         window.location.href = 'http://gruppe-726.developerakademie.net/Join/addTask.html';
     }
 }
-
-
 
 
 function closeModal() {
@@ -152,11 +151,11 @@ function renderTaskCard(task) {
  * 
  * @param {object} task - Represantative for the Task -class object
  */
-function renderBigTask(task) {
+function renderBigTask(task, taskId) {
     let openedTask = document.getElementById('customModal');
     openedTask.innerHTML =/*html*/`
     <div class="open-task">
-            <div class="card-content">
+            <div id="customModals${task.uniqueIndex}" class="card-content">
                 <button onclick="closeTask()" id="closeModal"><img src="assets/images/close.svg" alt=""></button>
                 <div class="status-board status-board-open">
                     <p class="${setCategoryStyle(task.category)}">${task.category}</p>
@@ -189,10 +188,19 @@ function renderBigTask(task) {
                     </span>
                     </div>
                     <div class="openBoard-options">
-                        <img src="assets/images/delete.svg" alt="">
-                        <span>Delete</span>
-                        <img src="assets/images/edit.svg" alt="">
-                        <span>Edit</span>
+                    <div class="border-right hover-bg">
+                        <img class="delete-img" src="assets/images/delete.svg" alt="">
+                        <img class="delete-img" src="assets/images/Delete-shrift-black.svg" alt="">
+                        <img class="hover-img" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/delete-blue.svg" alt="">
+                        <img class="hover-img" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/Delete-shrift.svg" alt="">
+                    </div>
+                    <div class="hover-bg">
+                        <img class="delete-img" src="assets/images/edit.svg" alt="">
+                        <img class="delete-img" src="assets/images/Edit-shrift-black.svg" alt="">
+                        <img class="hover-img" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/edit-blue.svg" alt="">
+                        <img class="hover-img" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/Edit-shrift.svg" alt="">
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -308,4 +316,38 @@ async function moveTo(state) {
     });
     await setItem('tasks', JSON.stringify(tasks));
     initBoard('board');
+}
+
+
+function deleteTask(taskId) {
+    const taskIndex = tasks.findIndex(task => task.uniqueIndex === taskId);
+
+    if (taskIndex !== -1) {
+        tasks.splice(taskIndex, 1);
+        setItem('tasks', JSON.stringify(tasks));
+        closeTask();
+        initBoard('board');
+    }
+}
+
+
+function openEditTaskPopup(taskId) {
+    // Finde den ausgewählten Task basierend auf der taskId
+    const selectedTask = tasks.find(task => task.uniqueIndex === taskId);
+
+    if (selectedTask) {
+        // Fülle die Formularfelder mit den Werten des ausgewählten Tasks
+        document.getElementById("title").value = selectedTask.title;
+        document.getElementById("description").value = selectedTask.description;
+        document.getElementById("dueDate").value = selectedTask.date;
+        document.getElementById("categoryInputField").value = selectedTask.category;
+
+        handlePriorities(selectedTask.priority);
+        renderSubtasks(selectedTask.subtasks)        
+        assignContact(selectedTask.assignedContacts)  
+
+        const modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        closeTask();
+    }
 }

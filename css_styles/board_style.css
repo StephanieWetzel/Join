@@ -182,6 +182,14 @@ button {
     padding-right: 16px;
 }
 
+.initial-image:hover {
+    cursor: pointer;
+}
+
+.changed-image:hover {
+    cursor: pointer;    
+}
+
 .priority {
     display: flex;
     justify-content: end;
@@ -434,6 +442,8 @@ button {
 
 .status-board-open {
     gap: 24px;
+    border: none;
+    cursor: auto;
 }
 
 .openBoard-options {
@@ -448,9 +458,33 @@ button {
     padding-left: 8px;
 }
 
-.openBoard-options span:first-of-type {
+.border-right {
     border-right: 1px solid #D1D1D1;
     padding-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.hover-bg{
+    display: flex;
+    align-items: center;
+}
+
+.hover-img {
+    display: none;
+    cursor: pointer;
+}
+
+.hover-bg:hover .hover-img {
+    display: block;
+}
+
+.hover-img:hover + .delete-img {
+    display: none;
+}
+
+.hover-bg:hover + .delete-img{
+    display: none;
 }
 
 .openBoard-options img {
