@@ -1,6 +1,6 @@
 <div class="boardCloseBtn">
     <h1 class="boardH1 addTaskMediaQueryH1">Add Task</h1>
-    <button onclick="closeModal()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
+    <button onclick="closeModal()" id="closeModal"><img src="assets/images/close.svg" alt=""></button>
 </div>
 
 <form class="form formBoard" onsubmit="addTaskToBoard(); return false">
@@ -25,9 +25,9 @@
                         type="text" value="Select contacts to assign">
                     <div>
                         <img onclick="toggleContacts()" class="arrowSymbol inputSymbol" id="arrowDownSymbol"
-                            src="/assets/images/arrow_down.svg" alt="Pfeil runter">
+                            src="assets/images/arrow_down.svg" alt="Pfeil runter">
                         <img onclick="toggleContacts()" class="arrowSymbol inputSymbol dNone" id="arrowUpSymbol"
-                            src="/assets/images/arrow_up.png" alt="Pfeil hoch">
+                            src="assets/images/arrow_up.png" alt="Pfeil hoch">
                     </div>
                     <div id="assignedContacts" class="assignedContacts"></div>
                 </div>
@@ -57,15 +57,15 @@
                 <div class="prioCategoriesContainer">
                     <button type="button" class="prioCategory" id="urgent" onclick="handlePriorities('urgent')">
                         Urgent
-                        <img src="/assets/images/urgent_symbol.svg" id="urgentSymbol">
+                        <img src="assets/images/urgent_symbol.svg" id="urgentSymbol">
                     </button>
                     <button type="button" class="prioCategory" id="medium" onclick="handlePriorities('medium')">
                         Medium
-                        <img src="/assets/images/medium_symbol.svg" id="mediumSymbol">
+                        <img src="assets/images/medium_symbol.svg" id="mediumSymbol">
                     </button>
                     <button type="button" class="prioCategory" id="low" onclick="handlePriorities('low')">
                         Low
-                        <img src="/assets/images/low_symbol.svg" id="lowSymbol">
+                        <img src="assets/images/low_symbol.svg" id="lowSymbol">
                     </button>
                 </div>
             </div>
@@ -79,16 +79,16 @@
                     <span onclick="assignCategory(this)" value="User Story">User Story</span>
                 </div>
                 <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" id="categoryArrowDown"
-                    src="/assets/images/arrow_down.svg" alt="Pfeil runter">
+                    src="assets/images/arrow_down.svg" alt="Pfeil runter">
                 <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol dNone" id="categoryArrowUp"
-                    src="/assets/images/arrow_up.png" alt="Pfeil hoch">
+                    src="assets/images/arrow_up.png" alt="Pfeil hoch">
             </div>
 
             <div class="formSection">
                 <label class="marginBo8">Subtasks</label>
                 <input id="subtaskInput" type="text" placeholder="Add new subtask">
                 <img id="addSubtaskSymbol" onclick="addSubtask()" class="subtasksAddSymbol inputSymbol"
-                    src="/assets/images/add_symbol.svg" alt="Plus">
+                    src="assets/images/add_symbol.svg" alt="Plus">
                 <div id="subtaskContainer" class="subtaskContainer"></div>
             </div>
         </div>
@@ -109,7 +109,7 @@
 
             <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn">
                 Create Task
-                <img src="./assets/images/check.svg" alt="weißer Haken">
+                <img src="assets/images/check.svg" alt="weißer Haken">
             </button>
         </div>
     </div>

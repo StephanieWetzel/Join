@@ -153,13 +153,13 @@ function renderBigTask(task) {
     openedTask.innerHTML =/*html*/`
     <div class="open-task">
             <div class="card-content">
-                <button onclick="closeTask()" id="closeModal"><img src="/assets/images/close.svg" alt=""></button>
+                <button onclick="closeTask()" id="closeModal"><img src="assets/images/close.svg" alt=""></button>
                 <div class="status-board status-board-open">
                     <p class="${setCategoryStyle(task.category)}">${task.category}</p>
                     <p class="headline"><b>${task.title}</b></p>
                     <span class="taskInformation">${task.description}</span>
                     <span style="color: #42526E;">Due Date: <span class="m-left1">${formatDueDate(task.date)}</span></span>
-                    <span style="color: #42526E;">Priority: <span class="m-left2">${task.priority}<img class="board-img" src="./assets/images/${task.priority}_symbol.svg" alt=""></span></span>
+                    <span style="color: #42526E;">Priority: <span class="m-left2">${task.priority}<img class="board-img" src="assets/images/${task.priority}_symbol.svg" alt=""></span></span>
                     <span style="color: #42526E;">Assigned To:</span>
                     <div>
                     ${task.assignedContacts ? task.assignedContacts.map(contact => /*html*/`
@@ -176,8 +176,8 @@ function renderBigTask(task) {
                         <ul id="subtaskIndex${task.uniqueIndex}">
                             ${task.subtasks.map(subtask => `
                                 <li class="list-style">
-                                <img class="chop-image initial-image" src="./assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
-                                <img class="rectangle-image changed-image" src="./assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+                                <img class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+                                <img class="rectangle-image changed-image" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
                                 ${subtask}
                                 </li>
                             `).join('')}
@@ -185,9 +185,9 @@ function renderBigTask(task) {
                     </span>
                     </div>
                     <div class="openBoard-options">
-                        <img src="./assets/images/delete.svg" alt="">
+                        <img src="assets/images/delete.svg" alt="">
                         <span>Delete</span>
-                        <img src="./assets/images/edit.svg" alt="">
+                        <img src="assets/images/edit.svg" alt="">
                         <span>Edit</span>
                     </div>
                 </div>
