@@ -142,13 +142,23 @@ function getUrgentYear(str) {
 function displayUrgentTasks() {
     let uTasks = getUrgentTasksCounter();
     let uDate = getUpcomingDeadline();
-    urgentCounter.innerHTML = /*html*/`
-    <h1>${uTasks}</h1>
-    <span>Urgent</span>`
-    deadlineDate.innerHTML = /*html */`
-    <p>${getUrgentMonth(uDate)} ${getUrgentMonthDay(uDate)}, ${getUrgentYear(uDate)}</p>
-    <p>Upcoming Deadline</p>
-    `
+    if (uTasks > 0) {
+        urgentCounter.innerHTML = /*html*/`
+        <h1>${uTasks}</h1>
+        <span>Urgent</span>`
+        deadlineDate.innerHTML = /*html */`
+        <p>${getUrgentMonth(uDate)} ${getUrgentMonthDay(uDate)}, ${getUrgentYear(uDate)}</p>
+        <p>Upcoming Deadline</p>
+        `  
+    }else{
+        urgentCounter.innerHTML = /*html*/`
+        <h1>${uTasks}</h1>
+        <span>Urgent</span>`
+        deadlineDate.innerHTML = /*html */`
+        <p>No Upcoming Deadline</p>
+        `  
+    }
+   
 }
 
 /**
