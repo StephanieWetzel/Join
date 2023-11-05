@@ -1,25 +1,25 @@
-.formBoard{
+.formBoard {
     padding: 16px;
     margin-bottom: 40px;
 }
 
-.boardH1{
-    padding: 16px;
+.boardH1 {
+    font-size: 40px;
 }
 
-input{
+input {
     width: 100%;
 }
 
-.boardBtn{
+.boardBtn {
     display: none;
 }
 
-.footerBoard{
+.footerBoard {
     margin: 0;
 }
 
-.boardCloseBtn{
+.boardCloseBtn {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +41,7 @@ input{
     background-color: rgba(211, 211, 211, 0.551);
 }
 
-.boardCloseBtn button{
+.boardCloseBtn button {
     height: 32px;
     width: 32px;
 }
@@ -53,5 +53,18 @@ input{
 
     to {
         right: 50%;
+    }
+}
+
+/* responsive design */
+@media(max-width: 1330px) {
+    .modal-content {
+        width: auto;
+        height: 800px;
+        padding: 24px 24px 104px 24px;
+    }
+
+    .formSection {
+        margin-bottom: 24px;
     }
 }
