@@ -21,6 +21,7 @@ function openModal() {
         fetch("assets/templates/addTask.template.html")
             .then((response) => response.text())
         modal.style.display = "block";
+        document.body.style.overflow = 'hidden';
     } else {
         window.location.href = 'http://gruppe-726.developerakademie.net/Join/addTask.html';
     }
@@ -37,6 +38,7 @@ function closeModal() {
     }
 
     modal.style.display = "none";
+    document.body.style.overflow = 'visible';
     initBoard('board');
 }
 
@@ -44,6 +46,7 @@ function closeModal() {
 function openTask(taskUIndex) {
     let modal = document.getElementById("customModal");
     modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
     tasks.forEach(task => {
         if (task.uniqueIndex == taskUIndex) {
             renderBigTask(task)
@@ -60,8 +63,8 @@ function closeTask() {
             modal.style.display = "none";
         }
     }
-
     modal.style.display = "none";
+    document.body.style.overflow = 'visible';
 }
 
 /**

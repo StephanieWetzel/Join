@@ -307,7 +307,7 @@ button {
 .priority-text {
     display: flex;
     align-items: flex-start;
-    margin-right: 100px;
+    /* margin-right: 100px; */
 }
 
 .priority-text p {
@@ -503,28 +503,12 @@ button {
     width: 20%;
 }
 
-/* .marginTopToDo {
-    margin-top: auto;
-}
-
-.marginTopInProgress {
-    margin-top: auto;
-}
-
-.marginTopAwaitFeedback {
-    margin-top: auto;
-}
-
-.marginTopDone {
-    margin-top: auto;
-} */
-
 .newTask {
     height: auto;
 }
 
 .noAvailableTask {
-    height: 400px;
+    height: 200px;
 }
 
 .dBlock {
@@ -535,6 +519,7 @@ button {
     display: block;
 }
 
+/* responsive design */
 @media(max-width:1500px) {
     .status {
         flex-direction: column;
@@ -545,8 +530,6 @@ button {
         padding-bottom: 80px;
     }
 }
-
-
 
 @media(max-width:1024px) {
     .sidebar {
@@ -574,22 +557,6 @@ button {
         font-size: 32px;
     }
 
-    /* .marginTopToDo {
-        margin-top: 44px;
-    }
-
-    .marginTopInProgress {
-        margin-top: -500px;
-    }
-
-    .marginTopAwaitFeedback {
-        margin-top: -530px;
-    }
-
-    .marginTopDone {
-        margin-top: -210px;
-    } */
-
     .input-container {
         width: 100%;
     }
@@ -597,7 +564,7 @@ button {
 
 @media(min-width:850px) and (max-width:1500px) {
     .d-flex {
-        width: 392px;
+        width: 376px;
     }
 }
 
@@ -626,14 +593,6 @@ button {
         gap: 32px;
         margin-top: 16px;
     }
-
-    /* .marginTopInProgress {
-        margin-top: 44px;
-    }
-
-    .marginTopDone {
-        margin-top: -510px;
-    } */
 }
 
 @media(min-width:320px) and (max-width:600px) {
