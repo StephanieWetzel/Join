@@ -16,12 +16,16 @@ async function initBoard(activeSection) {
 
 function openModal() {
     const modal = document.getElementById("myModal");
-
-
-    fetch("assets/templates/addTask.template.html")
-        .then((response) => response.text())
-    modal.style.display = "block";
+    if ((window.innerWidth > 600)) {
+        fetch("assets/templates/addTask.template.html")
+            .then((response) => response.text())
+        modal.style.display = "block";
+    } else {
+        window.location.href = 'http://gruppe-726.developerakademie.net/Join/addTask.html';
+    }
 }
+
+
 
 
 function closeModal() {

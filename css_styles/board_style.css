@@ -10,7 +10,7 @@ input {
 }
 
 .board {
-    padding: 0 64px;
+    padding: 0 64px 32px 0;
     padding-left: 25%;
 }
 
@@ -73,7 +73,8 @@ button {
 
 .status {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    gap: 32px;
 }
 
 .standardImg {
@@ -488,7 +489,7 @@ button {
     height: auto;
 }
 
-.noAvailableTask{
+.noAvailableTask {
     height: 400px;
 }
 
@@ -500,6 +501,19 @@ button {
     display: block;
 }
 
+@media(max-width:1500px) {
+    .status {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .board {
+        padding-bottom: 80px;
+    }
+}
+
+
+
 @media(max-width:1024px) {
     .sidebar {
         bottom: 0;
@@ -509,15 +523,8 @@ button {
         width: 100%;
     }
 
-    .status {
-        flex-direction: column;
-        /* gap: 48rem; */
-        align-items: center;
-    }
-
     .board {
-        padding: 0 24px;
-        padding: 0 24px 144px 24px;
+        padding: 0 24px 104px 24px;
     }
 
     .headerBoard {
@@ -554,7 +561,7 @@ button {
     }
 }
 
-@media(min-width:850px) and (max-width:1024px) {
+@media(min-width:850px) and (max-width:1500px) {
     .d-flex {
         width: 392px;
     }
