@@ -28,11 +28,9 @@ async function init(activeSection) {
  */
 function greet() {
     let content = document.getElementById('greet');
+    let mobileContent = document.getElementById('mobileGreet');
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
-
-    let greetingMessage = '';
-
     if (currentHour >= 5 && currentHour < 12) {
         greetingMessage = 'Good morning';
     } else if (currentHour >= 12 && currentHour < 18) {
@@ -41,6 +39,8 @@ function greet() {
         greetingMessage = 'Good Evening';
     }
     setUserNameAndMessage(content, greetingMessage);
+    setUserNameAndMessage(mobileContent, greetingMessage);
+    setMobileAnimation();
 }
 
 /**
@@ -58,6 +58,18 @@ function setUserNameAndMessage(content, greetingMessage) {
         content.innerHTML = `
         <h2>${greetingMessage}</h2>`
     }
+}
+
+function setMobileAnimation(){
+    const querie = window.matchMedia("(max-width: 1024px)")
+    if (querie.matches === true) {
+        document.getElementById('mobileGreet').classList.add('fadeOutAnimation');
+        document.getElementById('summaryMainContent').classList.add('fadeInAnimation')
+    }
+    setTimeout(() => {
+        document.getElementById('mobileGreet').classList.remove('fadeOutAnimation');
+        document.getElementById('summaryMainContent').classList.remove('fadeInAnimation')
+    },2050)
 }
 
 /**
