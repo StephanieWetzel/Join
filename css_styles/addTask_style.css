@@ -345,6 +345,10 @@ textarea:focus {
     cursor: pointer;
 }
 
+.d-none {
+    display: none;
+}
+
 .addTaskBtn:hover {
     box-shadow: 0px 5px 4px 0px #BCBDBE;
 }

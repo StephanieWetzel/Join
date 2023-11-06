@@ -335,22 +335,26 @@ function deleteTask(taskId) {
 
 
 function openEditTaskPopup(taskId) {
-    // Finde den ausgewählten Task basierend auf der taskId
-    const selectedTask = tasks.find(task => task.uniqueIndex === taskId);
+    let createBtn = document.getElementById('createTaskBtn'); 
+    let okBtn = document.getElementById('okBtn'); 
+    let clearBtn = document.getElementById('clearBtn'); 
+    let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
 
     if (selectedTask) {
-        // Fülle die Formularfelder mit den Werten des ausgewählten Tasks
         document.getElementById("title").value = selectedTask.title;
         document.getElementById("description").value = selectedTask.description;
         document.getElementById("dueDate").value = selectedTask.date;
         document.getElementById("categoryInputField").value = selectedTask.category;
 
         handlePriorities(selectedTask.priority);
-        renderSubtasks(selectedTask.subtasks)        
-        assignContact(selectedTask.assignedContacts)  
-
+        renderSubtasks(selectedTask.subtasks);
+        showAssignedContacts(selectedTask.assignedContacts);
+        
         const modal = document.getElementById("myModal");
         modal.style.display = "block";
+        createBtn.classList.add('d-none');
+        okBtn.classList.remove('d-none');
+        clearBtn.classList.add('d-none');
         closeTask();
     }
 }

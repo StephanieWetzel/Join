@@ -98,7 +98,7 @@
         <span class="footerRequiredField colorBlack">This field is required</span>
 
         <div class="footerBtnContainer">
-            <button onclick="clearTaskForm()" type="button" class="addTaskBtn clearBtn">
+            <button id="clearBtn" onclick="clearTaskForm()" type="button" class="addTaskBtn clearBtn">
                 Clear
                 <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -109,6 +109,10 @@
 
             <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn">
                 Create Task
+                <img src="assets/images/check.svg" alt="weißer Haken">
+            </button>
+            <button id="okBtn" onclick="saveEditTask()" type="submit" class="addTaskBtn createBtn d-none">
+                Ok
                 <img src="assets/images/check.svg" alt="weißer Haken">
             </button>
         </div>
