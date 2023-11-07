@@ -187,7 +187,7 @@ button {
 }
 
 .changed-image:hover {
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .priority {
@@ -465,7 +465,7 @@ button {
     align-items: center;
 }
 
-.hover-bg{
+.hover-bg {
     display: flex;
     align-items: center;
 }
@@ -479,11 +479,11 @@ button {
     display: block;
 }
 
-.hover-img:hover + .delete-img {
+.hover-img:hover+.delete-img {
     display: none;
 }
 
-.hover-bg:hover + .delete-img{
+.hover-bg:hover+.delete-img {
     display: none;
 }
 

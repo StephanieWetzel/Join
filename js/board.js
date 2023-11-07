@@ -15,21 +15,39 @@ async function initBoard(activeSection) {
 }
 
 
+let modal;
+
+// Überprüfen Sie die Bildschirmbreite beim Laden der Seite und öffnen Sie ggf. das Overlay
+window.addEventListener("load", openModal);
+
+// Überwachen Sie das Ändern der Bildschirmbreite
+window.addEventListener("resize", checkScreenWidth);
+
+function checkScreenWidth() {
+    if (window.innerWidth < 600) {
+        // Überprüfen, ob das Overlay geöffnet ist
+        if (modal.style.display === "block") {
+            window.location.href = 'http://gruppe-726.developerakademie.net/Join/addTask.html';
+        }
+    }
+}
+
+
 function openModal() {
-    const modal = document.getElementById("myModal");
+    modal = document.getElementById("myModal");
     if ((window.innerWidth > 600)) {
         fetch("assets/templates/addTask.template.html")
             .then((response) => response.text())
         modal.style.display = "block";
         document.body.style.overflow = 'hidden';
     } else {
-        window.location.href = 'http://gruppe-726.developerakademie.net/Join/addTask.html';
+        window.location.href = 'addTask.html';
     }
 }
 
 
 function closeModal() {
-    const modal = document.getElementById("myModal");
+    modal = document.getElementById("myModal");
 
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -41,6 +59,10 @@ function closeModal() {
     document.body.style.overflow = 'visible';
     initBoard('board');
 }
+
+
+// Fügen Sie die Modal-Überprüfung hinzu, wenn sich der Bildschirm nach dem Schließen des Modals ändert
+window.addEventListener("resize", checkScreenWidth);
 
 
 function openTask(taskUIndex) {
@@ -335,9 +357,9 @@ function deleteTask(taskId) {
 
 
 function openEditTaskPopup(taskId) {
-    let createBtn = document.getElementById('createTaskBtn'); 
-    let okBtn = document.getElementById('okBtn'); 
-    let clearBtn = document.getElementById('clearBtn'); 
+    let createBtn = document.getElementById('createTaskBtn');
+    let okBtn = document.getElementById('okBtn');
+    let clearBtn = document.getElementById('clearBtn');
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
 
     if (selectedTask) {
@@ -349,7 +371,7 @@ function openEditTaskPopup(taskId) {
         handlePriorities(selectedTask.priority);
         renderSubtasks(selectedTask.subtasks);
         showAssignedContacts(selectedTask.assignedContacts);
-        
+
         const modal = document.getElementById("myModal");
         modal.style.display = "block";
         createBtn.classList.add('d-none');

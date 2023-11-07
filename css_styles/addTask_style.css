@@ -590,4 +590,8 @@ textarea:focus {
     .footerRequiredField {
         font-size: 12px;
     }
+
+    .checkbox {
+        right: -112px;
+    }
 }

@@ -46,6 +46,10 @@ input {
     width: 32px;
 }
 
+.addTaskBtnBoard {
+    margin-left: auto;
+}
+
 @keyframes myModal {
     from {
         left: 100%;
@@ -68,3 +72,183 @@ input {
         margin-bottom: 24px;
     }
 }
+
+@media(min-width:320px) {
+    .addTaskBoardBtn {
+        margin-left: 0;
+    }
+}
+
+
+
+@media(min-width:320px) {
+    .modal-content {
+        width: 264px;
+        overflow: auto;
+    }
+
+    .formBoard {
+        padding: 0;
+        position: relative;
+        top: 72px;
+    }
+
+    .form {
+        font-size: 14px;
+    }
+
+    .boardH1 {
+        padding-top: 80px;
+        left: 32px;
+    }
+
+    .small {
+        margin-left: 0;
+        height: 32px;
+        width: 32px;
+    }
+}
+
+
+
+/*Responsive Design*/
+/* @media(max-width: 1330px) {
+    .addTaskMain {
+        justify-content: center;
+    }
+
+    .formColumnsContainer {
+        flex-direction: column;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 624px
+    }
+
+    .subtaskContainer {
+        position: initial;
+        width: 100%;
+        height: auto;
+    }
+
+    .footerContainer {
+        margin-top: 24px;
+        padding: 0 16px 16px 16px;
+    }
+}
+
+@media(max-width:1024px) {
+    .sidebar {
+        bottom: 0;
+        left: 0;
+        min-height: auto;
+        height: auto;
+        width: 100%;
+    }
+
+    .addTaskMain {
+        padding-left: 0% !important;
+    }
+}
+
+@media(max-width: 700px) {
+    .addTaskOverflowHidden {
+        overflow: hidden;
+    }
+
+    .addTaskMediaQueryWidth {
+        width: 100%;
+    }
+
+    .addTaskMediaQueryH1 {
+        position: fixed;
+        font-size: 48px;
+        left: 16px;
+    }
+
+    .addTaskMain {
+        padding: 0;
+    }
+
+    .formColumnsContainer {
+        flex-direction: column;
+        padding: 0 16px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+    }
+
+    .form {
+        position: absolute;
+        top: 228px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .footerContainer {
+        margin-bottom: 200px;
+    }
+
+    .footerRequiredField {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 500px) {
+
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    .form {
+        font-size: 16px;
+    }
+
+    .prioCategoriesContainer {
+        gap: 8px;
+    }
+
+    .prioCategoriesContainer img {
+        width: 18px;
+    }
+
+    .prioCategory {
+        padding: 8px 16px;
+        width: 85px;
+        font-size: 15px;
+    }
+
+    .arrowSymbol {
+        top: 36px;
+    }
+
+    .subtasksAddSymbol {
+        top: 36px;
+    }
+
+    .addTaskBtn {
+        font-size: 16px;
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .clearBtn {
+        display: none;
+    }
+
+    .footerRequiredField {
+        font-size: 12px;
+    }
+} */
