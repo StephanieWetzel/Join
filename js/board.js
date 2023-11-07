@@ -16,11 +16,11 @@ async function initBoard(activeSection) {
 
 
 let modal;
-let backToBoardBtn;
+//let backToBoardBtn;
 
 
 // Überprüfen Sie die Bildschirmbreite beim Laden der Seite und öffnen Sie ggf. das Overlay
-window.addEventListener("load", openModal);
+//window.addEventListener("load", openModal);
 
 // Überwachen Sie das Ändern der Bildschirmbreite
 window.addEventListener("resize", checkScreenWidth);
@@ -30,8 +30,8 @@ function checkScreenWidth() {
     if (window.innerWidth < 600) {
         // Überprüfen, ob das Overlay geöffnet ist
         if (modal.style.display === "block") {
-            backToBoardBtn.style.display == 'block';
             window.location.href = 'addTask.html';
+            backToBoardBtn.classList.remove('d-none');    
         }
     }
 }

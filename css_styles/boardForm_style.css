@@ -82,9 +82,8 @@ input {
 
 
 @media(min-width:320px) {
-    .modal-content {
-        width: 264px;
-        overflow: auto;
+    .modal-content::-webkit-scrollbar { 
+        overflow: hidden;
     }
 
     .formBoard {
