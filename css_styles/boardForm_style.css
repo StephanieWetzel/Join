@@ -50,6 +50,14 @@ input {
     margin-left: auto;
 }
 
+.contactAddTask {
+    padding: 8px 16px;
+}
+
+.assignedContacts {
+    left: 8px;
+}
+
 @keyframes myModal {
     from {
         left: 100%;
@@ -64,26 +72,61 @@ input {
 @media(max-width: 1330px) {
     .modal-content {
         width: auto;
-        height: 800px;
-        padding: 24px 24px 104px 24px;
+        height: 824px;
+        padding: 24px 24px 0 24px;
     }
 
     .formSection {
         margin-bottom: 24px;
     }
+
+    .checkbox {
+        right: -288px;
+    }
 }
 
+@media(min-width:601px) and (max-width:750px) {
+    .modal-content {
+        width: 472px;
+    }
 
+    .formBoard {
+        top: 88px;
+        width: 85%;
+        height: 85%;
+    }
 
+    .boardH1 {
+        left: 32px;
+        top: 32px;
+    }
 
+    .input,
+    select,
+    textarea {
+        width: auto;
+    }
 
+    #closeModal {
+        top: 40px;
+    }
 
+    .footerBoard {
+        margin-top: 16px;
+    }
 
+    .checkbox {
+        right: -184px;
+    }
+}
 
-
-
-
-
+/* responsive design - mobile */
+@media(min-width:1000px) and (max-height:800px) {
+    .modal-content {
+        height: 528px;
+        padding-bottom: 0;
+    }
+}
 
 
 

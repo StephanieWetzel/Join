@@ -275,6 +275,8 @@ button {
     width: 1116px;
     border-radius: 30px;
     padding: 48px 40px 48px 40px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .modal-content h1 {
@@ -616,6 +618,24 @@ button {
     }
 
     .addTaskBtn {
-        margin-left: 212px;
+        margin-left: 240px;
+    }
+}
+
+@media(max-width:300px) {
+    .createBtn span {
+        display: none;
+    }
+
+    .headerFlex {
+        gap: 4px;
+    }
+
+    .border-left {
+        right: 42px;
+    }
+
+    .input-icon {
+        right: 8px;
     }
 }

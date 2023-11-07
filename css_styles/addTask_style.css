@@ -1,7 +1,6 @@
 .addTaskMain {
     display: flex;
     align-items: center;
-    /* padding: 0 64px; */
     background-color: #f6f7f8;
     padding-left: 25%;
 }
@@ -25,8 +24,6 @@
 }
 
 .form {
-    /* display: flex; */
-    /* height: 432px; */
     height: 90%;
     color: #2A3647;
     margin-bottom: 88px;
@@ -34,6 +31,7 @@
 
 .formColumnsContainer {
     display: flex;
+    gap: 24px;
 }
 
 input,
@@ -166,14 +164,14 @@ textarea:focus {
     right: -184px;
 }
 
-.checkbox+label {
-    /* background: url('/assets/images/check_black.png') no-repeat; */
+/* .checkbox+label {
+    background: url('/assets/images/check_black.png') no-repeat;
     background-image: url('/assets/images/check_black.png');
-    /* height: 16px;
+    height: 16px;
     width: 16px;
     display: inline-block;
-    padding: 0 0 0 0px; */
-}
+    padding: 0 0 0 0px;
+} */
 
 .contactBubbleAddTask {
     margin-left: 16px;
@@ -324,6 +322,7 @@ textarea:focus {
 .footerContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 136px;
 }
 
@@ -489,10 +488,6 @@ textarea:focus {
         overflow: hidden;
     }
 
-    /* .addTaskMediaQueryPadding {
-            padding: 0 16px 0 0;
-        } */
-
     .addTaskMediaQueryWidth {
         width: 100%;
     }
@@ -516,7 +511,6 @@ textarea:focus {
     select,
     textarea {
         width: 100%;
-        /* font-size: 18px; */
     }
 
     .form {
@@ -525,7 +519,6 @@ textarea:focus {
         width: 100%;
         overflow-y: auto;
         overflow-x: hidden;
-        /* font-size: 18px; */
     }
 
     .footerContainer {
@@ -542,16 +535,10 @@ textarea:focus {
     input,
     select,
     textarea {
-        /* width: 100%; */
         font-size: 16px;
     }
 
     .form {
-        /* position: absolute;
-        top: 228px;
-        width: 100%;
-        overflow-y: auto;
-        overflow-x: hidden; */
         font-size: 16px;
     }
 
