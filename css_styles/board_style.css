@@ -620,6 +620,13 @@ button {
     .addTaskBtn {
         margin-left: 240px;
     }
+
+    .open-task {
+        width: 94%;
+        min-width: 0;
+        padding: 0;
+        justify-content: center;
+    }
 }
 
 @media(max-width:300px) {
