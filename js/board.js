@@ -27,7 +27,7 @@ function checkScreenWidth() {
     if (window.innerWidth < 600) {
         // Überprüfen, ob das Overlay geöffnet ist
         if (modal.style.display === "block") {
-            window.location.href = 'http://gruppe-726.developerakademie.net/Join/addTask.html';
+            window.location.href = 'addTask.html';
         }
     }
 }
