@@ -16,21 +16,22 @@ async function initBoard(activeSection) {
 
 
 let modal;
-let backToBoardBtn;
+// let backToBoardBtn;
 
 
 // Überprüfen Sie die Bildschirmbreite beim Laden der Seite und öffnen Sie ggf. das Overlay
-window.addEventListener("load", openModal);
+// window.addEventListener("load", openModal);
 
 // Überwachen Sie das Ändern der Bildschirmbreite
 window.addEventListener("resize", checkScreenWidth);
 
 function checkScreenWidth() {
-    backToBoardBtn = document.getElementById('backToBoardBtn');
+    // backToBoardBtn = document.getElementById('backToBoardBtn');
+    modal = document.getElementById("myModal");
     if (window.innerWidth < 600) {
         // Überprüfen, ob das Overlay geöffnet ist
-        if (modal.style.display === "block") {
-            backToBoardBtn.style.display == 'block';
+        if (modal.style.display == "block") {
+            // backToBoardBtn.style.display == 'block';
             window.location.href = 'addTask.html';
         }
     }
@@ -39,15 +40,15 @@ function checkScreenWidth() {
 
 function openModal() {
     modal = document.getElementById("myModal");
-    backToBoardBtn = document.getElementById('backToBoardBtn');
+    // backToBoardBtn = document.getElementById('backToBoardBtn');
     if ((window.innerWidth > 600)) {
         fetch("assets/templates/addTask.template.html")
             .then((response) => response.text())
         modal.style.display = "block";
         document.body.style.overflow = 'hidden';
-        backToBoardBtn.style.display == 'none';
+        // backToBoardBtn.style.display == 'none';
     } else {
-        backToBoardBtn.style.display == 'block';
+        // backToBoardBtn.style.display == 'block';
         window.location.href = 'addTask.html';
     }
 }
@@ -72,9 +73,9 @@ function closeModal() {
 window.addEventListener("resize", checkScreenWidth);
 
 
-function redirectToBoard() {
-    window.location.href = "board.html";
-}
+// function redirectToBoard() {
+//     window.location.href = "board.html";
+// }
 
 
 

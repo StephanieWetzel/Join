@@ -73,15 +73,32 @@ input {
     }
 }
 
-@media(min-width:320px) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media(min-width:320px) {
     .addTaskBoardBtn {
         margin-left: 0;
     }
-}
+} */
 
 
 
-@media(min-width:320px) {
+/* @media(min-width:320px) {
     .modal-content {
         width: 264px;
         overflow: auto;
@@ -107,7 +124,7 @@ input {
         height: 32px;
         width: 32px;
     }
-}
+} */
 
 
 
