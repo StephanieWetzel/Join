@@ -11,7 +11,7 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
-    openEditTaskPopup()
+    openEditTaskPopup();
 }
 
 
@@ -398,8 +398,9 @@ function openEditTaskPopup(taskId) {
     }
 }
 
-function showAlreadyAssContactsEdit(selectedTaskContacts){
-    for (let i = 0; i < contacts.length; i++) {;
+function showAlreadyAssContactsEdit(selectedTaskContacts) {
+    for (let i = 0; i < contacts.length; i++) {
+        ;
         const contact = contacts[i];
         debugger
         initials = getInitials(contact.firstName, contact.lastName);

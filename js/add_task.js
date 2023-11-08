@@ -11,6 +11,7 @@ let tasks = [];
 let contactBubbles = [];
 let userCategoryselect;
 
+
 async function initAddTask(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
@@ -268,7 +269,7 @@ function addSubtask() {
 }
 
 function subtaskInputFieldHasContent() {
-    return subtaskInput.value.length !== 0;
+    return subtaskInput.value.length !== '';
 }
 
 
@@ -372,7 +373,7 @@ function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, u
 }
 
 //Clear Task
-function clearTaskForm(){
+function clearTaskForm() {
     initAddTask('tasks');
 }
 
