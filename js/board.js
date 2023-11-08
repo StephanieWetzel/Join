@@ -384,7 +384,8 @@ function openEditTaskPopup(taskId) {
 
         handlePriorities(selectedTask.priority);
         renderSubtasks(selectedTask.subtasks);
-        showAssignedContacts(selectedTask.assignedContacts);
+        showAlreadyAssContactsEdit(selectedTask.assignedContacts);
+        //showAssignedContacts(selectedTask.assignedContacts);
 
         const modal = document.getElementById("myModal");
         modal.style.display = "block";
@@ -393,4 +394,26 @@ function openEditTaskPopup(taskId) {
         clearBtn.classList.add('d-none');
         closeTask();
     }
+}
+
+function showAlreadyAssContactsEdit(selectedTaskContacts){
+    for (let i = 0; i < contacts.length; i++) {;
+        const contact = contacts[i];
+        debugger
+        initials = getInitials(contact.firstName, contact.lastName);
+        const contactCheckbox = document.getElementById(`checkbox${i}`)
+        for (let j = 0; j < selectedTaskContacts.length; j++) {
+            const sAssContact = selectedTaskContacts[j];
+            if (contact.firstName == sAssContact.firstName && contact.lastName == sAssContact.lastName) {
+                contactCheckbox.checked = true;
+                assignedContacts.innerHTML += assignedContactsTemplateEdit(contact.color);
+            }
+        }
+    }
+}
+
+function assignedContactsTemplateEdit(contactEdit) {
+    return `
+        <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contactEdit}">${initials}</div>
+    `;
 }
