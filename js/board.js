@@ -311,14 +311,16 @@ function filterTasksByTitle() {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
 
-    searchInput.addEventListener('keyup', () => {
-        filterTasksByTitle();
-    });
-});
-
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function () {
+            filterTasksByTitle();
+        })
+    }
+})
 
 
 
@@ -383,7 +385,7 @@ function openEditTaskPopup(taskId) {
         document.getElementById("categoryInputField").value = selectedTask.category;
 
         handlePriorities(selectedTask.priority);
-        renderSubtasks(selectedTask.subtasks);
+        renderSubtasks(selectedTask);
         showAssignedContacts(selectedTask.assignedContacts);
 
         const modal = document.getElementById("myModal");
