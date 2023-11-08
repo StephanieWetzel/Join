@@ -207,7 +207,8 @@ button {
 }
 
 .card-content {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     width: calc(100% - 24px);
     /* Hier wird die Breite angepasst, um Platz für den Scrollbalken zu schaffen (z.B. 20px) */
 }
@@ -521,6 +522,10 @@ button {
     display: block;
 }
 
+ul {
+    padding: 0;
+}
+
 /* responsive design */
 @media(max-width:1500px) {
     .status {
@@ -644,5 +649,31 @@ button {
 
     .input-icon {
         right: 8px;
+    }
+
+    .open-task {
+        min-width: 0;
+        padding: 8px;
+        width: 240px;
+    }
+
+    .headline {
+        font-size: 40px;
+    }
+
+    .status-board-open {
+        gap: 12px;
+    }
+}
+
+/* responsive design - mobile */
+
+@media(min-width:320px) and (max-height: 740px) {
+    .headline {
+        font-size: 40px;
+    }
+
+    .status-board-open {
+        gap: 12px;
     }
 }

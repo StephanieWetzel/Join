@@ -397,8 +397,9 @@ function openEditTaskPopup(taskId) {
     }
 }
 
-function showAlreadyAssContactsEdit(selectedTaskContacts){
-    for (let i = 0; i < contacts.length; i++) {;
+function showAlreadyAssContactsEdit(selectedTaskContacts) {
+    for (let i = 0; i < contacts.length; i++) {
+        ;
         const contact = contacts[i];
         initials = getInitials(contact.firstName, contact.lastName);
         const contactCheckbox = document.getElementById(`checkbox${i}`)
