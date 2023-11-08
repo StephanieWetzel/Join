@@ -11,7 +11,6 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
-    openEditTaskPopup()
 }
 
 
@@ -377,7 +376,7 @@ function openEditTaskPopup(taskId) {
     let okBtn = document.getElementById('okBtn');
     let clearBtn = document.getElementById('clearBtn');
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
-
+    subtasks = selectedTask.subtasks;
     if (selectedTask) {
         document.getElementById("title").value = selectedTask.title;
         document.getElementById("description").value = selectedTask.description;
@@ -385,7 +384,7 @@ function openEditTaskPopup(taskId) {
         document.getElementById("categoryInputField").value = selectedTask.category;
 
         handlePriorities(selectedTask.priority);
-        renderSubtasks(selectedTask.subtasks);
+        renderSubtasks();
         showAlreadyAssContactsEdit(selectedTask.assignedContacts);
         //showAssignedContacts(selectedTask.assignedContacts);
 
@@ -401,7 +400,6 @@ function openEditTaskPopup(taskId) {
 function showAlreadyAssContactsEdit(selectedTaskContacts){
     for (let i = 0; i < contacts.length; i++) {;
         const contact = contacts[i];
-        debugger
         initials = getInitials(contact.firstName, contact.lastName);
         const contactCheckbox = document.getElementById(`checkbox${i}`)
         for (let j = 0; j < selectedTaskContacts.length; j++) {
