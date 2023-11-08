@@ -268,11 +268,7 @@ function addSubtask() {
 }
 
 function subtaskInputFieldHasContent() {
-<<<<<<< HEAD
-    return subtaskInput.value.length !== '';
-=======
     return subtaskInput.value.length != '';
->>>>>>> 3d6eb66bfdf2b47c0e0a60d6740146afc026f5dc
 }
 
 
