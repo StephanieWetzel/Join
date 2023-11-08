@@ -311,14 +311,16 @@ function filterTasksByTitle() {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
 
-    searchInput.addEventListener('keyup', () => {
-        filterTasksByTitle();
-    });
-});
-
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function () {
+            filterTasksByTitle();
+        })
+    }
+})
 
 
 
