@@ -259,21 +259,26 @@ let isEditing = false;
 
 
 function addSubtask() {
+    let subTaskContainer = document.getElementById('subtaskContainer');
     subtaskInput = document.getElementById('subtaskInput');
 
     if (subtaskInputFieldHasContent()) {
         subtasks.push(subtaskInput.value);
         subtaskInput.value = '';
-        renderSubtasks({ subtasks });
+        renderSubtasks(subTaskInput);
     }
 }
 
 function subtaskInputFieldHasContent() {
+<<<<<<< HEAD
     return subtaskInput.value.length !== '';
+=======
+    return subtaskInput.value.length != '';
+>>>>>>> 3d6eb66bfdf2b47c0e0a60d6740146afc026f5dc
 }
 
 
-function renderSubtasks(task) {
+/*function renderSubtasks(task) {
     const subtaskContainer = document.getElementById('subtaskContainer');
     subtaskContainer.innerHTML = '';
 
@@ -283,11 +288,20 @@ function renderSubtasks(task) {
             subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
         }
     }
-}
+}*/
+
+
+function renderSubtasks() {
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
+    }
+    
+};
 
 
 function subtaskEditContainerTemplate(subtask, i) {
-    return `
+    return /*html*/`
     <ul id="ulContainer${i}" class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
         <li id="subtaskListElement${i}" class="subtaskListElements">${subtask}</li>
         <div id="subtaskEditContainer" class="subtaskEditContainer dNone">
@@ -319,7 +333,7 @@ function mouseOutSubtaskEditContainer(element) {
 function deleteSubtask(i) {
     if (atLeastOneSubtaskExists(i)) { // if at least one subtask exists in array
         removeSubtask(i);
-        renderSubtasks({ subtasks, i });
+        renderSubtasks();
     }
 }
 
@@ -331,6 +345,7 @@ function atLeastOneSubtaskExists(i) {
 
 function removeSubtask(i) {
     subtasks.splice(i, 1);
+    subtaskContainer.innerHTML = '';
 }
 
 
