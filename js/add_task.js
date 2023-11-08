@@ -258,13 +258,11 @@ let isEditing = false;
 
 
 function addSubtask() {
-    let subTaskContainer = document.getElementById('subtaskContainer');
     subtaskInput = document.getElementById('subtaskInput');
-
     if (subtaskInputFieldHasContent()) {
         subtasks.push(subtaskInput.value);
         subtaskInput.value = '';
-        renderSubtasks(subTaskInput);
+        renderSubtasks();
     }
 }
 
