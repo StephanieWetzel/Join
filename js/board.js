@@ -1,7 +1,8 @@
 let currentDraggedElement;
 let subtaskStatus = {};
-
+let editedTask;
 async function initBoard(activeSection) {
+    console.log(tasks)
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchTasks();
@@ -373,9 +374,11 @@ function deleteTask(taskId) {
 
 function openEditTaskPopup(taskId) {
     let createBtn = document.getElementById('createTaskBtn');
-    let okBtn = document.getElementById('okBtn');
+    //let okBtn = document.getElementById('okBtn');
     let clearBtn = document.getElementById('clearBtn');
+    printEditButton(taskId);
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
+    editedTask = taskId;
     subtasks = selectedTask.subtasks;
     if (selectedTask) {
         document.getElementById("title").value = selectedTask.title;
@@ -386,21 +389,30 @@ function openEditTaskPopup(taskId) {
         handlePriorities(selectedTask.priority);
         renderSubtasks();
         showAlreadyAssContactsEdit(selectedTask.assignedContacts);
-        //showAssignedContacts(selectedTask.assignedContacts);
 
         const modal = document.getElementById("myModal");
         modal.style.display = "block";
         createBtn.classList.add('d-none');
-        okBtn.classList.remove('d-none');
+        //okBtn.classList.remove('d-none');
         clearBtn.classList.add('d-none');
         closeTask();
+        
     }
+}
+
+function printEditButton(taskId){
+    let okDiv = document.getElementById('okBtnDiv');
+    okDiv.innerHTML = /*html*/`
+    <button id="okBtn" onclick="saveEditTask(${taskId})" type="button" class="addTaskBtn createBtn">
+        Ok
+        <img src="assets/images/check.svg" alt="weißer Haken">
+    </button>
+    `
 }
 
 
 function showAlreadyAssContactsEdit(selectedTaskContacts) {
     for (let i = 0; i < contacts.length; i++) {
-        ;
         const contact = contacts[i];
         initials = getInitials(contact.firstName, contact.lastName);
         const contactCheckbox = document.getElementById(`checkbox${i}`)
@@ -423,23 +435,19 @@ function assignedContactsTemplateEdit(contactEdit) {
 
 
 function saveEditTask(taskId) {
-    deleteTask(taskId); // Lösche die alte Aufgabe
-    const taskIndex = tasks.findIndex(task => task.uniqueIndex === taskId);
-
-    if (taskIndex == -1) {
-        tasks.splice(taskIndex, 1, {
-            uniqueIndex: taskId,
-            title: document.getElementById("title").value,
-            description: document.getElementById("description").value,
-            date: document.getElementById("dueDate").value,
-            category: document.getElementById("categoryInputField").value,
-            priority: prio,
-            subtasks: subtasks,
-            assignedContacts: contactBubbles
-        });
-
+    tasks.forEach(task => {
+        if (task.uniqueIndex === taskId) {
+            console.log(task);
+            task.title = title.value;
+            task.description = description.value;
+            task.date = dueDate.value;
+            task.assignedContacts = contactBubbles;
+            task.priority = prio;
+            task.category = categoryInputField.value;
+            task.subtasks = subtasks;
+        }
+    });
         setItem('tasks', JSON.stringify(tasks));
-        closeModal();
         initBoard('board');
-    }
+        closeModal();
 }
