@@ -210,27 +210,21 @@ button {
     overflow-y: auto;
     overflow-x: hidden;
     width: calc(100% - 24px);
-    /* Hier wird die Breite angepasst, um Platz für den Scrollbalken zu schaffen (z.B. 20px) */
 }
 
 .card-content::-webkit-scrollbar {
     width: 5px;
-    /* Breite des Scrollbalkens */
     border-radius: 5px;
-    /* Abrundung der Ecken */
 }
 
 .card-content::-webkit-scrollbar-track {
     background: #f1f1f1;
-    /* Hintergrundfarbe des Scrollbar-Tracks */
     border-radius: 5px;
 }
 
 .card-content::-webkit-scrollbar-thumb {
     background: #888;
-    /* Farbe des Scrollbar-Daumens */
     border-radius: 5px;
-    /* Abrundung der Ecken des Daumens */
 }
 
 .card-content::-webkit-scrollbar-thumb:hover {
@@ -538,6 +532,37 @@ ul {
     }
 }
 
+@media(min-width:1330px){
+    .subtaskContainer{
+        width: 90%;
+    }
+    .subtaskContainer {
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 200px; /* Setze die gewünschte maximale Höhe */
+    }
+    
+    .subtaskContainer::-webkit-scrollbar {
+        width: 5px;
+        border-radius: 5px;
+    }
+    
+    .subtaskContainer::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 5px;
+    }
+    
+    .subtaskContainer::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+    }
+    
+    .subtaskContainer::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+}
+
 @media(max-width:1024px) {
     .sidebar {
         bottom: 0;
@@ -574,7 +599,6 @@ ul {
         width: 376px;
     }
 }
-
 
 @media(min-width:750px) {
     .headerBoard {
