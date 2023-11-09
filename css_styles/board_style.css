@@ -465,24 +465,22 @@ button {
 .hover-bg {
     display: flex;
     align-items: center;
-}
-
-.hover-img {
-    display: none;
     cursor: pointer;
 }
 
-.hover-bg:hover .hover-img {
-    display: block;
+.delete-img {
+    display: inline-block;
 }
 
-.hover-img:hover+.delete-img {
+.hover-bg:hover .delete-img {
     display: none;
 }
 
-.hover-bg:hover+.delete-img {
-    display: none;
+.hover-bg:hover .hover-img{
+    display: inline-block!important;
 }
+
+
 
 .openBoard-options img {
     padding-left: 8px;
@@ -501,7 +499,28 @@ button {
 }
 
 .newTask {
-    height: auto;
+    height: 600px;
+    overflow-x: auto;
+}
+
+.newTask::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+}
+
+.newTask::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+.newTask::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.newTask::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Farbe des Scrollbar-Daumens bei Hover */
 }
 
 .noAvailableTask {
@@ -545,7 +564,7 @@ ul {
         overflow-y: auto;
         overflow-x: hidden;
         max-height: 200px;
-        /* Setze die gewünschte maximale Höhe */
+        width: 200px;
     }
 
     .subtaskContainer::-webkit-scrollbar {

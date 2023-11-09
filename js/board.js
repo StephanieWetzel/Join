@@ -1,4 +1,5 @@
 let currentDraggedElement;
+let selectedSubtaskIndex = null;
 let subtaskStatus = {};
 let editedTask;
 async function initBoard(activeSection) {
@@ -230,14 +231,14 @@ function renderBigTask(task, taskId) {
                     <div class="border-right hover-bg">
                         <img class="delete-img" src="assets/images/delete.svg" alt="">
                         <img class="delete-img" src="assets/images/Delete-shrift-black.svg" alt="">
-                        <img class="hover-img" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/delete-blue.svg" alt="">
-                        <img class="hover-img" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/Delete-shrift.svg" alt="">
+                        <img class="hover-img" style="display: none;" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/delete-blue.svg" alt="">
+                        <img class="hover-img" style="display: none;" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/Delete-shrift.svg" alt="">
                     </div>
                     <div class="hover-bg">
                         <img class="delete-img" src="assets/images/edit.svg" alt="">
                         <img class="delete-img" src="assets/images/Edit-shrift-black.svg" alt="">
-                        <img class="hover-img" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/edit-blue.svg" alt="">
-                        <img class="hover-img" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/Edit-shrift.svg" alt="">
+                        <img class="hover-img" style="display: none;" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/edit-blue.svg" alt="">
+                        <img class="hover-img" style="display: none;" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/Edit-shrift.svg" alt="">
                         </div>
                     </div>
                     </div>
