@@ -1,7 +1,7 @@
 let currentDraggedElement;
 let selectedSubtaskIndex = null;
 let subtaskStatus = {};
-let editedTask;
+
 async function initBoard(activeSection) {
     console.log(tasks)
     loadLocalStorageLoggedInUser('loggedInUser');
@@ -195,59 +195,78 @@ function renderBigTask(task, taskId) {
     let openedTask = document.getElementById('customModal');
     openedTask.innerHTML =/*html*/`
     <div class="open-task">
-            <div id="customModals${task.uniqueIndex}" class="card-content">
-                <button onclick="closeTask()" id="closeModal"><img src="assets/images/close.svg" alt=""></button>
-                <div class="status-board status-board-open">
-                    <p class="${setCategoryStyle(task.category)}">${task.category}</p>
-                    <p class="headline"><b>${task.title}</b></p>
-                    <span class="taskInformation">${task.description}</span>
-                    <span style="color: #42526E;">Due Date: <span class="m-left1">${formatDueDate(task.date)}</span></span>
-                    <span style="color: #42526E;">Priority: <span class="m-left2">${task.priority}<img class="board-img" src="assets/images/${task.priority}_symbol.svg" alt=""></span></span>
-                    <span style="color: #42526E;">Assigned To:</span>
-                    <div>
-                    ${task.assignedContacts ? task.assignedContacts.map(contact => /*html*/`
-                    <div class="assignedFrom">
-                        <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">
-                        ${contact.initials}
-                        </div>
-                        <span>${contact.firstName} ${contact.lastName}</span>
-                    </div>
-                    `).join('') : ''} 
-               </div>
-                    <span style="color: #42526E;">Subtasks</span>
-                    <span>
-                        <ul id="subtaskIndex${task.uniqueIndex}">
-                            ${task.subtasks.map(subtask => `
-                                <li class="list-style">
-                                <img class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
-                                <img class="rectangle-image changed-image" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
-                                ${subtask}
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </span>
-                    </div>
-                    <div class="openBoard-options">
-                    <div class="border-right hover-bg">
-                        <img class="delete-img" src="assets/images/delete.svg" alt="">
-                        <img class="delete-img" src="assets/images/Delete-shrift-black.svg" alt="">
-                        <img class="hover-img" style="display: none;" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/delete-blue.svg" alt="">
-                        <img class="hover-img" style="display: none;" onclick="deleteTask(${task.uniqueIndex})" src="assets/images/Delete-shrift.svg" alt="">
-                    </div>
-                    <div class="hover-bg">
-                        <img class="delete-img" src="assets/images/edit.svg" alt="">
-                        <img class="delete-img" src="assets/images/Edit-shrift-black.svg" alt="">
-                        <img class="hover-img" style="display: none;" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/edit-blue.svg" alt="">
-                        <img class="hover-img" style="display: none;" onclick="openEditTaskPopup(${task.uniqueIndex})" src="assets/images/Edit-shrift.svg" alt="">
-                        </div>
-                    </div>
-                    </div>
+        <div id="customModals${task.uniqueIndex}" class="card-content">
+            <button onclick="closeTask()" id="closeModal"><img src="assets/images/close.svg" alt=""></button>
+            <div class="status-board status-board-open">
+                ${renderBigTaskHead(task)}
+                <div>${renderBigTaskAssignendContacts(task)}</div>
+                ${renderBigTaskSubtasks(task)}
+                <div class="openBoard-options">
+                    <div class="border-right hover-bg">${renderDeleteButton(task.uniqueIndex)}</div>
+                    <div class="hover-bg">${renderEditButton(task.uniqueIndex)}</div>
                 </div>
             </div>
         </div>`
 }
 
+function renderBigTaskSubtasks(task){
+    return /*html*/ `
+    <span style="color: #42526E;">Subtasks</span>
+    <span>
+    <ul id="subtaskIndex${task.uniqueIndex}">
+        ${task.subtasks.map(subtask => `
+        <li class="list-style">
+        <img class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+        <img class="rectangle-image changed-image" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+        ${subtask}
+        </li>
+        `).join('')}
+    </ul>
+    </span>
+    `
+}
 
+function renderBigTaskAssignendContacts(task){
+    return /*html*/ `
+    ${task.assignedContacts ? task.assignedContacts.map(contact => /*html*/`
+    <div class="assignedFrom">
+        <div class="contact-bubble small contactBubbleAddTask" style="background-color: ${contact.color}">
+            ${contact.initials}
+        </div>
+        <span>${contact.firstName} ${contact.lastName}</span>
+    </div>
+    `).join('') : ''} 
+    `
+}
+
+function renderBigTaskHead(task){
+    return /*html*/`
+    <p class="${setCategoryStyle(task.category)}">${task.category}</p>
+    <p class="headline"><b>${task.title}</b></p>
+    <span class="taskInformation">${task.description}</span>
+    <span style="color: #42526E;">Due Date: <span class="m-left1">${formatDueDate(task.date)}</span></span>
+    <span style="color: #42526E;">Priority: <span class="m-left2">${task.priority}<img class="board-img" src="assets/images/${task.priority}_symbol.svg" alt=""></span></span>
+    <span style="color: #42526E;">Assigned To:</span>
+    `
+}
+
+function renderDeleteButton(uniqueIndex){
+    return /*html*/`
+        <img class="delete-img" src="assets/images/delete.svg" alt="">
+        <img class="delete-img" src="assets/images/Delete-shrift-black.svg" alt="">
+        <img class="hover-img" style="display: none;" onclick="deleteTask(${uniqueIndex})" src="assets/images/delete-blue.svg" alt="">
+        <img class="hover-img" style="display: none;" onclick="deleteTask(${uniqueIndex})" src="assets/images/Delete-shrift.svg" alt="">
+    `
+}
+
+function renderEditButton(uniqueIndex){
+    return /*html*/`
+        <img class="delete-img" src="assets/images/edit.svg" alt="">
+        <img class="delete-img" src="assets/images/Edit-shrift-black.svg" alt="">
+        <img class="hover-img" style="display: none;" onclick="openEditTaskPopup(${uniqueIndex})" src="assets/images/edit-blue.svg" alt="">
+        <img class="hover-img" style="display: none;" onclick="openEditTaskPopup(${uniqueIndex})" src="assets/images/Edit-shrift.svg" alt="">
+    `
+}
 
 
 //Progress Bar
@@ -295,12 +314,10 @@ function filterTasksByTitle() {
     const searchTerm = input.value.trim().toLowerCase();
     const taskContainers = document.querySelectorAll('.newTask');
     const noFeedback = document.getElementById('noFeedback')
-
     taskContainers.forEach((taskContainer) => {
         const titleElement = taskContainer.querySelector('.task-title');
         if (titleElement) {
             const title = titleElement.textContent.toLowerCase();
-
             if (title.includes(searchTerm)) {
                 taskContainer.style.display = 'block';
             } else {
@@ -375,30 +392,28 @@ function deleteTask(taskId) {
 
 function openEditTaskPopup(taskId) {
     let createBtn = document.getElementById('createTaskBtn');
-    //let okBtn = document.getElementById('okBtn');
     let clearBtn = document.getElementById('clearBtn');
-    printEditButton(taskId);
+    let modal = document.getElementById("myModal");
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
-    editedTask = taskId;
     subtasks = selectedTask.subtasks;
+    printEditButton(taskId);
     if (selectedTask) {
-        document.getElementById("title").value = selectedTask.title;
-        document.getElementById("description").value = selectedTask.description;
-        document.getElementById("dueDate").value = selectedTask.date;
-        document.getElementById("categoryInputField").value = selectedTask.category;
-
+        changeEditValues(selectedTask);
         handlePriorities(selectedTask.priority);
         renderSubtasks();
         showAlreadyAssContactsEdit(selectedTask.assignedContacts);
-
-        const modal = document.getElementById("myModal");
         modal.style.display = "block";
         createBtn.classList.add('d-none');
-        //okBtn.classList.remove('d-none');
         clearBtn.classList.add('d-none');
         closeTask();
-        
     }
+}
+
+function changeEditValues(selectedTask){
+    document.getElementById("title").value = selectedTask.title;
+    document.getElementById("description").value = selectedTask.description;
+    document.getElementById("dueDate").value = selectedTask.date;
+    document.getElementById("categoryInputField").value = selectedTask.category;
 }
 
 function printEditButton(taskId){
@@ -410,7 +425,6 @@ function printEditButton(taskId){
     </button>
     `
 }
-
 
 function showAlreadyAssContactsEdit(selectedTaskContacts) {
     for (let i = 0; i < contacts.length; i++) {
@@ -427,15 +441,14 @@ function showAlreadyAssContactsEdit(selectedTaskContacts) {
     }
 }
 
-
 function assignedContactsTemplateEdit(contactEdit) {
     return `
         <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contactEdit}">${initials}</div>
     `;
 }
 
-
 function saveEditTask(taskId) {
+    showAssignedContacts();
     tasks.forEach(task => {
         if (task.uniqueIndex === taskId) {
             console.log(task);
@@ -446,9 +459,9 @@ function saveEditTask(taskId) {
             task.priority = prio;
             task.category = categoryInputField.value;
             task.subtasks = subtasks;
-        }
-    });
-        setItem('tasks', JSON.stringify(tasks));
-        initBoard('board');
-        closeModal();
+        }});
+    subtasks = [];
+    setItem('tasks', JSON.stringify(tasks));
+    initBoard('board');
+    closeModal();
 }

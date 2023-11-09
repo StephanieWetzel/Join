@@ -259,6 +259,7 @@ let isEditing = false;
 
 
 function addSubtask() {
+    debugger
     subtaskInput = document.getElementById('subtaskInput');
     if (subtaskInputFieldHasContent()) {
         subtasks.push(subtaskInput.value);
