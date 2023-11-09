@@ -286,11 +286,13 @@ function subtaskInputFieldHasContent() {
 
 
 function renderSubtasks() {
+    const subtaskContainer = document.getElementById('subtaskContainer');
+    subtaskContainer.innerHTML = '';
+
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
         subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
     }
-    
 };
 
 
