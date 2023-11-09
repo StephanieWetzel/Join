@@ -520,6 +520,10 @@ ul {
     padding: 0;
 }
 
+.form{
+    overflow: visible;
+}
+
 /* responsive design */
 @media(max-width:1500px) {
     .status {
@@ -532,35 +536,37 @@ ul {
     }
 }
 
-@media(min-width:1330px){
-    .subtaskContainer{
+@media(min-width:1330px) {
+    .subtaskContainer {
         width: 90%;
     }
+
     .subtaskContainer {
         overflow-y: auto;
         overflow-x: hidden;
-        max-height: 200px; /* Setze die gewünschte maximale Höhe */
+        max-height: 200px;
+        /* Setze die gewünschte maximale Höhe */
     }
-    
+
     .subtaskContainer::-webkit-scrollbar {
         width: 5px;
         border-radius: 5px;
     }
-    
+
     .subtaskContainer::-webkit-scrollbar-track {
         background: #f1f1f1;
         border-radius: 5px;
     }
-    
+
     .subtaskContainer::-webkit-scrollbar-thumb {
         background: #888;
         border-radius: 5px;
     }
-    
+
     .subtaskContainer::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
-    
+
 }
 
 @media(max-width:1024px) {
@@ -591,6 +597,12 @@ ul {
 
     .input-container {
         width: 100%;
+    }
+}
+
+@media(max-width:1000px){
+    .modal-content{
+        height: 500px!important;
     }
 }
 
