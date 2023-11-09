@@ -397,6 +397,7 @@ function openEditTaskPopup(taskId) {
     }
 }
 
+
 function showAlreadyAssContactsEdit(selectedTaskContacts) {
     for (let i = 0; i < contacts.length; i++) {
         ;
@@ -413,8 +414,32 @@ function showAlreadyAssContactsEdit(selectedTaskContacts) {
     }
 }
 
+
 function assignedContactsTemplateEdit(contactEdit) {
     return `
         <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contactEdit}">${initials}</div>
     `;
+}
+
+
+function saveEditTask(taskId) {
+    deleteTask(taskId); // Lösche die alte Aufgabe
+    const taskIndex = tasks.findIndex(task => task.uniqueIndex === taskId);
+
+    if (taskIndex == -1) {
+        tasks.splice(taskIndex, 1, {
+            uniqueIndex: taskId,
+            title: document.getElementById("title").value,
+            description: document.getElementById("description").value,
+            date: document.getElementById("dueDate").value,
+            category: document.getElementById("categoryInputField").value,
+            priority: prio,
+            subtasks: subtasks,
+            assignedContacts: contactBubbles
+        });
+
+        setItem('tasks', JSON.stringify(tasks));
+        closeModal();
+        initBoard('board');
+    }
 }
