@@ -1,6 +1,7 @@
 let currentDraggedElement;
 let selectedSubtaskIndex = null;
 let subtaskStatus = {};
+let modal;
 
 async function initBoard(activeSection) {
     console.log(tasks)
@@ -16,40 +17,27 @@ async function initBoard(activeSection) {
 }
 
 
-let modal;
-//let backToBoardBtn;
 
-
-// Überprüfen Sie die Bildschirmbreite beim Laden der Seite und öffnen Sie ggf. das Overlay
-//window.addEventListener("load", openModal);
-
-// Überwachen Sie das Ändern der Bildschirmbreite
 window.addEventListener("resize", checkScreenWidth);
 
 function checkScreenWidth() {
-    // backToBoardBtn = document.getElementById('backToBoardBtn');
     modal = document.getElementById("myModal");
-    if (window.innerWidth < 600) {
-        // Überprüfen, ob das Overlay geöffnet ist
+    if (window.innerWidth <= 600) {
         if (modal.style.display === "block") {
             window.location.href = 'addTask.html';
-            // backToBoardBtn.classList.remove('d-none');    
-        }
     }
+}
 }
 
 
 function openModal() {
     modal = document.getElementById("myModal");
-    // backToBoardBtn = document.getElementById('backToBoardBtn');
     if ((window.innerWidth > 600)) {
         fetch("assets/templates/addTask.template.html")
             .then((response) => response.text())
         modal.style.display = "block";
         document.body.style.overflow = 'hidden';
-        // backToBoardBtn.style.display == 'none';
     } else {
-        // backToBoardBtn.style.display == 'block';
         window.location.href = 'addTask.html';
     }
 }
@@ -391,20 +379,41 @@ function deleteTask(taskId) {
 
 
 function openEditTaskPopup(taskId) {
-    let createBtn = document.getElementById('createTaskBtn');
-    let clearBtn = document.getElementById('clearBtn');
-    let modal = document.getElementById("myModal");
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
     subtasks = selectedTask.subtasks;
     printEditButton(taskId);
-    if (selectedTask) {
-        changeEditValues(selectedTask);
-        handlePriorities(selectedTask.priority);
-        renderSubtasks();
-        showAlreadyAssContactsEdit(selectedTask.assignedContacts);
-        modal.style.display = "block";
-        createBtn.classList.add('d-none');
-        clearBtn.classList.add('d-none');
+    if (selectedTask && window.innerWidth > 600) {
+        setTaskToEdit(selectedTask);
+    }else if (selectedTask && window.innerWidth < 600 && window.location.href.includes('board.html')) {
+        saveEditedTaskIdLocal(selectedTask.uniqueIndex);
+        window.location.href = 'addTask.html';
+    }else if (selectedTask && window.location.href.includes('addTask.html')) {
+        setTaskToEdit(selectedTask);
+    }
+}
+
+function setTaskToEdit(selectedTask){
+    changeEditValues(selectedTask);
+    handlePriorities(selectedTask.priority);
+    renderSubtasks();
+    showAlreadyAssContactsEdit(selectedTask.assignedContacts);
+    checkIfBoardLocation();
+    checkifCloseTaskNecessary();
+}
+
+function checkIfBoardLocation(){
+    let createBtn = document.getElementById('createTaskBtn');
+    let clearBtn = document.getElementById('clearBtn');
+    let modal = document.getElementById("myModal");
+    if (window.location.href.includes('board.html')) {
+        modal.style.display = 'block';
+    }
+    createBtn.classList.add('d-none');
+    clearBtn.classList.add('d-none');
+}
+
+function checkifCloseTaskNecessary(){
+    if (window.location.href.includes('board.html')) {
         closeTask();
     }
 }
@@ -414,6 +423,7 @@ function changeEditValues(selectedTask){
     document.getElementById("description").value = selectedTask.description;
     document.getElementById("dueDate").value = selectedTask.date;
     document.getElementById("categoryInputField").value = selectedTask.category;
+    saveEditedTaskIdLocal(selectedTask.uniqueIndex);
 }
 
 function printEditButton(taskId){
@@ -447,7 +457,7 @@ function assignedContactsTemplateEdit(contactEdit) {
     `;
 }
 
-function saveEditTask(taskId) {
+async function saveEditTask(taskId) {
     showAssignedContacts();
     tasks.forEach(task => {
         if (task.uniqueIndex === taskId) {
@@ -461,7 +471,28 @@ function saveEditTask(taskId) {
             task.subtasks = subtasks;
         }});
     subtasks = [];
-    setItem('tasks', JSON.stringify(tasks));
-    initBoard('board');
-    closeModal();
+    await setItem('tasks', JSON.stringify(tasks));
+    checkIfRedirectionToBoardIsAvailable();
+}
+
+function checkIfRedirectionToBoardIsAvailable(){
+    if (window.location.href.includes('board.html')) {
+        initBoard('board');
+        closeModal();
+    } else{
+        window.location.href = 'board.html';
+    }
+}
+
+function saveEditedTaskIdLocal(taskId){
+    let eTaskAsJSON = JSON.stringify(taskId);
+    localStorage.setItem('taskToEdit', eTaskAsJSON);
+}
+
+function loadEditedTaskLocal(){
+    if (localStorage.getItem('taskToEdit')) {
+        let etaskAsJSON = localStorage.getItem('taskToEdit');
+        eTask = JSON.parse(etaskAsJSON);
+        return eTask;
+    }
 }

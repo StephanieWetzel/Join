@@ -20,8 +20,18 @@ async function initAddTask(activeSection) {
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
     assignContact();
+    checkIfTaskisEditing();
 }
 
+//check if a task is editing
+
+function checkIfTaskisEditing(){
+    let eTask = loadEditedTaskLocal();
+    if (eTask) {
+        openEditTaskPopup(eTask);
+        saveEditedTaskIdLocal(null);
+    }
+}
 
 // ASSIGNED TO
 function assignContact() {
