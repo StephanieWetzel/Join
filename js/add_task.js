@@ -304,7 +304,7 @@ function subtaskEditContainerTemplate(subtask, i) {
         <div id="subtaskEditContainer" class="subtaskEditContainer dNone">
             <img id="editImg${i}" onclick="editSubtask(${i})" src="/assets/images/edit.svg" alt="Stift">
             <div class="subtaskSeparator"></div>
-            <img onclick="deleteSubtask(${i})" src="/assets/images/delete.svg" alt="Mülleimer">
+            <img id="trashcan${i}" onclick="deleteSubtask(${i})" src="/assets/images/delete.svg" alt="Mülleimer">
         </div>
     </ul>
     `;
@@ -356,6 +356,9 @@ function editSubtask(i) {
         let addSubtaskSymbol = document.getElementById(`addSubtaskSymbol`);
         addSubtaskSymbol.classList.add('dNone');
 
+        let trashcan = document.getElementById(`trashcan${i}`);
+        trashcan.classList.add('dNone');
+
         let subtaskListElement = document.getElementById(`subtaskListElement${i}`);
         subtaskListElement.contentEditable = true;
         subtaskListElement.focus();
@@ -363,7 +366,7 @@ function editSubtask(i) {
         let confirmEditSymbol = document.getElementById(`editImg${i}`);
         confirmEditSymbol.src = "/assets/images/check_black.png";
         confirmEditSymbol.onclick = function () {
-            closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i);
+            closeEditing(trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i);
         };
 
         subtaskInput.disabled = true;
@@ -371,12 +374,13 @@ function editSubtask(i) {
 }
 
 
-function closeEditing(subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i) {
+function closeEditing(trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i) {
     isEditing = false;
     subtaskInput.disabled = false;
     subtaskListElement.contentEditable = false;
     confirmEditSymbol.src = "/assets/images/edit.svg";
     addSubtaskSymbol.classList.remove('dNone');
+    trashcan.classList.remove('dNone');
     ulContainer.style.backgroundColor = '';
 
     confirmEditSymbol.onclick = function () {
