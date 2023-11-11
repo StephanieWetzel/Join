@@ -28,8 +28,8 @@ function checkScreenWidth() {
     if (window.innerWidth <= 600) {
         if (modal.style.display === "block") {
             window.location.href = 'addTask.html';
+        }
     }
-}
 }
 
 
@@ -207,7 +207,7 @@ function renderBigTask(task, taskId) {
  * @param {Object} task - The task object containing subtasks to be displayed.
  * @returns {string} The HTML template for displaying subtasks in the big task view.
  */
-function renderBigTaskSubtasks(task){
+function renderBigTaskSubtasks(task) {
     return /*html*/ `
     <span style="color: #42526E;">Subtasks</span>
     <span>
@@ -230,7 +230,7 @@ function renderBigTaskSubtasks(task){
  * @param {Object} task - The task object containing assigned contacts to be displayed.
  * @returns {string} The HTML template for assigned contacts in the big task view.
  */
-function renderBigTaskAssignendContacts(task){
+function renderBigTaskAssignendContacts(task) {
     return /*html*/ `
     ${task.assignedContacts ? task.assignedContacts.map(contact => /*html*/`
     <div class="assignedFrom">
@@ -249,7 +249,7 @@ function renderBigTaskAssignendContacts(task){
  * @param {Object} task - The task object containing details to be displayed in the header.
  * @returns {string} The HTML template for the big task header.
  */
-function renderBigTaskHead(task){
+function renderBigTaskHead(task) {
     return /*html*/`
     <p class="${setCategoryStyle(task.category)}">${task.category}</p>
     <p class="headline"><b>${task.title}</b></p>
@@ -265,7 +265,7 @@ function renderBigTaskHead(task){
  *
  * @param {string} uniqueIndex - The unique identifier of the task associated with the delete button.
  */
-function renderDeleteButton(uniqueIndex){
+function renderDeleteButton(uniqueIndex) {
     return /*html*/`
         <img class="delete-img" src="assets/images/delete.svg" alt="">
         <img class="delete-img" src="assets/images/Delete-shrift-black.svg" alt="">
@@ -279,7 +279,7 @@ function renderDeleteButton(uniqueIndex){
  *
  * @param {string} uniqueIndex - The unique identifier of the task associated with the edit button.
  */
-function renderEditButton(uniqueIndex){
+function renderEditButton(uniqueIndex) {
     return /*html*/`
         <img class="delete-img" src="assets/images/edit.svg" alt="">
         <img class="delete-img" src="assets/images/Edit-shrift-black.svg" alt="">
@@ -427,7 +427,7 @@ function deleteTask(taskId) {
  * @param {string} taskId - The unique identifier of the task to be edited.
  */
 function openEditTaskPopup(taskId) {
-let createBtn = document.getElementById('createTaskBtn');
+    let createBtn = document.getElementById('createTaskBtn');
     let clearBtn = document.getElementById('clearBtn');
     let modal = document.getElementById("myModal");
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
@@ -435,10 +435,10 @@ let createBtn = document.getElementById('createTaskBtn');
     printEditButton(taskId);
     if (selectedTask && window.innerWidth > 600) {
         setTaskToEdit(selectedTask);
-    }else if (selectedTask && window.innerWidth < 600 && window.location.href.includes('board.html')) {
+    } else if (selectedTask && window.innerWidth < 600 && window.location.href.includes('board.html')) {
         saveEditedTaskIdLocal(selectedTask.uniqueIndex);
         window.location.href = 'addTask.html';
-    }else if (selectedTask && window.location.href.includes('addTask.html')) {
+    } else if (selectedTask && window.location.href.includes('addTask.html')) {
         setTaskToEdit(selectedTask);
     }
 }
@@ -448,7 +448,7 @@ let createBtn = document.getElementById('createTaskBtn');
  *
  * @param {Object} selectedTask - The task object to be edited.
  */
-function setTaskToEdit(selectedTask){
+function setTaskToEdit(selectedTask) {
     changeEditValues(selectedTask);
     handlePriorities(selectedTask.priority);
     renderSubtasks();
@@ -462,7 +462,7 @@ function setTaskToEdit(selectedTask){
  * Displays the modal div if the current page is 'board.html'
  * 
  */
-function checkIfBoardLocation(){
+function checkIfBoardLocation() {
     let createBtn = document.getElementById('createTaskBtn');
     let clearBtn = document.getElementById('clearBtn');
     let modal = document.getElementById("myModal");
@@ -477,7 +477,7 @@ function checkIfBoardLocation(){
  * Checks if closing the task is necessary based on the current page URL.
  *
  */
-function checkifCloseTaskNecessary(){
+function checkifCloseTaskNecessary() {
     if (window.location.href.includes('board.html')) {
         closeTask();
     }
@@ -488,7 +488,7 @@ function checkifCloseTaskNecessary(){
  *
  * @param {Object} selectedTask - The task object whose properties will be used to update the edit form.
  */
-function changeEditValues(selectedTask){
+function changeEditValues(selectedTask) {
     document.getElementById("title").value = selectedTask.title;
     document.getElementById("description").value = selectedTask.description;
     document.getElementById("dueDate").value = selectedTask.date;
@@ -501,7 +501,7 @@ function changeEditValues(selectedTask){
  *
  * @param {string} taskId - The unique identifier of the task to be edited.
  */
-function printEditButton(taskId){
+function printEditButton(taskId) {
     let okDiv = document.getElementById('okBtnDiv');
     okDiv.innerHTML = /*html*/`
     <button id="okBtn" onclick="saveEditTask(${taskId})" type="button" class="addTaskBtn createBtn">
@@ -561,20 +561,22 @@ async function saveEditTask(taskId) {
             task.priority = prio;
             task.category = categoryInputField.value;
             task.subtasks = subtasks;
-        }});
-    subtasks = [];
+        }
+    });
+
     await setItem('tasks', JSON.stringify(tasks));
     checkIfRedirectionToBoardIsAvailable();
+    subtasks = [];
 }
 /**
  * Checks if the current page is 'board.html', and takes appropriate actions.
  * 
  */
-function checkIfRedirectionToBoardIsAvailable(){
+function checkIfRedirectionToBoardIsAvailable() {
     if (window.location.href.includes('board.html')) {
         initBoard('board');
         closeModal();
-    } else{
+    } else {
         window.location.href = 'board.html';
     }
 }
@@ -584,7 +586,7 @@ function checkIfRedirectionToBoardIsAvailable(){
  * 
  * @param {string|number} taskId - The ID of the task to be edited
  */
-function saveEditedTaskIdLocal(taskId){
+function saveEditedTaskIdLocal(taskId) {
     let eTaskAsJSON = JSON.stringify(taskId);
     localStorage.setItem('taskToEdit', eTaskAsJSON);
 }
@@ -593,7 +595,7 @@ function saveEditedTaskIdLocal(taskId){
  * 
  * @returns {Object|null} The edited task object, or null if not found.
  */
-function loadEditedTaskLocal(){
+function loadEditedTaskLocal() {
     if (localStorage.getItem('taskToEdit')) {
         let etaskAsJSON = localStorage.getItem('taskToEdit');
         eTask = JSON.parse(etaskAsJSON);
