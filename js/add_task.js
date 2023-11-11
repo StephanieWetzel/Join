@@ -25,7 +25,7 @@ async function initAddTask(activeSection) {
 
 //check if a task is editing
 
-function checkIfTaskisEditing(){
+function checkIfTaskisEditing() {
     let eTask = loadEditedTaskLocal();
     if (eTask) {
         openEditTaskPopup(eTask);
@@ -357,6 +357,8 @@ function removeSubtask(i) {
 
 
 function editSubtask(i) {
+    subtaskInput = document.getElementById('subtaskInput');
+
     if (!isEditing) {
         isEditing = true;
 
@@ -376,17 +378,17 @@ function editSubtask(i) {
         let confirmEditSymbol = document.getElementById(`editImg${i}`);
         confirmEditSymbol.src = "/assets/images/check_black.png";
         confirmEditSymbol.onclick = function () {
-            closeEditing(trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i);
+            closeEditing(subtaskInput, trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i);
         };
 
-        subtaskInput.disabled = true;
+        subtaskInput.disabled == true;
     }
 }
 
 
-function closeEditing(trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i) {
+function closeEditing(subtaskInput, trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i) {
     isEditing = false;
-    subtaskInput.disabled = false;
+    subtaskInput.disabled == false;
     subtaskListElement.contentEditable = false;
     confirmEditSymbol.src = "/assets/images/edit.svg";
     addSubtaskSymbol.classList.remove('dNone');
