@@ -14,7 +14,6 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
-    subtaskStatus = loadSubtaskStatusLocal();
 }
 
 window.addEventListener("resize", checkScreenWidth);
@@ -207,23 +206,23 @@ function renderBigTask(task, taskId) {
  * @param {Object} task - The task object containing subtasks to be displayed.
  * @returns {string} The HTML template for displaying subtasks in the big task view.
  */
+subtaskStatus = loadSubtaskStatusLocal() || {};
 function renderBigTaskSubtasks(task) {
-    return /*html*/ `
+    return /*html*/`
     <span style="color: #42526E;">Subtasks</span>
     <span>
     <ul id="subtaskIndex${task.uniqueIndex}">
-        ${task.subtasks.map(subtask => `
+        ${task.subtasks.map((subtask, index) => `
         <li class="list-style">
-        <img id="chopImg" class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
-        <img class="rectangle-image changed-image" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
-        ${subtask}
+            <img id="chopImg" class="chop-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'changed-image' : 'initial-image'}" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
+            <img class="rectangle-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'initial-image' : 'changed-image'}" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
+            ${subtask}
         </li>
         `).join('')}
     </ul>
     </span>
     `
 }
-
 /**
  * Generates HTML template for displaying assigned contacts in the big task view.
  *
@@ -290,47 +289,46 @@ function renderEditButton(uniqueIndex) {
 
 
 //Progress Bar
+function updateProgressBarWidth(progressBarId, width) {
+    const progressBar = document.getElementById(progressBarId);
+    if (progressBar) {
+        progressBar.style.width = `${width}%`;
+        saveProgressBarWidthLocal(progressBarId, width);
+    }
+}
+
+
+function initProgressBarWidth() {
+    const progressBarWidth = loadProgressBarWidthLocal();
+    for (const [taskId, width] of Object.entries(progressBarWidth)) {
+        updateProgressBarWidth(taskId.replace('progressBar', ''), width);
+    }
+}
+
 
 function toggleSubtaskImage(index, taskIndex) {
     const chopImg = document.querySelectorAll('.chop-image')[index];
     const rectangleImg = document.querySelectorAll('.rectangle-image')[index];
-    const progressBar1 = document.getElementById(`progressBar${taskIndex}`);
     const subtaskList = document.querySelector(`#subtaskIndex${taskIndex}`);
 
     if (!subtaskStatus[taskIndex]) {
         subtaskStatus[taskIndex] = [];
     }
 
-    // Toggle des booleschen Flags für den Subtask
     subtaskStatus[taskIndex][index] = !subtaskStatus[taskIndex][index];
-
-    // Hier wird das boolesche Flag verwendet, um die Bildänderungen vorzunehmen
     const isSubtaskCompleted = subtaskStatus[taskIndex][index];
-
-    if (isSubtaskCompleted) {
-        chopImg.classList.remove('initial-image');
-        chopImg.classList.add('changed-image');
-        rectangleImg.classList.remove('changed-image');
-        rectangleImg.classList.add('initial-image');
-    } else {
-        chopImg.classList.remove('changed-image');
-        chopImg.classList.add('initial-image');
-        rectangleImg.classList.remove('initial-image');
-        rectangleImg.classList.add('changed-image');
-    }
-
+    chopImg.classList.toggle('initial-image', !isSubtaskCompleted);
+    chopImg.classList.toggle('changed-image', isSubtaskCompleted);
+    rectangleImg.classList.toggle('initial-image', isSubtaskCompleted);
+    rectangleImg.classList.toggle('changed-image', !isSubtaskCompleted);
     const totalSubtasks = subtaskList.querySelectorAll('li').length;
     const completedSubtasks = subtaskStatus[taskIndex].filter(status => status).length;
     const percent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
 
-    if (progressBar1) {
-        progressBar1.style.width = `${percent}%`;
-    }
-
-    // Speichern des Subtask-Status im Local Storage
+    const progressBarId = `progressBar${taskIndex}`;
+    updateProgressBarWidth(progressBarId, percent);
     saveSubtaskStatusLocal(subtaskStatus);
 }
-
 
 
 
@@ -610,10 +608,27 @@ function saveSubtaskStatusLocal(taskId) {
 }
 
 
+function saveProgressBarWidthLocal(taskId, width) {
+    const progressBarWidth = loadProgressBarWidthLocal();
+    progressBarWidth[taskId] = width;
+    localStorage.setItem('progressBarWidth', JSON.stringify(progressBarWidth));
+
+    console.log('ProgressBar-Breite gespeichert:', taskId, width);
+}
+
+
 function loadSubtaskStatusLocal() {
     if (localStorage.getItem('subtaskStatus')) {
         let subtaskAsJSON = localStorage.getItem('subtaskStatus');
-        subTask = JSON.parse(subtaskAsJSON);
-        return subTask;
+        return JSON.parse(subtaskAsJSON);
     }
+    return {};
+}
+
+
+function loadProgressBarWidthLocal() {
+    let progressBarWidth = JSON.parse(localStorage.getItem('progressBarWidth')) || {};
+    console.log('ProgressBar-Breite geladen:', progressBarWidth);
+    
+    return {progressBarWidth}
 }
