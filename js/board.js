@@ -14,9 +14,8 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
+    subtaskStatus = loadSubtaskStatusLocal();
 }
-
-
 
 window.addEventListener("resize", checkScreenWidth);
 
@@ -215,7 +214,7 @@ function renderBigTaskSubtasks(task){
     <ul id="subtaskIndex${task.uniqueIndex}">
         ${task.subtasks.map(subtask => `
         <li class="list-style">
-        <img class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+        <img id="chopImg" class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
         <img class="rectangle-image changed-image" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
         ${subtask}
         </li>
@@ -302,9 +301,13 @@ function toggleSubtaskImage(index, taskIndex) {
         subtaskStatus[taskIndex] = [];
     }
 
+    // Toggle des booleschen Flags für den Subtask
     subtaskStatus[taskIndex][index] = !subtaskStatus[taskIndex][index];
 
-    if (subtaskStatus[taskIndex][index]) {
+    // Hier wird das boolesche Flag verwendet, um die Bildänderungen vorzunehmen
+    const isSubtaskCompleted = subtaskStatus[taskIndex][index];
+
+    if (isSubtaskCompleted) {
         chopImg.classList.remove('initial-image');
         chopImg.classList.add('changed-image');
         rectangleImg.classList.remove('changed-image');
@@ -323,6 +326,9 @@ function toggleSubtaskImage(index, taskIndex) {
     if (progressBar1) {
         progressBar1.style.width = `${percent}%`;
     }
+
+    // Speichern des Subtask-Status im Local Storage
+    saveSubtaskStatusLocal(subtaskStatus);
 }
 
 
@@ -421,6 +427,9 @@ function deleteTask(taskId) {
  * @param {string} taskId - The unique identifier of the task to be edited.
  */
 function openEditTaskPopup(taskId) {
+let createBtn = document.getElementById('createTaskBtn');
+    let clearBtn = document.getElementById('clearBtn');
+    let modal = document.getElementById("myModal");
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
     subtasks = selectedTask.subtasks;
     printEditButton(taskId);
@@ -589,5 +598,20 @@ function loadEditedTaskLocal(){
         let etaskAsJSON = localStorage.getItem('taskToEdit');
         eTask = JSON.parse(etaskAsJSON);
         return eTask;
+    }
+}
+
+
+function saveSubtaskStatusLocal(taskId) {
+    let subtaskAsJSON = JSON.stringify(taskId);
+    localStorage.setItem('subtaskStatus', subtaskAsJSON);
+}
+
+
+function loadSubtaskStatusLocal() {
+    if (localStorage.getItem('subtaskStatus')) {
+        let subtaskAsJSON = localStorage.getItem('subtaskStatus');
+        subTask = JSON.parse(subtaskAsJSON);
+        return subTask;
     }
 }
