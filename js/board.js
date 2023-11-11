@@ -1,6 +1,7 @@
 let currentDraggedElement;
 let selectedSubtaskIndex = null;
 let subtaskStatus = {};
+let modal;
 
 async function initBoard(activeSection) {
     console.log(tasks)
@@ -13,43 +14,33 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
+    subtaskStatus = loadSubtaskStatusLocal();
 }
 
-
-let modal;
-//let backToBoardBtn;
-
-
-// Überprüfen Sie die Bildschirmbreite beim Laden der Seite und öffnen Sie ggf. das Overlay
-//window.addEventListener("load", openModal);
-
-// Überwachen Sie das Ändern der Bildschirmbreite
 window.addEventListener("resize", checkScreenWidth);
 
+/**
+ * Checks the screen width and redirects if necessary.
+ *
+ */
 function checkScreenWidth() {
-    // backToBoardBtn = document.getElementById('backToBoardBtn');
     modal = document.getElementById("myModal");
-    if (window.innerWidth < 600) {
-        // Überprüfen, ob das Overlay geöffnet ist
+    if (window.innerWidth <= 600) {
         if (modal.style.display === "block") {
             window.location.href = 'addTask.html';
-            // backToBoardBtn.classList.remove('d-none');    
-        }
     }
+}
 }
 
 
 function openModal() {
     modal = document.getElementById("myModal");
-    // backToBoardBtn = document.getElementById('backToBoardBtn');
     if ((window.innerWidth > 600)) {
         fetch("assets/templates/addTask.template.html")
             .then((response) => response.text())
         modal.style.display = "block";
         document.body.style.overflow = 'hidden';
-        // backToBoardBtn.style.display == 'none';
     } else {
-        // backToBoardBtn.style.display == 'block';
         window.location.href = 'addTask.html';
     }
 }
@@ -187,9 +178,10 @@ function renderTaskCard(task) {
 }
 
 /**
- * This function displays the task with more information for the user.
- * 
- * @param {object} task - Represantative for the Task -class object
+ * Renders the content of the big task view in the modal.
+ *
+ * @param {Object} task - The task object containing details to be displayed in the big task view.
+ * @param {string} taskId - The unique identifier of the task.
  */
 function renderBigTask(task, taskId) {
     let openedTask = document.getElementById('customModal');
@@ -209,6 +201,12 @@ function renderBigTask(task, taskId) {
         </div>`
 }
 
+/**
+ * Generates HTML template for displaying subtasks in the big task view.
+ * 
+ * @param {Object} task - The task object containing subtasks to be displayed.
+ * @returns {string} The HTML template for displaying subtasks in the big task view.
+ */
 function renderBigTaskSubtasks(task){
     return /*html*/ `
     <span style="color: #42526E;">Subtasks</span>
@@ -216,7 +214,7 @@ function renderBigTaskSubtasks(task){
     <ul id="subtaskIndex${task.uniqueIndex}">
         ${task.subtasks.map(subtask => `
         <li class="list-style">
-        <img class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+        <img id="chopImg" class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
         <img class="rectangle-image changed-image" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
         ${subtask}
         </li>
@@ -226,6 +224,12 @@ function renderBigTaskSubtasks(task){
     `
 }
 
+/**
+ * Generates HTML template for displaying assigned contacts in the big task view.
+ *
+ * @param {Object} task - The task object containing assigned contacts to be displayed.
+ * @returns {string} The HTML template for assigned contacts in the big task view.
+ */
 function renderBigTaskAssignendContacts(task){
     return /*html*/ `
     ${task.assignedContacts ? task.assignedContacts.map(contact => /*html*/`
@@ -239,6 +243,12 @@ function renderBigTaskAssignendContacts(task){
     `
 }
 
+/**
+ * Generates HTML template for the header of a big task display.
+ *
+ * @param {Object} task - The task object containing details to be displayed in the header.
+ * @returns {string} The HTML template for the big task header.
+ */
 function renderBigTaskHead(task){
     return /*html*/`
     <p class="${setCategoryStyle(task.category)}">${task.category}</p>
@@ -250,6 +260,11 @@ function renderBigTaskHead(task){
     `
 }
 
+/**
+ * Generates HTML template for a delete button with hover effects.
+ *
+ * @param {string} uniqueIndex - The unique identifier of the task associated with the delete button.
+ */
 function renderDeleteButton(uniqueIndex){
     return /*html*/`
         <img class="delete-img" src="assets/images/delete.svg" alt="">
@@ -259,6 +274,11 @@ function renderDeleteButton(uniqueIndex){
     `
 }
 
+/**
+ * Generates HTML template for an edit button with hover effects.
+ *
+ * @param {string} uniqueIndex - The unique identifier of the task associated with the edit button.
+ */
 function renderEditButton(uniqueIndex){
     return /*html*/`
         <img class="delete-img" src="assets/images/edit.svg" alt="">
@@ -281,9 +301,13 @@ function toggleSubtaskImage(index, taskIndex) {
         subtaskStatus[taskIndex] = [];
     }
 
+    // Toggle des booleschen Flags für den Subtask
     subtaskStatus[taskIndex][index] = !subtaskStatus[taskIndex][index];
 
-    if (subtaskStatus[taskIndex][index]) {
+    // Hier wird das boolesche Flag verwendet, um die Bildänderungen vorzunehmen
+    const isSubtaskCompleted = subtaskStatus[taskIndex][index];
+
+    if (isSubtaskCompleted) {
         chopImg.classList.remove('initial-image');
         chopImg.classList.add('changed-image');
         rectangleImg.classList.remove('changed-image');
@@ -302,6 +326,9 @@ function toggleSubtaskImage(index, taskIndex) {
     if (progressBar1) {
         progressBar1.style.width = `${percent}%`;
     }
+
+    // Speichern des Subtask-Status im Local Storage
+    saveSubtaskStatusLocal(subtaskStatus);
 }
 
 
@@ -377,7 +404,12 @@ async function moveTo(state) {
     initBoard('board');
 }
 
-
+/**
+ * This function removes the task with the given taskId from the tasks array, saves the updated tasks to local storage,
+ * closes the task details popup, and then initializes the board to reflect the changes.
+ *
+ * @param {string} taskId - The unique identifier of the task to be deleted.
+ */
 function deleteTask(taskId) {
     const taskIndex = tasks.findIndex(task => task.uniqueIndex === taskId);
 
@@ -389,33 +421,86 @@ function deleteTask(taskId) {
     }
 }
 
-
+/**
+ * Opens the edit task popup and initializes the edit form with task details.
+ *
+ * @param {string} taskId - The unique identifier of the task to be edited.
+ */
 function openEditTaskPopup(taskId) {
-    let createBtn = document.getElementById('createTaskBtn');
+let createBtn = document.getElementById('createTaskBtn');
     let clearBtn = document.getElementById('clearBtn');
     let modal = document.getElementById("myModal");
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
     subtasks = selectedTask.subtasks;
     printEditButton(taskId);
-    if (selectedTask) {
-        changeEditValues(selectedTask);
-        handlePriorities(selectedTask.priority);
-        renderSubtasks();
-        showAlreadyAssContactsEdit(selectedTask.assignedContacts);
-        modal.style.display = "block";
-        createBtn.classList.add('d-none');
-        clearBtn.classList.add('d-none');
+    if (selectedTask && window.innerWidth > 600) {
+        setTaskToEdit(selectedTask);
+    }else if (selectedTask && window.innerWidth < 600 && window.location.href.includes('board.html')) {
+        saveEditedTaskIdLocal(selectedTask.uniqueIndex);
+        window.location.href = 'addTask.html';
+    }else if (selectedTask && window.location.href.includes('addTask.html')) {
+        setTaskToEdit(selectedTask);
+    }
+}
+
+/**
+ * Sets up the edit form with details of the selected task.
+ *
+ * @param {Object} selectedTask - The task object to be edited.
+ */
+function setTaskToEdit(selectedTask){
+    changeEditValues(selectedTask);
+    handlePriorities(selectedTask.priority);
+    renderSubtasks();
+    showAlreadyAssContactsEdit(selectedTask.assignedContacts);
+    checkIfBoardLocation();
+    checkifCloseTaskNecessary();
+}
+
+/**
+ * Checks if the current page is 'board.html' and performs related actions.
+ * Displays the modal div if the current page is 'board.html'
+ * 
+ */
+function checkIfBoardLocation(){
+    let createBtn = document.getElementById('createTaskBtn');
+    let clearBtn = document.getElementById('clearBtn');
+    let modal = document.getElementById("myModal");
+    if (window.location.href.includes('board.html')) {
+        modal.style.display = 'block';
+    }
+    createBtn.classList.add('d-none');
+    clearBtn.classList.add('d-none');
+}
+
+/**
+ * Checks if closing the task is necessary based on the current page URL.
+ *
+ */
+function checkifCloseTaskNecessary(){
+    if (window.location.href.includes('board.html')) {
         closeTask();
     }
 }
 
+/**
+ * Changes the values in the editTask form based on the properties of the selected task.
+ *
+ * @param {Object} selectedTask - The task object whose properties will be used to update the edit form.
+ */
 function changeEditValues(selectedTask){
     document.getElementById("title").value = selectedTask.title;
     document.getElementById("description").value = selectedTask.description;
     document.getElementById("dueDate").value = selectedTask.date;
     document.getElementById("categoryInputField").value = selectedTask.category;
+    saveEditedTaskIdLocal(selectedTask.uniqueIndex);
 }
 
+/**
+ * Prints the edit button for a selected task with the provided task ID.
+ *
+ * @param {string} taskId - The unique identifier of the task to be edited.
+ */
 function printEditButton(taskId){
     let okDiv = document.getElementById('okBtnDiv');
     okDiv.innerHTML = /*html*/`
@@ -426,6 +511,11 @@ function printEditButton(taskId){
     `
 }
 
+/**
+ * Displays already assigned contacts at editing a task and checks corresponding checkboxes.
+ *
+ * @param {Array<Object>} selectedTaskContacts - The array of contacts already assigned to the task.
+ */
 function showAlreadyAssContactsEdit(selectedTaskContacts) {
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
@@ -441,13 +531,25 @@ function showAlreadyAssContactsEdit(selectedTaskContacts) {
     }
 }
 
+/**
+ * Generates HTML template for an assigned contact bubble in an edit context.
+ * 
+ * @param {string} contactEdit - The color of the contact bubble.
+ * @returns {string} The HTML template for the assigned contact bubble.
+ */
 function assignedContactsTemplateEdit(contactEdit) {
     return `
         <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contactEdit}">${initials}</div>
     `;
 }
-
-function saveEditTask(taskId) {
+/**
+ * Asynchronously saves edited task details and performs related actions.
+ *
+ * @function
+ * @async
+ * @param {string} taskId - The unique identifier of the task to be edited.
+ */
+async function saveEditTask(taskId) {
     showAssignedContacts();
     tasks.forEach(task => {
         if (task.uniqueIndex === taskId) {
@@ -461,7 +563,55 @@ function saveEditTask(taskId) {
             task.subtasks = subtasks;
         }});
     subtasks = [];
-    setItem('tasks', JSON.stringify(tasks));
-    initBoard('board');
-    closeModal();
+    await setItem('tasks', JSON.stringify(tasks));
+    checkIfRedirectionToBoardIsAvailable();
+}
+/**
+ * Checks if the current page is 'board.html', and takes appropriate actions.
+ * 
+ */
+function checkIfRedirectionToBoardIsAvailable(){
+    if (window.location.href.includes('board.html')) {
+        initBoard('board');
+        closeModal();
+    } else{
+        window.location.href = 'board.html';
+    }
+}
+
+/**
+ * Saves the provided task ID to local storage for later retrieval.
+ * 
+ * @param {string|number} taskId - The ID of the task to be edited
+ */
+function saveEditedTaskIdLocal(taskId){
+    let eTaskAsJSON = JSON.stringify(taskId);
+    localStorage.setItem('taskToEdit', eTaskAsJSON);
+}
+/**
+ * Retrieves and parses the edited task from local storage.
+ * 
+ * @returns {Object|null} The edited task object, or null if not found.
+ */
+function loadEditedTaskLocal(){
+    if (localStorage.getItem('taskToEdit')) {
+        let etaskAsJSON = localStorage.getItem('taskToEdit');
+        eTask = JSON.parse(etaskAsJSON);
+        return eTask;
+    }
+}
+
+
+function saveSubtaskStatusLocal(taskId) {
+    let subtaskAsJSON = JSON.stringify(taskId);
+    localStorage.setItem('subtaskStatus', subtaskAsJSON);
+}
+
+
+function loadSubtaskStatusLocal() {
+    if (localStorage.getItem('subtaskStatus')) {
+        let subtaskAsJSON = localStorage.getItem('subtaskStatus');
+        subTask = JSON.parse(subtaskAsJSON);
+        return subTask;
+    }
 }
