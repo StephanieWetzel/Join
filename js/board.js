@@ -20,6 +20,10 @@ async function initBoard(activeSection) {
 
 window.addEventListener("resize", checkScreenWidth);
 
+/**
+ * Checks the screen width and redirects if necessary.
+ *
+ */
 function checkScreenWidth() {
     modal = document.getElementById("myModal");
     if (window.innerWidth <= 600) {
