@@ -7,6 +7,8 @@ let lowBtn;
 let lowSymbol;
 let contact;
 let subtasks = [];
+let subtaskInput;
+let isEditing = false;
 let tasks = [];
 let contactBubbles = [];
 let userCategoryselect;
@@ -286,11 +288,19 @@ function handleMedium(priority) {
 }
 
 
+/**
+ * Checks if the 'medium' button has already been clicked.
+ *
+ * @returns {boolean} - `true` if the 'medium' button has been clicked; otherwise, `false`.
+ */
 function mediumButtonAlreadyClicked() {
     return mediumBtn.classList.contains('medium');
 }
 
 
+/**
+ * Removes the 'medium' class from the 'medium' button and enables other priority buttons.
+ */
 function removeMediumClassAndEnableOtherButtons() {
     mediumBtn.classList.remove('medium');
     mediumSymbol.src = '/assets/images/medium_symbol.svg';
@@ -299,6 +309,9 @@ function removeMediumClassAndEnableOtherButtons() {
 }
 
 
+/**
+ * Adds the 'medium' class to the 'medium' button and disables other priority buttons.
+ */
 function addMediumClassAndDisableOtherButtons() {
     mediumBtn.classList.add('medium');
     mediumSymbol.src = '/assets/images/medium_symbol_white.png';
@@ -308,23 +321,36 @@ function addMediumClassAndDisableOtherButtons() {
 
 
 // low
+/**
+ * Handles the interaction and display changes for the 'low' priority button.
+ *
+ * @param {string} priority - The selected priority ('urgent', 'medium', or 'low').
+ */
 function handleLow(priority) {
     if (priority === 'low') {
         if (lowButtonAlreadyClicked()) {
             removeLowClassAndEnableOtherButtons();
         } else {
             addLowClassAndDisableOtherButtons();
-            prio = priority;
+            prio = priority; // Update the global priority variable
         }
     }
 }
 
 
+/**
+ * Checks if the 'low' button has already been clicked.
+ *
+ * @returns {boolean} - `true` if the 'low' button has been clicked; otherwise, `false`.
+ */
 function lowButtonAlreadyClicked() {
     return lowBtn.classList.contains('low');
 }
 
 
+/**
+ * Removes the 'low' class from the 'low' button and enables other priority buttons.
+ */
 function removeLowClassAndEnableOtherButtons() {
     lowBtn.classList.remove('low');
     lowSymbol.src = '/assets/images/low_symbol.svg';
@@ -333,6 +359,9 @@ function removeLowClassAndEnableOtherButtons() {
 }
 
 
+/**
+ * Adds the 'low' class to the 'low' button and disables other priority buttons.
+ */
 function addLowClassAndDisableOtherButtons() {
     lowBtn.classList.add('low');
     lowSymbol.src = '/assets/images/low_symbol_white.png';
@@ -342,6 +371,13 @@ function addLowClassAndDisableOtherButtons() {
 
 
 // CATEGORIES
+/**
+ * Toggles the visibility of the category selection field and associated arrow symbols.
+ *
+ * @param {HTMLElement} categoryArrowDown - The HTML element representing the arrow symbol pointing down for the category field.
+ * @param {HTMLElement} categoryArrowUp  - The HTML element representing the arrow symbol pointing up for the category field.
+ * @param {HTMLElement} categorySelection - The HTML element representing the category selection field.
+ */
 function toggleCategoryField() {
     let categoryArrowDown = document.getElementById('categoryArrowDown');
     categoryArrowDown.classList.toggle('dNone');
@@ -354,19 +390,26 @@ function toggleCategoryField() {
 }
 
 
+/**
+ * Assigns the selected category to the category input field and updates the user's category selection.
+ *
+ * @param {HTMLElement} selectedCategory - The HTML element representing the selected category.
+ * @param {HTMLInputElement} categoryInputField - The HTML input field for category selection.
+ */
 function assignCategory(selectedCategory) {
     let categoryInputField = document.getElementById('categoryInputField');
-    categoryInputField.value = selectedCategory.getAttribute('value');
-    toggleCategoryField(); // closes categories
-    userCategoryselect = categoryInputField.value;
+    categoryInputField.value = selectedCategory.getAttribute('value'); // Sets the value of the category input field to the value attribute of the selected category.
+    toggleCategoryField();
+    userCategoryselect = categoryInputField.value; // Updates the global variable representing the user's selected category.
 }
 
 
 // SUBTASKS
-let subtaskInput;
-let isEditing = false;
-
-
+/**
+ * Adds a subtask to the list of subtasks and updates the rendering of subtasks.
+ *
+ * @param {HTMLInputElement} subtaskInput - The HTML input field for entering subtasks.
+ */
 function addSubtask() {
     subtaskInput = document.getElementById('subtaskInput');
     if (subtaskInputFieldHasContent()) {
@@ -376,6 +419,12 @@ function addSubtask() {
     }
 }
 
+
+/**
+ * Checks if the subtask input field has content.
+ *
+ * @returns {boolean} - `true` if the subtask input field has content; otherwise, `false`.
+ */
 function subtaskInputFieldHasContent() {
     return subtaskInput.value.length != '';
 }
@@ -394,17 +443,29 @@ function subtaskInputFieldHasContent() {
 }*/
 
 
+/**
+ * Renders the list of subtasks in the designated container.
+ *
+ * @param {HTMLElement} subtaskContainer - The HTML element that serves as the container for displaying subtasks.
+ * @param {string} subtask - The current subtask in the iteration.
+ */
 function renderSubtasks() {
     const subtaskContainer = document.getElementById('subtaskContainer');
     subtaskContainer.innerHTML = '';
 
-    for (let i = 0; i < subtasks.length; i++) {
+    for (let i = 0; i < subtasks.length; i++) { // Iterates through the list of subtasks and adds them to the subtask container using a template.
         const subtask = subtasks[i];
         subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
     }
 };
 
 
+/**
+ * Generates an HTML template for a subtask edit container.
+ *
+ * @param {string} subtask - The text content of the subtask.
+ * @param {number} i - The index of the subtask in the list.
+ */
 function subtaskEditContainerTemplate(subtask, i) {
     return /*html*/`
     <ul id="ulContainer${i}" class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
@@ -419,6 +480,13 @@ function subtaskEditContainerTemplate(subtask, i) {
 }
 
 
+/**
+ * Handles the mouseover event for a subtask edit container, displaying the edit options.
+ *
+ * @param {HTMLElement} element - The HTML element representing the subtask edit container.
+ * @param {boolean} isEditing -  A flag indicating whether the application is in editing mode.
+ * @param {HTMLElement} subtaskEditContainer - The HTML element representing the subtask edit container within the provided element.
+ */
 function mouseOverSubtaskEditContainer(element) {
     if (!isEditing) {
         const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
@@ -427,6 +495,13 @@ function mouseOverSubtaskEditContainer(element) {
 }
 
 
+/**
+ * Handles the mouseout event for a subtask edit container, hiding the edit options.
+ *
+ * @param {HTMLElement} element - The HTML element representing the subtask edit container.
+ * @param {boolean} isEditing -  A flag indicating whether the application is in editing mode.
+ * @param {HTMLElement} subtaskEditContainer - The HTML element representing the subtask edit container within the provided element.
+ */
 function mouseOutSubtaskEditContainer(element) {
     if (!isEditing) {
         const subtaskEditContainer = element.querySelector('.subtaskEditContainer');
@@ -435,6 +510,11 @@ function mouseOutSubtaskEditContainer(element) {
 }
 
 
+/**
+ * Deletes a subtask at the specified index and updates the rendering of subtasks.
+ *
+ * @param {number} i - The index of the subtask to be deleted.
+ */
 function deleteSubtask(i) {
     if (atLeastOneSubtaskExists(i)) { // if at least one subtask exists in array
         removeSubtask(i);
@@ -443,11 +523,22 @@ function deleteSubtask(i) {
 }
 
 
+/**
+ * Checks if at least one subtask exists at the specified index.
+ *
+ * @param {number} i - The index to be checked.
+ * @returns {boolean} - `true` if at least one subtask exists at the specified index; otherwise, `false`.
+ */
 function atLeastOneSubtaskExists(i) {
     return i > -1;
 }
 
 
+/**
+ * Removes a subtask at the specified index from the list of subtasks and clears the subtask container.
+ *
+ * @param {number} i - The index of the subtask to be removed.
+ */
 function removeSubtask(i) {
     subtasks.splice(i, 1);
     subtaskContainer.innerHTML = '';
@@ -484,6 +575,18 @@ function editSubtask(i) {
 }
 
 
+/**
+ * Closes the editing mode for a subtask, reverts UI changes, and sets the application state accordingly.
+ *
+ * @param {HTMLInputElement} subtaskInput - The HTML input field for entering subtasks.
+ * @param {HTMLImageElement} trashcan - The HTML image element representing the trashcan icon.
+ * @param {HTMLLIElement} subtaskListElement - The HTML list item element representing the subtask.
+ * @param {HTMLImageElement} confirmEditSymbol - The HTML image element representing the confirm edit symbol.
+ * @param {HTMLDivElement} addSubtaskSymbol - The HTML div element representing the add subtask symbol.
+ * @param {HTMLUListElement} ulContainer - The HTML unordered list element container.
+ * @param {number} i - The index of the subtask being edited.
+ * @param {boolean} isEditing - Sets the editing state to false.
+ */
 function closeEditing(subtaskInput, trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i) {
     isEditing = false;
     subtaskInput.disabled = false;
@@ -498,19 +601,36 @@ function closeEditing(subtaskInput, trashcan, subtaskListElement, confirmEditSym
     };
 }
 
-//Clear Task
+
+/**
+ * Clears the task form by reinitializing the Add Task functionality with the default active section.
+ */
 function clearTaskForm() {
     initAddTask('tasks');
 }
 
+
 // ADD TO BOARD
+/**
+ * Adds a new task to the board with the provided details and updates the board state.
+ * Creates a new task using the provided values for title, description, assigned contacts, due date, priority, user category, and subtasks.
+ * Adds the new task to the tasks array.
+ * Stores the updated tasks array in local storage.
+ * Reinitializes the Add Task functionality with the active section set to 'tasks'.
+ */
 async function addTaskToBoard() {
-    // let formattedDueDate = formatDueDate(dueDate.value);
     tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks))
     await setItem('tasks', JSON.stringify(tasks));
     initAddTask('tasks');
 }
 
+
+/**
+ * Formats a date string into the British date format (dd/mm/yyyy).
+ *
+ * @param {string} dateString - The date string to be formatted.
+ * @returns {string} - The formatted date string in dd/mm/yyyy format.
+ */
 function formatDueDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-GB'); // british format -> dd/mm/yyyy
 }
