@@ -1,7 +1,6 @@
 let currentDraggedElement;
 let selectedSubtaskIndex = null;
 let subtaskStatus = {};
-let modal;
 
 async function initBoard(activeSection) {
     console.log(tasks)
@@ -14,29 +13,43 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
-    subtaskStatus = loadSubtaskStatusLocal();
 }
 
+
+let modal;
+//let backToBoardBtn;
+
+
+// Überprüfen Sie die Bildschirmbreite beim Laden der Seite und öffnen Sie ggf. das Overlay
+//window.addEventListener("load", openModal);
+
+// Überwachen Sie das Ändern der Bildschirmbreite
 window.addEventListener("resize", checkScreenWidth);
 
 function checkScreenWidth() {
+    // backToBoardBtn = document.getElementById('backToBoardBtn');
     modal = document.getElementById("myModal");
-    if (window.innerWidth <= 600) {
+    if (window.innerWidth < 600) {
+        // Überprüfen, ob das Overlay geöffnet ist
         if (modal.style.display === "block") {
             window.location.href = 'addTask.html';
+            // backToBoardBtn.classList.remove('d-none');    
+        }
     }
-}
 }
 
 
 function openModal() {
     modal = document.getElementById("myModal");
+    // backToBoardBtn = document.getElementById('backToBoardBtn');
     if ((window.innerWidth > 600)) {
         fetch("assets/templates/addTask.template.html")
             .then((response) => response.text())
         modal.style.display = "block";
         document.body.style.overflow = 'hidden';
+        // backToBoardBtn.style.display == 'none';
     } else {
+        // backToBoardBtn.style.display == 'block';
         window.location.href = 'addTask.html';
     }
 }
@@ -203,7 +216,7 @@ function renderBigTaskSubtasks(task){
     <ul id="subtaskIndex${task.uniqueIndex}">
         ${task.subtasks.map(subtask => `
         <li class="list-style">
-        <img id="chopImg" class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
+        <img class="chop-image initial-image" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
         <img class="rectangle-image changed-image" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${task.subtasks.indexOf(subtask)}, ${task.uniqueIndex});" alt="">
         ${subtask}
         </li>
@@ -268,13 +281,9 @@ function toggleSubtaskImage(index, taskIndex) {
         subtaskStatus[taskIndex] = [];
     }
 
-    // Toggle des booleschen Flags für den Subtask
     subtaskStatus[taskIndex][index] = !subtaskStatus[taskIndex][index];
 
-    // Hier wird das boolesche Flag verwendet, um die Bildänderungen vorzunehmen
-    const isSubtaskCompleted = subtaskStatus[taskIndex][index];
-
-    if (isSubtaskCompleted) {
+    if (subtaskStatus[taskIndex][index]) {
         chopImg.classList.remove('initial-image');
         chopImg.classList.add('changed-image');
         rectangleImg.classList.remove('changed-image');
@@ -293,9 +302,6 @@ function toggleSubtaskImage(index, taskIndex) {
     if (progressBar1) {
         progressBar1.style.width = `${percent}%`;
     }
-
-    // Speichern des Subtask-Status im Local Storage
-    saveSubtaskStatusLocal(subtaskStatus);
 }
 
 
@@ -385,57 +391,30 @@ function deleteTask(taskId) {
 
 
 function openEditTaskPopup(taskId) {
-    let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
-    subtasks = selectedTask.subtasks;
-    printEditButton(taskId);
-    if (selectedTask && window.innerWidth > 600) {
-        setTaskToEdit(selectedTask);
-    }else if (selectedTask && window.innerWidth < 600 && window.location.href.includes('board.html')) {
-        saveEditedTaskIdLocal(selectedTask.uniqueIndex);
-        window.location.href = 'addTask.html';
-    }else if (selectedTask && window.location.href.includes('addTask.html')) {
-        setTaskToEdit(selectedTask);
-    }
-}
-
-
-function setTaskToEdit(selectedTask){
-    changeEditValues(selectedTask);
-    handlePriorities(selectedTask.priority);
-    renderSubtasks();
-    showAlreadyAssContactsEdit(selectedTask.assignedContacts);
-    checkIfBoardLocation();
-    checkifCloseTaskNecessary();
-}
-
-
-function checkIfBoardLocation(){
     let createBtn = document.getElementById('createTaskBtn');
     let clearBtn = document.getElementById('clearBtn');
     let modal = document.getElementById("myModal");
-    if (window.location.href.includes('board.html')) {
-        modal.style.display = 'block';
-    }
-    createBtn.classList.add('d-none');
-    clearBtn.classList.add('d-none');
-}
-
-
-function checkifCloseTaskNecessary(){
-    if (window.location.href.includes('board.html')) {
+    let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
+    subtasks = selectedTask.subtasks;
+    printEditButton(taskId);
+    if (selectedTask) {
+        changeEditValues(selectedTask);
+        handlePriorities(selectedTask.priority);
+        renderSubtasks();
+        showAlreadyAssContactsEdit(selectedTask.assignedContacts);
+        modal.style.display = "block";
+        createBtn.classList.add('d-none');
+        clearBtn.classList.add('d-none');
         closeTask();
     }
 }
-
 
 function changeEditValues(selectedTask){
     document.getElementById("title").value = selectedTask.title;
     document.getElementById("description").value = selectedTask.description;
     document.getElementById("dueDate").value = selectedTask.date;
     document.getElementById("categoryInputField").value = selectedTask.category;
-    saveEditedTaskIdLocal(selectedTask.uniqueIndex);
 }
-
 
 function printEditButton(taskId){
     let okDiv = document.getElementById('okBtnDiv');
@@ -446,7 +425,6 @@ function printEditButton(taskId){
     </button>
     `
 }
-
 
 function showAlreadyAssContactsEdit(selectedTaskContacts) {
     for (let i = 0; i < contacts.length; i++) {
@@ -463,15 +441,13 @@ function showAlreadyAssContactsEdit(selectedTaskContacts) {
     }
 }
 
-
 function assignedContactsTemplateEdit(contactEdit) {
     return `
         <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contactEdit}">${initials}</div>
     `;
 }
 
-
-async function saveEditTask(taskId) {
+function saveEditTask(taskId) {
     showAssignedContacts();
     tasks.forEach(task => {
         if (task.uniqueIndex === taskId) {
@@ -485,46 +461,7 @@ async function saveEditTask(taskId) {
             task.subtasks = subtasks;
         }});
     subtasks = [];
-    await setItem('tasks', JSON.stringify(tasks));
-    checkIfRedirectionToBoardIsAvailable();
-}
-
-
-function checkIfRedirectionToBoardIsAvailable(){
-    if (window.location.href.includes('board.html')) {
-        initBoard('board');
-        closeModal();
-    } else{
-        window.location.href = 'board.html';
-    }
-}
-
-
-function saveEditedTaskIdLocal(taskId){
-    let eTaskAsJSON = JSON.stringify(taskId);
-    localStorage.setItem('taskToEdit', eTaskAsJSON);
-}
-
-
-function loadEditedTaskLocal(){
-    if (localStorage.getItem('taskToEdit')) {
-        let etaskAsJSON = localStorage.getItem('taskToEdit');
-        eTask = JSON.parse(etaskAsJSON);
-        return eTask;
-    }
-}
-
-
-function saveSubtaskStatusLocal(taskId) {
-    let subtaskAsJSON = JSON.stringify(taskId);
-    localStorage.setItem('subtaskStatus', subtaskAsJSON);
-}
-
-
-function loadSubtaskStatusLocal() {
-    if (localStorage.getItem('subtaskStatus')) {
-        let subtaskAsJSON = localStorage.getItem('subtaskStatus');
-        subTask = JSON.parse(subtaskAsJSON);
-        return subTask;
-    }
+    setItem('tasks', JSON.stringify(tasks));
+    initBoard('board');
+    closeModal();
 }
