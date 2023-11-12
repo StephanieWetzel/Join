@@ -198,10 +198,7 @@ body {
     color: #29ABE2;
 }
 
-
-
 /*Animation*/
-
 .popup-message {
     position: relative;
 }
@@ -297,19 +294,6 @@ body {
     z-index: 999;
     animation: joinLogo 1s linear;
 }
-
-/*@keyframes joinLogo {
-    from {
-        height: 270px;
-        top: 250%;
-        left: 45%;
-    }
-    to {
-        height: 100px;
-        top: 0;
-        left: 0;
-    }
-}*/
 
 @keyframes joinLogo {
     0% {
@@ -433,7 +417,6 @@ body {
     }
 }
 
-/* Steffi */
 @media(min-height:1300px) and (min-width:900px) {
     .email-styling {
         background-position-x: 476px;
@@ -445,10 +428,6 @@ body {
 
     .fish-eye-btn {
         margin-left: -50px;
-    }
-
-    .fish-eye-div {
-        /* width: auto; */
     }
 
     .btns {
@@ -507,7 +486,6 @@ body {
 @media(max-width:800px) {
     .form {
         width: 90%;
-        /* margin-top: 80px; */
     }
 
     .join-logo-animation {
@@ -587,15 +565,7 @@ body {
     }
 }
 
-
-
-
-
-
-
-
 /*Animation Mobile*/
-
 @keyframes joinLogoMobile650 {
     0% {
         height: 190px;

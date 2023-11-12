@@ -204,7 +204,6 @@ body {
 }
 
 /*Animation*/
-
 .d-none {
     display: none;
 }
@@ -293,7 +292,6 @@ body {
 }
 
 /*Responsive Design*/
-
 @media(max-width:1080px) {
     .email-styling {
         background-position-x: 273px;
@@ -359,14 +357,16 @@ body {
     }
 }
 
-@media(max-height:670px){
-    .header img{
+@media(max-height:670px) {
+    .header img {
         height: 64px;
     }
-    .input-style{
+
+    .input-style {
         margin-top: 6px;
     }
-    .fish-eye-btn{
+
+    .fish-eye-btn {
         margin-top: 6px;
     }
 }

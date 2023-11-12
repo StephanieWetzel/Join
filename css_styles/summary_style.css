@@ -261,24 +261,21 @@ a {
     }
 }
 
-@media(max-width:750px){
-    .greeting-mobile{
+@media(max-width:750px) {
+    .greeting-mobile {
         left: 15% !important;
     }
-    .greeting-mobile h1{
+
+    .greeting-mobile h1 {
         font-size: 50px !important;
     }
-    .greeting-mobile h2{
+
+    .greeting-mobile h2 {
         font-size: 32px !important;
     }
 }
 
 @media(max-width:600px) {
-    /* .content {
-        min-height: 100vh;
-        height: 100%;
-    } */
-
     .summary {
         padding: 16px;
         height: 85%;
@@ -351,13 +348,16 @@ a {
     .maxWidth {
         width: 96px;
     }
-    .greeting-mobile{
+
+    .greeting-mobile {
         left: 5% !important;
     }
-    .greeting-mobile h1{
+
+    .greeting-mobile h1 {
         font-size: 38px !important;
     }
-    .greeting-mobile h2{
+
+    .greeting-mobile h2 {
         font-size: 26px !important;
     }
 }
@@ -374,13 +374,16 @@ a {
     .summaryWidth span {
         font-size: 12px;
     }
-    .greeting-mobile{
+
+    .greeting-mobile {
         left: 5% !important;
     }
-    .greeting-mobile h1{
+
+    .greeting-mobile h1 {
         font-size: 38px !important;
     }
-    .greeting-mobile h2{
+
+    .greeting-mobile h2 {
         font-size: 26px !important;
     }
 }
@@ -406,14 +409,14 @@ a {
 
 /*Greeting-mobile*/
 
-.greeting-mobile{
+.greeting-mobile {
     position: absolute;
     top: 40%;
     left: 20%;
     opacity: 0;
 }
 
-.greeting-mobile h1{
+.greeting-mobile h1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -430,58 +433,70 @@ a {
     margin: 0;
 }
 
-.fadeOutAnimation{
+.fadeOutAnimation {
     animation: fadeOut 2s linear;
 }
 
-.fadeInAnimation{
+.fadeInAnimation {
     animation: fadeIn 2s linear;
 }
 
-@keyframes fadeIn{
-    0%{
+@keyframes fadeIn {
+    0% {
         opacity: 0;
     }
-    50%{
+
+    50% {
         opacity: 0;
     }
-    80%{
+
+    80% {
         opacity: 0;
     }
-    85%{
+
+    85% {
         opacity: 0.2;
     }
-    90%{
+
+    90% {
         opacity: 0.5;
     }
-    95%{
+
+    95% {
         opacity: 0.8;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }
 
-@keyframes fadeOut{
-    0%{
+@keyframes fadeOut {
+    0% {
         opacity: 1;
     }
-    50%{
+
+    50% {
         opacity: 1;
     }
-    80%{
+
+    80% {
         opacity: 1;
     }
-    85%{
+
+    85% {
         opacity: 0.8;
     }
-    90%{
+
+    90% {
         opacity: 0.5;
     }
-    95%{
+
+    95% {
         opacity: 0.2;
     }
-    100%{
+
+    100% {
         opacity: 0;
     }
 }

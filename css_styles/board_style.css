@@ -73,7 +73,6 @@ button {
 
 .status {
     display: flex;
-    /* justify-content: space-between; */
     gap: 32px;
 }
 
@@ -305,7 +304,6 @@ button {
 .priority-text {
     display: flex;
     align-items: flex-start;
-    /* margin-right: 100px; */
 }
 
 .priority-text p {
@@ -481,8 +479,6 @@ button {
     display: inline-block !important;
 }
 
-
-
 .openBoard-options img {
     padding-left: 8px;
 }
@@ -500,7 +496,6 @@ button {
 }
 
 .newTask {
-    /* height: 600px; */
     height: 280px;
     overflow-x: auto;
 }
@@ -543,6 +538,10 @@ ul {
 
 .form {
     overflow: visible;
+}
+
+.subtaskContainerBoard {
+    position: initial;
 }
 
 /* responsive design */

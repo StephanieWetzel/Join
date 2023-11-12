@@ -144,10 +144,10 @@ function toggleInputValue() {
 
 
 /**
- * Displays the contact bubbles for assigned contacts in the designated area.
+ * Displays assigned contact bubbles in the designated container based on the checked checkboxes.
  *
  * @param {HTMLElement} assignedContacts - The HTML element representing the area for displaying assigned contacts.
- * @param {Array<object>} contactBubbles - An array to store contact bubble information to prevent duplication.
+ * @param {object[]} contactBubbles - An array to store contact bubble information to prevent duplication.
  * @param {object} contact - The current contact object.
  * @param {string} initials - The initials of the current contact.
  * @param {HTMLInputElement} checkbox - The HTML checkbox element for the current contact.
@@ -161,15 +161,23 @@ function showAssignedContacts() {
         initials = getInitials(contact.firstName, contact.lastName);
         let checkbox = document.getElementById(`checkbox${i}`);
         if (checkbox.checked) {
-            contactBubbles.push({
-                initials: initials,
-                color: contact.color,
-                firstName: contact.firstName,
-                lastName: contact.lastName
-            })
-            assignedContacts.innerHTML += assignedContactsTemplate();
+            printContact();
         }
     }
+}
+
+
+/**
+ * Adds a contact to the array of assigned contact bubbles and displays it in the UI.
+ */
+function printContact() {
+    contactBubbles.push({
+        initials: initials,
+        color: contact.color,
+        firstName: contact.firstName,
+        lastName: contact.lastName
+    })
+    assignedContacts.innerHTML += assignedContactsTemplate();
 }
 
 
