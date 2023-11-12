@@ -430,19 +430,6 @@ function subtaskInputFieldHasContent() {
 }
 
 
-/*function renderSubtasks(task) {
-    const subtaskContainer = document.getElementById('subtaskContainer');
-    subtaskContainer.innerHTML = '';
-
-    if (task && task.subtasks) {
-        for (let i = 0; i < task.subtasks.length; i++) {
-            const subtask = task.subtasks[i];
-            subtaskContainer.innerHTML += subtaskEditContainerTemplate(subtask, i);
-        }
-    }
-}*/
-
-
 /**
  * Renders the list of subtasks in the designated container.
  *
@@ -551,6 +538,13 @@ let subtaskListElement;
 let ulContainer;
 
 
+/**
+ * Initiates the editing of a subtask by changing its style, making it editable, and handling the confirmation of edits.
+ *
+ * @param {number} i - The index of the subtask to be edited.
+ * @param {HTMLInputElement} subtaskInput - The HTML input field for entering subtasks.
+ * @param {boolean} isEditing - Sets the editing state to true.
+ */
 function editSubtask(i) {
     subtaskInput = document.getElementById('subtaskInput');
 
@@ -559,7 +553,7 @@ function editSubtask(i) {
         changeStyleOfElements(i);
         makeContentEditable(i);
 
-        confirmEditSymbol.onclick = function () {
+        confirmEditSymbol.onclick = function () { // Sets the click event for the confirm edit symbol to close the editing mode.
             closeEditing(subtaskInput, trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i);
         };
 
@@ -568,6 +562,15 @@ function editSubtask(i) {
 }
 
 
+/**
+ * Changes the style of elements related to the editing process for a subtask.
+ *
+ * @param {number} i - The index of the subtask for which styles are to be changed.
+ * @param {HTMLUListElement} ulContainer - The HTML unordered list container element for the subtask at the specified index.
+ * @param {HTMLDivElement} addSubtaskSymbol - The HTML div element representing the add subtask symbol.
+ * @param {HTMLImageElement} trashcan - The HTML image element representing the trashcan icon for the subtask at the specified index.
+ * @param {HTMLImageElement} confirmEditSymbol  - The HTML image element representing the confirm edit symbol for the subtask at the specified index.
+ */
 function changeStyleOfElements(i) {
     ulContainer = document.getElementById(`ulContainer${i}`);
     ulContainer.style.backgroundColor = '#EAEBEC';
@@ -583,6 +586,12 @@ function changeStyleOfElements(i) {
 }
 
 
+/**
+ * Makes the content of the subtask list element at the specified index editable and sets focus to it.
+ * 
+ * @param {number} i - The index of the subtask list element to be made editable.
+ * @param {HTMLLIElement} subtaskListElement - The HTML list element representing the subtask at the specified index.
+ */
 function makeContentEditable(i) {
     subtaskListElement = document.getElementById(`subtaskListElement${i}`);
     subtaskListElement.contentEditable = true;
