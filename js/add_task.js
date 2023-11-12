@@ -261,7 +261,7 @@ function urgentButtonAlreadyClicked() {
  */
 function removeUrgentClassAndEnableOtherButtons() {
     urgentBtn.classList.remove('urgent');
-    urgentSymbol.src = '/assets/images/urgent_symbol.svg';
+    urgentSymbol.src = './assets/images/urgent_symbol.svg';
     mediumBtn.disabled = false;
     lowBtn.disabled = false;
 }
@@ -272,7 +272,7 @@ function removeUrgentClassAndEnableOtherButtons() {
  */
 function addUrgentClassAndDisableOtherButtons() {
     urgentBtn.classList.add('urgent');
-    urgentSymbol.src = '/assets/images/urgent_symbol_white.png';
+    urgentSymbol.src = "./assets/images/urgent_symbol_white.png";
     mediumBtn.disabled = true;
     lowBtn.disabled = true;
 }
@@ -311,7 +311,7 @@ function mediumButtonAlreadyClicked() {
  */
 function removeMediumClassAndEnableOtherButtons() {
     mediumBtn.classList.remove('medium');
-    mediumSymbol.src = '/assets/images/medium_symbol.svg';
+    mediumSymbol.src = './assets/images/medium_symbol.svg';
     urgentBtn.disabled = false;
     lowBtn.disabled = false;
 }
@@ -322,7 +322,7 @@ function removeMediumClassAndEnableOtherButtons() {
  */
 function addMediumClassAndDisableOtherButtons() {
     mediumBtn.classList.add('medium');
-    mediumSymbol.src = '/assets/images/medium_symbol_white.png';
+    mediumSymbol.src = './assets/images/medium_symbol_white.png';
     urgentBtn.disabled = true;
     lowBtn.disabled = true;
 }
@@ -361,7 +361,7 @@ function lowButtonAlreadyClicked() {
  */
 function removeLowClassAndEnableOtherButtons() {
     lowBtn.classList.remove('low');
-    lowSymbol.src = '/assets/images/low_symbol.svg';
+    lowSymbol.src = './assets/images/low_symbol.svg';
     urgentBtn.disabled = false;
     mediumBtn.disabled = false;
 }
@@ -372,7 +372,7 @@ function removeLowClassAndEnableOtherButtons() {
  */
 function addLowClassAndDisableOtherButtons() {
     lowBtn.classList.add('low');
-    lowSymbol.src = '/assets/images/low_symbol_white.png';
+    lowSymbol.src = './assets/images/low_symbol_white.png';
     urgentBtn.disabled = true;
     mediumBtn.disabled = true;
 }
