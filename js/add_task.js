@@ -545,33 +545,48 @@ function removeSubtask(i) {
 }
 
 
+let confirmEditSymbol;
+let trashcan;
+let subtaskListElement;
+let ulContainer;
+
+
 function editSubtask(i) {
     subtaskInput = document.getElementById('subtaskInput');
 
     if (!isEditing) {
         isEditing = true;
+        changeStyleOfElements(i);
+        makeContentEditable(i);
 
-        let ulContainer = document.getElementById(`ulContainer${i}`);
-        ulContainer.style.backgroundColor = '#EAEBEC';
-
-        let addSubtaskSymbol = document.getElementById(`addSubtaskSymbol`);
-        addSubtaskSymbol.classList.add('dNone');
-
-        let trashcan = document.getElementById(`trashcan${i}`);
-        trashcan.classList.add('dNone');
-
-        let subtaskListElement = document.getElementById(`subtaskListElement${i}`);
-        subtaskListElement.contentEditable = true;
-        subtaskListElement.focus();
-
-        let confirmEditSymbol = document.getElementById(`editImg${i}`);
-        confirmEditSymbol.src = "/assets/images/check_black.png";
         confirmEditSymbol.onclick = function () {
             closeEditing(subtaskInput, trashcan, subtaskListElement, confirmEditSymbol, addSubtaskSymbol, ulContainer, i);
         };
 
         subtaskInput.disabled = true;
     }
+}
+
+
+function changeStyleOfElements(i) {
+    ulContainer = document.getElementById(`ulContainer${i}`);
+    ulContainer.style.backgroundColor = '#EAEBEC';
+
+    let addSubtaskSymbol = document.getElementById(`addSubtaskSymbol`);
+    addSubtaskSymbol.classList.add('dNone');
+
+    trashcan = document.getElementById(`trashcan${i}`);
+    trashcan.classList.add('dNone');
+
+    confirmEditSymbol = document.getElementById(`editImg${i}`);
+    confirmEditSymbol.src = "/assets/images/check_black.png";
+}
+
+
+function makeContentEditable(i) {
+    subtaskListElement = document.getElementById(`subtaskListElement${i}`);
+    subtaskListElement.contentEditable = true;
+    subtaskListElement.focus();
 }
 
 
