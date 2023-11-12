@@ -613,15 +613,11 @@ function clearTaskForm() {
 // ADD TO BOARD
 /**
  * Adds a new task to the board with the provided details and updates the board state.
- * Creates a new task using the provided values for title, description, assigned contacts, due date, priority, user category, and subtasks.
- * Adds the new task to the tasks array.
- * Stores the updated tasks array in local storage.
- * Reinitializes the Add Task functionality with the active section set to 'tasks'.
  */
 async function addTaskToBoard() {
     tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks))
     await setItem('tasks', JSON.stringify(tasks));
-    initAddTask('tasks');
+    initAddTask('tasks'); // Reinitializes the Add Task functionality with the active section set to 'tasks'.
 }
 
 

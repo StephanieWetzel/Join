@@ -170,6 +170,7 @@ button {
 .list-style {
     list-style: none;
     display: flex;
+    margin-bottom: 8px;
 }
 
 .initial-image {
@@ -476,8 +477,8 @@ button {
     display: none;
 }
 
-.hover-bg:hover .hover-img{
-    display: inline-block!important;
+.hover-bg:hover .hover-img {
+    display: inline-block !important;
 }
 
 
@@ -499,7 +500,8 @@ button {
 }
 
 .newTask {
-    height: 600px;
+    /* height: 600px; */
+    height: 280px;
     overflow-x: auto;
 }
 
@@ -539,7 +541,7 @@ ul {
     padding: 0;
 }
 
-.form{
+.form {
     overflow: visible;
 }
 
@@ -619,9 +621,9 @@ ul {
     }
 }
 
-@media(max-width:1000px){
-    .modal-content{
-        height: 500px!important;
+@media(max-width:1000px) {
+    .modal-content {
+        height: 500px !important;
     }
 }
 
