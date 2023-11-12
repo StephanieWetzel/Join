@@ -1,6 +1,7 @@
 let currentDraggedElement;
 let selectedSubtaskIndex = null;
 let subtaskStatus = {};
+let progressBarWidth = {};
 let modal;
 
 async function initBoard(activeSection) {
@@ -14,7 +15,10 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
-}
+    subtaskStatus = loadSubtaskStatusLocal() || {};
+    progressBarWidth = loadProgressBarWidthLocal() || {}; // Ändere hier
+
+    initProgressBarWidth();}
 
 window.addEventListener("resize", checkScreenWidth);
 
@@ -298,10 +302,22 @@ function updateProgressBarWidth(progressBarId, width) {
 }
 
 
+function updateProgressBar(taskIndex) {
+    const subtaskList = document.querySelector(`#subtaskIndex${taskIndex}`);
+    const totalSubtasks = subtaskList.querySelectorAll('li').length;
+    const completedSubtasks = subtaskStatus[taskIndex].filter(status => status).length;
+    const percent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+
+    const progressBarId = `progressBar${taskIndex}`;
+    updateProgressBarWidth(progressBarId, percent);
+    saveProgressBarWidthLocal(progressBarId, percent);
+    saveSubtaskStatusLocal(subtaskStatus);
+}
+
+
 function initProgressBarWidth() {
-    const progressBarWidth = loadProgressBarWidthLocal();
     for (const [taskId, width] of Object.entries(progressBarWidth)) {
-        updateProgressBarWidth(taskId.replace('progressBar', ''), width);
+        updateProgressBarWidth(taskId, width);
     }
 }
 
@@ -309,7 +325,6 @@ function initProgressBarWidth() {
 function toggleSubtaskImage(index, taskIndex) {
     const chopImg = document.querySelectorAll('.chop-image')[index];
     const rectangleImg = document.querySelectorAll('.rectangle-image')[index];
-    const subtaskList = document.querySelector(`#subtaskIndex${taskIndex}`);
 
     if (!subtaskStatus[taskIndex]) {
         subtaskStatus[taskIndex] = [];
@@ -321,14 +336,10 @@ function toggleSubtaskImage(index, taskIndex) {
     chopImg.classList.toggle('changed-image', isSubtaskCompleted);
     rectangleImg.classList.toggle('initial-image', isSubtaskCompleted);
     rectangleImg.classList.toggle('changed-image', !isSubtaskCompleted);
-    const totalSubtasks = subtaskList.querySelectorAll('li').length;
-    const completedSubtasks = subtaskStatus[taskIndex].filter(status => status).length;
-    const percent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
 
-    const progressBarId = `progressBar${taskIndex}`;
-    updateProgressBarWidth(progressBarId, percent);
-    saveSubtaskStatusLocal(subtaskStatus);
+    updateProgressBar(taskIndex); // Rufe die Funktion auf, um den Fortschrittsbalken zu aktualisieren und die Daten zu speichern
 }
+
 
 
 
@@ -561,7 +572,7 @@ async function saveEditTask(taskId) {
             task.subtasks = subtasks;
         }
     });
-
+    
     await setItem('tasks', JSON.stringify(tasks));
     checkIfRedirectionToBoardIsAvailable();
     subtasks = [];
@@ -629,6 +640,6 @@ function loadSubtaskStatusLocal() {
 function loadProgressBarWidthLocal() {
     let progressBarWidth = JSON.parse(localStorage.getItem('progressBarWidth')) || {};
     console.log('ProgressBar-Breite geladen:', progressBarWidth);
-    
-    return {progressBarWidth}
+
+    return progressBarWidth; // Gebe progressBarWidth direkt zurück
 }
