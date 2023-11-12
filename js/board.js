@@ -61,6 +61,7 @@ function closeModal() {
 
     modal.style.display = "none";
     document.body.style.overflow = 'visible';
+    saveEditedTaskIdLocal(null)
     initBoard('board');
 }
 
@@ -617,6 +618,7 @@ function checkIfRedirectionToBoardIsAvailable() {
     } else {
         window.location.href = 'board.html';
     }
+    saveEditedTaskIdLocal(null);
 }
 
 /**
