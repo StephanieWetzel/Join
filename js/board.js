@@ -540,16 +540,20 @@ function assignedContactsTemplateEdit(contactEdit) {
         <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contactEdit}">${initials}</div>
     `;
 }
+
+
 /**
- * Asynchronously saves edited task details and performs related actions.
+ * Saves the edited task information, updates the tasks array, and performs necessary actions for the edited task.
  *
- * @function
- * @async
- * @param {string} taskId - The unique identifier of the task to be edited.
+ * @param {string} taskId - The unique identifier of the task being edited.
+ * @param {string[]} updatedSubtasks - Extracts updated subtasks from the form after they were edited.
  */
 async function saveEditTask(taskId) {
     showAssignedContacts();
-    tasks.forEach(task => {
+
+    const updatedSubtasks = extractSubtasksFromForm();
+
+    tasks.forEach(task => { // Iterates through the tasks array and updates the information of the task with the specified unique index.
         if (task.uniqueIndex === taskId) {
             console.log(task);
             task.title = title.value;
@@ -558,14 +562,38 @@ async function saveEditTask(taskId) {
             task.assignedContacts = contactBubbles;
             task.priority = prio;
             task.category = categoryInputField.value;
-            task.subtasks = subtasks;
+            task.subtasks = updatedSubtasks;
         }
     });
-
+    subtasks = [];
     await setItem('tasks', JSON.stringify(tasks));
     checkIfRedirectionToBoardIsAvailable();
-    subtasks = [];
 }
+
+
+/**
+ * Extracts the updated subtasks from the subtask form in the UI (Board).
+ *
+ * @returns {string[]} - An array containing the updated subtasks.
+ * @param {HTMLElement} subtaskList - The HTML element representing the container for subtasks in the UI.
+ * @param {NodeList} subtaskInputs - The NodeList containing all subtask list elements in the subtask form.
+ * @param {string[]} updatedSubtasks - An array to store the updated subtasks.
+ *
+ */
+function extractSubtasksFromForm() {
+    const subtaskList = document.getElementById('subtaskContainer');
+    const subtaskInputs = subtaskList.querySelectorAll('.subtaskListElements');
+    const updatedSubtasks = [];
+
+    for (let i = 0; i < subtaskInputs.length; i++) { // Iterates through the subtask list elements and extracts the text content as updated subtasks.
+        const subtaskInput = subtaskInputs[i];
+        updatedSubtasks.push(subtaskInput.innerText);
+    }
+
+    return updatedSubtasks; // Returns the array containing the updated subtasks.
+}
+
+
 /**
  * Checks if the current page is 'board.html', and takes appropriate actions.
  * 
@@ -629,6 +657,6 @@ function loadSubtaskStatusLocal() {
 function loadProgressBarWidthLocal() {
     let progressBarWidth = JSON.parse(localStorage.getItem('progressBarWidth')) || {};
     console.log('ProgressBar-Breite geladen:', progressBarWidth);
-    
-    return {progressBarWidth}
+
+    return { progressBarWidth }
 }
