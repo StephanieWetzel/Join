@@ -105,3 +105,10 @@
     opacity: 0;
     user-select: none;
 }
+
+/* responsive design */
+@media(max-width:1024px) {
+    .sidebar-section img {
+        margin-right: 0;
+    }
+}
