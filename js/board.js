@@ -5,7 +5,6 @@ let progressBarWidth = {};
 let modal;
 
 async function initBoard(activeSection) {
-    console.log(tasks)
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
     await fetchTasks();
@@ -568,7 +567,6 @@ async function saveEditTask(taskId) {
 
     tasks.forEach(task => { // Iterates through the tasks array and updates the information of the task with the specified unique index.
         if (task.uniqueIndex === taskId) {
-            console.log(task);
             task.title = title.value;
             task.description = description.value;
             task.date = dueDate.value;
@@ -654,8 +652,6 @@ function saveProgressBarWidthLocal(taskId, width) {
     const progressBarWidth = loadProgressBarWidthLocal();
     progressBarWidth[taskId] = width;
     localStorage.setItem('progressBarWidth', JSON.stringify(progressBarWidth));
-
-    console.log('ProgressBar-Breite gespeichert:', taskId, width);
 }
 
 
@@ -670,7 +666,5 @@ function loadSubtaskStatusLocal() {
 
 function loadProgressBarWidthLocal() {
     let progressBarWidth = JSON.parse(localStorage.getItem('progressBarWidth')) || {};
-    console.log('ProgressBar-Breite geladen:', progressBarWidth);
-
     return progressBarWidth; // Gebe progressBarWidth direkt zurück
 }

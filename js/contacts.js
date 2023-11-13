@@ -90,10 +90,10 @@ function loadContacts() {
  * @param {object} contact - The handed over object as class-object
  * @returns 
  */
-function checkIfFirstNameOrLastName(contact){
+function checkIfFirstNameOrLastName(contact) {
     if (contact.firstName != '') {
         return document.getElementById(contact.firstName.charAt(0).toLowerCase());
-    }else{
+    } else {
         return document.getElementById(contact.lastName.charAt(0).toLowerCase());
     }
 }
@@ -102,10 +102,10 @@ function checkIfFirstNameOrLastName(contact){
  * This function handles the view of the contacts for smaller devices
  * 
  */
-function showContactBookMobile(){
+function showContactBookMobile() {
     document.getElementById('contactBookInfo').classList.add('mobile-sight');
     document.getElementById('contactBook').classList.remove('mobile-sight');
-} 
+}
 
 /**
  * This function displays the information of a clicked contact, it checks the screen-width too and adjust the displayed information
@@ -119,7 +119,7 @@ function showContactInfo(index) {
         showInfoMobile(index);
         document.getElementById('contactBookInfo').classList.remove('mobile-sight');
         document.getElementById('contactBook').classList.add('mobile-sight');
-    }else{
+    } else {
         showInfoDesktop(index);
     }
 }
@@ -130,7 +130,7 @@ function showContactInfo(index) {
  * 
  * @param {number} index - The index of the displayed Contact
  */
-function showInfoMobile(index){
+function showInfoMobile(index) {
     printContactHead(index);
     printContactInformation(index);
 }
@@ -141,7 +141,7 @@ function showInfoMobile(index){
  * 
  * @param {number} index - The index of the displayed Contact
  */
-function showInfoDesktop(index){
+function showInfoDesktop(index) {
     document.getElementById('infoContent').classList.add('animate-contact-information');
     printContactHead(index);
     printContactInformation(index);
@@ -171,7 +171,7 @@ function printContactHead(index) {
  * @param {string} initials - Initials from users first and last name
  * @param {number} index - The index of the displayed Contact
  */
-function printContHeadBigScreen(contact, initials, index){
+function printContHeadBigScreen(contact, initials, index) {
     infoHead.innerHTML = /*html*/`
     <div class="contact-bubble large" style="background-color: ${contact.color}">${initials}</div>
     <div class="name-edit-delete">
@@ -194,7 +194,7 @@ function printContHeadBigScreen(contact, initials, index){
  * 
  * @param {number} index - The index of the displayed Contact
  */
-function printContEditDeleteMobile(index){
+function printContEditDeleteMobile(index) {
     let editDeleteMobileDiv = document.getElementById('editDeleteMobile');
     editDeleteMobileDiv.innerHTML = /*html*/`
     <div class="edit-mobile" onclick="openEditContact(${index})">
@@ -213,7 +213,7 @@ function printContEditDeleteMobile(index){
  * 
  * @param {event} event - Klick-event for stopping propagation-methode
  */
-function openEditMobilePopup(event){
+function openEditMobilePopup(event) {
     document.getElementById('editDeleteMobile').classList.remove('invis');
     document.getElementById('editDeleteMobile').classList.add('edit-delete-m-anim-open')
     isEditMobilePopupOpen = true;
@@ -224,11 +224,11 @@ function openEditMobilePopup(event){
  * This function closes the mobile-popup with an animation and a minor delay, if the popup is open
  * 
  */
-function closeMobilePopup(){
+function closeMobilePopup() {
     if (isEditMobilePopupOpen) {
         document.getElementById('editDeleteMobile').classList.remove('edit-delete-m-anim-open')
         document.getElementById('editDeleteMobile').classList.add('edit-delete-m-anim-close')
-        setTimeout(() =>{
+        setTimeout(() => {
             document.getElementById('editDeleteMobile').classList.remove('edit-delete-m-anim-close')
             document.getElementById('editDeleteMobile').classList.add('invis');
         }, 280)
@@ -240,7 +240,7 @@ function closeMobilePopup(){
  * Event listener for closing popup if user is tapping anywhere on the screen except the popup itself
  * 
  */
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     if (isEditMobilePopupOpen) {
         const popup = document.getElementById('editDeleteMobile');
         if (!popup.contains(event.target)) {
@@ -371,8 +371,8 @@ async function createContact() {
  * This functtion shows the new created contact
  * 
  */
-function showNewContact(){
-    const addedContact = contacts.length - 1 ;
+function showNewContact() {
+    const addedContact = contacts.length - 1;
     showContactInfo(addedContact);
 }
 
@@ -380,7 +380,7 @@ function showNewContact(){
  * This function closes the contact-form for adding a contact
  * 
  */
-function closeAddC(){
+function closeAddC() {
     document.querySelector(".add-contact").classList.add("d-none");
     document.querySelector(".add-form-content").classList.remove('formular-animation');
     document.querySelector(".sticky-btn").classList.remove("d-none");
