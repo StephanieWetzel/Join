@@ -628,3 +628,19 @@ body {
         width: 60px;
     }
 }
+
+@media(max-width:319px){
+    .input-style{
+        width: 210px;
+    }
+    .email-styling{
+        background-position-x: 180px;
+    }
+    .fish-eye-div{
+        justify-content: center;
+        margin-left: -22px;
+    }
+    .fish-eye-btn{
+        margin-left: -60px;
+    }
+}

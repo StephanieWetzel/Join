@@ -109,15 +109,20 @@ function toggleFishEye(BtnID, ImgID) {
     let pwInput = document.getElementById("password");
     let fishBtn = document.getElementById(BtnID);
     let fishBtnImg = document.getElementById(ImgID);
+    const querie = window.matchMedia("(max-width: 360px)")
     let count = pwInput.value;
-    if (count.length >= 1 && window.innerHeight > 670) {
+    if (count.length >= 1 && window.innerHeight > 670 && !querie.matches) {
         pwInput.style.background = "none";
         fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
         fishBtn.style.margin = "32px 0 0 -71px"
-    } else if (count.length >= 1 && window.innerHeight <= 670) {
+    } else if (count.length >= 1 && window.innerHeight <= 670 && !querie.matches) {
         pwInput.style.background = "none";
         fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
         fishBtn.style.margin = "6px 0 -2px -64px"
+    }else if (count.length >= 1 && querie.matches) {
+        pwInput.style.background = "none";
+        fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
+        fishBtn.style.margin = "10px -12px 0px -71px"
     }
 }
 
