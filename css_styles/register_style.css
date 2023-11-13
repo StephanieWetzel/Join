@@ -201,6 +201,7 @@ body {
 .footer a:hover {
     font-size: 18px;
     color: #29ABE2;
+    margin: 24px 17px 0px 18px;
 }
 
 /*Animation*/
@@ -353,7 +354,22 @@ body {
 
 @media(max-width:450px) {
     .form {
-        width: 93%;
+        width: 94%;
+    }
+}
+
+@media(max-width:350px){
+    .input-style{
+        width: 270px;
+    }
+    .person-styling{
+        background-position-x: 240px;
+    }
+    .email-styling{
+        background-position-x: 240px;
+    }
+    .pw-styling{
+        margin-left: 11px;
     }
 }
 
