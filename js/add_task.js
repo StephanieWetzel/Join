@@ -30,6 +30,7 @@ async function initAddTask(activeSection) {
     markActiveSection(activeSection);
     setHeaderInitials(logInUser);
     assignContact();
+    setMinDate();
     checkIfTaskisEditing();
 }
 
@@ -190,6 +191,14 @@ function assignedContactsTemplate() {
     return `
         <div id="assignedContact" class="contact-bubble small contactBubbleAddTask selectedContactBubble" style="background-color: ${contact.color}">${initials}</div>
     `;
+}
+
+
+// CALENDAR
+function setMinDate() {
+    const currentDate = new Date().toISOString().split("T")[0];
+    const dateInput = document.getElementById("dueDate");
+    dateInput.min = currentDate;
 }
 
 
