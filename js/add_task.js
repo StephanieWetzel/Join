@@ -195,10 +195,16 @@ function assignedContactsTemplate() {
 
 
 // CALENDAR
+/**
+ * Sets the minimum date for the specified date input field to the current date.
+ *
+ * @param {string} currentDate - The current date in ISO format (YYYY-MM-DD).
+ * @param {HTMLInputElement} dateInput - The HTML input element representing the date input field.
+ */
 function setMinDate() {
     const currentDate = new Date().toISOString().split("T")[0];
     const dateInput = document.getElementById("dueDate");
-    dateInput.min = currentDate;
+    dateInput.min = currentDate; // Sets the minimum date for the date input field to the current date.
 }
 
 
