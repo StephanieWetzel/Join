@@ -41,7 +41,7 @@ function login() {
 /**
  * Checks if a remembered user exists and fills the email and password fields if found.
  */
-function checkIfRemembered(){
+function checkIfRemembered() {
     if (rememberedUser) {
         email.value = rememberedUser[0]['mail'];
         password.value = rememberedUser[0]['password'];
@@ -113,7 +113,7 @@ function toggleFishEye() {
     let count = pwInput.value;
     if (count.length >= 1) {
         pwInput.style.background = "none";
-        fishBtnImg.src = "/assets/images/fish_Eye_closed2.svg"
+        fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
         fishBtn.style.margin = "32px 0 0 -71px"
     } else {
         fishBtnImg.src = "assets/images/lock.svg"

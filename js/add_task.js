@@ -466,9 +466,9 @@ function subtaskEditContainerTemplate(subtask, i) {
     <ul id="ulContainer${i}" class="ulContainer" onmouseover="mouseOverSubtaskEditContainer(this)" onmouseout="mouseOutSubtaskEditContainer(this)">
         <li id="subtaskListElement${i}" class="subtaskListElements">${subtask}</li>
         <div id="subtaskEditContainer" class="subtaskEditContainer dNone">
-            <img id="editImg${i}" onclick="editSubtask(${i})" src="/assets/images/edit.svg" alt="Stift">
+            <img id="editImg${i}" onclick="editSubtask(${i})" src="./assets/images/edit.svg" alt="Stift">
             <div class="subtaskSeparator"></div>
-            <img id="trashcan${i}" onclick="deleteSubtask(${i})" src="/assets/images/delete.svg" alt="Mülleimer">
+            <img id="trashcan${i}" onclick="deleteSubtask(${i})" src="./assets/images/delete.svg" alt="Mülleimer">
         </div>
     </ul>
     `;
@@ -590,7 +590,7 @@ function changeStyleOfElements(i) {
     trashcan.classList.add('dNone');
 
     confirmEditSymbol = document.getElementById(`editImg${i}`);
-    confirmEditSymbol.src = "/assets/images/check_black.png";
+    confirmEditSymbol.src = "./assets/images/check_black.png";
 }
 
 
@@ -623,7 +623,7 @@ function closeEditing(subtaskInput, trashcan, subtaskListElement, confirmEditSym
     isEditing = false;
     subtaskInput.disabled = false;
     subtaskListElement.contentEditable = false;
-    confirmEditSymbol.src = "/assets/images/edit.svg";
+    confirmEditSymbol.src = "./assets/images/edit.svg";
     addSubtaskSymbol.classList.remove('dNone');
     trashcan.classList.remove('dNone');
     ulContainer.style.backgroundColor = '';

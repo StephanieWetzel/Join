@@ -105,18 +105,18 @@ function splitString(string) {
  * @param {string} BtnID - The ID of the button element associated with the fish eye effect.
  * @param {string} ImgID - The ID of the image element associated with the fish eye effect.
  */
-function toggleFishEye(BtnID, ImgID){
+function toggleFishEye(BtnID, ImgID) {
     let pwInput = document.getElementById("password");
     let fishBtn = document.getElementById(BtnID);
     let fishBtnImg = document.getElementById(ImgID);
     let count = pwInput.value;
     if (count.length >= 1 && window.innerHeight > 670) {
         pwInput.style.background = "none";
-        fishBtnImg.src = "/assets/images/fish_Eye_closed2.svg"
+        fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
         fishBtn.style.margin = "32px 0 0 -71px"
-    }else if (count.length >= 1 && window.innerHeight <= 670) {
+    } else if (count.length >= 1 && window.innerHeight <= 670) {
         pwInput.style.background = "none";
-        fishBtnImg.src = "/assets/images/fish_Eye_closed2.svg"
+        fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
         fishBtn.style.margin = "6px 0 -2px -64px"
     }
 }
@@ -127,14 +127,14 @@ function toggleFishEye(BtnID, ImgID){
  * @param {string} id - The ID of the password input element to toggle.
  * @param {string} btnId - The ID of the button element with the image to update.
  */
-function togglePasswordVisibility(id, btnId){
+function togglePasswordVisibility(id, btnId) {
     let pwInput = document.getElementById(id);
     let btnImg = document.getElementById(btnId);
     if (pwInput.type === "password") {
         pwInput.type = "text";
-        btnImg.src = "/assets/images/fish_Eye_open.svg";
-    }else{
-        btnImg.src = "/assets/images/fish_Eye_closed2.svg";
+        btnImg.src = "./assets/images/fish_Eye_open.svg";
+    } else {
+        btnImg.src = "./assets/images/fish_Eye_closed2.svg";
         pwInput.type = "password";
     }
 }

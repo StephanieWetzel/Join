@@ -496,7 +496,7 @@ button {
 }
 
 .newTask {
-    height: 280px;
+    height: 520px;
     overflow-x: auto;
 }
 
@@ -558,14 +558,10 @@ ul {
 
 @media(min-width:1330px) {
     .subtaskContainer {
-        width: 90%;
-    }
-
-    .subtaskContainer {
         overflow-y: auto;
         overflow-x: hidden;
         max-height: 200px;
-        width: 200px;
+        width: auto;
     }
 
     .subtaskContainer::-webkit-scrollbar {
