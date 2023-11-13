@@ -18,11 +18,11 @@
             </div>
 
             <div class="formSection">
-                <span class="marginBo8">Assigned to</span>
+                <span class="marginBo8 required">Assigned to</span>
                 <!-- contacts closed -->
                 <div>
                     <input id="assignContactsInputfield" class="assignContactsInputfield" onclick="toggleContacts()"
-                        type="text" value="Select contacts to assign">
+                        type="text" value="Select contacts to assign" required>
                     <div>
                         <img onclick="toggleContacts()" class="arrowSymbol inputSymbol" id="arrowDownSymbol"
                             src="assets/images/arrow_down.svg" alt="Pfeil runter">
@@ -53,7 +53,7 @@
             </div>
 
             <div class="formSection">
-                <label class="marginBo8 colorBlack">Prio</label>
+                <label class="marginBo8 colorBlack required">Prio</label>
                 <div class="prioCategoriesContainer">
                     <button type="button" class="prioCategory" id="urgent" onclick="handlePriorities('urgent')">
                         Urgent

@@ -660,11 +660,18 @@ function clearTaskForm() {
 // ADD TO BOARD
 /**
  * Adds a new task to the board with the provided details and updates the board state.
+ * 
+ * @param {string} priority - The priority of the task.
  */
-async function addTaskToBoard() {
-    tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks))
-    await setItem('tasks', JSON.stringify(tasks));
-    initAddTask('tasks'); // Reinitializes the Add Task functionality with the active section set to 'tasks'.
+async function addTaskToBoard(priority) {
+    priority = prio;
+    if (priority === undefined) {
+        alert("Please select a priority!");
+    } else {
+        tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks))
+        await setItem('tasks', JSON.stringify(tasks));
+        initAddTask('tasks'); // Reinitializes the Add Task functionality with the active section set to 'tasks'.
+    }
 }
 
 
