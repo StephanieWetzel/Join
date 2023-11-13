@@ -358,9 +358,10 @@ body {
     }
 }
 
-@media(max-width:350px){
+@media(max-width:360px){
     .input-style{
         width: 270px;
+        margin-top: 12px;
     }
     .person-styling{
         background-position-x: 240px;
@@ -370,6 +371,9 @@ body {
     }
     .pw-styling{
         margin-left: 11px;
+    }
+    .fish-eye-btn{
+        margin-top: 10px;
     }
 }
 
@@ -384,5 +388,69 @@ body {
 
     .fish-eye-btn {
         margin-top: 6px;
+    }
+}
+
+/*Surface Duo*/
+@media(min-width:540px) and (max-height: 720px) {
+    .input-style{
+        margin-top: 12px;
+    }
+    .fish-eye-btn{
+        margin-top: 10px;
+    }
+}
+
+/*Nest Hub*/
+@media(min-width:1024px) and (max-height: 600px) {
+    .input-style{
+        margin-top: 12px;
+    }
+    .checkbox{
+        margin-top: 0;
+    }
+    .btns{
+        margin-top: 0px;
+    }
+    .form h1{
+        font-size: 40px;
+    }
+    .decoline{
+        width: 110px;
+    }
+    .sign-up{
+        height: 40px;
+    }
+}
+
+/*Galaxy Fold*/
+@media(max-width:319px) {
+    .input-style{
+        width: 210px;
+    }
+    .person-styling{
+        background-position-x: 180px;
+    }
+    .email-styling{
+        background-position-x: 180px;
+    }
+    .fish-eye-div{
+        justify-content: center;
+        margin-left: -32px;
+    }
+    .btn{
+        margin-top: 0;
+    }
+    .checkbox{
+        margin-top: 0;
+    }
+    .sign-up{
+        height: 40px;
+    }
+    .form h1{
+        font-size: 36px;
+    }
+    .decoline{
+        width: 96px;
     }
 }
