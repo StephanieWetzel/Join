@@ -2,7 +2,7 @@ let contacts = [];
 let contactInfoOpened = false;
 let logInUser;
 let isEditMobilePopupOpen = false;
-
+const aplhabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 /**
  * Function is calling at entering the Contacts-section, it sets the initials for the user who has logged in, includes html-templates, load contact data from server and displaying contacts with loaded data from server
  * 
@@ -56,14 +56,22 @@ function closeContactForm(editOrAdd) {
     init('contactsSection');
 }
 
+function hideUnusedChars(){
+    aplhabet.forEach((char) =>{
+        document.getElementById(char).classList.add("d-none");
+    })
+}
+
 /**
  * Function for displaying contacts
  * 
  */
 function loadContacts() {
+    hideUnusedChars();
     contacts.forEach((contact, index) => {
         let initials = getInitials(contact.firstName, contact.lastName);
         let co = checkIfFirstNameOrLastName(contact);
+        co.classList.remove('d-none')
         co.innerHTML += /*html*/`
         <div id="c${index}" class="contact" onclick="showContactInfo(${index})">
             <div class="contact-bubble small" style="background-color: ${contact.color}">${initials}</div>
@@ -206,7 +214,6 @@ function printContEditDeleteMobile(index){
  * @param {event} event - Klick-event for stopping propagation-methode
  */
 function openEditMobilePopup(event){
-    debugger
     document.getElementById('editDeleteMobile').classList.remove('invis');
     document.getElementById('editDeleteMobile').classList.add('edit-delete-m-anim-open')
     isEditMobilePopupOpen = true;
