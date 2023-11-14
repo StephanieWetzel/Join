@@ -112,18 +112,26 @@ function toggleFishEye(BtnID, ImgID) {
     const querie = window.matchMedia("(max-width: 360px)")
     let count = pwInput.value;
     if (count.length >= 1 && window.innerHeight > 670 && !querie.matches) {
-        pwInput.style.background = "none";
-        fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
-        fishBtn.style.margin = "32px 0 0 -71px"
+        toggleFishEyeStyle(pwInput, fishBtnImg, fishBtn, "32px 0 0 -71px");
     } else if (count.length >= 1 && window.innerHeight <= 670 && !querie.matches) {
-        pwInput.style.background = "none";
-        fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
-        fishBtn.style.margin = "6px 0 -2px -64px"
+        toggleFishEyeStyle(pwInput, fishBtnImg, fishBtn, "6px 0 -2px -64px");
     }else if (count.length >= 1 && querie.matches) {
-        pwInput.style.background = "none";
-        fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
-        fishBtn.style.margin = "10px -12px 0px -71px"
+        toggleFishEyeStyle(pwInput, fishBtnImg, fishBtn, "10px -12px 0px -71px");
     }
+}
+
+/**
+ * Toggle the fish eye style by updating styles.
+ * 
+ * @param {HTMLElement} pwInput - The password input element.
+ * @param {HTMLElement} fishBtnImg - The image element representing the fish button.
+ * @param {HTMLElement} fishBtn - The fish button element.
+ * @param {string} style - The margin style to be applied to the fish button.
+ */
+function toggleFishEyeStyle(pwInput, fishBtnImg, fishBtn, style){
+    pwInput.style.background = "none";
+    fishBtnImg.src = "./assets/images/fish_Eye_closed2.svg"
+    fishBtn.style.margin = style;
 }
 
 /**
