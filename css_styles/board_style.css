@@ -616,12 +616,6 @@ ul {
     }
 }
 
-@media(max-width:1000px) {
-    .modal-content {
-        height: 500px !important;
-    }
-}
-
 @media(min-width:850px) and (max-width:1500px) {
     .d-flex {
         width: 376px;
