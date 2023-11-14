@@ -10,7 +10,7 @@ class Task {
     priority;
     category;
     subtasks;
-    state;
+    state = 'todo';
     uniqueIndex;
     /**
      * Constructor for the Task class.
@@ -23,7 +23,7 @@ class Task {
      * @param {string} category - The category of the task.
      * @param {Array} subtasks - An array of subtasks associated with the task.
      */
-    constructor(title, description, assignedContacts, date, priority, category, subtasks) {
+    constructor(title, description, assignedContacts, date, priority, category, subtasks, state) {
         this.title = title;
         this.description = description;
         this.assignedContacts = assignedContacts;
@@ -31,7 +31,7 @@ class Task {
         this.priority = priority;
         this.category = category;
         this.subtasks = subtasks;
-        this.state = 'todo'
         this.uniqueIndex = Math.floor(Math.random() * (1-100000)) + 100000;
+        this.state = state
     }
 }

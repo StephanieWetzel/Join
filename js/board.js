@@ -3,7 +3,7 @@ let selectedSubtaskIndex = null;
 let subtaskStatus = {};
 let progressBarWidth = {};
 let modal;
-
+let boardState = 'todo';
 /**
  * Initializes the task board with the specified active section.
  *
@@ -58,7 +58,9 @@ function checkScreenWidth() {
  *
  * @param {HTMLElement} modal - The modal element with the ID "myModal".
  */
-function openModal() {
+function openModal(state) {
+    boardState = state;
+    saveBoardStateLocal(boardState);
     modal = document.getElementById("myModal");
     if ((window.innerWidth > 600)) {
         fetch("assets/templates/addTask.template.html")
@@ -70,6 +72,28 @@ function openModal() {
     }
 }
 
+/**
+ * Saves the provided board state to local storage after converting it to JSON.
+ *
+ * @param {string} boardState 
+ */
+function saveBoardStateLocal(boardState){
+    let boardStateJSON = JSON.stringify(boardState);
+    localStorage.setItem('boardState', boardStateJSON);
+}
+
+/**
+ * Loads the saved board state from local storage and parses it from JSON.
+ * 
+ * @returns {string} - The parsed board state if found in local storage, or null if not found.
+ */
+function loadSavedBoardStateLocal(){
+    if (localStorage.getItem('boardState')) {
+        let boardStateJSON = localStorage.getItem('boardState');
+        boardStateJSON = JSON.parse(boardStateJSON);
+        return boardStateJSON;
+    }
+}
 
 /**
  * Closes the modal, sets body overflow to 'visible', saves the edited task ID as null,
@@ -90,9 +114,11 @@ function closeModal() {
      * Closes the modal, sets body overflow to 'visible', saves the edited task ID as null,
      * and initializes the board with the active section set to 'board'.
      */
+    boardState = 'todo';
     modal.style.display = "none";
     document.body.style.overflow = 'visible';
-    saveEditedTaskIdLocal(null)
+    saveEditedTaskIdLocal(null);
+    saveBoardStateLocal(null);
     initBoard('board');
 }
 

@@ -44,9 +44,11 @@ async function initAddTask(activeSection) {
  */
 function checkIfTaskisEditing() {
     let eTask = loadEditedTaskLocal();
+    let addTaskHeader = document.getElementById('addTaskHeading')
     if (eTask) {
         openEditTaskPopup(eTask);
         saveEditedTaskIdLocal(null);
+        addTaskHeader.innerText = 'Edit Task';
     }
 }
 
@@ -665,17 +667,30 @@ function clearTaskForm() {
  * @throws {Error} Throws an error if required fields are not filled.
  */
 async function addTaskToBoard(priority) {
+   checkBoardState();
     priority = prio;
     if (priority === undefined || contactBubbles == '') { // Checks if the priority or contactBubbles is undefined or empty and shows an alert if true.
         alert("Please fill out all required(*) fields!");
     } else {
-        tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks))
+        tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks, boardState))
         await setItem('tasks', JSON.stringify(tasks));
         initAddTask('tasks');
         window.location.href = "board.html"; // Redirects to the board.html page.
     }
+    saveBoardStateLocal(null);
 }
-
+/**
+ * Checks and loads the board state from local storage.
+ * If the board state is not found, sets it to a default value ('todo').
+ */
+function checkBoardState(){
+    boardState = loadSavedBoardStateLocal();
+    if (boardState == null) {
+        boardState = 'todo'
+    } else {
+        boardState = boardState;
+    }
+}
 
 /**
  * Formats a date string into the British date format (dd/mm/yyyy).
