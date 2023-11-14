@@ -659,18 +659,20 @@ function clearTaskForm() {
 
 // ADD TO BOARD
 /**
- * Adds a new task to the board with the provided details and updates the board state.
+ * Adds a new task to the board with the provided details, updates the board state and redirects to board.
  * 
  * @param {string} priority - The priority of the task.
+ * @throws {Error} Throws an error if required fields are not filled.
  */
 async function addTaskToBoard(priority) {
     priority = prio;
-    if (priority === undefined) {
-        alert("Please select a priority!");
+    if (priority === undefined || contactBubbles == '') { // Checks if the priority or contactBubbles is undefined or empty and shows an alert if true.
+        alert("Please fill out all required(*) fields!");
     } else {
         tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks))
         await setItem('tasks', JSON.stringify(tasks));
-        initAddTask('tasks'); // Reinitializes the Add Task functionality with the active section set to 'tasks'.
+        initAddTask('tasks');
+        window.location.href = "board.html"; // Redirects to the board.html page.
     }
 }
 
@@ -682,5 +684,5 @@ async function addTaskToBoard(priority) {
  * @returns {string} - The formatted date string in dd/mm/yyyy format.
  */
 function formatDueDate(dateString) {
-    return new Date(dateString).toLocaleDateString('en-GB'); // british format -> dd/mm/yyyy
+    return new Date(dateString).toLocaleDateString('en-GB');
 }
