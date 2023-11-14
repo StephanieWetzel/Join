@@ -210,9 +210,11 @@ function renderTaskCard(task) {
             <p class="task-title"><b>${task.title}</b></p>
             <span class="short-info">${task.description}</span>
             <div class="flex-box">
-                <div class="progress">
-                    <div class="progress-bar" data-task-index="${task.uniqueIndex}" id="progressBar${task.uniqueIndex}" role="progressbar"></div>
-                </div>
+                ${task.subtasks.length > 0 ? 
+                    `<div class="progress">
+                        <div class="progress-bar" data-task-index="${task.uniqueIndex}" id="progressBar${task.uniqueIndex}" role="progressbar"></div>
+                    </div>` : ''
+                }
                 <p>${task.subtasks.length} Subtasks</p>
             </div>
             <div class="priority">
@@ -226,7 +228,7 @@ function renderTaskCard(task) {
                 <img src="./assets/images/${task.priority}_symbol.svg">
             </div>
         </div>
-        `
+    `;
 }
 
 /**
@@ -353,14 +355,24 @@ function updateProgressBarWidth(progressBarId, width) {
 
 function updateProgressBar(taskIndex) {
     const subtaskList = document.querySelector(`#subtaskIndex${taskIndex}`);
-    const totalSubtasks = subtaskList.querySelectorAll('li').length;
-    const completedSubtasks = subtaskStatus[taskIndex].filter(status => status).length;
-    const percent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+    const totalSubtasks = subtaskList ? subtaskList.querySelectorAll('li').length : 0;
 
-    const progressBarId = `progressBar${taskIndex}`;
-    updateProgressBarWidth(progressBarId, percent);
-    saveProgressBarWidthLocal(progressBarId, percent);
-    saveSubtaskStatusLocal(subtaskStatus);
+    if (totalSubtasks > 0) {
+        const completedSubtasks = subtaskStatus[taskIndex].filter(status => status).length;
+        const percent = (completedSubtasks / totalSubtasks) * 100;
+
+        const progressBarId = `progressBar${taskIndex}`;
+        updateProgressBarWidth(progressBarId, percent);
+        saveProgressBarWidthLocal(progressBarId, percent);
+        saveSubtaskStatusLocal(subtaskStatus);
+    } else {
+        // Keine Subtasks vorhanden, ProgressBar ausblenden
+        const progressBarId = `progressBar${taskIndex}`;
+        const progressBar = document.getElementById(progressBarId);
+        if (progressBar) {
+            progressBar.style.display = 'none';
+        }
+    }
 }
 
 
@@ -394,16 +406,28 @@ function toggleSubtaskImage(index, taskIndex) {
 
 //Filter Function
 
+/**
+ * This function filters the available tasks by its state (todo, in progress, await feedback etc) and displays them at its section.
+ * If there is no Task for a section, no task todo will be shown.
+ *
+ * @param {string} state - The parameter which to sort, also for the ID of its div-element.
+ */
 function filterTasksByTitle() {
     const input = document.getElementById('searchInput');
     const searchTerm = input.value.trim().toLowerCase();
     const taskContainers = document.querySelectorAll('.newTask');
-    const noFeedback = document.getElementById('noFeedback')
+    const noFeedback = document.getElementById('noFeedback');
+
     taskContainers.forEach((taskContainer) => {
         const titleElement = taskContainer.querySelector('.task-title');
-        if (titleElement) {
+        const descriptionElement = taskContainer.querySelector('.short-info');
+
+        if (titleElement && descriptionElement) {
             const title = titleElement.textContent.toLowerCase();
-            if (title.includes(searchTerm)) {
+            const description = descriptionElement.textContent.toLowerCase();
+            console.log(descriptionElement);
+
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
                 taskContainer.style.display = 'block';
             } else {
                 taskContainer.style.display = 'none';
@@ -413,20 +437,15 @@ function filterTasksByTitle() {
     });
 }
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
 
     if (searchInput) {
         searchInput.addEventListener('keyup', function () {
             filterTasksByTitle();
-        })
+        });
     }
-})
-
-
-
+});
 //Drag n' Drop
 
 /**
@@ -491,6 +510,14 @@ function openEditTaskPopup(taskId) {
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
     subtasks = selectedTask.subtasks;
     printEditButton(taskId);
+
+    if (modal) {
+        let modalTitle = modal.querySelector('.boardH1');
+        if (modalTitle) {
+            modalTitle.innerText = 'Edit Task';
+        }
+    }
+
     if (selectedTask && window.innerWidth > 600) {
         setTaskToEdit(selectedTask);
     } else if (selectedTask && window.innerWidth < 600 && window.location.href.includes('board.html')) {
@@ -500,6 +527,7 @@ function openEditTaskPopup(taskId) {
         setTaskToEdit(selectedTask);
     }
 }
+
 
 /**
  * Sets up the edit form with details of the selected task.
