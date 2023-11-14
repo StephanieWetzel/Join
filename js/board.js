@@ -4,6 +4,11 @@ let subtaskStatus = {};
 let progressBarWidth = {};
 let modal;
 
+/**
+ * Initializes the task board with the specified active section.
+ *
+ * @param {string} activeSection - The ID of the section that should be marked as active.
+ */
 async function initBoard(activeSection) {
     loadLocalStorageLoggedInUser('loggedInUser');
     await includeHTML();
@@ -16,26 +21,43 @@ async function initBoard(activeSection) {
     assignContact();
     subtaskStatus = loadSubtaskStatusLocal() || {};
     progressBarWidth = loadProgressBarWidthLocal() || {}; // Ändere hier
-
     initProgressBarWidth();
 }
 
+
+// REDIRECTION FROM BOARD TO ADD TASK - START
+/**
+ * Event listener for the "resize" event, triggering the checkScreenWidth function.
+ *
+ * @event window
+ * @type {EventListener}
+ */
 window.addEventListener("resize", checkScreenWidth);
 
+
 /**
- * Checks the screen width and redirects if necessary.
- *
+ * Checks the screen width and redirects to 'addTask.html' if necessary.
+ * 
+ * @param {HTMLElement} modal - The modal element with the ID "myModal".
  */
 function checkScreenWidth() {
     modal = document.getElementById("myModal");
-    if (window.innerWidth <= 600) {
-        if (modal.style.display === "block") {
-            window.location.href = 'addTask.html';
+    if (modal) { // Checks if the modal exists and the window width is less than or equal to 600 pixels.
+        if (window.innerWidth <= 600) {
+            if (modal.style.display === "block") {
+                window.location.href = 'addTask.html'; // Redirects to 'addTask.html' if the modal is currently displayed.
+            }
         }
     }
 }
 
 
+/**
+ * Opens the modal and fetches the addTask template if the window width is greater than 600 pixels.
+ * Redirects to 'addTask.html' if the window width is 600 pixels or less.
+ *
+ * @param {HTMLElement} modal - The modal element with the ID "myModal".
+ */
 function openModal() {
     modal = document.getElementById("myModal");
     if ((window.innerWidth > 600)) {
@@ -49,15 +71,25 @@ function openModal() {
 }
 
 
+/**
+ * Closes the modal, sets body overflow to 'visible', saves the edited task ID as null,
+ * and initializes the board with the active section set to 'board'.
+ *
+ * @param {HTMLElement} modal - The modal element with the ID "myModal".
+ * @event window
+ * @type {EventListener} - Event listener for clicks outside the modal, closing the modal if clicked.
+ */
 function closeModal() {
     modal = document.getElementById("myModal");
-
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
-
+    /**
+     * Closes the modal, sets body overflow to 'visible', saves the edited task ID as null,
+     * and initializes the board with the active section set to 'board'.
+     */
     modal.style.display = "none";
     document.body.style.overflow = 'visible';
     saveEditedTaskIdLocal(null)
@@ -65,16 +97,22 @@ function closeModal() {
 }
 
 
-// Fügen Sie die Modal-Überprüfung hinzu, wenn sich der Bildschirm nach dem Schließen des Modals ändert
+/**
+ * Event listener for the "resize" event, triggering the checkScreenWidth function.
+ *
+ * @event window
+ * @type {EventListener}
+ */
 window.addEventListener("resize", checkScreenWidth);
+// REDIRECTION FROM BOARD TO ADD TASK - END
 
 
-// function redirectToBoard() {
-//     window.location.href = "board.html";
-// }
-
-
-
+/**
+ * Opens a modal displaying detailed information about a specific task.
+ *
+ * @param {string|number} taskUIndex - The unique index of the task to be displayed.
+ * @param {HTMLElement} modal - The modal element with the ID "customModal".
+ */
 function openTask(taskUIndex) {
     let modal = document.getElementById("customModal");
     modal.style.display = 'block';
@@ -87,17 +125,27 @@ function openTask(taskUIndex) {
 }
 
 
+/**
+ * Closes the task modal, sets body overflow to 'visible'.
+ *
+ * @param {HTMLElement} modal - The modal element with the ID "customModal".
+ * @type {EventListener} - Event listener for clicks outside the modal, closing the modal if clicked.
+ */
 function closeTask() {
     const modal = document.getElementById("customModal");
 
     modal.onclick = function (event) {
         if (event.target === modal) {
-            modal.style.display = "none";
+            modal.style.display = "none"; // Closes the modal if the click target is the modal itself.
         }
     }
+    /**
+     * Closes the modal and sets body overflow to 'visible'.
+     */
     modal.style.display = "none";
     document.body.style.overflow = 'visible';
 }
+
 
 /**
  * Classifies tasks into different categories and filters them accordingly.

@@ -3,117 +3,118 @@
     <button onclick="closeModal()" id="closeModal"><img src="assets/images/close.svg" alt=""></button>
 </div>
 
-<form class="form formBoard" onsubmit="addTaskToBoard(); return false">
-    <div class="formColumnsContainer">
-        <!-- left column -->
-        <div>
-            <div class="formSection">
-                <label class="marginBo8 required">Title</label>
-                <input id="title" required type="text" placeholder="Enter a title">
-            </div>
+<div>
+    <form class="form formBoard" onsubmit="addTaskToBoard(); return false">
+        <div class="formColumnsContainer">
+            <!-- left column -->
+            <div>
+                <div class="formSection">
+                    <label class="marginBo8 required">Title</label>
+                    <input id="title" required type="text" placeholder="Enter a title">
+                </div>
 
-            <div class="formSection">
-                <label class="marginBo8">Description</label>
-                <textarea id="description" cols="30" rows="10" placeholder="Enter a Description"></textarea>
-            </div>
+                <div class="formSection">
+                    <label class="marginBo8">Description</label>
+                    <textarea id="description" cols="30" rows="10" placeholder="Enter a Description"></textarea>
+                </div>
 
-            <div class="formSection">
-                <span class="marginBo8 required">Assigned to</span>
-                <!-- contacts closed -->
-                <div>
-                    <input id="assignContactsInputfield" class="assignContactsInputfield" onclick="toggleContacts()"
-                        type="text" value="Select contacts to assign" required>
+                <div class="formSection">
+                    <span class="marginBo8 required">Assigned to</span>
+                    <!-- contacts closed -->
                     <div>
-                        <img onclick="toggleContacts()" class="arrowSymbol inputSymbol" id="arrowDownSymbol"
-                            src="assets/images/arrow_down.svg" alt="Pfeil runter">
-                        <img onclick="toggleContacts()" class="arrowSymbol inputSymbol dNone" id="arrowUpSymbol"
-                            src="assets/images/arrow_up.png" alt="Pfeil hoch">
+                        <input id="assignContactsInputfield" class="assignContactsInputfield" onclick="toggleContacts()"
+                            type="text" value="Select contacts to assign" required>
+                        <div>
+                            <img onclick="toggleContacts()" class="arrowSymbol inputSymbol" id="arrowDownSymbol"
+                                src="assets/images/arrow_down.svg" alt="Pfeil runter">
+                            <img onclick="toggleContacts()" class="arrowSymbol inputSymbol dNone" id="arrowUpSymbol"
+                                src="assets/images/arrow_up.png" alt="Pfeil hoch">
+                        </div>
+                        <div id="assignedContacts" class="assignedContacts"></div>
                     </div>
-                    <div id="assignedContacts" class="assignedContacts"></div>
-                </div>
-                <!-- contacts opened -->
-                <div id="contactSelectionContainer" class="contactSelectionContainer dNone">
-                    <div id="contactSelection" class="contactSelection"></div>
-                    <div class="addContactBtnContainer boardBtn">
-                        <button class="addContactBtn" onclick="openContactForm()">Add new contact<img
-                                src="assets/images/person_add.svg"></button>
+                    <!-- contacts opened -->
+                    <div id="contactSelectionContainer" class="contactSelectionContainer dNone">
+                        <div id="contactSelection" class="contactSelection"></div>
+                        <div class="addContactBtnContainer boardBtn">
+                            <button class="addContactBtn" onclick="openContactForm()">Add new contact<img
+                                    src="assets/images/person_add.svg"></button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-        <!-- middle -->
-        <div class="separator"></div>
-        <!-- right column -->
-        <div>
-            <div class="formSection">
-                <label class="marginBo8 required">Due date</label>
-                <input id="dueDate" class="dueDateInputField" type="text" placeholder="tt.mm.jjjj"
-                    onfocus="(this.type = 'date')" required>
             </div>
+            <!-- middle -->
+            <div class="separator"></div>
+            <!-- right column -->
+            <div>
+                <div class="formSection">
+                    <label class="marginBo8 required">Due date</label>
+                    <input id="dueDate" class="dueDateInputField" type="text" placeholder="tt.mm.jjjj"
+                        onfocus="(this.type = 'date')" required>
+                </div>
 
-            <div class="formSection">
-                <label class="marginBo8 colorBlack required">Prio</label>
-                <div class="prioCategoriesContainer">
-                    <button type="button" class="prioCategory" id="urgent" onclick="handlePriorities('urgent')">
-                        Urgent
-                        <img src="assets/images/urgent_symbol.svg" id="urgentSymbol">
-                    </button>
-                    <button type="button" class="prioCategory" id="medium" onclick="handlePriorities('medium')">
-                        Medium
-                        <img src="assets/images/medium_symbol.svg" id="mediumSymbol">
-                    </button>
-                    <button type="button" class="prioCategory" id="low" onclick="handlePriorities('low')">
-                        Low
-                        <img src="assets/images/low_symbol.svg" id="lowSymbol">
-                    </button>
+                <div class="formSection">
+                    <label class="marginBo8 colorBlack required">Prio</label>
+                    <div class="prioCategoriesContainer">
+                        <button type="button" class="prioCategory" id="urgent" onclick="handlePriorities('urgent')">
+                            Urgent
+                            <img src="assets/images/urgent_symbol.svg" id="urgentSymbol">
+                        </button>
+                        <button type="button" class="prioCategory" id="medium" onclick="handlePriorities('medium')">
+                            Medium
+                            <img src="assets/images/medium_symbol.svg" id="mediumSymbol">
+                        </button>
+                        <button type="button" class="prioCategory" id="low" onclick="handlePriorities('low')">
+                            Low
+                            <img src="assets/images/low_symbol.svg" id="lowSymbol">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="formSection">
+                    <span class="marginBo8 required">Category</span>
+                    <input onclick="toggleCategoryField()" id="categoryInputField" type="text"
+                        placeholder="Select task category" required>
+                    <div id="categorySelection" class="categorySelection dNone" required>
+                        <span onclick="assignCategory(this)" value="Technical Task">Technical Task</span>
+                        <span onclick="assignCategory(this)" value="User Story">User Story</span>
+                    </div>
+                    <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" id="categoryArrowDown"
+                        src="assets/images/arrow_down.svg" alt="Pfeil runter">
+                    <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol dNone" id="categoryArrowUp"
+                        src="assets/images/arrow_up.png" alt="Pfeil hoch">
+                </div>
+
+                <div class="formSection">
+                    <label class="marginBo8">Subtasks</label>
+                    <input id="subtaskInput" type="text" placeholder="Add new subtask">
+                    <img id="addSubtaskSymbol" onclick="addSubtask()" class="subtasksAddSymbol inputSymbol"
+                        src="assets/images/add_symbol.svg" alt="Plus">
+                    <div id="subtaskContainer" class="subtaskContainer subtaskContainerBoard"></div>
                 </div>
             </div>
+        </div>
+        <!-- footer -->
+        <div class="footerContainer footerBoard">
+            <span class="footerRequiredField colorBlack">This field is required</span>
 
-            <div class="formSection">
-                <span class="marginBo8 required">Category</span>
-                <input onclick="toggleCategoryField()" id="categoryInputField" type="text"
-                    placeholder="Select task category" required>
-                <div id="categorySelection" class="categorySelection dNone" required>
-                    <span onclick="assignCategory(this)" value="Technical Task">Technical Task</span>
-                    <span onclick="assignCategory(this)" value="User Story">User Story</span>
+            <div class="footerBtnContainer">
+                <button id="clearBtn" onclick="clearTaskForm()" type="button" class="addTaskBtn clearBtn">
+                    Clear
+                    <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M6.24959 6.99984L11.4926 12.2428M1.00659 12.2428L6.24959 6.99984L1.00659 12.2428ZM11.4926 1.75684L6.24859 6.99984L11.4926 1.75684ZM6.24859 6.99984L1.00659 1.75684L6.24859 6.99984Z"
+                            stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn">
+                    Create Task
+                    <img src="assets/images/check.svg" alt="weißer Haken">
+                </button>
+                <div id="okBtnDiv">
+
                 </div>
-                <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol" id="categoryArrowDown"
-                    src="assets/images/arrow_down.svg" alt="Pfeil runter">
-                <img onclick="toggleCategoryField()" class="arrowSymbol inputSymbol dNone" id="categoryArrowUp"
-                    src="assets/images/arrow_up.png" alt="Pfeil hoch">
-            </div>
-
-            <div class="formSection">
-                <label class="marginBo8">Subtasks</label>
-                <input id="subtaskInput" type="text" placeholder="Add new subtask">
-                <img id="addSubtaskSymbol" onclick="addSubtask()" class="subtasksAddSymbol inputSymbol"
-                    src="assets/images/add_symbol.svg" alt="Plus">
-                <div id="subtaskContainer" class="subtaskContainer subtaskContainerBoard"></div>
             </div>
         </div>
-    </div>
-    <!-- footer -->
-    <div class="footerContainer footerBoard">
-        <span class="footerRequiredField colorBlack">This field is required</span>
-
-        <div class="footerBtnContainer">
-            <button id="clearBtn" onclick="clearTaskForm()" type="button" class="addTaskBtn clearBtn">
-                Clear
-                <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M6.24959 6.99984L11.4926 12.2428M1.00659 12.2428L6.24959 6.99984L1.00659 12.2428ZM11.4926 1.75684L6.24859 6.99984L11.4926 1.75684ZM6.24859 6.99984L1.00659 1.75684L6.24859 6.99984Z"
-                        stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-
-            <button id="createTaskBtn" type="submit" class="addTaskBtn createBtn">
-                Create Task
-                <img src="assets/images/check.svg" alt="weißer Haken">
-            </button>
-            <div id="okBtnDiv">
-
-            </div>
-        </div>
-    </div>
-</form>
+    </form>

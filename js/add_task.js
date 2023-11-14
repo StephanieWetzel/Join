@@ -686,3 +686,21 @@ async function addTaskToBoard(priority) {
 function formatDueDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-GB');
 }
+
+
+// function toggleDropdownDivsWithClickInForm() {
+//     let contactSelectionContainer = document.getElementById('contactSelectionContainer');
+//     let categorySelection = document.getElementById('categorySelection');
+
+//     if (contactSelectionContainer.classList == 'dNone' && categorySelection.classList !== 'dNone') {
+//         toggleCategoryField();
+//     } else if (categorySelection.classList == 'dNone' && contactSelectionContainer.classList !== 'dNone') {
+//         toggleContacts();
+//     }
+// }
+
+// window.onclick = function (event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
