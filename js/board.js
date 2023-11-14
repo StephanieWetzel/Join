@@ -19,6 +19,7 @@ async function initBoard(activeSection) {
     classifyTask();
     filterTasksByTitle();
     assignContact();
+    setMinDate();
     subtaskStatus = loadSubtaskStatusLocal() || {};
     progressBarWidth = loadProgressBarWidthLocal() || {}; // Ändere hier
     initProgressBarWidth();
@@ -77,7 +78,7 @@ function openModal(state) {
  *
  * @param {string} boardState 
  */
-function saveBoardStateLocal(boardState){
+function saveBoardStateLocal(boardState) {
     let boardStateJSON = JSON.stringify(boardState);
     localStorage.setItem('boardState', boardStateJSON);
 }
@@ -87,7 +88,7 @@ function saveBoardStateLocal(boardState){
  * 
  * @returns {string} - The parsed board state if found in local storage, or null if not found.
  */
-function loadSavedBoardStateLocal(){
+function loadSavedBoardStateLocal() {
     if (localStorage.getItem('boardState')) {
         let boardStateJSON = localStorage.getItem('boardState');
         boardStateJSON = JSON.parse(boardStateJSON);
@@ -236,11 +237,11 @@ function renderTaskCard(task) {
             <p class="task-title"><b>${task.title}</b></p>
             <span class="short-info">${task.description}</span>
             <div class="flex-box">
-                ${task.subtasks.length > 0 ? 
-                    `<div class="progress">
+                ${task.subtasks.length > 0 ?
+            `<div class="progress">
                         <div class="progress-bar" data-task-index="${task.uniqueIndex}" id="progressBar${task.uniqueIndex}" role="progressbar"></div>
                     </div>` : ''
-                }
+        }
                 <p>${task.subtasks.length} Subtasks</p>
             </div>
             <div class="priority">

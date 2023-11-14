@@ -253,45 +253,28 @@ function getPrioElements() {
  */
 function handleUrgent(priority) {
     if (priority === 'urgent') {
-        if (urgentButtonAlreadyClicked()) {
-            removeUrgentClassAndEnableOtherButtons();
-        } else {
-            addUrgentClassAndDisableOtherButtons();
-            prio = priority; // Update the global priority variable
-        }
+        addUrgentClass();
+    } else {
+        removeUrgentClass();
     }
 }
 
 
 /**
- * Checks if the 'urgent' button has already been clicked.
- *
- * @returns {boolean} - `true` if the 'urgent' button has been clicked; otherwise, `false`.
+ * Adds the 'urgent' class to the 'urgent' button.
  */
-function urgentButtonAlreadyClicked() {
-    return urgentBtn.classList.contains('urgent');
-}
-
-
-/**
- * Removes the 'urgent' class from the 'urgent' button and enables other priority buttons.
- */
-function removeUrgentClassAndEnableOtherButtons() {
-    urgentBtn.classList.remove('urgent');
-    urgentSymbol.src = './assets/images/urgent_symbol.svg';
-    mediumBtn.disabled = false;
-    lowBtn.disabled = false;
-}
-
-
-/**
- * Adds the 'urgent' class to the 'urgent' button and disables other priority buttons.
- */
-function addUrgentClassAndDisableOtherButtons() {
+function addUrgentClass() {
     urgentBtn.classList.add('urgent');
     urgentSymbol.src = "./assets/images/urgent_symbol_white.png";
-    mediumBtn.disabled = true;
-    lowBtn.disabled = true;
+}
+
+
+/**
+ * Removes the 'urgent' class from the 'urgent' button.
+ */
+function removeUrgentClass() {
+    urgentBtn.classList.remove('urgent');
+    urgentSymbol.src = './assets/images/urgent_symbol.svg';
 }
 
 
@@ -303,45 +286,28 @@ function addUrgentClassAndDisableOtherButtons() {
  */
 function handleMedium(priority) {
     if (priority === 'medium') {
-        if (mediumButtonAlreadyClicked()) {
-            removeMediumClassAndEnableOtherButtons();
-        } else {
-            addMediumClassAndDisableOtherButtons();
-            prio = priority; // Update the global priority variable
-        }
+        addMediumClass();
+    } else {
+        removeMediumClass();
     }
 }
 
 
 /**
- * Checks if the 'medium' button has already been clicked.
- *
- * @returns {boolean} - `true` if the 'medium' button has been clicked; otherwise, `false`.
+ * Adds the 'medium' class to the 'medium' button.
  */
-function mediumButtonAlreadyClicked() {
-    return mediumBtn.classList.contains('medium');
-}
-
-
-/**
- * Removes the 'medium' class from the 'medium' button and enables other priority buttons.
- */
-function removeMediumClassAndEnableOtherButtons() {
-    mediumBtn.classList.remove('medium');
-    mediumSymbol.src = './assets/images/medium_symbol.svg';
-    urgentBtn.disabled = false;
-    lowBtn.disabled = false;
-}
-
-
-/**
- * Adds the 'medium' class to the 'medium' button and disables other priority buttons.
- */
-function addMediumClassAndDisableOtherButtons() {
+function addMediumClass() {
     mediumBtn.classList.add('medium');
     mediumSymbol.src = './assets/images/medium_symbol_white.png';
-    urgentBtn.disabled = true;
-    lowBtn.disabled = true;
+}
+
+
+/**
+ * Removes the 'medium' class from the 'medium' button.
+ */
+function removeMediumClass() {
+    mediumBtn.classList.remove('medium');
+    mediumSymbol.src = './assets/images/medium_symbol.svg';
 }
 
 
@@ -353,45 +319,28 @@ function addMediumClassAndDisableOtherButtons() {
  */
 function handleLow(priority) {
     if (priority === 'low') {
-        if (lowButtonAlreadyClicked()) {
-            removeLowClassAndEnableOtherButtons();
-        } else {
-            addLowClassAndDisableOtherButtons();
-            prio = priority; // Update the global priority variable
-        }
+        addLowClass();
+    } else {
+        removeLowClass();
     }
 }
 
 
 /**
- * Checks if the 'low' button has already been clicked.
- *
- * @returns {boolean} - `true` if the 'low' button has been clicked; otherwise, `false`.
+ * Adds the 'low' class to the 'low' button.
  */
-function lowButtonAlreadyClicked() {
-    return lowBtn.classList.contains('low');
-}
-
-
-/**
- * Removes the 'low' class from the 'low' button and enables other priority buttons.
- */
-function removeLowClassAndEnableOtherButtons() {
-    lowBtn.classList.remove('low');
-    lowSymbol.src = './assets/images/low_symbol.svg';
-    urgentBtn.disabled = false;
-    mediumBtn.disabled = false;
-}
-
-
-/**
- * Adds the 'low' class to the 'low' button and disables other priority buttons.
- */
-function addLowClassAndDisableOtherButtons() {
+function addLowClass() {
     lowBtn.classList.add('low');
     lowSymbol.src = './assets/images/low_symbol_white.png';
-    urgentBtn.disabled = true;
-    mediumBtn.disabled = true;
+}
+
+
+/**
+ * Removes the 'low' class from the 'low' button.
+ */
+function removeLowClass() {
+    lowBtn.classList.remove('low');
+    lowSymbol.src = './assets/images/low_symbol.svg';
 }
 
 
@@ -667,9 +616,8 @@ function clearTaskForm() {
  * @throws {Error} Throws an error if required fields are not filled.
  */
 async function addTaskToBoard(priority) {
-   checkBoardState();
-    priority = prio;
-    if (priority === undefined || contactBubbles == '') { // Checks if the priority or contactBubbles is undefined or empty and shows an alert if true.
+    checkBoardState();
+    if (priority == undefined || contactBubbles == '') { // Checks if the priority or contactBubbles is undefined or empty and shows an alert if true.
         alert("Please fill out all required(*) fields!");
     } else {
         tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks, boardState))
@@ -683,7 +631,7 @@ async function addTaskToBoard(priority) {
  * Checks and loads the board state from local storage.
  * If the board state is not found, sets it to a default value ('todo').
  */
-function checkBoardState(){
+function checkBoardState() {
     boardState = loadSavedBoardStateLocal();
     if (boardState == null) {
         boardState = 'todo'
