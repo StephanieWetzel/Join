@@ -228,12 +228,24 @@ function setCategoryStyle(category) {
  * This function displays the small card for a task
  * 
  * @param {object} task - Represantative for the Task -class object
- * @returns 
+ * 
  */
 function renderTaskCard(task) {
     return /*html*/`
         <div draggable="true" onclick="openTask(${task.uniqueIndex})" ondragstart="startDragging(${task.uniqueIndex})" class="status-board">
-            <p class="${setCategoryStyle(task.category)}">${task.category}</p>
+            <div style="display: flex; justify-content: space-between">
+                <p class="${setCategoryStyle(task.category)}">${task.category}</p>
+                <img onclick="toggleMoveToOptions(${task.uniqueIndex}, event)" class="mobileDots" src="assets/images/more_vert_blue.svg">
+            </div>
+            <div id="moveToOptions${task.uniqueIndex}" class="moveToOptions moveToInvis">
+                <div class="moveToOptionsPopup">
+                    <h4>Move to:</h4>
+                    <p onclick="moveToMobile('todo', ${task.uniqueIndex}, event)">To do</p>
+                    <p onclick="moveToMobile('inProgress', ${task.uniqueIndex}, event)">In Progress</p>
+                    <p onclick="moveToMobile('awaitFeedback', ${task.uniqueIndex}, event)">Await Feedback</p>
+                    <p onclick="moveToMobile('done', ${task.uniqueIndex}, event)">Done</p>
+                </div>
+            </div>
             <p class="task-title"><b>${task.title}</b></p>
             <span class="short-info">${task.description}</span>
             <div class="flex-box">
@@ -256,6 +268,35 @@ function renderTaskCard(task) {
             </div>
         </div>
     `;
+}
+
+/**
+ * Moves a task to a new status on a mobile device.
+ *
+ * @param {string} state - The new status to which the task is moved.
+ * @param {number} taskId - The unique index of the task being moved.
+ */
+async function moveToMobile(state, taskId){
+    event.stopPropagation();
+    tasks.forEach(task => {
+        if (task.uniqueIndex == taskId) {
+            task.state = state;
+        }
+    });
+    await setItem('tasks', JSON.stringify(tasks));
+    initBoard('board');
+}
+
+/**
+ * Toggles the visibility of 'moveToOptions' for a specific task.
+ *
+ * @param {number} taskIndex - The unique index of the task associated with the 'moveToOptions'.
+ * @param {Event} event - The event object to stop propagation.
+ */
+function toggleMoveToOptions(taskIndex,event){
+    event.stopPropagation();
+    let toggledOptions = document.getElementById('moveToOptions' + taskIndex);
+    toggledOptions.classList.toggle('moveToInvis');
 }
 
 /**
@@ -531,20 +572,10 @@ function deleteTask(taskId) {
  * @param {string} taskId - The unique identifier of the task to be edited.
  */
 function openEditTaskPopup(taskId) {
-    let createBtn = document.getElementById('createTaskBtn');
-    let clearBtn = document.getElementById('clearBtn');
-    let modal = document.getElementById("myModal");
+    document.getElementById('addTaskHeading').innerText = 'Edit Task'
     let selectedTask = tasks.find(task => task.uniqueIndex === taskId);
     subtasks = selectedTask.subtasks;
     printEditButton(taskId);
-
-    if (modal) {
-        let modalTitle = modal.querySelector('.boardH1');
-        if (modalTitle) {
-            modalTitle.innerText = 'Edit Task';
-        }
-    }
-
     if (selectedTask && window.innerWidth > 600) {
         setTaskToEdit(selectedTask);
     } else if (selectedTask && window.innerWidth < 600 && window.location.href.includes('board.html')) {

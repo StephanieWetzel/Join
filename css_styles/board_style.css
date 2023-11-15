@@ -544,6 +544,44 @@ ul {
     position: initial;
 }
 
+.moveToOptions{
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    position: relative;
+    flex-direction: column;
+    top: 0;
+    right: 0;
+    margin-left: -10px;
+}
+
+.mobileDots{
+    transform: rotate(90deg);
+    display: none;
+}
+
+.moveToOptionsPopup{
+    position: absolute;
+    z-index: 20;
+    top: 0px;
+    font-size: 14px;
+    width: 120px;
+    color: white;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background-color: #081931;
+    padding: 6px;
+}
+
+.moveToInvis{
+    display: none;
+}
+
+.moveToOptionsPopup p{
+    font-weight:700;
+}
+
 /* responsive design */
 @media(max-width:1500px) {
     .status {
@@ -633,6 +671,12 @@ ul {
 
     .status {
         margin-top: -88px;
+    }
+}
+
+@media(max-width: 600px){
+    .mobileDots{
+        display: flex;
     }
 }
 
