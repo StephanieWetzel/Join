@@ -254,6 +254,7 @@ function getPrioElements() {
 function handleUrgent(priority) {
     if (priority === 'urgent') {
         addUrgentClass();
+        prio = 'urgent'; // Updates the global variable value.
     } else {
         removeUrgentClass();
     }
@@ -287,6 +288,7 @@ function removeUrgentClass() {
 function handleMedium(priority) {
     if (priority === 'medium') {
         addMediumClass();
+        prio = 'medium'; // Updates the global variable value.
     } else {
         removeMediumClass();
     }
@@ -320,6 +322,7 @@ function removeMediumClass() {
 function handleLow(priority) {
     if (priority === 'low') {
         addLowClass();
+        prio = 'low'; // Updates the global variable value.
     } else {
         removeLowClass();
     }
@@ -617,7 +620,7 @@ function clearTaskForm() {
  */
 async function addTaskToBoard(priority) {
     checkBoardState();
-    if (priority == undefined || contactBubbles == '') { // Checks if the priority or contactBubbles is undefined or empty and shows an alert if true.
+    if (priority == undefined || contactBubbles == '') { // Checks if the priority or contactBubbles is undefined/empty and shows an alert if true.
         alert("Please fill out all required(*) fields!");
     } else {
         tasks.push(new Task(title.value, description.value, contactBubbles, dueDate.value, prio, userCategoryselect, subtasks, boardState))
@@ -627,6 +630,8 @@ async function addTaskToBoard(priority) {
     }
     saveBoardStateLocal(null);
 }
+
+
 /**
  * Checks and loads the board state from local storage.
  * If the board state is not found, sets it to a default value ('todo').
