@@ -252,6 +252,7 @@
     cursor: pointer;
     color: #29ABE2;
     font-size: 21px;
+    margin-right: -5px;
 }
 
 .edit:hover .edit-image {
