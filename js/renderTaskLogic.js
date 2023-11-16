@@ -148,29 +148,6 @@ function renderBigTask(task, taskId) {
 }
 
 /**
- * Generates HTML template for displaying subtasks in the big task view.
- * 
- * @param {Object} task - The task object containing subtasks to be displayed.
- * @returns {string} The HTML template for displaying subtasks in the big task view.
- */
-subtaskStatus = loadSubtaskStatusLocal() || {};
-function renderBigTaskSubtasks(task) {
-    return /*html*/`
-    <span style="color: #42526E;">Subtasks</span>
-    <span>
-    <ul id="subtaskIndex${task.uniqueIndex}">
-        ${task.subtasks.map((subtask, index) => `
-        <li class="list-style">
-            <img id="chopImg" class="chop-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'changed-image' : 'initial-image'}" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
-            <img class="rectangle-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'initial-image' : 'changed-image'}" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
-            ${subtask}
-        </li>
-        `).join('')}
-    </ul>
-    </span>
-    `
-}
-/**
  * Generates HTML template for displaying assigned contacts in the big task view.
  *
  * @param {Object} task - The task object containing assigned contacts to be displayed.
