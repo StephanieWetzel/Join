@@ -185,7 +185,6 @@ function filterTasksByTitle() {
     const input = document.getElementById('searchInput');
     const searchTerm = input.value.trim().toLowerCase();
     const taskContainers = document.querySelectorAll('.status-board');
-    const noFeedback = document.getElementById('noFeedback');
 
     taskContainers.forEach((taskContainer) => {
         const titleElement = taskContainer.querySelector('.task-title');
@@ -202,14 +201,6 @@ function filterTasksByTitle() {
             }
         }
     });
-
-    // Überprüfen, ob alle Tasks ausgeblendet wurden, und das "noFeedback"-Element entsprechend anzeigen
-    const visibleTasks = document.querySelectorAll('.newTask[style="display: block;"]');
-    if (visibleTasks.length === 0) {
-        noFeedback.style.display = 'block';
-    } else {
-        noFeedback.style.display = 'none';
-    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
