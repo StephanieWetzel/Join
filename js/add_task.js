@@ -97,6 +97,7 @@ function contactTemplate(contact, i) {
  * 
  */
 function toggleContacts() {
+    getContactElements();
     toggleMainContainer();
     toggleArrowSymbols();
     toggleInputValue();
@@ -109,7 +110,6 @@ function toggleContacts() {
  * @param {HTMLElement} contactSelectionContainer - The HTML element representing the contact selection dropdown.
  */
 function toggleMainContainer() {
-    let contactSelectionContainer = document.getElementById('contactSelectionContainer');
     contactSelectionContainer.classList.toggle('dNone');
 }
 
@@ -121,10 +121,7 @@ function toggleMainContainer() {
  * @param {HTMLElement} arrowUpSymbol - The HTML element representing the arrow symbol for indicating an expanded state.
  */
 function toggleArrowSymbols() {
-    let arrowDownSymbol = document.getElementById('arrowDownSymbol');
     arrowDownSymbol.classList.toggle('dNone');
-
-    let arrowUpSymbol = document.getElementById('arrowUpSymbol');
     arrowUpSymbol.classList.toggle('dNone');
 }
 
@@ -136,13 +133,68 @@ function toggleArrowSymbols() {
  * @param {HTMLElement} assignContactsInputfield - The HTML input element used for assigning contacts.
  */
 function toggleInputValue() {
-    let assignContactsInputfield = document.getElementById('assignContactsInputfield');
     if (assignContactsInputfield.value) {
         assignContactsInputfield.value = '';
     }
     else {
         assignContactsInputfield.value = 'Select contacts to assign';
     }
+}
+
+
+// Functions for CLOSING contacts only
+/**
+ * Adds a click event listener to the document to handle clicks outside of the input field.
+ * Closes the contact selection if the user clicks outside of specific elements.
+ *
+ * @param {Event} event - The click event object.
+ */
+document.addEventListener('click', function (event) {
+    if (userClicksOutsideOfInputField(event)) {
+        closeContactSelection();
+    }
+});
+
+
+/**
+ * Checks if the user clicked outside of specific elements related to the contact selection.
+ *
+ * @param {Event} event - The click event object.
+ * @returns {boolean} Returns true if the click is outside of the specified input field and symbols.
+ */
+function userClicksOutsideOfInputField(event) {
+    return !contactSelectionContainer.contains(event.target) &&
+        !assignContactsInputfield.contains(event.target) &&
+        !arrowDownSymbol.contains(event.target) &&
+        !arrowUpSymbol.contains(event.target);
+}
+
+
+/**
+ * Closes the contact selection by updating the relevant elements' classes and resetting the input field value.
+ */
+function closeContactSelection() {
+    getContactElements();
+    contactSelectionContainer.classList.add('dNone');
+    arrowDownSymbol.classList.remove('dNone');
+    arrowUpSymbol.classList.add('dNone');
+    assignContactsInputfield.value = 'Select contacts to assign';
+}
+
+
+/**
+ * Retrieves the contact-related elements from the DOM.
+ * 
+ * @param {HTMLElement} contactSelectionContainer - The HTML element representing the contact selection dropdown.
+ * @param {HTMLElement} arrowDownSymbol - The HTML element representing the arrow symbol for indicating a collapsed state.
+ * @param {HTMLElement} arrowUpSymbol - The HTML element representing the arrow symbol for indicating an expanded state.
+ * @param {HTMLElement} assignContactsInputfield - The HTML input element used for assigning contacts.
+ */
+function getContactElements() {
+    contactSelectionContainer = document.getElementById('contactSelectionContainer');
+    arrowDownSymbol = document.getElementById('arrowDownSymbol');
+    arrowUpSymbol = document.getElementById('arrowUpSymbol');
+    assignContactsInputfield = document.getElementById('assignContactsInputfield');
 }
 
 
@@ -654,21 +706,3 @@ function checkBoardState() {
 function formatDueDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-GB');
 }
-
-
-// function toggleDropdownDivsWithClickInForm() {
-//     let contactSelectionContainer = document.getElementById('contactSelectionContainer');
-//     let categorySelection = document.getElementById('categorySelection');
-
-//     if (contactSelectionContainer.classList == 'dNone' && categorySelection.classList !== 'dNone') {
-//         toggleCategoryField();
-//     } else if (categorySelection.classList == 'dNone' && contactSelectionContainer.classList !== 'dNone') {
-//         toggleContacts();
-//     }
-// }
-
-// window.onclick = function (event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
