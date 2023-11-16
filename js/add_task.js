@@ -97,7 +97,6 @@ function contactTemplate(contact, i) {
  * 
  */
 function toggleContacts() {
-    // getContactElements();
     toggleMainContainer();
     toggleArrowSymbols();
     toggleInputValue();
@@ -174,28 +173,11 @@ function userClicksOutsideOfInputField(event) {
  * Closes the contact selection by updating the relevant elements' classes and resetting the input field value.
  */
 function closeContactSelection() {
-    // getContactElements();
     contactSelectionContainer.classList.add('dNone');
     arrowDownSymbol.classList.remove('dNone');
     arrowUpSymbol.classList.add('dNone');
     assignContactsInputfield.value = 'Select contacts to assign';
 }
-
-
-/**
- * Retrieves the contact-related elements from the DOM.
- * 
- * @param {HTMLElement} contactSelectionContainer - The HTML element representing the contact selection dropdown.
- * @param {HTMLElement} arrowDownSymbol - The HTML element representing the arrow symbol for indicating a collapsed state.
- * @param {HTMLElement} arrowUpSymbol - The HTML element representing the arrow symbol for indicating an expanded state.
- * @param {HTMLElement} assignContactsInputfield - The HTML input element used for assigning contacts.
- */
-// function getContactElements() {
-//     contactSelectionContainer = document.getElementById('contactSelectionContainer');
-//     arrowDownSymbol = document.getElementById('arrowDownSymbol');
-//     arrowUpSymbol = document.getElementById('arrowUpSymbol');
-//     assignContactsInputfield = document.getElementById('assignContactsInputfield');
-// }
 
 
 /**
@@ -460,18 +442,10 @@ function userClicksOutsideOfCategoryField(event) {
  * Closes the category selection by adding CSS classes to hide and show respective elements.
  */
 function closeCategorySelection() {
-    // getCategoryElements();
     categorySelection.classList.add('dNone');
     categoryArrowDown.classList.remove('dNone');
     categoryArrowUp.classList.add('dNone');
 }
-
-
-// function getCategoryElements() {
-//     categorySelection = document.getElementById('categorySelection');
-//     categoryArrowDown = document.getElementById('categoryArrowDown');
-//     categoryArrowUp = document.getElementById('categoryArrowUp');
-// }
 
 
 // SUBTASKS
