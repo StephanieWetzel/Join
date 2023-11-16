@@ -553,6 +553,7 @@ ul {
     top: 0;
     right: 0;
     margin-left: -10px;
+    opacity: 0;
 }
 
 .mobileDots{
@@ -563,7 +564,7 @@ ul {
 .moveToOptionsPopup{
     position: absolute;
     z-index: 20;
-    top: 0px;
+    top: 1px;
     font-size: 14px;
     width: 120px;
     color: white;
@@ -574,12 +575,26 @@ ul {
     padding: 6px;
 }
 
+.mobileOptionsAnimation {
+    animation: mOptionsFadeIn 2s forwards;
+}
+
+@keyframes mOptionsFadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
 .moveToInvis{
     display: none;
 }
 
 .moveToOptionsPopup p{
     font-weight:700;
+    margin: 10px 0px;
+}
+
+.moveToOptionsPopup h4{
+    margin: 12px 0px;
 }
 
 /* responsive design */

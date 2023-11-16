@@ -61,7 +61,7 @@ function renderTaskCard(task) {
                 <p class="${setCategoryStyle(task.category)}">${task.category}</p>
                 <img onclick="toggleMoveToOptions(${task.uniqueIndex}, event)" class="mobileDots" src="assets/images/more_vert_blue.svg">
             </div>
-            <div id="moveToOptions${task.uniqueIndex}" class="moveToOptions moveToInvis">
+            <div id="moveToOptions${task.uniqueIndex}" class="moveToOptions mobileOptionsAnimation moveToInvis">
                 <div class="moveToOptionsPopup">
                     <h4>Move to:</h4>
                     <p onclick="moveToMobile('todo', ${task.uniqueIndex}, event)">To do</p>
