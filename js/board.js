@@ -173,8 +173,8 @@ function closeTask() {
     document.body.style.overflow = 'visible';
 }
 
-//Filter Function
 
+//Filter Function
 /**
  * This function filters the available tasks by its state (todo, in progress, await feedback etc) and displays them at its section.
  * If there is no Task for a section, no task todo will be shown.
@@ -184,7 +184,7 @@ function closeTask() {
 function filterTasksByTitle() {
     const input = document.getElementById('searchInput');
     const searchTerm = input.value.trim().toLowerCase();
-    const taskContainers = document.querySelectorAll('.newTask');
+    const taskContainers = document.querySelectorAll('.status-board');
     const noFeedback = document.getElementById('noFeedback');
 
     taskContainers.forEach((taskContainer) => {
@@ -194,16 +194,22 @@ function filterTasksByTitle() {
         if (titleElement && descriptionElement) {
             const title = titleElement.textContent.toLowerCase();
             const description = descriptionElement.textContent.toLowerCase();
-            console.log(descriptionElement);
 
             if (title.includes(searchTerm) || description.includes(searchTerm)) {
                 taskContainer.style.display = 'block';
             } else {
                 taskContainer.style.display = 'none';
-                noFeedback.style.display = 'none';
             }
         }
     });
+
+    // Überprüfen, ob alle Tasks ausgeblendet wurden, und das "noFeedback"-Element entsprechend anzeigen
+    const visibleTasks = document.querySelectorAll('.newTask[style="display: block;"]');
+    if (visibleTasks.length === 0) {
+        noFeedback.style.display = 'block';
+    } else {
+        noFeedback.style.display = 'none';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -215,8 +221,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-//Drag n' Drop
 
+
+//Drag n' Drop
 /**
  * Allows a drop event by preventing its default behavior, making an element droppable.
  *
@@ -226,6 +233,7 @@ function allowDrop(event) {
     event.preventDefault();
 }
 
+
 /**
  * Initiates the dragging operation by setting the currently dragged element.
  *
@@ -234,6 +242,7 @@ function allowDrop(event) {
 function startDragging(id) {
     currentDraggedElement = id;
 }
+
 
 /**
  * Moves a task to a new state and updates the task list in local storage.
@@ -249,6 +258,7 @@ async function moveTo(state) {
     await setItem('tasks', JSON.stringify(tasks));
     initBoard('board');
 }
+
 
 /**
  * Extracts the updated subtasks from the subtask form in the UI (Board).
@@ -271,6 +281,7 @@ function extractSubtasksFromForm() {
 
     return updatedSubtasks; // Returns the array containing the updated subtasks.
 }
+
 
 /**
  * Generates HTML template for displaying subtasks in the big task view.
@@ -296,6 +307,7 @@ function renderBigTaskSubtasks(task) {
     `
 }
 
+
 /**
  * Checks if the current page is 'board.html', and takes appropriate actions.
  * 
@@ -310,6 +322,7 @@ function checkIfRedirectionToBoardIsAvailable() {
     saveEditedTaskIdLocal(null);
 }
 
+
 /**
  * Saves the provided task ID to local storage for later retrieval.
  * 
@@ -319,6 +332,8 @@ function saveEditedTaskIdLocal(taskId) {
     let eTaskAsJSON = JSON.stringify(taskId);
     localStorage.setItem('taskToEdit', eTaskAsJSON);
 }
+
+
 /**
  * Retrieves and parses the edited task from local storage.
  * 
@@ -333,11 +348,24 @@ function loadEditedTaskLocal() {
 }
 
 
+
+/**
+ * Saves the provided task ID to local storage for later retrieval.
+ * 
+ * @param {string|number} taskId - The ID of the task to be edited
+ */
 function saveSubtaskStatusLocal(taskId) {
     let subtaskAsJSON = JSON.stringify(taskId);
     localStorage.setItem('subtaskStatus', subtaskAsJSON);
 }
 
+
+/**
+ * Saves the width of the progress bar for a specific task to local storage.
+ * 
+ * @param {string|number} taskId - The ID of the task.
+ * @param {number} width - The width of the progress bar.
+ */
 
 function saveProgressBarWidthLocal(taskId, width) {
     const progressBarWidth = loadProgressBarWidthLocal();
@@ -345,6 +373,12 @@ function saveProgressBarWidthLocal(taskId, width) {
     localStorage.setItem('progressBarWidth', JSON.stringify(progressBarWidth));
 }
 
+
+/**
+ * Loads the saved subtask status from local storage and parses it from JSON.
+ * 
+ * @returns {Object} - The parsed subtask status if found in local storage, or an empty object if not found.
+ */
 
 function loadSubtaskStatusLocal() {
     if (localStorage.getItem('subtaskStatus')) {
@@ -355,6 +389,12 @@ function loadSubtaskStatusLocal() {
 }
 
 
+/**
+ * Loads the saved progress bar widths from local storage and parses them from JSON.
+ * If no progress bar widths are found, returns an empty object.
+ * 
+ * @returns {Object} - The parsed progress bar widths if found in local storage, or an empty object if not found.
+ */
 function loadProgressBarWidthLocal() {
     let progressBarWidth = JSON.parse(localStorage.getItem('progressBarWidth')) || {};
     return progressBarWidth; // Gebe progressBarWidth direkt zurück
