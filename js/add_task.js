@@ -97,7 +97,7 @@ function contactTemplate(contact, i) {
  * 
  */
 function toggleContacts() {
-    getContactElements();
+    // getContactElements();
     toggleMainContainer();
     toggleArrowSymbols();
     toggleInputValue();
@@ -174,7 +174,7 @@ function userClicksOutsideOfInputField(event) {
  * Closes the contact selection by updating the relevant elements' classes and resetting the input field value.
  */
 function closeContactSelection() {
-    getContactElements();
+    // getContactElements();
     contactSelectionContainer.classList.add('dNone');
     arrowDownSymbol.classList.remove('dNone');
     arrowUpSymbol.classList.add('dNone');
@@ -190,12 +190,12 @@ function closeContactSelection() {
  * @param {HTMLElement} arrowUpSymbol - The HTML element representing the arrow symbol for indicating an expanded state.
  * @param {HTMLElement} assignContactsInputfield - The HTML input element used for assigning contacts.
  */
-function getContactElements() {
-    contactSelectionContainer = document.getElementById('contactSelectionContainer');
-    arrowDownSymbol = document.getElementById('arrowDownSymbol');
-    arrowUpSymbol = document.getElementById('arrowUpSymbol');
-    assignContactsInputfield = document.getElementById('assignContactsInputfield');
-}
+// function getContactElements() {
+//     contactSelectionContainer = document.getElementById('contactSelectionContainer');
+//     arrowDownSymbol = document.getElementById('arrowDownSymbol');
+//     arrowUpSymbol = document.getElementById('arrowUpSymbol');
+//     assignContactsInputfield = document.getElementById('assignContactsInputfield');
+// }
 
 
 /**
@@ -408,13 +408,8 @@ function removeLowClass() {
  * @param {HTMLElement} categorySelection - The HTML element representing the category selection field.
  */
 function toggleCategoryField() {
-    let categoryArrowDown = document.getElementById('categoryArrowDown');
     categoryArrowDown.classList.toggle('dNone');
-
-    let categoryArrowUp = document.getElementById('categoryArrowUp');
     categoryArrowUp.classList.toggle('dNone');
-
-    let categorySelection = document.getElementById('categorySelection');
     categorySelection.classList.toggle('dNone');
 }
 
@@ -431,6 +426,52 @@ function assignCategory(selectedCategory) {
     toggleCategoryField();
     userCategoryselect = categoryInputField.value; // Updates the global variable representing the user's selected category.
 }
+
+
+// Functions for CLOSING categories only
+/**
+ * Adds a click event listener to the document to handle clicks outside of the input field.
+ * Closes the category selection if the user clicks outside of specific elements.
+ *
+ * @type {EventListener}
+ * @param {Event} event - The click event object.
+ */
+document.addEventListener('click', function (event) {
+    if (userClicksOutsideOfCategoryField(event))
+        closeCategorySelection();
+});
+
+
+/**
+ * Checks if the user clicked outside of the category field.
+ *
+ * @param {Event} event - The click event object.
+ * @returns {boolean} - Returns true if the click is outside of the category field, otherwise false.
+ */
+function userClicksOutsideOfCategoryField(event) {
+    return !categorySelection.contains(event.target) &&
+        !categoryInputField.contains(event.target) &&
+        !categoryArrowDown.contains(event.target) &&
+        !categoryArrowUp.contains(event.target);
+}
+
+
+/**
+ * Closes the category selection by adding CSS classes to hide and show respective elements.
+ */
+function closeCategorySelection() {
+    // getCategoryElements();
+    categorySelection.classList.add('dNone');
+    categoryArrowDown.classList.remove('dNone');
+    categoryArrowUp.classList.add('dNone');
+}
+
+
+// function getCategoryElements() {
+//     categorySelection = document.getElementById('categorySelection');
+//     categoryArrowDown = document.getElementById('categoryArrowDown');
+//     categoryArrowUp = document.getElementById('categoryArrowUp');
+// }
 
 
 // SUBTASKS
