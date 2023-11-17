@@ -203,6 +203,12 @@ function filterTasksByTitle() {
     });
 }
 
+/**
+ * Attaches an event listener to the 'DOMContentLoaded' event to handle tasks when the document is fully loaded.
+ *
+ * @event DOMContentLoaded
+ * @param {Function} callback - The function to be executed when the 'DOMContentLoaded' event occurs.
+ */
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
 

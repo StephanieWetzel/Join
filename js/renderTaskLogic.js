@@ -212,6 +212,12 @@ function renderEditButton(uniqueIndex) {
 }
 
 //Progress Bar
+/**
+ * Updates the width of a progress bar element and saves the width locally.
+ *
+ * @param {string} progressBarId - The ID of the progress bar element.
+ * @param {number} width - The width percentage to set for the progress bar.
+ */
 function updateProgressBarWidth(progressBarId, width) {
     const progressBar = document.getElementById(progressBarId);
     if (progressBar) {
@@ -220,21 +226,22 @@ function updateProgressBarWidth(progressBarId, width) {
     }
 }
 
-
+/**
+ * Updates the progress bar for a specific task based on the completion status of its subtasks.
+ *
+ * @param {number} taskIndex - The index of the task associated with the progress bar.
+ */
 function updateProgressBar(taskIndex) {
     const subtaskList = document.querySelector(`#subtaskIndex${taskIndex}`);
     const totalSubtasks = subtaskList ? subtaskList.querySelectorAll('li').length : 0;
-
     if (totalSubtasks > 0) {
         const completedSubtasks = subtaskStatus[taskIndex].filter(status => status).length;
         const percent = (completedSubtasks / totalSubtasks) * 100;
-
         const progressBarId = `progressBar${taskIndex}`;
         updateProgressBarWidth(progressBarId, percent);
         saveProgressBarWidthLocal(progressBarId, percent);
         saveSubtaskStatusLocal(subtaskStatus);
     } else {
-        // Keine Subtasks vorhanden, ProgressBar ausblenden
         const progressBarId = `progressBar${taskIndex}`;
         const progressBar = document.getElementById(progressBarId);
         if (progressBar) {
@@ -243,14 +250,22 @@ function updateProgressBar(taskIndex) {
     }
 }
 
-
+/**
+ * Initializes the progress bar widths based on the provided data.
+ *
+ */
 function initProgressBarWidth() {
     for (const [taskId, width] of Object.entries(progressBarWidth)) {
         updateProgressBarWidth(taskId, width);
     }
 }
 
-
+/**
+ * Toggles the images for a specific subtask based on its completion status.
+ *
+ * @param {number} index - The index of the subtask.
+ * @param {number} taskIndex - The index of the task associated with the subtask.
+ */
 function toggleSubtaskImage(index, taskIndex) {
     const chopImg = document.querySelectorAll('.chop-image')[index];
     const rectangleImg = document.querySelectorAll('.rectangle-image')[index];
@@ -266,5 +281,5 @@ function toggleSubtaskImage(index, taskIndex) {
     rectangleImg.classList.toggle('initial-image', isSubtaskCompleted);
     rectangleImg.classList.toggle('changed-image', !isSubtaskCompleted);
 
-    updateProgressBar(taskIndex); // Rufe die Funktion auf, um den Fortschrittsbalken zu aktualisieren und die Daten zu speichern
+    updateProgressBar(taskIndex);
 }
