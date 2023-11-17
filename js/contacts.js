@@ -4,6 +4,7 @@ let logInUser;
 let isEditMobilePopupOpen = false;
 const aplhabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let isCreatingAtTask = false;
+let isCreatingAtBoard = false;
 /**
  * Function is calling at entering the Contacts-section, it sets the initials for the user who has logged in, includes html-templates, load contact data from server and displaying contacts with loaded data from server
  * 
@@ -380,12 +381,15 @@ function printContactInformation(index) {
  * 
  */
 async function createContact() {
-    if (isCreatingAtTask) {
+    if (isCreatingAtTask && !isCreatingAtBoard) {
         await createContactAtTask();
-    } else{
+    } else if (!isCreatingAtTask && !isCreatingAtBoard){
         await createContactAtContact();
+    } else{
+        await createContactAtBoard();
     }
 }
+
 
 /**
  * Asynchronously creates a new contact, updates the contacts list, and performs additional UI actions.

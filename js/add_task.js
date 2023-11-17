@@ -64,6 +64,7 @@ function setMinDate() {
     const currentDate = new Date().toISOString().split("T")[0];
     const dateInput = document.getElementById("dueDate");
     dateInput.min = currentDate; // Sets the minimum date for the date input field to the current date.
+    isCreatingAtTask = true;
 }
 
 
@@ -328,10 +329,11 @@ function formatDueDate(dateString) {
  */
 function openContactFormETask() {
     removeAllActiveStates();
-    isCreatingAtTask = true;
     document.querySelector(".add-contact").classList.remove("d-none");
     document.querySelector(".add-form-content").classList.add("formular-animation");
-    document.querySelector(".contact-form")
+    if (isCreatingAtBoard) {
+        document.getElementById('myModal').style = 'display:none;';
+    }
 }
 /**
  * Asynchronously creates a new contact, updates the contacts list, and performs additional actions related to tasks.

@@ -12,7 +12,7 @@ input {
 }
 
 .boardBtn {
-    display: none;
+    display: block;
 }
 
 .footerBoard {
