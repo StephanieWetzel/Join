@@ -40,11 +40,32 @@ function clearContactInfo() {
 }
 
 /**
- * Function closes the opened contact-form
+ * Function closes the opened contact-form at add task section or contact section
  * 
  * @param {string} editOrAdd - The name of the opened contact-form -> there are two of them , for editing an existing contact or add a new contact
  */
 function closeContactForm(editOrAdd) {
+    if (!isCreatingAtTask) {
+        closeContactFormAtContact(editOrAdd);
+    } else {
+        closeContactFormAtTask();
+    }
+    contactInfoOpened = false;
+}
+
+/**
+ * Closes the add contact form at add task section
+ */
+function closeContactFormAtTask(){
+    document.querySelector(".add-contact").classList.add("d-none");
+    document.querySelector(".add-form-content").classList.remove('formular-animation');
+}
+/**
+ * Closes the contact form in the context of contacts, hiding relevant elements and resetting UI states.
+ *
+ * @param {string} editOrAdd - Specifies whether the operation is for adding ('add') or editing ('edit') a contact.
+ */
+function closeContactFormAtContact(editOrAdd){
     if (editOrAdd === 'add') {
         document.querySelector(".add-contact").classList.add("d-none");
         document.querySelector(".add-form-content").classList.remove('formular-animation');
@@ -53,10 +74,12 @@ function closeContactForm(editOrAdd) {
         document.getElementById('editFormContent').classList.remove('formular-animation');
     }
     document.querySelector(".sticky-btn").classList.remove("d-none");
-    contactInfoOpened = false;
     init('contactsSection');
 }
 
+/**
+ * Hides all characters from the alphabet
+ */
 function hideUnusedChars(){
     aplhabet.forEach((char) =>{
         document.getElementById(char).classList.add("d-none");
