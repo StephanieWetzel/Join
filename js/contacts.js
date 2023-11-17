@@ -3,6 +3,7 @@ let contactInfoOpened = false;
 let logInUser;
 let isEditMobilePopupOpen = false;
 const aplhabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+let isCreatingAtTask = false;
 /**
  * Function is calling at entering the Contacts-section, it sets the initials for the user who has logged in, includes html-templates, load contact data from server and displaying contacts with loaded data from server
  * 
@@ -352,10 +353,22 @@ function printContactInformation(index) {
 }
 
 /**
- * This function creates a new contact , saves them on the server and shows them after creating
+ * This function creates a new contact based on the section where the contact is created , saves them on the server and shows them after creating
  * 
  */
 async function createContact() {
+    if (isCreatingAtTask) {
+        await createContactAtTask();
+    } else{
+        await createContactAtContact();
+    }
+}
+
+/**
+ * Asynchronously creates a new contact, updates the contacts list, and performs additional UI actions.
+ * 
+ */
+async function createContactAtContact(){
     document.querySelector(".info-popup").classList.remove('info-popup-animation');
     document.querySelector(".info-popup").classList.add('info-popup-animation');
     let firstLastName = splitString(fullName.value);

@@ -322,3 +322,33 @@ function checkBoardState() {
 function formatDueDate(dateString) {
     return new Date(dateString).toLocaleDateString('en-GB');
 }
+/**
+ * Opens the contact form in the context of a task, setting relevant states and applying animations.
+ * 
+ */
+function openContactFormETask() {
+    removeAllActiveStates();
+    isCreatingAtTask = true;
+    document.querySelector(".add-contact").classList.remove("d-none");
+    document.querySelector(".add-form-content").classList.add("formular-animation");
+    document.querySelector(".contact-form")
+}
+/**
+ * Asynchronously creates a new contact, updates the contacts list, and performs additional actions related to tasks.
+ * 
+ */
+async function createContactAtTask(){
+    let firstLastName = splitString(fullName.value);
+    contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
+    await setItem('contacts', JSON.stringify(contacts));
+    await fetchContacts();
+    closeAddCATask();
+    assignContact();
+}
+/**
+ * Closes the add contact section by hiding the relevant elements and removing animation classes.
+ */
+function closeAddCATask(){
+    document.querySelector(".add-contact").classList.add("d-none");
+    document.querySelector(".add-form-content").classList.remove('formular-animation');
+}
