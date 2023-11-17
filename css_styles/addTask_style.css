@@ -427,8 +427,19 @@ textarea:focus {
     border-top-right-radius: 8px;
 }
 
+/* ADD CONTACTS */
+.back-button {
+    display: flex;
+}
+
 
 /*Responsive Design*/
+@media(min-width:1400px) {
+    .back-button img {
+        margin-left: 48px !important;
+    }
+}
+
 @media(max-width: 1350px) {
     .addTaskMain {
         justify-content: center;
@@ -571,5 +582,168 @@ textarea:focus {
 
     .checkbox {
         right: -112px;
+    }
+}
+
+
+/* responsive design for addContactForm */
+@media(min-width:1024px) {
+    .back-button {
+        margin-left: 0 !important;
+    }
+}
+
+@media(min-width:850px) {
+    #fullName {
+        min-width: 0;
+    }
+
+    #mail {
+        min-width: 0;
+    }
+
+    #phone {
+        min-width: 0;
+    }
+
+    .formular {
+        margin-right: 85px;
+    }
+
+    .back-button img {
+        margin-left: 80px;
+    }
+}
+
+@media(max-width:850px) {
+    .back-button {
+        margin-bottom: 0;
+    }
+}
+
+@media(min-width:500px) {
+    /* #fullName {
+        min-width: 0;
+    }
+
+    #mail {
+        min-width: 0;
+    }
+
+    #phone {
+        min-width: 0;
+    } */
+
+    .person-icon {
+        background-position-x: 264px !important;
+    }
+
+    .mail-icon {
+        background-position-x: 264px !important;
+    }
+
+    .phone-icon {
+        background-position-x: 264px !important;
+    }
+
+    .info-popup {
+        width: 0;
+    }
+
+    .info-popup {
+        height: 0;
+    }
+
+    .back-button {
+        margin-top: 0;
+        margin-left: 88px;
+    }
+}
+
+@media(min-width:360px) and (max-width:500px) {
+    .person-icon {
+        background-position-x: 176px !important;
+    }
+
+    .mail-icon {
+        background-position-x: 176px !important;
+    }
+
+    .phone-icon {
+        background-position-x: 176px !important;
+    }
+
+    .info-popup {
+        height: 0;
+    }
+
+    .back-button img {
+        margin-top: 0;
+        margin-left: 56px;
+    }
+}
+
+@media(min-width:320px) and (max-width:360px) {
+    .person-icon {
+        background-position-x: 144px !important;
+    }
+
+    .mail-icon {
+        background-position-x: 144px !important;
+    }
+
+    .phone-icon {
+        background-position-x: 144px !important;
+    }
+
+    .back-button img {
+        margin-left: 48px;
+    }
+
+    .info-popup {
+        height: 0;
+    }
+
+    .back-button {
+        margin-top: 0;
+    }
+}
+
+/* responsive design MOBILE for addContactForm */
+
+@media(min-height:1360px) and (max-height:1370px) {
+    .formular {
+        margin-top: 0 !important;
+    }
+}
+
+@media(width:1024px) and (height:1366px) {
+    .formular {
+        margin-right: 0;
+    }
+}
+
+@media(min-width:1024px) and (max-height:800px) {
+    .formular {
+        margin-right: 0;
+        margin-top: -32px;
+    }
+}
+
+@media(max-width:290px) {
+    .back-button {
+        margin-top: 0;
+    }
+
+    .person-icon {
+        background-position-x: 136px !important;
+    }
+
+    .mail-icon {
+        background-position-x: 136px !important;
+    }
+
+    .phone-icon {
+        background-position-x: 136px !important;
     }
 }

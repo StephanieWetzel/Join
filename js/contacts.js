@@ -56,7 +56,7 @@ function closeContactForm(editOrAdd) {
 /**
  * Closes the add contact form at add task section
  */
-function closeContactFormAtTask(){
+function closeContactFormAtTask() {
     document.querySelector(".add-contact").classList.add("d-none");
     document.querySelector(".add-form-content").classList.remove('formular-animation');
 }
@@ -65,7 +65,7 @@ function closeContactFormAtTask(){
  *
  * @param {string} editOrAdd - Specifies whether the operation is for adding ('add') or editing ('edit') a contact.
  */
-function closeContactFormAtContact(editOrAdd){
+function closeContactFormAtContact(editOrAdd) {
     if (editOrAdd === 'add') {
         document.querySelector(".add-contact").classList.add("d-none");
         document.querySelector(".add-form-content").classList.remove('formular-animation');
@@ -80,8 +80,8 @@ function closeContactFormAtContact(editOrAdd){
 /**
  * Hides all characters from the alphabet
  */
-function hideUnusedChars(){
-    aplhabet.forEach((char) =>{
+function hideUnusedChars() {
+    aplhabet.forEach((char) => {
         document.getElementById(char).classList.add("d-none");
     })
 }
@@ -382,7 +382,7 @@ function printContactInformation(index) {
 async function createContact() {
     if (isCreatingAtTask) {
         await createContactAtTask();
-    } else{
+    } else {
         await createContactAtContact();
     }
 }
@@ -391,7 +391,7 @@ async function createContact() {
  * Asynchronously creates a new contact, updates the contacts list, and performs additional UI actions.
  * 
  */
-async function createContactAtContact(){
+async function createContactAtContact() {
     document.querySelector(".info-popup").classList.remove('info-popup-animation');
     document.querySelector(".info-popup").classList.add('info-popup-animation');
     let firstLastName = splitString(fullName.value);
