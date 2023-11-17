@@ -683,6 +683,24 @@ textarea:focus {
     }
 }
 
+@media(max-width:290px) {
+    .back-button {
+        margin-top: 0;
+    }
+
+    .person-icon {
+        background-position-x: 136px !important;
+    }
+
+    .mail-icon {
+        background-position-x: 136px !important;
+    }
+
+    .phone-icon {
+        background-position-x: 136px !important;
+    }
+}
+
 @media(min-width:320px) and (max-width:360px) {
     .person-icon {
         background-position-x: 144px !important;
@@ -727,23 +745,5 @@ textarea:focus {
     .formular {
         margin-right: 0;
         margin-top: -32px;
-    }
-}
-
-@media(max-width:290px) {
-    .back-button {
-        margin-top: 0;
-    }
-
-    .person-icon {
-        background-position-x: 136px !important;
-    }
-
-    .mail-icon {
-        background-position-x: 136px !important;
-    }
-
-    .phone-icon {
-        background-position-x: 136px !important;
     }
 }
