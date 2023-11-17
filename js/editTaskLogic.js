@@ -147,6 +147,11 @@ async function saveEditTask(taskId) {
 
     const updatedSubtasks = extractSubtasksFromForm();
 
+    if (contactBubbles.length === 0) {
+        alert("Please fill out all required(*) fields!");
+        return;
+    }
+
     tasks.forEach(task => { // Iterates through the tasks array and updates the information of the task with the specified unique index.
         if (task.uniqueIndex === taskId) {
             task.title = title.value;
@@ -158,6 +163,7 @@ async function saveEditTask(taskId) {
             task.subtasks = updatedSubtasks;
         }
     });
+
     subtasks = [];
     await setItem('tasks', JSON.stringify(tasks));
     checkIfRedirectionToBoardIsAvailable();
