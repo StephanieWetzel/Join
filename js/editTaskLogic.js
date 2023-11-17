@@ -135,7 +135,6 @@ function assignedContactsTemplateEdit(contactEdit) {
     `;
 }
 
-
 /**
  * Saves the edited task information, updates the tasks array, and performs necessary actions for the edited task.
  *
@@ -144,27 +143,32 @@ function assignedContactsTemplateEdit(contactEdit) {
  */
 async function saveEditTask(taskId) {
     showAssignedContacts();
-
     const updatedSubtasks = extractSubtasksFromForm();
-
     if (contactBubbles.length === 0) {
         alert("Please fill out all required(*) fields!");
         return;
     }
-
-    tasks.forEach(task => { // Iterates through the tasks array and updates the information of the task with the specified unique index.
+    tasks.forEach(task => {
         if (task.uniqueIndex === taskId) {
-            task.title = title.value;
-            task.description = description.value;
-            task.date = dueDate.value;
-            task.assignedContacts = contactBubbles;
-            task.priority = prio;
-            task.category = categoryInputField.value;
-            task.subtasks = updatedSubtasks;
+            overWriteTaskData(task, updatedSubtasks);
         }
     });
-
     subtasks = [];
     await setItem('tasks', JSON.stringify(tasks));
     checkIfRedirectionToBoardIsAvailable();
+}
+/**
+ * Overwrites task data with updated values, including subtasks.
+ * 
+ * @param {Object} task - The task object to be updated.
+ * @param {Array} updatedSubtasks - The array of updated subtasks for the task.
+ */
+function overWriteTaskData(task, updatedSubtasks) {
+    task.title = title.value;
+    task.description = description.value;
+    task.date = dueDate.value;
+    task.assignedContacts = contactBubbles;
+    task.priority = prio;
+    task.category = categoryInputField.value;
+    task.subtasks = updatedSubtasks;
 }
