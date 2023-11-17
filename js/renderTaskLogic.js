@@ -9,6 +9,23 @@ function classifyTask() {
     filterTasks('inProgress', 'noProgress');
     filterTasks('awaitFeedback', 'noFeedback');
     filterTasks('done', 'noDone');
+    isCreatingAtBoard = true;
+}
+
+async function createContactAtBoard(){
+    let firstLastName = splitString(fullName.value);
+    contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
+    await setItem('contacts', JSON.stringify(contacts));
+    await fetchContacts();
+    closeCBoard();
+    assignContact();
+}
+
+function closeCBoard(){
+    document.getElementById('myModal').style = 'display:block;';
+    document.querySelector(".add-contact").classList.add("d-none");
+    document.querySelector(".add-form-content").classList.remove('formular-animation');
+    
 }
 
 /**
