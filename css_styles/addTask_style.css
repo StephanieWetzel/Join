@@ -31,6 +31,7 @@
 
 .formColumnsContainer {
     display: flex;
+    gap: 16px;
 }
 
 input,
