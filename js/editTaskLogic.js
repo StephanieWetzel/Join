@@ -143,16 +143,39 @@ function assignedContactsTemplateEdit(contactEdit) {
  */
 async function saveEditTask(taskId) {
     showAssignedContacts();
+
     const updatedSubtasks = extractSubtasksFromForm();
-    if (contactBubbles.length === 0) {
-        alert("Please fill out all required(*) fields!");
-        return;
+
+    // Überprüfe, ob der Titel nicht leer ist
+    if (title.value.trim() === "") {
+        alert("Please enter a title before saving the task.");
+        return; // Verlasse die Funktion, wenn der Titel leer ist
     }
-    tasks.forEach(task => {
+
+    // Überprüfe, ob das Datum nicht leer ist
+    if (dueDate.value.trim() === "") {
+        alert("Please enter a due date before saving the task.");
+        return; // Verlasse die Funktion, wenn das Datum leer ist
+    }
+
+    // Überprüfe, ob mindestens ein Kontakt zugewiesen ist
+    if (contactBubbles.length === 0) {
+        alert("Please assign at least one contact before saving the task.");
+        return; // Verlasse die Funktion, wenn kein Kontakt zugewiesen ist
+    }
+
+    tasks.forEach(task => { // Iterates through the tasks array and updates the information of the task with the specified unique index.
         if (task.uniqueIndex === taskId) {
-            overWriteTaskData(task, updatedSubtasks);
+            task.title = title.value;
+            task.description = description.value;
+            task.date = dueDate.value;
+            task.assignedContacts = contactBubbles;
+            task.priority = prio;
+            task.category = categoryInputField.value;
+            task.subtasks = updatedSubtasks;
         }
     });
+
     subtasks = [];
     await setItem('tasks', JSON.stringify(tasks));
     checkIfRedirectionToBoardIsAvailable();
