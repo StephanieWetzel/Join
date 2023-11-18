@@ -186,13 +186,17 @@ a {
 
 /* responsive design */
 
-@media(min-width:1024px) and (max-width:1221px) {
+@media(min-width:1024px) and (max-width:1270px) {
     .greet {
         padding-left: 24px;
     }
 
+    .greet h1 {
+        font-size: 32px;
+    }
+
     .greet h2 {
-        font-size: 40px;
+        font-size: 32px;
     }
 
     .summaryTasks {
@@ -201,10 +205,6 @@ a {
 }
 
 @media(max-width:1024px) {
-    .greet h2 {
-        font-size: 47px;
-    }
-
     .summaryMain {
         padding: 0 24px;
     }
