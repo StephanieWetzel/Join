@@ -68,7 +68,7 @@ async function fetchTasks() {
 }
 
 
-/*Handle with care xD*/
+// DELETE CONTENT
 /**
  * Deletes all saved users at the server
  */
@@ -88,7 +88,7 @@ async function deleteAllContacts() {
 /**
  * Deletes all saved tasks at the server
  */
-async function deleteAllTasks(){
+async function deleteAllTasks() {
     let tasks = [];
     await setItem('tasks', JSON.stringify(tasks));
 }
