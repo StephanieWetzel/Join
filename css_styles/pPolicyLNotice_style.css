@@ -11,6 +11,7 @@
     display: flex;
     height: 90%;
     background-color: rgba(0, 0, 0, 0.02);
+    overflow-wrap: break-word;
 }
 
 .policy-content {
@@ -127,6 +128,20 @@ h3 {
 
 
 /*Responsive Design*/
+
+@media(max-width:1024px) {
+    .sidebar {
+        display: none !important;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .policy {
+        padding-bottom: 32px;
+    }
+}
 
 @media(max-width: 900px) {
     .head-section-2 {

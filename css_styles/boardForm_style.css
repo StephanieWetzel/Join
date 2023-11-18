@@ -69,7 +69,7 @@ input {
 }
 
 /* responsive design */
-@media(max-width: 1330px) {
+@media(max-width: 1351px) {
     .modal-content {
         width: auto;
         height: 824px;
@@ -82,6 +82,12 @@ input {
 
     .checkbox {
         right: -288px;
+    }
+}
+
+@media(width:1351px) {
+    .modal-content {
+        height: 704px;
     }
 }
 
