@@ -494,7 +494,7 @@ body {
     }
 }
 
-@media(min-width:451px) {
+@media(min-width:500px) {
     .mobile-sign-up {
         display: none;
     }
@@ -629,18 +629,21 @@ body {
     }
 }
 
-@media(max-width:319px){
-    .input-style{
+@media(max-width:319px) {
+    .input-style {
         width: 210px;
     }
-    .email-styling{
+
+    .email-styling {
         background-position-x: 180px;
     }
-    .fish-eye-div{
+
+    .fish-eye-div {
         justify-content: center;
         margin-left: -22px;
     }
-    .fish-eye-btn{
+
+    .fish-eye-btn {
         margin-left: -60px;
     }
 }
