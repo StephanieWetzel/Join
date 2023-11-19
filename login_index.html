@@ -33,7 +33,7 @@
                 <div class="fish-eye-div">
                     <input onkeydown="toggleFishEye()" class="input-style pw-styling" id="password" required type="password"
                         placeholder="Password">
-                        <button onclick="togglePasswordVisibility('password')" id="fishBtn" class="fish-eye-btn"><img id="fishBtnImg" src="assets/images/lock.svg"></button>
+                        <button onclick="togglePasswordVisibility('password')" type="button" id="fishBtn" class="fish-eye-btn"><img id="fishBtnImg" src="assets/images/lock.svg"></button>
                 </div><br>
                 <div class="checkbox">
                     <input type="checkbox" name="remember-me" id="rememberMe">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="btns">
                     <button class="login-btn">Log in</button>
-                    <button onclick="guestLogin()" class="guest-login-btn">Guest Log in</button>
+                    <button type="button" onclick="guestLogin()" class="guest-login-btn">Guest Log in</button>
                 </div>
             </form>
         </div>
