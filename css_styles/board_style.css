@@ -304,6 +304,7 @@ button {
 .priority-text {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .priority-text p {
@@ -496,8 +497,9 @@ button {
 }
 
 .newTask {
-    height: 520px;
-    overflow-x: auto;
+    /* height: 520px; */
+    height: auto;
+    /* overflow-x: auto; */
 }
 
 .newTask::-webkit-scrollbar {
@@ -544,7 +546,7 @@ ul {
     position: initial;
 }
 
-.moveToOptions{
+.moveToOptions {
     display: flex;
     align-items: flex-end;
     text-align: center;
@@ -556,12 +558,12 @@ ul {
     opacity: 0;
 }
 
-.mobileDots{
+.mobileDots {
     transform: rotate(90deg);
     display: none;
 }
 
-.moveToOptionsPopup{
+.moveToOptionsPopup {
     position: absolute;
     z-index: 20;
     top: 1px;
@@ -580,20 +582,25 @@ ul {
 }
 
 @keyframes mOptionsFadeIn {
-    from{opacity: 0;}
-    to{opacity: 1;}
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-.moveToInvis{
+.moveToInvis {
     display: none;
 }
 
-.moveToOptionsPopup p{
-    font-weight:700;
+.moveToOptionsPopup p {
+    font-weight: 700;
     margin: 10px 0px;
 }
 
-.moveToOptionsPopup h4{
+.moveToOptionsPopup h4 {
     margin: 12px 0px;
 }
 
@@ -689,8 +696,8 @@ ul {
     }
 }
 
-@media(max-width: 600px){
-    .mobileDots{
+@media(max-width: 600px) {
+    .mobileDots {
         display: flex;
     }
 }
