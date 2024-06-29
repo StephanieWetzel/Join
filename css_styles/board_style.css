@@ -1,3 +1,10 @@
+h1 {
+    text-align: center;
+    padding: 0;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
 input {
     width: 312px;
     border-radius: 10px;
@@ -101,7 +108,8 @@ button {
 .d-flex {
     display: flex;
     flex-direction: column;
-    width: 252px;
+    /* width: 252px; */
+    width: 100%;
 }
 
 .test2 {
@@ -500,6 +508,8 @@ button {
     /* height: 520px; */
     height: auto;
     /* overflow-x: auto; */
+    max-height: 600px;
+    overflow-y: scroll;
 }
 
 .newTask::-webkit-scrollbar {
@@ -532,6 +542,7 @@ button {
 
 .dynamicDisplayFlex {
     display: block;
+    width: 100%;
 }
 
 ul {
@@ -560,7 +571,8 @@ ul {
 
 .mobileDots {
     transform: rotate(90deg);
-    display: none;
+    /* display: none; */
+    display: flex;
 }
 
 .moveToOptionsPopup {
@@ -663,8 +675,8 @@ ul {
     }
 
     .headerFlex {
-        flex-direction: row;
-        margin-top: -64px;
+        /* flex-direction: row; */
+        /* margin-top: -64px; */
     }
 
     .test2 {
@@ -676,11 +688,11 @@ ul {
     }
 }
 
-@media(min-width:850px) and (max-width:1500px) {
+/* @media(min-width:850px) and (max-width:1500px) {
     .d-flex {
         width: 376px;
     }
-}
+} */
 
 @media(min-width:750px) {
     .headerBoard {
@@ -696,11 +708,11 @@ ul {
     }
 }
 
-@media(max-width: 600px) {
+/* @media(max-width: 600px) {
     .mobileDots {
         display: flex;
     }
-}
+} */
 
 @media(min-width:600px) {
     .status-board {
@@ -715,6 +727,10 @@ ul {
 }
 
 @media(min-width:320px) and (max-width:600px) {
+    /* .d-flex {
+        width: auto;
+    } */
+
     h1 {
         font-size: 52px;
         margin-block-end: 0;
@@ -726,17 +742,18 @@ ul {
     }
 
     .headerFlex {
-        flex-direction: column-reverse;
-        margin-top: -85px;
+        /* flex-direction: column-reverse; */
+        /* margin-top: -85px; */
+        align-items: end;
     }
 
     .createBtn span {
         display: none;
     }
 
-    .addTaskBtn {
+    /* .addTaskBtn {
         margin-left: 240px;
-    }
+    } */
 
     .open-task {
         width: 94%;

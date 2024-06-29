@@ -12,7 +12,7 @@ function classifyTask() {
     isCreatingAtBoard = true;
 }
 
-async function createContactAtBoard(){
+async function createContactAtBoard() {
     let firstLastName = splitString(fullName.value);
     contacts.push(new Contact(firstLastName[0], firstLastName[1], phone.value, mail.value));
     await setItem('contacts', JSON.stringify(contacts));
@@ -21,11 +21,11 @@ async function createContactAtBoard(){
     assignContact();
 }
 
-function closeCBoard(){
+function closeCBoard() {
     document.getElementById('myModal').style = 'display:block;';
     document.querySelector(".add-contact").classList.add("d-none");
     document.querySelector(".add-form-content").classList.remove('formular-animation');
-    
+
 }
 
 /**
@@ -117,7 +117,7 @@ function renderTaskCard(task) {
  * @param {string} state - The new status to which the task is moved.
  * @param {number} taskId - The unique index of the task being moved.
  */
-async function moveToMobile(state, taskId){
+async function moveToMobile(state, taskId) {
     event.stopPropagation();
     tasks.forEach(task => {
         if (task.uniqueIndex == taskId) {
@@ -134,7 +134,7 @@ async function moveToMobile(state, taskId){
  * @param {number} taskIndex - The unique index of the task associated with the 'moveToOptions'.
  * @param {Event} event - The event object to stop propagation.
  */
-function toggleMoveToOptions(taskIndex,event){
+function toggleMoveToOptions(taskIndex, event) {
     event.stopPropagation();
     let toggledOptions = document.getElementById('moveToOptions' + taskIndex);
     toggledOptions.classList.toggle('moveToInvis');
