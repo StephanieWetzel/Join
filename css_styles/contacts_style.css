@@ -460,7 +460,9 @@
     }
 }
 
-.mobile-sight {}
+.mobile-sight {
+    /* This class was left intentionally empty for styling purposes. See more info in contact.js. */
+}
 
 .mobile-info-border {
     width: 64px;
@@ -542,7 +544,6 @@
     }
 
     .mobile-logo {
-        /* opacity: 1 !important; */
         display: block !important;
     }
 

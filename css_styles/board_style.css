@@ -108,7 +108,6 @@ button {
 .d-flex {
     display: flex;
     flex-direction: column;
-    /* width: 252px; */
     width: 100%;
 }
 
@@ -215,8 +214,6 @@ button {
 }
 
 .card-content {
-    /* overflow-y: auto;
-    overflow-x: hidden; */
     width: calc(100% - 24px);
 }
 
@@ -382,11 +379,9 @@ button {
     transform: translate(-50%, -50%);
     min-width: 400px;
     max-width: 525px;
-    /* max-height: 75%; */
     max-height: 90%;
     overflow-y: auto;
     border-radius: 30px;
-    /* padding: 48px 40px 48px 40px; */
     padding: 24px;
     display: flex;
     gap: 24px;
@@ -457,7 +452,6 @@ button {
     display: flex;
     align-items: center;
     justify-content: end;
-    /* padding-bottom: 32px; */
     padding-right: 16px;
 }
 
@@ -507,9 +501,7 @@ button {
 }
 
 .newTask {
-    /* height: 520px; */
     height: auto;
-    /* overflow-x: auto; */
     max-height: 600px;
     overflow-y: scroll;
 }
@@ -573,7 +565,6 @@ ul {
 
 .mobileDots {
     transform: rotate(90deg);
-    /* display: none; */
     display: flex;
 }
 
@@ -695,11 +686,6 @@ ul {
         flex-direction: column;
     }
 
-    .headerFlex {
-        /* flex-direction: row; */
-        /* margin-top: -64px; */
-    }
-
     .test2 {
         font-size: 32px;
     }
@@ -708,12 +694,6 @@ ul {
         width: 100%;
     }
 }
-
-/* @media(min-width:850px) and (max-width:1500px) {
-    .d-flex {
-        width: 376px;
-    }
-} */
 
 @media(min-width:750px) {
     .headerBoard {
@@ -729,12 +709,6 @@ ul {
     }
 }
 
-/* @media(max-width: 600px) {
-    .mobileDots {
-        display: flex;
-    }
-} */
-
 @media(min-width:600px) {
     .status-board {
         font-size: 18px;
@@ -748,10 +722,6 @@ ul {
 }
 
 @media(min-width:320px) and (max-width:600px) {
-    /* .d-flex {
-        width: auto;
-    } */
-
     h1 {
         font-size: 52px;
         margin-block-end: 0;
@@ -763,18 +733,12 @@ ul {
     }
 
     .headerFlex {
-        /* flex-direction: column-reverse; */
-        /* margin-top: -85px; */
         align-items: end;
     }
 
     .createBtn span {
         display: none;
     }
-
-    /* .addTaskBtn {
-        margin-left: 240px;
-    } */
 
     .open-task {
         width: 94%;

@@ -26,7 +26,6 @@
 .form {
     height: 90%;
     color: #2A3647;
-    /* margin-bottom: 88px; */
 }
 
 .formColumnsContainer {
@@ -187,7 +186,6 @@ textarea:focus {
     display: block;
     position: absolute;
     width: 440px;
-    /* height: 144px; */
     max-height: 104px;
     z-index: 100;
     top: 80px;
@@ -315,7 +313,6 @@ textarea:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-top: 136px; */
     margin-top: 104px;
 }
 
@@ -436,16 +433,12 @@ textarea:focus {
 
 
 
-
-
 @media(max-width: 1351px) {
     .form {
         margin-bottom: 0;
     }
 }
 
-
-/*Responsive Design*/
 @media(min-width:1400px) {
     .back-button img {
         margin-left: 48px !important;
@@ -651,18 +644,6 @@ textarea:focus {
 }
 
 @media(min-width:500px) {
-    /* #fullName {
-        min-width: 0;
-    }
-
-    #mail {
-        min-width: 0;
-    }
-
-    #phone {
-        min-width: 0;
-    } */
-
     .person-icon {
         background-position-x: 264px !important;
     }
