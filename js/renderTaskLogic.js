@@ -154,8 +154,8 @@ function renderBigTask(task, taskId) {
             <button onclick="closeTask()" id="closeModal"><img src="assets/images/close.svg" alt=""></button>
             <div class="status-board status-board-open">
                 ${renderBigTaskHead(task)}
-                <div>${renderBigTaskAssignendContacts(task)}</div>
-                ${renderBigTaskSubtasks(task)}
+                <div class="assigned-to-container">${renderBigTaskAssignendContacts(task)}</div>
+                ${task.subtasks.length > 0 ? renderBigTaskSubtasks(task) : ''}
                 <div class="openBoard-options">
                     <div class="border-right hover-bg">${renderDeleteButton(task.uniqueIndex)}</div>
                     <div class="hover-bg">${renderEditButton(task.uniqueIndex)}</div>

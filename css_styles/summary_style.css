@@ -89,7 +89,8 @@ a {
 }
 
 .flexDirection h1 {
-    font-size: 64px;
+    /* font-size: 64px; */
+    font-size: 56px;
 }
 
 .taskInfo span {
@@ -139,7 +140,8 @@ a {
 .greet {
     display: flex;
     flex-direction: column;
-    padding-left: 64px;
+    /* padding-left: 64px; */
+    padding-left: 48px;
     margin-bottom: 24px;
 }
 
@@ -188,7 +190,8 @@ a {
 
 @media(min-width:1024px) and (max-width:1270px) {
     .greet {
-        padding-left: 24px;
+        /* padding-left: 24px; */
+        padding-left: 16px;
     }
 
     .greet h1 {
@@ -252,9 +255,9 @@ a {
         display: block;
     }
 
-    .head-section-1 {
+    /* .head-section-1 {
         margin-left: 0
-    }
+    } */
 
     .dFlex {
         width: 100%;
@@ -294,7 +297,7 @@ a {
     }
 
     .summaryTasks {
-        gap: 16px;
+        /* gap: 16px; */
         width: 100%;
     }
 

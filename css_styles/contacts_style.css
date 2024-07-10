@@ -542,7 +542,8 @@
     }
 
     .mobile-logo {
-        opacity: 1 !important;
+        /* opacity: 1 !important; */
+        display: block !important;
     }
 
     .kanban-title {

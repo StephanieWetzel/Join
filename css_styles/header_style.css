@@ -115,5 +115,6 @@
 
 .mobile-logo {
     height: 50px;
-    opacity: 0;
+    /* opacity: 0; */
+    display: none;
 }

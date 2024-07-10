@@ -1,6 +1,6 @@
 .formBoard {
     padding: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
 .boardH1 {
@@ -73,11 +73,12 @@ input {
     .modal-content {
         width: auto;
         height: 824px;
+        max-height: 95%;
         padding: 24px 24px 0 24px;
     }
 
     .formSection {
-        margin-bottom: 24px;
+        margin-bottom: 16px;
     }
 
     .checkbox {

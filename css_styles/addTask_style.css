@@ -26,7 +26,7 @@
 .form {
     height: 90%;
     color: #2A3647;
-    margin-bottom: 88px;
+    /* margin-bottom: 88px; */
 }
 
 .formColumnsContainer {
@@ -187,7 +187,8 @@ textarea:focus {
     display: block;
     position: absolute;
     width: 440px;
-    height: 144px;
+    /* height: 144px; */
+    max-height: 104px;
     z-index: 100;
     top: 80px;
     overflow: auto;
@@ -314,7 +315,8 @@ textarea:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 136px;
+    /* margin-top: 136px; */
+    margin-top: 104px;
 }
 
 .footerBtnContainer {
@@ -433,6 +435,16 @@ textarea:focus {
 }
 
 
+
+
+
+@media(max-width: 1351px) {
+    .form {
+        margin-bottom: 0;
+    }
+}
+
+
 /*Responsive Design*/
 @media(min-width:1400px) {
     .back-button img {
@@ -441,6 +453,15 @@ textarea:focus {
 }
 
 @media(max-width: 1350px) {
+    label {
+        font-size: 16px;
+    }
+
+    .marginBo8 {
+        font-size: 16px;
+    }
+
+
     .addTaskMain {
         justify-content: center;
     }
@@ -456,7 +477,11 @@ textarea:focus {
     input,
     select,
     textarea {
-        width: 624px
+        width: 624px;
+    }
+
+    textarea {
+        height: 64px;
     }
 
     .subtaskContainer {
@@ -472,6 +497,10 @@ textarea:focus {
 }
 
 @media(max-width:1024px) {
+    .form {
+        margin-bottom: 88px;
+    }
+
     .sidebar {
         bottom: 0;
         left: 0;

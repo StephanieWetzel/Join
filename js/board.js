@@ -290,16 +290,16 @@ subtaskStatus = loadSubtaskStatusLocal() || {};
 function renderBigTaskSubtasks(task) {
     return /*html*/`
     <span style="color: #42526E;">Subtasks</span>
-    <span>
-    <ul id="subtaskIndex${task.uniqueIndex}">
-        ${task.subtasks.map((subtask, index) => `
-        <li class="list-style">
-            <img id="chopImg" class="chop-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'changed-image' : 'initial-image'}" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
-            <img class="rectangle-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'initial-image' : 'changed-image'}" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
-            ${subtask}
-        </li>
-        `).join('')}
-    </ul>
+    <span class="subtasks-container">
+        <ul id="subtaskIndex${task.uniqueIndex}">
+            ${task.subtasks.map((subtask, index) => `
+            <li class="list-style">
+                <img id="chopImg" class="chop-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'changed-image' : 'initial-image'}" src="assets/images/chop.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
+                <img class="rectangle-image ${subtaskStatus[task.uniqueIndex] && subtaskStatus[task.uniqueIndex][index] ? 'initial-image' : 'changed-image'}" src="assets/images/Rectangle.svg" onclick="toggleSubtaskImage(${index}, ${task.uniqueIndex});" alt="">
+                ${subtask}
+            </li>
+            `).join('')}
+        </ul>
     </span>
     `
 }
